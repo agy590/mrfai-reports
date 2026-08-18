@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日科技新闻简报 · 2026-08-18</title>
+<style>
+  :root {
+    --bg: #f7f7f5;
+    --card: #ffffff;
+    --ink: #1a1a1a;
+    --muted: #6a6a6a;
+    --border: #e5e5e2;
+    --accent: #2563eb;
+    --tag-bg: #f0f0ee;
+    --green: #16a34a;
+    --yellow: #d97706;
+    --red: #dc2626;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+  .container { max-width: 780px; margin: 0 auto; padding: 32px 20px 64px; }
+  header { margin-bottom: 24px; }
+  h1 { font-size: 26px; line-height: 1.3; margin: 0 0 8px; }
+  .subtitle { color: var(--muted); font-size: 14px; margin: 0 0 16px; }
+  .meta { color: var(--muted); font-size: 13px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 10px 0; margin: 16px 0 28px; }
+  h2 { font-size: 19px; margin: 32px 0 12px; border-left: 4px solid var(--accent); padding-left: 10px; }
+  h3 { font-size: 17px; margin: 20px 0 10px; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin: 14px 0;
+  }
+  .card.trending { border-color: var(--accent); border-left: 4px solid var(--accent); }
+  ul { margin: 6px 0; padding-left: 22px; }
+  li { margin: 4px 0; }
+  .tag { display: inline-block; background: var(--tag-bg); color: var(--muted); border-radius: 4px; padding: 1px 8px; font-size: 12px; margin-right: 6px; }
+  .cred-green { color: var(--green); font-weight: 600; }
+  .cred-yellow { color: var(--yellow); font-weight: 600; }
+  .cred-red { color: var(--red); font-weight: 600; }
+  a { color: var(--accent); text-decoration: none; word-break: break-all; }
+  a:hover { text-decoration: underline; }
+  .footer {
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 13px;
+  }
+  blockquote { border-left: 3px solid var(--accent); padding: 4px 12px; color: var(--muted); margin: 8px 0; }
+  @media (max-width: 480px) {
+    body { font-size: 15px; }
+    h1 { font-size: 22px; }
+    .container { padding: 20px 14px 48px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>每日科技新闻简报 · 2026-08-18</h1>
+  <p class="subtitle">AI / 科技 / 互联网 / 创业 — 多源采集、结构化呈现</p>
+  <div class="meta">
+    采集窗口：2026-08-18 上午 (Asia/Shanghai) · 方法：5 次 web_search + 1 次 GitHub Trending 抓取 · 信源已交叉核验
+  </div>
+</header>
+
+<h2>当日摘要（TL;DR）</h2>
+<div class="card">
+  <ol>
+    <li><strong>Google DeepMind 发布 Gemini 3.7 Flash</strong>：1M 上下文、$0.75/1M 输入，主打 Coding &amp; Agent；Spark 个人代理已切到该模型（Pro/Ultra 订阅，160+ 国家）。🟢</li>
+    <li><strong>NVIDIA 5,000 亿美元"华尔街融资安排"被解读</strong>：Jensen Huang 称对 6 家客户的循环信贷承担最高 1/4 担保；"只找了这六家，没人拒绝"。🟢</li>
+    <li><strong>GitHub Trending 日增第一</strong>：harry0703/MoneyPrinterTurbo（+1,189 stars today，Python，AI 一键生成短视频工作流，总 Star 106,192）。🟢</li>
+    <li><strong>Anthropic Claude 自动水印</strong>：2026-08-02 起的欧盟版本在生成文本中嵌入机器可读水印 + 文件签名元数据，用户不可关闭。🟡</li>
+    <li><strong>资金端高频小热点</strong>：近期 VC roundup 集中在企业 AI Agent、自动驾驶、机器人、开发者工具。🟡</li>
+  </ol>
+</div>
+
+<h2>GitHub Trending 日榜可见仓库中，今日新增 Star 最高</h2>
+<div class="card trending">
+  <p><strong>仓库</strong>：<a href="https://github.com/harry0703/MoneyPrinterTurbo" target="_blank" rel="noopener">harry0703/MoneyPrinterTurbo</a></p>
+  <p><span class="tag">+1,189 stars today</span><span class="tag">总 Star 106,192</span><span class="tag">Fork 16,131</span><span class="tag">Python</span></p>
+  <p><strong>原始描述</strong>："利用 AI 大模型和自动化工作流，根据主题或关键词一键生成高清短视频。Generate HD short videos from a topic or keyword with an automated AI workflow."</p>
+  <p><strong>AI/科技读者视角</strong>：典型"AI 自动化工作流 + 内容生产"组合赛道；与 Gemini 3.7 Flash、Anthropic 自动化叙事形成主题共振 —— Agent 不再只写代码，开始端到端执行"选题→脚本→剪辑"流水线。</p>
+  <p><strong>抓取时间</strong>：2026-08-18 10:32 (+08)</p>
+  <p><strong>Trending 原始来源</strong>：<a href="https://github.com/trending?since=daily" target="_blank" rel="noopener">https://github.com/trending?since=daily</a></p>
+  <blockquote>说明：此结论仅来自本次抓取的 GitHub Trending "Daily" 可见榜单，并非 GitHub 全站历史 24h 增量排名。</blockquote>
+</div>
+
+<h2>今日观察</h2>
+<div class="card">
+  <ul>
+    <li><strong>"轻量 + Agent"是当下主线</strong>：Gemini 3.7 Flash 把 1M 上下文 + $0.75/1M 压到极致，本质是把 Agent loop 的 token 成本砍到可以无限循环；MoneyPrinterTurbo、career-ops、llmfit 同时霸榜 Trending，前端应用层正在把这些便宜模型"工程化"。</li>
+    <li><strong>算力 + 金融的捆绑更深一层</strong>：NVIDIA 5,000 亿美元安排不只是卖芯片，而是把"客户融资"做成了"客户租赁 + 残值担保"的金融产品，GPU 厂商和超算客户的资产负债表直接绑定。</li>
+    <li><strong>Anthropic 水印政策是分水岭信号</strong>：从"是否训练 / 是否使用"升级到"输出是否可识别"；企业级落地会被强制推到自托管或本地模型。</li>
+    <li><strong>可信度提示</strong>：今日 3 条主新闻均有多源；Anthropic 水印目前以评论/聚合源为主，未取得 Anthropic 原始政策页；资金面 roundup 是聚合列表。</li>
+  </ul>
+</div>
+
+<h2>新闻卡片</h2>
+
+<div class="card">
+  <h3>1. Google DeepMind 发布 Gemini 3.7 Flash，主打 Coding &amp; Agent</h3>
+  <p>
+    <span class="tag">AI 模型</span>
+    <span class="tag">⭐ 高热</span>
+    <span class="tag">📰 本周</span>
+    <span class="cred-green">🟢 多方确认</span>
+  </p>
+  <p><strong>核心事实</strong>：Google DeepMind 发布 Gemini 3.7 Flash，主打编程与 Agent 工作流；上下文 1M tokens；输入价 $0.75/1M tokens。Gemini Spark（个人代理产品）已切换到 3.7 Flash，供 Google AI Pro / Ultra 订阅用户在 160+ 国家使用。</p>
+  <p><strong>为什么重要</strong>：把"小模型 + 长上下文 + 低单价"组合压到可大规模 Agent loop 的拐点；Spark 切到 Flash 也意味着 Google 把"24/7 个人代理"的运行成本预算做了重新定价。</p>
+  <p><strong>来源链接</strong>：</p>
+  <ul>
+    <li><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash/" target="_blank" rel="noopener">Google Blog — Introducing Gemini 3.7 Flash</a></li>
+    <li><a href="https://www.marktechpost.com/2026/08/13/google-ai-just-released-gemini-3-7-flash/" target="_blank" rel="noopener">MarkTechPost — Google AI Just Released Gemini 3.7 Flash</a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>2. NVIDIA 5,000 亿美元"华尔街安排"：6 客户、25% 担保上限</h3>
+  <p>
+    <span class="tag">AI 基础设施</span>
+    <span class="tag">⭐ 高热</span>
+    <span class="tag">📰 昨日 8/17</span>
+    <span class="cred-green">🟢 多方确认</span>
+  </p>
+  <p><strong>核心事实</strong>：NVIDIA 牵头为 AI 客户组织高达 $500B 的循环信贷 / 租赁安排；NVIDIA 对任意单一交易提供不超过 25% 的担保，从而压低客户融资成本，将主要信用风险留给贷款方。Jensen Huang 表态"只联系了这 6 家公司，没有一家拒绝"。</p>
+  <p><strong>为什么重要</strong>：GPU 厂商开始直接承担客户的资本结构风险，AI 算力供给从"卖卡"升级为"卖资产负债表"；上游集中度极高的标志。</p>
+  <p><strong>来源链接</strong>：</p>
+  <ul>
+    <li><a href="https://www.euronews.com/business/2026/08/17/what-nvidias-500-billion-wall-street-deal-signals-about-the-ai-boom" target="_blank" rel="noopener">Euronews — What Nvidia's $500 billion Wall Street deal signals about the AI boom</a></li>
+    <li><a href="https://evrimagaci.org/gpt/nvidia-backs-openai-with-massive-ohio-data-center-deal-544216" target="_blank" rel="noopener">Evrim Agaci — Nvidia backs OpenAI with massive Ohio data center deal</a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>3. Anthropic Claude 欧盟新模型强制嵌入机器可读水印，用户不可关闭</h3>
+  <p>
+    <span class="tag">AI 政策</span>
+    <span class="tag">💡 值得关注</span>
+    <span class="tag">📰 8/2 生效</span>
+    <span class="cred-yellow">🟡 单源 + 评论</span>
+  </p>
+  <p><strong>核心事实</strong>：自 2026-08-02 起在欧盟发布的 Claude 新模型，自动在生成文本中嵌入人眼不可见但机器可读的信号；支持的文件输出附带签名 provenance 元数据，用户没有关闭选项。</p>
+  <p><strong>为什么重要</strong>：从"训练/使用"合规争论升级到"输出可识别"层；企业用户或被迫切到自托管 / 本地模型，或接受可被审计的输出。</p>
+  <p><strong>来源链接</strong>：</p>
+  <ul>
+    <li><a href="https://technocapture.com/ai-tools-automation/the-ai-watermark-dilemma-in-claude-why-opt-out-isn-t-an-option/" target="_blank" rel="noopener">Techno Capture — The AI Watermark Dilemma In Claude</a></li>
+    <li><a href="https://techeconomy.ng/claude-users-question-anthropic-ai-watermark" target="_blank" rel="noopener">Techeconomy — Claude users question Anthropic AI watermark</a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>4. MoneyPrinterTurbo 霸榜 GitHub Trending（+1,189 stars today）</h3>
+  <p>
+    <span class="tag">开源</span>
+    <span class="tag">⭐ 高热</span>
+    <span class="tag">🚨 当日</span>
+    <span class="cred-green">🟢 多方确认</span>
+  </p>
+  <p><strong>核心事实</strong>：Python 仓库，Star 106,192、+1,189 today、Fork 16,131；定位"AI 一键生成短视频工作流"。</p>
+  <p><strong>为什么重要</strong>：印证"AI 自动化 + 内容生产"在 2026-08 仍是普通开发者最强的拉新叙事；同类 Agent 应用（career-ops、llmfit、Anthropic-Cybersecurity-Skills、ai-memory）也密集进榜。</p>
+  <p><strong>来源链接</strong>：</p>
+  <ul>
+    <li><a href="https://github.com/harry0703/MoneyPrinterTurbo" target="_blank" rel="noopener">harry0703/MoneyPrinterTurbo (GitHub)</a></li>
+    <li><a href="https://github.com/trending?since=daily" target="_blank" rel="noopener">GitHub Trending (Daily)</a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>5. AI / 科技 VC 资金面（聚合观察）</h3>
+  <p>
+    <span class="tag">投融资</span>
+    <span class="tag">💡 值得关注</span>
+    <span class="tag">📰 本周</span>
+    <span class="cred-yellow">🟡 单源聚合</span>
+  </p>
+  <p><strong>核心事实</strong>：本周 roundup（8/4、8/5）显示 a16z、BlackRock、Base10、Franklin Templeton、General Catalyst、Insight Partners、Sequoia 等在企业 AI Agent、自动驾驶、工业机器人、开发者基础设施、金融自动化上密集下注。</p>
+  <p><strong>为什么重要</strong>：资金与"轻量大模型 + Agent"叙事同向，集中度继续提高。</p>
+  <p><strong>来源链接</strong>：</p>
+  <ul>
+    <li><a href="https://techstartups.com/2026/08/05/venture-capital-startup-funding-roundup-august-5-2026-a16z-blackrock-base10-franklin-templeton-general-catalyst-insight-partners-y-combinator-more/" target="_blank" rel="noopener">TechStartups — VC Roundup Aug 5, 2026</a></li>
+    <li><a href="https://techstartups.com/2026/08/04/venture-capital-startup-funding-roundup-august-4-2026-a16z-base10-dream-ventures-jpmorgan-sequoia-capital-valor-equity-partners-yc-more/" target="_blank" rel="noopener">TechStartups — VC Roundup Aug 4, 2026</a></li>
+  </ul>
+</div>
+
+<div class="footer">
+  <p><strong>来源与局限</strong></p>
+  <ul>
+    <li>本简报 5 次 web_search 用尽（GPT-5、Claude、DeepMind Gemini、NVIDIA、AI startup funding），未做第二轮。</li>
+    <li>GitHub Trending 通过 r.jina.ai 代理抓取一次成功。</li>
+    <li>未使用 web_extract（DDGS 后端无法解析正文）。</li>
+    <li>未采集 Twitter / Reddit / 微博热搜（本环境无相关 MCP 接入）。</li>
+    <li>三条主新闻已 2 源交叉；Anthropic 水印仅有评论源，标注为 🟡；资金 roundup 为聚合观察。</li>
+  </ul>
+  <p><strong>免责声明</strong>：本简报基于 2026-08-18 当日公开信息搜索与抓取，所有结论均附原始链接；引用请回到原文核对。新闻条目不构成投资建议。</p>
+</div>
+
+</div>
+</body>
+</html>
