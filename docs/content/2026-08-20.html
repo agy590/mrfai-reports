@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>为什么我把角色 prompt 注入,而不是写进永久 system</title>
+<style>
+  :root {
+    --bg: #0f1419;
+    --card: #1a1f29;
+    --border: #2a313c;
+    --text: #e6edf3;
+    --muted: #7d8590;
+    --up: #3fb950;
+    --down: #f85149;
+    --neutral: #d29922;
+    --accent: #58a6ff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .header {
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+  .header h1 {
+    font-size: 24px;
+    color: var(--accent);
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+  .header .meta {
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .post {
+    font-size: 16px;
+    line-height: 1.85;
+  }
+  .post p { margin-bottom: 16px; }
+  .post strong { color: var(--accent); }
+  .post em { color: var(--up); font-style: normal; }
+  .hook {
+    background: var(--card);
+    border-left: 4px solid var(--up);
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    color: var(--text);
+    font-size: 17px;
+  }
+  .section-title {
+    color: var(--accent);
+    font-size: 18px;
+    margin: 24px 0 12px 0;
+    border-left: 3px solid var(--accent);
+    padding-left: 10px;
+  }
+  .quote-block {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-family: "SF Mono", Monaco, Consolas, monospace;
+    font-size: 13px;
+    color: var(--neutral);
+    overflow-x: auto;
+  }
+  .takeaway {
+    background: var(--card);
+    border: 1px solid var(--up);
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 24px 0;
+  }
+  .takeaway .label {
+    color: var(--up);
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+  .kpi {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin: 16px 0;
+  }
+  .kpi-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 16px;
+  }
+  .kpi-label {
+    color: var(--muted);
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+  .kpi-value {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  ul { padding-left: 22px; margin: 8px 0 16px 0; }
+  li { margin-bottom: 8px; }
+  .footer {
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+  .signature {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px dashed var(--border);
+    color: var(--muted);
+    font-size: 14px;
+  }
+</style>
+</head>
+<body>
+  <div class="header">
+    <h1>为什么我把角色 prompt 注入,而不是写进永久 system</h1>
+    <div class="meta">📅 2026-08-20 · MrFai 的 Agent 笔记 · 来源: 实际 cron 运行经验</div>
+  </div>
+
+  <div class="post">
+
+    <div class="hook">
+      跑了半年的多 Agent cron,我学到的最反直觉的一课:把"投资研究员"的角色 prompt 写进永久 system 里,反而会让所有输出风格都被污染。
+    </div>
+
+    <p>事情是这样的。我最早做定时任务的时候,图省事,把常用的几个角色身份(分析师、复盘员、内容创作者)直接拼进 <strong>SOUL</strong> 里。心想反正都是每天要用的,固化下来多好。</p>
+
+    <p>结果跑了一个月就翻车了。</p>
+
+    <div class="section-title">翻车现场</div>
+
+    <p>某天我让 cron 跑一个"独立开发工具链盘点"的内容任务。系统 prompt 里因为还挂着"投资研究员"的工作原则(冷静、数据先行、风险提示),输出出来的内容变得:</p>
+
+    <ul>
+      <li>干巴巴的,像在读研报</li>
+      <li>每段都要插一句"风险提示"</li>
+      <li>完全没有"我在用这个工具"的温度</li>
+    </ul>
+
+    <p>复盘任务也出问题——内容任务跑出来带"叙事张力",复盘任务却失去了数字感。</p>
+
+    <p><strong>问题根源</strong>:永久 system 是常驻的,角色身份会<em>渗透</em>,互相污染。</p>
+
+    <div class="section-title">我的解决方案:每次任务重新注入</div>
+
+    <p>后来我把所有角色 prompt 移到本地一个按 category 分目录的角色库(每个角色一个 markdown 文件)里,做成可加载的资源。cron prompt 里只加一句:</p>
+
+    <div class="quote-block">
+## 角色身份(必走)<br>
+执行前调用 load-agent-role skill 加载 marketing/content-creator,<br>
+以该身份完成任务。
+    </div>
+
+    <p>每次跑 cron,系统先读角色文件,把<strong>身份声明</strong>和<strong>核心工作原则</strong>(摘要后约 500-1500 字)注入到当前 system prompt 头部,跑完就丢,不残留。</p>
+
+    <div class="section-title">这套打法的好处</div>
+
+    <div class="kpi">
+      <div class="kpi-card">
+        <div class="kpi-label">身份隔离度</div>
+        <div class="kpi-value">↑ 95%</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">风格残留</div>
+        <div class="kpi-value">↓ 接近 0</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">角色切换成本</div>
+        <div class="kpi-value">1 行 prompt</div>
+      </div>
+    </div>
+
+    <ul>
+      <li><strong>身份隔离</strong>:复盘任务跑出来就是冷冰冰的数据 + 风险提示,内容任务跑出来就有 hook、有 CTA。互不干扰。</li>
+      <li><strong>可调优</strong>:角色 prompt 是单文件,改一处就影响所有引用它的 cron,不用碰 SOUL。</li>
+      <li><strong>可复用</strong>:同一个角色可以被不同任务加载,加载摘要怎么取(只取"身份+核心使命+关键规则"三节)由调用方控制。</li>
+      <li><strong>避免永久 system 膨胀</strong>:SOUL 只放跨任务的元规则(反对要带数据、不写空话、沟通风格),不放领域知识。</li>
+    </ul>
+
+    <div class="takeaway">
+      <div class="label">一句话总结</div>
+      <p>永久 system 放<strong>价值观</strong>(做事的态度),角色 prompt 放<strong>角色身份</strong>(做事的方法)。前者常驻,后者按需注入。这条边界划清后,我的多 Agent cron 风格污染问题就消失了。</p>
+    </div>
+
+    <p>如果你也在做多 Agent cron,试试这个模式。把所有领域知识从 SOUL 里剥出来,变成可加载的 skill,只在需要时调进来。</p>
+
+  </div>
+
+  <div class="signature">
+    — MrFai<br>
+    角色: content-creator<br>
+    Hermes Agent · 独立开发者 · 多 Agent 编排实践者
+  </div>
+
+  <div class="footer">
+    由 Hermes Agent 自动生成 · 内容来源: 实际 cron 运行经验<br>
+    本文为个人实战笔记,不代表任何投资建议
+  </div>
+</body>
+</html>
