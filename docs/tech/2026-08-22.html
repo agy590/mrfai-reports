@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>研究-agent 每日科技新闻简报 · 2026-08-22</title>
+<style>
+  :root {
+    --bg: #fafaf7;
+    --fg: #1a1a1a;
+    --muted: #6b6b6b;
+    --accent: #d97706;
+    --card: #ffffff;
+    --border: #e6e6e0;
+    --tag-bg: #f0eee6;
+    --good: #1f8a3a;
+    --warn: #b8860b;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
+                 "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 28px 20px 60px;
+  }
+  header {
+    border-bottom: 2px solid var(--fg);
+    padding-bottom: 18px;
+    margin-bottom: 28px;
+  }
+  header .meta {
+    color: var(--muted);
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  header h1 {
+    font-size: 28px;
+    line-height: 1.25;
+    margin: 0 0 8px;
+  }
+  header .lede {
+    color: var(--muted);
+    font-size: 15px;
+    margin: 0;
+  }
+  section {
+    margin-top: 32px;
+  }
+  section > h2 {
+    font-size: 20px;
+    margin: 0 0 14px;
+    padding-left: 10px;
+    border-left: 4px solid var(--accent);
+  }
+  .tldr {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+  }
+  .tldr ul {
+    margin: 0; padding-left: 18px;
+  }
+  .tldr li {
+    margin-bottom: 8px;
+  }
+  .tldr li:last-child { margin-bottom: 0; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 16px;
+  }
+  .card.trending {
+    border-color: var(--accent);
+    border-left: 4px solid var(--accent);
+  }
+  .card h3 {
+    margin: 0 0 6px;
+    font-size: 17px;
+    line-height: 1.35;
+  }
+  .card .row {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+  .card .row span + span::before {
+    content: " · ";
+    margin: 0 4px;
+    color: #c4c4c4;
+  }
+  .card p {
+    margin: 8px 0;
+  }
+  .card .why {
+    background: var(--tag-bg);
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+  .card .why strong {
+    color: var(--accent);
+  }
+  .tag {
+    display: inline-block;
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--tag-bg);
+    color: var(--fg);
+    margin-right: 4px;
+  }
+  .cred-good { color: var(--good); font-weight: 600; }
+  .cred-warn { color: var(--warn); font-weight: 600; }
+  .cred-bad  { color: #b00020; font-weight: 600; }
+  ul.sources {
+    margin: 8px 0 0;
+    padding-left: 20px;
+    font-size: 14px;
+  }
+  ul.sources li { margin-bottom: 4px; }
+  ul.sources a {
+    color: #1a4ea3;
+    word-break: break-all;
+  }
+  .observation {
+    background: var(--tag-bg);
+    border-radius: 10px;
+    padding: 18px 20px;
+  }
+  .observation li {
+    margin-bottom: 10px;
+  }
+  .observation li:last-child { margin-bottom: 0; }
+  .limits, .disclaimer {
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .limits ul, .disclaimer p {
+    margin: 6px 0;
+  }
+  footer {
+    margin-top: 40px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+  }
+  code {
+    background: var(--tag-bg);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  a { color: #1a4ea3; }
+  a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="meta">研究-agent · 每日科技新闻简报 · 第 34 周</div>
+  <h1>2026-08-22 · AI、协议层与算力集中</h1>
+  <p class="lede">当日 4 条主新闻 + 1 条 GitHub Trending,语言:中文 · 视角:有判断但不替你下结论。</p>
+</header>
+
+<section>
+  <h2>当日摘要(TL;DR)</h2>
+  <div class="tldr">
+    <ul>
+      <li><strong>MCP 2026-07-28 规范正式发布</strong>:MCP 把核心协议从双向有状态改成无状态 request/response,GitHub MCP Server 已率先跟进。</li>
+      <li><strong>NVIDIA 8 月 18 日宣布投入最多 1050 亿美元,与 OpenAI 合建俄亥俄州数据中心</strong>;前一周还谈下 5000 亿美元 GPU 融资。</li>
+      <li><strong>Cursor 被 SpaceX 收购,8 月 14 日完成交割</strong>,Cursor 成为 SpaceXAI 全资子公司。</li>
+      <li><strong>GitHub Trending 今日 Star 增长最高</strong>:<code>mattpocock/skills</code>,+3,362 stars today。</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>GitHub Trending 日增最高仓库</h2>
+  <div class="card trending">
+    <h3><a href="https://github.com/mattpocock/skills">mattpocock/skills</a></h3>
+    <div class="row">
+      <span>+3,362 stars today</span>
+      <span>总 Star:229,595</span>
+      <span>Shell</span>
+    </div>
+    <p><strong>仓库描述</strong>(原文):Skills for Real Engineers. Straight from my <code>.agents</code> directory.</p>
+    <div class="why">
+      <strong>为什么与 AI/科技读者相关:</strong>它把"agent 技能"作为可分发资产沉淀进仓库,正好踩在 MCP 2026-07-28 把协议推向无状态 / 可组合的方向上,是观察"agent 资产化"趋势的合适样例。
+    </div>
+    <div class="row">抓取时间:2026-08-22(本次 cron)</div>
+    <ul class="sources">
+      <li><a href="https://github.com/trending?since=daily">GitHub Trending 今日榜</a></li>
+      <li><a href="https://github.com/mattpocock/skills">仓库主页</a></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>新闻卡片</h2>
+
+  <div class="card">
+    <h3>1. MCP 2026-07-28 无状态规范正式落地</h3>
+    <div class="row">
+      <span class="tag">技术标准</span>
+      <span class="tag">AI 基础设施</span>
+      <span class="cred-good">可信度:🟢 多方确认</span>
+    </div>
+    <p><strong>核心事实:</strong>Model Context Protocol 在 2026 年 7 月 28 日发布的规范,把核心协议从双向有状态改成 request/response 无状态模型,使 MCP 服务器可以部署到 serverless 和边缘平台。</p>
+    <div class="why"><strong>为什么重要:</strong>MCP 第一次从"本机进程协议"演进为"分布式协议",对所有提供 MCP 集成的厂商(Anthropic Claude、GitHub、第三方工具链)都是破坏性变更,需要做迁移。</div>
+    <ul class="sources">
+      <li><a href="https://github.blog/changelog/2026-07-23-github-mcp-server-supports-the-next-mcp-specification/">GitHub Changelog</a></li>
+      <li><a href="https://blog.modelcontextprotocol.io/posts/2026-07-28/">MCP Blog: 2026-07-28 Specification</a></li>
+      <li><a href="https://aaif.io/blog/mcp-2026-07-28-whats-changing-and-how-to-migrate">Agentic AI Foundation</a></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>2. NVIDIA 投入最多 1050 亿美元,与 OpenAI 合建俄亥俄州数据中心</h3>
+    <div class="row">
+      <span class="tag">财经</span>
+      <span class="tag">AI 基础设施</span>
+      <span class="cred-good">可信度:🟢 多方确认</span>
+    </div>
+    <p><strong>核心事实:</strong>据 8 月 20 日的报道,NVIDIA 在 8 月 18 日宣布将在俄亥俄州一座大型 OpenAI 数据中心投入最多 1050 亿美元;此前一周 NVIDIA 已与华尔街达成 5000 亿美元 GPU 融资协议。</p>
+    <div class="why"><strong>为什么重要:</strong>算力与资金两端都向头部(OpenAI × NVIDIA)进一步集中;既是产能信号,也是 AI 泡沫化的关键判据之一;落地节奏将直接影响未来 12 个月的 GPU 供需。</div>
+    <ul class="sources">
+      <li><a href="https://dataconomy.com/2026/08/20/nvidia-shifts-focus-from-chip-dominance-to-ai/">Dataconomy (2026-08-20)</a></li>
+      <li><a href="https://nvidianews.nvidia.com/news">NVIDIA Newsroom</a></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>3. Cursor 被 SpaceX 收购,8 月 14 日完成交割</h3>
+    <div class="row">
+      <span class="tag">创业</span>
+      <span class="tag">并购</span>
+      <span class="cred-good">可信度:🟢 多方确认</span>
+    </div>
+    <p><strong>核心事实:</strong>AI 编程工具 Cursor(运营公司 Anysphere)被 SpaceX 收购,2026 年 8 月 14 日完成交割,Cursor 成为 SpaceXAI 名下的全资子公司,创始人继续留任。</p>
+    <div class="why"><strong>为什么重要:</strong>AI 编程赛道最被看好的独角兽之一没有选择 IPO,而是被 SpaceX(及其 SpaceXAI 业务)收编;今年 4 月还在以 500 亿美元估值谈 20 亿美元融资,4 个月后直接被并购,说明顶级编程工具的"平台化通路"在快速收口。</div>
+    <ul class="sources">
+      <li><a href="https://en.wikipedia.org/wiki/Cursor_(company)">Wikipedia: Cursor (company)</a></li>
+      <li><a href="https://techcrunch.com/2026/04/17/sources-cursor-in-talks-to-raise-2b-at-50b-valuation-as-enterprise-growth-surges/">TechCrunch</a></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>4. Anthropic Claude Enterprise:Admin API 用户管理端点 GA</h3>
+    <div class="row">
+      <span class="tag">产品</span>
+      <span class="tag">企业服务</span>
+      <span class="cred-warn">可信度:🟡 单源但可靠</span>
+    </div>
+    <p><strong>核心事实:</strong>Anthropic 在 8 月把面向 Claude Enterprise (claude.ai) 的 Admin API 用户管理端点(members、invites、groups、custom roles)推向 GA,此前要求的 <code>anthropic-beta: ce-user-management-2026-07-13</code> 头在 group/custom-role 请求中不再需要。</p>
+    <div class="why"><strong>为什么重要:</strong>企业级 AI 助手走向"可控 IT 接入"的关键一步,把 SSO/SCIM 风格的成员/角色管理做成开箱即用,直接降低中大型企业合规接入 Claude 的工程成本。</div>
+    <ul class="sources">
+      <li><a href="https://releasebot.io/updates/anthropic">Releasebot: Anthropic Release Notes</a></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>今日观察</h2>
+  <div class="observation">
+    <ul>
+      <li><strong>协议层在做减法。</strong>MCP 把"有状态"砍成"无状态",表面是简化,实质是把"agent ↔ 工具"重写为可水平扩展的 HTTP 式调用,意味着 agent 生态的部署拓扑会比过去 12 个月快得多。</li>
+      <li><strong>资本 / 算力向头部集中,但工具层反而在分层。</strong>NVIDIA-OpenAI 的 1050 亿美元和 Cursor-SpaceX 的并购,从"算力底座"与"开发者工具"两端展示了同一逻辑——头部吃下供给,工具层向"被收编 / 被平台化"靠拢。独立创业者做"应用层差异化"的窗口期比多数人的预期更短。</li>
+      <li><strong>可分发的 agent 资产正在出现。</strong><code>mattpocock/skills</code> 今日 +3,362 Star 是这种资产化趋势的样例:与 MCP 规范同向,把"agent 能做什么"封装成可版本化、可共享的模块,值得持续跟踪。</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>来源与局限</h2>
+  <div class="limits">
+    <ul>
+      <li>本次采集使用 1 次 <code>curl</code> 抓取 GitHub Trending 当日榜(命中)、4 次 <code>web_search</code>(全部命中),未调用 <code>web_extract</code>。</li>
+      <li>每条新闻仅采用本次抓取中直接可见的事实与 URL,未补充历史背景之外的推断。</li>
+      <li>未抓取 Anthropic、OpenAI、Google、xAI 等公司首页与博客原文;部分产品新闻(例如 Anthropic Admin API GA)只能引用第三方变更跟踪,二次核验请访问官方文档。</li>
+      <li>未覆盖:社会、国际、娱乐等类别(按用户指定范围仅做科技 / AI / 互联网 / 创业)。</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>免责声明</h2>
+  <div class="disclaimer">
+    <p>本简报由研究-agent 自动生成,内容基于公开网络信息,仅供研究与创作参考,不构成投资建议或事实结论。新闻条目以"本次运行中实际可验证"为唯一标准;若你看到一条无法在原始 URL 中找到的事实,那它就不该出现在这里。</p>
+  </div>
+</section>
+
+<footer>
+  研究-agent · 自动生成 · 2026-08-22 · 本次 cron 输出
+</footer>
+
+</div>
+</body>
+</html>
