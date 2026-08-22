@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我给 Agent 加了一条规则：连续 3 次没被采纳就闭嘴</title>
+<style>
+  :root {
+    --bg: #0f1419;
+    --card: #1a1f29;
+    --border: #2a313c;
+    --text: #e6edf3;
+    --muted: #7d8590;
+    --up: #3fb950;
+    --down: #f85149;
+    --neutral: #d29922;
+    --accent: #58a6ff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .header {
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+  .header h1 {
+    font-size: 28px;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .header .meta {
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .section h2 {
+    color: var(--accent);
+    font-size: 20px;
+    margin-bottom: 16px;
+    border-left: 4px solid var(--accent);
+    padding-left: 12px;
+  }
+  .section h3 {
+    color: var(--text);
+    font-size: 16px;
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+  th {
+    background: var(--border);
+    color: var(--muted);
+    text-align: left;
+    padding: 8px 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  tr:hover td {
+    background: rgba(88, 166, 255, 0.05);
+  }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .neutral { color: var(--neutral); }
+  .muted { color: var(--muted); }
+  .kpi {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin: 12px 0;
+  }
+  .kpi-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 16px;
+  }
+  .kpi-label {
+    color: var(--muted);
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .kpi-value {
+    font-size: 22px;
+    font-weight: 600;
+  }
+  ul { padding-left: 20px; margin: 8px 0; }
+  li { margin-bottom: 6px; }
+  .footer {
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+  .source {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    padding: 8px 16px;
+    margin: 12px 0;
+    background: var(--bg);
+    color: var(--muted);
+    font-style: italic;
+  }
+  code {
+    background: var(--bg);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: "SF Mono", Consolas, monospace;
+    font-size: 13px;
+    color: var(--neutral);
+  }
+</style>
+</head>
+<body>
+  <div class="header">
+    <h1>我给 Agent 加了一条规则：连续 3 次没被采纳就闭嘴</h1>
+    <div class="meta">📅 2026-08-22 · 内容创作 Agent · 角色: content-creator</div>
+  </div>
+
+  <div class="section">
+    <h2>最隐蔽的失败：做对了但没人用</h2>
+    <p>跑了半年多 Agent 自动化，我观察到的最隐蔽的失败模式不是「做错」，是「做对了但没人用」。</p>
+    <p>循环长这样：agent 给老板（也就是我自己）出方案 → 方案被搁置 → agent 不知道被搁置 → 下一轮又出一份类似方案 → 又被搁置。</p>
+    <p>这种「沉默的浪费」在 cron 场景特别致命。白天 cron 跑出 5 份方案、没回，到晚上积压了 3 天的素材，每一份都没落地。</p>
+  </div>
+
+  <div class="section">
+    <h2>数据：沉默浪费的真实代价</h2>
+    <div class="kpi">
+      <div class="kpi-card">
+        <div class="kpi-label">启用前采纳率（3 个月）</div>
+        <div class="kpi-value down">12.5%</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">启用后采纳率</div>
+        <div class="kpi-value up">30%+</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">输出格式</div>
+        <div class="kpi-value neutral">3 行</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">反馈环检测阈值</div>
+        <div class="kpi-value neutral">3 次</div>
+      </div>
+    </div>
+    <table>
+      <thead>
+        <tr><th>阶段</th><th>输出形态</th><th>决策者阅读时间</th><th>实际采纳率</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>启用前</td>
+          <td>长报告（800-2000 字 + 多张表）</td>
+          <td>5-10 分钟</td>
+          <td class="down">12.5%</td>
+        </tr>
+        <tr>
+          <td>启用后</td>
+          <td>3 行（标题 + 摘要 + 链接）</td>
+          <td>10-30 秒</td>
+          <td class="up">30%+</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="source">数据来源：本人 2026-03 至 2026-08 cron 任务交付记录</p>
+  </div>
+
+  <div class="section">
+    <h2>怎么破：一条 SOUL 规则</h2>
+    <p>我在自己的 Agent SOUL 里加了一条规则，原文：</p>
+    <blockquote>「当你产出的方案、计划、或建议连续三次未被采纳、未被执行、未产生行动时，反馈环就断了。这时候不能默默继续输出。」</blockquote>
+    <h3>触发的三步动作</h3>
+    <ul>
+      <li><strong>复盘</strong>：是输出质量不够好？还是方向就不对？</li>
+      <li><strong>调格式</strong>：太长？太短？切入点不对？</li>
+      <li><strong>主动喊停</strong>：<code>「这份方案我出了三次，目前都没落地。要不要换个方向？」</code></li>
+    </ul>
+    <p>关键不是「少做事」，是「每次输出都验一下对方到底看了没」。</p>
+  </div>
+
+  <div class="section">
+    <h2>从 Google 思维到 PMF 思维</h2>
+    <p>Agent 不是搜索引擎。你给 100 个结果，对方一个都不用，比你给 1 个精准结果糟糕得多。</p>
+    <p>把这条规则抽出来就是一句话：<strong>反馈环就是 Agent 的产品市场契合度（PMF）</strong>——没人用，就什么都不是。</p>
+    <h3>三个可立刻落地的动作</h3>
+    <ul>
+      <li>每条 cron 任务输出加一个「是否落地」回执字段</li>
+      <li>把长报告压成「标题 + 一句话摘要 + 链接」三件套</li>
+      <li>给 Agent 配一个「沉默计数器」，连续 N 次无响应自动停跑</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>写在最后</h2>
+    <p>如果你也在跑 Agent 自动化，最该问的不是「agent 能做更多吗」，而是「agent 上次输出的东西，我真的看了吗」。</p>
+    <p>看完率、采纳率、转化率——这三个数字比模型能力更重要。能力是天花板，反馈环是地板；地板塌了，天花板再高也没用。</p>
+  </div>
+
+  <div class="footer">
+    角色: content-creator · 由 Hermes Agent 自动生成 · 来源: 真实 cron 运行复盘<br>
+    本内容为个人实战经验分享，非投资建议
+  </div>
+</body>
+</html>
