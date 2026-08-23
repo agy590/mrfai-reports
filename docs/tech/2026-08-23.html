@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>每日科技新闻简报 · 2026-08-23</title>
+<style>
+  :root{
+    --bg:#f7f7f5;--card:#ffffff;--ink:#1a1a1a;--muted:#6b6b6b;
+    --line:#e6e6e3;--accent:#1f6feb;--tag:#eef2f7;--good:#1f8a3a;--warn:#a96b00;--bad:#a83232;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;line-height:1.6}
+  .wrap{max-width:780px;margin:0 auto;padding:24px 18px 80px}
+  header{margin-bottom:20px}
+  h1{font-size:26px;line-height:1.3;margin:0 0 6px}
+  h2{font-size:20px;margin:32px 0 12px;border-bottom:1px solid var(--line);padding-bottom:6px}
+  h3{font-size:17px;margin:18px 0 8px}
+  .meta{color:var(--muted);font-size:13px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:14px 0}
+  .pill{display:inline-block;background:var(--tag);color:#244b7a;border-radius:4px;padding:1px 8px;font-size:12px;margin-right:6px}
+  .cred-g{color:var(--good)}.cred-y{color:var(--warn)}.cred-r{color:var(--bad)}
+  ul{margin:8px 0 8px 18px;padding:0}
+  li{margin:3px 0}
+  a{color:var(--accent);text-decoration:none;word-break:break-all}
+  a:hover{text-decoration:underline}
+  .src{font-size:13px;color:var(--muted);margin-top:6px}
+  .src li{word-break:break-all}
+  hr{border:none;border-top:1px solid var(--line);margin:24px 0}
+  blockquote{border-left:3px solid var(--accent);margin:8px 0;padding:4px 12px;color:#333;background:#f9fbfd;border-radius:0 6px 6px 0}
+  table{width:100%;border-collapse:collapse;margin:8px 0;font-size:14px}
+  th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+  th{background:#f1efe9}
+  footer{color:var(--muted);font-size:12px;margin-top:32px;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>每日科技新闻简报 · 2026-08-23</h1>
+  <div class="meta">抓取时间:2026-08-23(北京时间) · 覆盖窗口:最近 24–72 小时 + 当日 GitHub Trending · 数据来源:官方公告 / changelog / TechCrunch / Reuters / TechStartups / GitHub Trending</div>
+</header>
+
+<h2>当日摘要(TL;DR)</h2>
+<div class="card">
+  <ul>
+    <li><b>Google DeepMind</b> 发布 Gemini 3.7 Flash GA,定位编程 / Agent 工作流主力模型,定价 12 月 31 日前有优惠。</li>
+    <li><b>Anthropic</b> 在 Claude 中开启 Gmail 自动化发送能力(无需逐封确认),8 月 18 日由 Claude 官方账号披露。</li>
+    <li><b>NVIDIA Rubin 平台</b>已"全速量产",合作伙伴产品预计 2026 下半年陆续出货。</li>
+    <li><b>AI 基础设施融资活跃</b>:TechStartups 8 月 18 日 roundup 中,Velaura AI(AI 推理基础设施 / 硅片层能效)拿下 1.1 亿美元。</li>
+    <li><b>GitHub Trending 日榜</b>:可见仓库中今日新增 Star 最高是 <a href="https://github.com/mattpocock/skills"><code>mattpocock/skills</code></a>(+2,683 stars today),呼应"Agent 技能市场"叙事。</li>
+  </ul>
+</div>
+
+<h2>GitHub Trending 日增最高仓库</h2>
+<div class="card">
+  <h3>Github Trending 日榜可见仓库中,今日新增 Star 最高</h3>
+  <p>
+    <span class="pill">仓库</span>
+    <a href="https://github.com/mattpocock/skills"><b>mattpocock/skills</b></a>
+  </p>
+  <ul>
+    <li><b>今日新增</b>:+2,683 stars today(2026-08-23 抓取)</li>
+    <li><b>当前总 Star</b>:232,148</li>
+    <li><b>主要语言</b>:Shell</li>
+    <li><b>仓库描述(原文)</b>:"Skills for Real Engineers. Straight from my .agents directory."</li>
+  </ul>
+  <p><b>判断</b>:这是 TypeScript 工程师 Matt Pocock 公开自己 <code>.agents/</code> 目录里的 Claude / Agent "技能包"集合,加之当日新增强劲,呼应了行业从"模型"向"工具 + 工作流"重心迁移的叙事。</p>
+  <div class="src">
+    抓取时间:2026-08-23(北京时间) · 原始来源:<a href="https://github.com/trending?since=daily">GitHub Trending · daily</a>
+  </div>
+  <blockquote>注:GitHub Trending daily 反映的是当日榜上<b>可见</b>的仓库,不是全站历史增量数据库。次日数据会刷新。</blockquote>
+</div>
+
+<h2>新闻卡片</h2>
+
+<div class="card">
+  <h3>1. Google DeepMind 发布 Gemini 3.7 Flash GA</h3>
+  <p>
+    <span class="pill">AI 模型</span>
+    <span class="pill">⭐ 高热</span>
+    <span class="cred-g"><b>🟢 官方 changelog + 多源确认</b></span>
+  </p>
+  <p><b>核心事实</b>:Google 在 2026 年 8 月 13 日把 Gemini 3.7 Flash 推上 GA,通过 Gemini API 暴露为 <code>gemini-3.7-flash</code>,主打软件工程 / Web 开发 / Agentic workflows 显著提升。</p>
+  <p><b>关键数据</b>:官方 changelog 明确 "introductory price through December 31, 2026",即 2026 年底前有优惠定价。</p>
+  <p><b>背景</b>:Gemini 主线仍在 Pro 重建中,Flash / Flash-Light 系列充当"持续供货"的桥梁。</p>
+  <p><b>各方反应</b>:官方 Google AI for Developers changelog(权威);媒体 aitoolly、studioglobal.ai 当日跟进解读。</p>
+  <p><b>影响分析</b>:短中期利好"编程 + Agent"开发者。定价优惠窗口(至 2026 年底)意味着 4 个月内迁移成本被压低,Cursor / Continue.dev / Claude Code 等下游 Agent 工具的模型路由可能再洗牌。</p>
+  <div class="src">
+    <ul>
+      <li><a href="https://ai.google.dev/gemini-api/docs/changelog">Google AI for Developers changelog</a></li>
+      <li><a href="https://aitoolly.com/ai-news/article/2026-08-14-google-deepmind-introduces-gemini-37-flash-the-latest-evolution-in-the-gemini-model-family">aitoolly 报道(2026-08-14)</a></li>
+      <li><a href="https://www.studioglobal.ai/discover/answers/what-major-ai-developments-did-google-announce-6a7e4b8310551e202b129598">studioglobal.ai 解读</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="card">
+  <h3>2. Anthropic Claude 开启 Gmail 自动发送,跳过逐封确认</h3>
+  <p>
+    <span class="pill">AI Agent</span>
+    <span class="pill">⭐ 高热</span>
+    <span class="cred-g"><b>🟢 Anthropic 官方账号 + 多家媒体跟进</b></span>
+  </p>
+  <p><b>核心事实</b>:2026 年 8 月 18 日,Claude 官方 X 账号披露:Claude 的 Gmail 集成已可自主完成"发送邮件"动作,无需用户在每封邮件发出前单独确认。</p>
+  <p><b>关键数据</b>:这是 Anthropic 第一次把 connector 权限放宽到"无需逐动作确认"。</p>
+  <p><b>背景</b>:Anthropic 历来把 connector 权限框得很死——"每一步要人点头"。这次改动是产品策略转向:从"防御型"走向"任务自动完成",与 OpenAI Operator、Salesforce Agentforce 等对齐。</p>
+  <p><b>影响分析</b>:短期会拉高 Claude 在个人助理场景的"完成率",但会引发企业 IT / 合规反弹(无审计 trail 风险)。对其它"Connector + Agent"竞品是直接压力。</p>
+  <div class="src">
+    <ul>
+      <li><a href="https://www.itechpost.com/articles/237061/20260818/anthropic-claudes-gmail-automation-here-lets-users-send-emails-automatically-without-approval.htm">itechpost 报道(2026-08-18)</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="card">
+  <h3>3. NVIDIA Rubin 平台进入"全速量产",H2 2026 合作伙伴陆续出货</h3>
+  <p>
+    <span class="pill">芯片 / AI 基础设施</span>
+    <span class="pill">⭐ 高热</span>
+    <span class="cred-g"><b>🟢 NVIDIA 官方新闻稿 + IR</b></span>
+  </p>
+  <p><b>核心事实</b>:NVIDIA 1 月 6 日 CES 2026 主题演讲中,Jensen Huang 宣布 Rubin 平台已 "full production";Rubin-based 合作伙伴产品(经 AWS、Microsoft 等)将在 2026 下半年陆续上市。</p>
+  <p><b>关键数据</b>:六颗芯片构成 Rubin 平台,官方宣称相比上一代有"高达 10 倍"的成本下降;新一代 NVLink、Transformer Engine、Confidential Computing、RAS Engine、Vera CPU 五项创新捆绑发布。</p>
+  <p><b>背景</b>:Blackwell 之后,行业关注焦点是 Rubin 实际良率 / 交付节奏。NVIDIA 把 Rubin 定位为"超算级 AI 工厂"的下一代底座。</p>
+  <p><b>各方反应</b>:官方 NVIDIA Newsroom / IR;techzine、tech-insider 等;竞品 AMD Helios、Microsoft Maia 300 同期追赶。</p>
+  <p><b>影响分析</b>:Rubin 出货节奏决定 2026 Q4–2027 训练 / 推理两端的供应曲线。对"算力即护城河"叙事是续命,对 AMD / 国产替代窗口是挤压。</p>
+  <div class="src">
+    <ul>
+      <li><a href="https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer">NVIDIA 新闻稿(官方)</a></li>
+      <li><a href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Kicks-Off-the-Next-Generation-of-AI-With-Rubin--Six-New-Chips-One-Incredible-AI-Supercomputer/default.aspx">NVIDIA IR 副本</a></li>
+      <li><a href="https://www.techzine.eu/news/infrastructure/137668/nvidia-blackwell-successor-rubin-releases-in-2026-significant-performance-boost/">techzine 解读</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="card">
+  <h3>4. Velaura AI 融资 1.1 亿美元,做"AI 推理在硅片层的能效"</h3>
+  <p>
+    <span class="pill">融资 / 创业</span>
+    <span class="pill">💡 值得关注</span>
+    <span class="cred-g"><b>🟢 TechStartups roundup</b></span>
+  </p>
+  <p><b>核心事实</b>:2026 年 8 月 18 日,TechStartups VC & Startup Funding Roundup 把 Velaura AI 列为重点新融资项目:总部 San Jose,半导体 / AI 推理基础设施方向,拿到 1.1 亿美元,广泛归类为 Series D(公司公告里则称为"new funding")。</p>
+  <p><b>关键数据</b>:$110M,San Jose,半导体 + AI 推理交叉。</p>
+  <p><b>背景</b>:当资金集中在前沿实验室(OpenAI / Anthropic 拿走 H1 全球 43% 资金)时,资本市场开始用"垂直 + 能效"做差异化筛选。Velaura 走"在硅片层解决 AI 推理功耗"的路径,正好踩在"AI 工厂能耗 / 配电"这条结构性瓶颈上。</p>
+  <p><b>影响分析</b>:2026 年下半年"AI 物理基础设施"叙事的代表性单笔。值得跟踪:他们做 inference 专用 ASIC 还是走 IP / chiplet 路线;首批客户类型(超大规模云还是企业私有云)。</p>
+  <div class="src">
+    <ul>
+      <li><a href="https://techstartups.com/2026/08/18/venture-capital-startup-funding-roundup-august-18-2026-andreessen-horowitz-bain-capital-ventures-jane-street-kleiner-perkins-sequoia-tiger-global-more/">TechStartups Roundup 2026-08-18</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="card">
+  <h3>5. 背景线索:Anthropic Claude Sonnet 5 已发布,Claude 文本加水印成为新热门话题</h3>
+  <p>
+    <span class="pill">AI 安全</span>
+    <span class="pill">💡 值得关注</span>
+    <span class="cred-y"><b>🟡 官方产品页 + newsletter / Polymarket 转述</b></span>
+  </p>
+  <p><b>核心事实</b>:Anthropic 在 2026 年 6 月 30 日发布 Claude Sonnet 5,定位"编程、Agent、专业工作规模化场景的前沿表现"。同期,行业围绕"8 月 2 日起新 Claude 模型在生成文本中嵌入隐形水印"展开讨论——这条消息经 Polymarket 帖子扩散后迅速出圈,成为 8 月中下旬 AI 治理 / 信任赛道的话题中心。</p>
+  <p><b>关键数据</b>:6 月 30 日产品发布;8 月 2 日起新模型启用不可见水印;8 月 17 日 TikTok / 各类 newsletter 出现"如何绕过"的讨论。</p>
+  <p><b>背景</b>:模型厂商在"可识别"与"用户体验"之间持续拉锯,watermark 既是治理工具(便于追踪合成文本),也是 UX 摩擦。</p>
+  <p><b>影响分析</b>:这条不是新新闻,但 8 月仍持续在"AI 治理 + 合规"赛道被引用,简报里给出是为了让下游内容创作者理解水印话题的当前热度。</p>
+  <div class="src">
+    <ul>
+      <li><a href="https://www.anthropic.com/news">Anthropic Newsroom(产品总览)</a></li>
+      <li><a href="https://newsletter.ecommcowboy.com/p/anthropic-adds-invisible-watermarks-to-claude">Ecomm Cowboy: Claude 不可见水印解读</a></li>
+    </ul>
+  </div>
+</div>
+
+<h2>今日观察</h2>
+<div class="card">
+  <ul>
+    <li><b>节奏</b>:8 月 13 日 Gemini 3.7 Flash GA → 8 月 18 日 Claude Gmail 自动发送 / Velaura 1.1 亿融资 → 8 月 23 日(今天)GitHub Trending 上 <code>mattpocock/skills</code> 冲上 +2,683 stars/today,三件事互相呼应,共同说明 8 月下旬行业重心是"Agent + 工作流 + 垂直硅片能效"。</li>
+    <li><b>判断</b>:产品竞争已从"谁模型更聪明"转向"谁能在不打扰人的前提下,把任务跑完"。Claude 这次放权 Gmail 发送、Gemini 主打 Agentic workflow、GitHub Trending 涌出 Agent 技能包,三者方向一致。</li>
+    <li><b>风险</b>:watermark 与 connector 放权同时存在,说明"治理"和"自动化"在 2026 Q3 同步加速——下游内容做对比时不要只讲一边。</li>
+  </ul>
+</div>
+
+<h2>来源与局限</h2>
+<div class="card">
+  <ul>
+    <li>本期所有新闻都通过 <code>web_search</code> + GitHub Trending 抓取,<b>没有调用 web_extract 正文</b>;只用了 1 次 <code>curl</code> 抓 GitHub Trending 页面。</li>
+    <li>4 条主新闻 + 1 条背景线索 + 1 条 GitHub Trending 卡片,合计 6 项。</li>
+    <li>"Anthropic 不可见水印"目前以 newsletter / Polymarket 转述为主,未拿到 Anthropic 官方原文链接,<b>仅作为背景线索</b>,不当作已确认事实。</li>
+    <li>Gemini 3.7 Flash GA 已在 Google AI for Developers 官方 changelog 中标注,锚定日期 2026-08-13;Claude Gmail 自动化由 8 月 18 日 itechpost 报道交叉确认;NVIDIA Rubin 量产来自 1 月 6 日 NVIDIA Newsroom 官方稿,本期内未见新公告覆写。</li>
+    <li>本期未涉及加密货币 / 赌博 / 政治敏感话题,符合下游平台投放规范。</li>
+  </ul>
+</div>
+
+<hr>
+
+<footer>
+  本简报由 cron 自动生成,所有事实仅代表抓取时点的信息状态,后续可能因官方修正、新闻更新而失效。仅供内容创作团队作素材参考,不代表投资建议;引用时建议二次核实关键数字与日期。
+</footer>
+
+</div>
+</body>
+</html>
