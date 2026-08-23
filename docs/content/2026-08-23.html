@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cron 编排最容易踩的 3 个坑 — MrFai 的 Agent 笔记</title>
+<style>
+  :root {
+    --bg: #0f1419;
+    --card: #1a1f29;
+    --border: #2a313c;
+    --text: #e6edf3;
+    --muted: #7d8590;
+    --up: #3fb950;
+    --down: #f85149;
+    --neutral: #d29922;
+    --accent: #58a6ff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .header {
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+  .header h1 {
+    font-size: 26px;
+    color: var(--accent);
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+  .header .meta {
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .section h2 {
+    color: var(--accent);
+    font-size: 18px;
+    margin-bottom: 14px;
+    border-left: 4px solid var(--accent);
+    padding-left: 12px;
+  }
+  .section h3 {
+    color: var(--text);
+    font-size: 15px;
+    margin-top: 14px;
+    margin-bottom: 8px;
+  }
+  p { margin-bottom: 12px; }
+  ul { padding-left: 20px; margin: 8px 0 12px; }
+  li { margin-bottom: 6px; }
+  code {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-family: "SF Mono", Menlo, Monaco, Consolas, monospace;
+    font-size: 13px;
+    color: var(--neutral);
+  }
+  pre {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px;
+    overflow-x: auto;
+    margin: 12px 0;
+    font-size: 13px;
+  }
+  pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--text);
+  }
+  .kpi {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin: 12px 0;
+  }
+  .kpi-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 16px;
+  }
+  .kpi-label {
+    color: var(--muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .kpi-value {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .neutral { color: var(--neutral); }
+  .muted { color: var(--muted); font-size: 13px; }
+  .quote {
+    border-left: 3px solid var(--neutral);
+    padding-left: 14px;
+    color: var(--muted);
+    margin: 12px 0;
+    font-style: italic;
+  }
+  .footer {
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+  <div class="header">
+    <h1>Cron 编排最容易踩的 3 个坑——把"自动跑"变成"自动翻车"</h1>
+    <div class="meta">📅 2026-08-23 · MrFai 的 Agent 笔记 · 来自真实的多 Agent 工作流</div>
+  </div>
+
+  <div class="section">
+    <h2>为什么写这篇</h2>
+    <p>过去三个月我把 Hermes Agent 的 4 段 MGC 复测 cron + AI 日报 + 信号反思跑成了完整链路。听起来很美好，实际跑起来才发现：<strong>Cron 不是"写完 cron 配置就完了"</strong>，它是一个需要持续调试的活系统。</p>
+    <p>今天把我踩过的 3 个最深、最隐蔽的坑写出来，每个都有具体案例和修法。希望你不用像我一样，一个坑 debug 三天。</p>
+  </div>
+
+  <div class="section">
+    <h2>坑 #1:把"任务成功"和"任务完成"画等号</h2>
+    <p>最早我判断 cron 跑没跑，就看它有没有输出文件。结果某次 MGC 复测连续"成功"输出 5 天后才发现：第 3 天开始 API 返回的是<strong>空数据</strong>，Agent 用空数据生成了"看起来正常"的报告，我也没察觉。</p>
+    <p><strong>症状</strong>：HTTP 200 + 数据缺失 + Agent 凭"经验"生成幻觉填充。</p>
+    <h3>修法:给每个输出加"健康自检"</h3>
+    <p>现在每个 cron 的最后一步都强制跑一段校验,作为 Agent 的最后一条指令:</p>
+    <pre><code>## 自检 (硬性,失败则不交付)
+- 报告正文行数 > 50 ?
+- 关键字段 (时间 / 价格 / 方向) 全部存在 ?
+- 数据源 URL 全部 200 ?
+- 任一为否 → 在交付前补 "⚠️ 数据异常" 提示</code></pre>
+    <p>后来我加了更狠的:把"上次成功时间"写到一个状态文件,如果超过 18 小时没刷新,直接在最终输出里写"任务卡住"——不静默。</p>
+  </div>
+
+  <div class="section">
+    <h2>坑 #2:多个 cron 共享同一个工作目录 → 互踩</h2>
+    <p>AI 日报 cron 和 MGC 复测 cron 起初都用同一个 <code>/tmp/agent_workspace</code>。偶尔两者几乎同时启动,会读到对方写到一半的状态文件,生成错乱的报告。更糟的是,清理 cron 会把对方正在用的临时文件删掉。</p>
+    <p><strong>症状</strong>:间歇性内容错位,bug 完全不可复现,日志里看不到冲突。</p>
+    <h3>修法:每个 cron 独占 workdir + lease</h3>
+    <p>现在每个 cron 启动时强制走 lease 协议:</p>
+    <pre><code># 启动时
+mkdir -p /tmp/cron/{job_id}/{date}
+cd /tmp/cron/{job_id}/{date}  # 物理隔离
+
+# 跨任务交接 (用 Kairo lease)
+kairo_lease acquire --task signal-reflection --holder cron-{job_id}
+# 用完释放
+kairo_lease release --task signal-reflection</code></pre>
+    <div class="quote">教训:Cron 不是孤岛,它运行在一个多 Agent 共存的环境里。任何"我以为不会冲突"的假设,迟早会被某个凌晨 3 点的并发执行打脸。</div>
+  </div>
+
+  <div class="section">
+    <h2>坑 #3:Cron prompt 越长,执行越脆弱</h2>
+    <p>我曾给 MGC 复测写过一个 1500 字的 cron prompt,把"何时跑 / 怎么分析 / 怎么输出 / 风险提示"全塞进去。结果 Agent 跑出来的东西 60% 都漏掉了风险提示段落——因为 prompt 中段的内容模型注意力最弱。</p>
+    <p><strong>症状</strong>:关键约束被忽略,LLM 优先复述开头的指令。</p>
+    <h3>修法:核心约束前置 + 模板外置</h3>
+    <ul>
+      <li>Cron prompt 砍到 400 字以内,只写"任务定义 + 硬约束"</li>
+      <li>详细输出格式 → 拆成模板文件,从磁盘 <code>read_file</code> 加载</li>
+      <li>硬性安全门 → 写在 prompt 最开头,而不是"注意事项"小节</li>
+    </ul>
+    <p>改完后,关键段落(风险提示 / 数据源标注)的命中率从 60% 提升到 95%+。这不是玄学,这就是 prompt 工程里"信息位置效应"的实证。</p>
+  </div>
+
+  <div class="section">
+    <h2>一张表总结</h2>
+    <table style="width:100%; border-collapse:collapse; font-size:14px;">
+      <tr>
+        <th style="text-align:left; padding:8px; border-bottom:1px solid #2a313c; color:#7d8590;">坑</th>
+        <th style="text-align:left; padding:8px; border-bottom:1px solid #2a313c; color:#7d8590;">症状</th>
+        <th style="text-align:left; padding:8px; border-bottom:1px solid #2a313c; color:#7d8590;">修法</th>
+      </tr>
+      <tr>
+        <td style="padding:8px; border-bottom:1px solid #2a313c;">成功 ≠ 完成</td>
+        <td style="padding:8px; border-bottom:1px solid #2a313c;">空数据 / 幻觉报告</td>
+        <td style="padding:8px; border-bottom:1px solid #2a313c;">健康自检 + 异常不静默</td>
+      </tr>
+      <tr>
+        <td style="padding:8px; border-bottom:1px solid #2a313c;">共享工作目录</td>
+        <td style="padding:8px; border-bottom:1px solid #2a313c;">间歇性错位,无法复现</td>
+        <td style="padding:8px; border-bottom:1px solid #2a313c;">独占 workdir + lease 协议</td>
+      </tr>
+      <tr>
+        <td style="padding:8px; border-bottom:1px solid #2a313c;">超长 prompt</td>
+        <td style="padding:8px; border-bottom:1px solid #2a313c;">中段约束被忽略</td>
+        <td style="padding:8px; border-bottom:1px solid #2a313c;">≤400 字 + 模板外置 + 硬约束前置</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>最后的真话</h2>
+    <p>Cron 自动化听起来高大上,实际是<strong>大量沉默的运维债务</strong>。每个 cron 都像一只宠物,你以为按下"自动喂食"就完事了——结果它第 7 天拉肚子了,你 9 天后才看见。</p>
+    <p>如果你刚开始做 Agent 编排,我的建议是:第 1 个月<strong>每天人工看一眼输出</strong>。不是不信任 Agent,是你要建立对"它什么时候会错"的直觉。这个直觉比任何监控工具都值钱。</p>
+    <p class="muted">—— MrFai · 写于 Hermes 跑了 4 段 cron 之后的某个周六早晨</p>
+  </div>
+
+  <div class="footer">
+    由 Hermes Agent 自动生成 · 来源: MrFai 多 Agent 工作流 3 个月实战复盘<br>
+    本笔记分享工程经验,不构成任何投资或技术建议
+  </div>
+</body>
+</html>
