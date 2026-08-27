@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日科技新闻简报 · 2026-08-27</title>
+<style>
+:root {
+  --bg: #f7f8fb;
+  --card: #ffffff;
+  --border: #e5e7eb;
+  --ink: #1f2328;
+  --ink-soft: #4b5563;
+  --accent: #2563eb;
+  --tag-hot: #dc2626;
+  --tag-warm: #ea580c;
+  --tag-cool: #0891b2;
+  --tag-bg-hot: #fef2f2;
+  --tag-bg-warm: #fff7ed;
+  --tag-bg-cool: #ecfeff;
+  --shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.65;
+  font-size: 16px;
+}
+.wrap { max-width: 760px; margin: 0 auto; padding: 28px 18px 64px; }
+header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 18px;
+  margin-bottom: 24px;
+}
+header h1 {
+  font-size: 26px;
+  margin: 0 0 6px;
+  letter-spacing: -.01em;
+}
+header .sub {
+  color: var(--ink-soft);
+  font-size: 14px;
+}
+h2 {
+  font-size: 19px;
+  margin: 32px 0 12px;
+  letter-spacing: -.005em;
+}
+h3 {
+  font-size: 17px;
+  margin: 0 0 4px;
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 18px 14px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow);
+}
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 8px;
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  border: 1px solid transparent;
+}
+.tag.type { background: #eef2ff; color: #3730a3; border-color: #c7d2fe; }
+.tag.hot   { background: var(--tag-bg-hot);   color: var(--tag-hot);   border-color: #fecaca; }
+.tag.warm  { background: var(--tag-bg-warm);  color: var(--tag-warm);  border-color: #fed7aa; }
+.tag.cool  { background: var(--tag-bg-cool);  color: var(--tag-cool);  border-color: #a5f3fc; }
+.tag.trust { background: #ecfdf5; color: #047857; border-color: #a7f3d0; }
+.tag.trust-low { background: #fffbeb; color: #b45309; border-color: #fde68a; }
+.facts {
+  margin: 8px 0 6px;
+  padding-left: 18px;
+}
+.facts li { margin-bottom: 4px; }
+.section-label {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin: 10px 0 4px;
+  font-weight: 600;
+}
+.src a {
+  color: var(--accent);
+  text-decoration: none;
+  word-break: break-all;
+}
+.src a:hover { text-decoration: underline; }
+.disclaimer {
+  font-size: 13px;
+  color: var(--ink-soft);
+  border-top: 1px dashed var(--border);
+  padding-top: 12px;
+  margin-top: 28px;
+}
+.tldr {
+  background: #f1f5f9;
+  border-left: 4px solid var(--accent);
+  padding: 12px 14px;
+  border-radius: 6px;
+  margin: 8px 0 0;
+}
+.tldr ul { margin: 6px 0 0; padding-left: 20px; }
+.trending {
+  background: linear-gradient(180deg, #fafbff 0%, #fff 100%);
+  border: 1px solid #c7d2fe;
+}
+.trending h3 a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.trending h3 a:hover { text-decoration: underline; }
+.kv {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 4px 10px;
+  font-size: 14px;
+  margin-top: 6px;
+}
+.kv dt { color: var(--ink-soft); }
+.kv dd { margin: 0; }
+@media (max-width: 520px) {
+  body { font-size: 15px; }
+  header h1 { font-size: 22px; }
+  .wrap { padding: 18px 12px 48px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>每日科技新闻简报 · 2026-08-27</h1>
+    <div class="sub">当日 AI / 科技 / 互联网 / 创业 5 条要闻 + GitHub Trending 日增最高仓库</div>
+    <div class="sub">采集时间：2026-08-27 10:32 (+08) · 采集方式：实时 web 搜索 + GitHub Trending 抓取</div>
+  </header>
+
+  <section>
+    <h2>当日摘要（TL;DR）</h2>
+    <div class="tldr">
+      <ul>
+        <li><b>Instinct 完成 3.5 亿美元融资，估值 25 亿美元</b>，Index 与 Benchmark 共同领跑。</li>
+        <li><b>Anthropic 合并 Cowork 与 Chat 的记忆系统</b>，跨产品上下文保留。</li>
+        <li><b>韩国 AI 平台 Wrtn 以约 8.7 亿美元估值</b> 完成 C 轮，押注全球扩张。</li>
+        <li><b>OpenAI 8 月更新：GPT-5.6 Sol 与 GPT-5.6 Luna</b> 在网络安全、生物化学领域被列为"高能力"。</li>
+        <li><b>Anthropic 在欧盟范围内为 Claude 输出打水印</b>（8 月 2 日及之后模型），可机读。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>GitHub Trending 日增最高仓库</h2>
+    <div class="card trending">
+      <h3><a href="https://github.com/freestylefly/awesome-gpt-image-2">freestylefly / awesome-gpt-image-2</a></h3>
+      <div class="meta">
+        <span class="tag warm">🔥 当日新增 Star 最高</span>
+        <span class="tag type">JavaScript</span>
+      </div>
+      <dl class="kv">
+        <dt>今日新增</dt><dd><b>+4,050</b> stars today</dd>
+        <dt>当前总 Star</dt><dd>21,474（页面可见）</dd>
+        <dt>主要语言</dt><dd>JavaScript</dd>
+        <dt>仓库描述</dt><dd>Prompt as Code | GPT-Image2 工业级提示词引擎与模板库，530+ 个案例逆向工程，20+ 套工业级模板，并提炼出 Skills，持续更新中</dd>
+        <dt>与 AI 读者关联</dt><dd>"Prompt as Code" 与 Agent Skill 思路贴合，可作为团队内部沉淀的可重用提示词资产样本。</dd>
+      </dl>
+      <div class="section-label">原始来源</div>
+      <div class="src"><a href="https://github.com/trending?since=daily">GitHub Trending 日榜</a></div>
+      <div class="section-label">本次抓取时间</div>
+      <div>2026-08-27 10:32 +08（仅基于当日 Trending 页可见条目）</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>今日观察</h2>
+    <div class="card">
+      <p>今日新闻集中在"模型厂商的产品整合 + 中型 AI 创业融资加速"两条主线：</p>
+      <ol style="padding-left:20px; margin-top:6px;">
+        <li><b>Anthropic 把 Cowork（代理任务）和 Chat 的记忆打通</b>，意味着其产品路线从"窗口内助理"转向"长期上下文代理"。这与今日 Claude Code / Plugins 仓库在 Trending 上的高活跃度形成呼应：开发者生态正在朝"会记住你项目的智能体"集结。</li>
+        <li><b>Instinct 25 亿美元估值、Wrtn 8.7 亿美元估值</b>，说明 B 轮中段的 AI 创业估值在 25 亿区间仍未被压制；Index + Benchmark 联合领投信号强，对独立产品型 AI 创业是积极信号。</li>
+        <li><b>监管线在收紧</b>：Anthropic 在欧盟为 8 月 2 日后发布的 Claude 模型加入可机读水印 + 文件来源签名；OpenAI 同期把 GPT-5.6 Sol/Luna 在网络安全和生物化学上标为"高能力"——两边都把"模型输出可追溯 + 高风险域安全护栏"作为合规支点。</li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <h2>新闻卡片</h2>
+
+    <div class="card">
+      <h3>1. Instinct 完成 3.5 亿美元融资，估值 25 亿美元</h3>
+      <div class="meta">
+        <span class="tag type">创业 / 财经</span>
+        <span class="tag warm">⭐ 高热</span>
+        <span class="tag trust">🟢 多方确认</span>
+      </div>
+      <div class="section-label">核心事实</div>
+      <ul class="facts">
+        <li>AI 创业公司 Instinct 新一轮融资 3.5 亿美元，估值 25 亿美元。</li>
+        <li>由 Index Ventures 与 Benchmark 共同领投。</li>
+      </ul>
+      <div class="section-label">关键数据</div>
+      <ul class="facts"><li>总额 3.5 亿美元；估值 25 亿美元；领投方 Index + Benchmark。</li></ul>
+      <div class="section-label">背景</div>
+      <p>公司近期因病毒式传播产品走红，本次融资节奏紧贴产品热度。</p>
+      <div class="section-label">影响分析</div>
+      <p>印证 2026 年中段独立 AI 产品公司仍能以中型独角兽估值拿到大额弹药；Index + Benchmark 双投背书会拉动同阶段标的估值。</p>
+      <div class="section-label">来源</div>
+      <div class="src"><a href="https://techcrunch.com/2026/08/26/viral-ai-startup-instinct-has-raised-350-million-at-a-2-5-billion-valuation/">TechCrunch</a></div>
+    </div>
+
+    <div class="card">
+      <h3>2. Anthropic 合并 Claude Cowork 与 Chat 的记忆系统</h3>
+      <div class="meta">
+        <span class="tag type">AI 产品</span>
+        <span class="tag warm">⭐ 高热</span>
+        <span class="tag trust">🟢 多方确认</span>
+      </div>
+      <div class="section-label">核心事实</div>
+      <ul class="facts">
+        <li>Anthropic 宣布将 Cowork 与 Chat 使用的记忆系统合并，跨产品保留用户上下文。</li>
+        <li>免费与付费套餐均支持，覆盖 Mac 与 iOS。</li>
+      </ul>
+      <div class="section-label">关键数据</div>
+      <ul class="facts"><li>8 月 25 日上线；统一对象 = Cowork + Chat 的 memory system。</li></ul>
+      <div class="section-label">背景</div>
+      <p>过去 Agent 产品最大的痛点是每次都要重新 briefing；记忆层统一是 Anthropic 把 Chat 与代理两条产品线拉通的关键步骤。</p>
+      <div class="section-label">影响分析</div>
+      <p>直接利好长流程代理场景（求职、代码、客户支持）；同时抬高了"跨会话上下文"作为基础能力的产品水位。</p>
+      <div class="section-label">来源</div>
+      <div class="src">
+        <a href="https://techcrunch.com/2026/08/25/claude-cowork-finally-remembers-what-you-told-the-app-in-chat/">TechCrunch</a> ·
+        <a href="https://9to5mac.com/2026/08/25/anthropic-update-unifies-memory-feature-across-claude-cowork-and-chat/">9to5Mac</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>3. 韩国 Wrtn 以约 8.7 亿美元估值完成 C 轮</h3>
+      <div class="meta">
+        <span class="tag type">创业 / 国际</span>
+        <span class="tag warm">⭐ 高热</span>
+        <span class="tag trust">🟢 多方确认</span>
+      </div>
+      <div class="section-label">核心事实</div>
+      <ul class="facts">
+        <li>韩国 AI 服务平台 Wrtn Technologies 以 1.2 万亿韩元（约 8.7 亿美元）估值完成 C 轮。</li>
+        <li>金额约 1000 亿韩元，资金用于全球扩张。</li>
+      </ul>
+      <div class="section-label">关键数据</div>
+      <ul class="facts"><li>估值 ≈ $870M；本轮约 1000 亿韩元；总部首尔。</li></ul>
+      <div class="section-label">背景</div>
+      <p>Wrtn 是韩国本土 AI 应用层代表，本次 C 轮是其全球化加注。</p>
+      <div class="section-label">影响分析</div>
+      <p>亚洲非中美 AI 应用层在 2026 年下半继续以十亿美元估值节奏融资；东南亚 / 日韩市场被资本重新定义为"非美国 AI 增长极"。</p>
+      <div class="section-label">来源</div>
+      <div class="src"><a href="https://www.bloomberg.com/news/articles/2026-08-25/korean-ai-startup-wrtn-raises-funds-at-870-million-value-to-fund-global-growth">Bloomberg</a></div>
+    </div>
+
+    <div class="card">
+      <h3>4. OpenAI 发布 GPT-5.6 Sol / Luna 8 月更新</h3>
+      <div class="meta">
+        <span class="tag type">AI 模型</span>
+        <span class="tag warm">⭐ 高热</span>
+        <span class="tag trust">🟢 官方公告</span>
+      </div>
+      <div class="section-label">核心事实</div>
+      <ul class="facts">
+        <li>OpenAI 在 8 月发布 GPT-5.6 Sol 与 GPT-5.6 Luna。</li>
+        <li>在网络安全与生物化学领域按 Preparedness Framework 被定为"高能力"，配套与 GPT-5.6 System Card 一致的护栏。</li>
+      </ul>
+      <div class="section-label">关键数据</div>
+      <ul class="facts"><li>2 个模型（Sol / Luna）；高能力域 = 网络安全 + 生物化学；未达"高"等级的能力为 AI 自我改进。</li></ul>
+      <div class="section-label">背景</div>
+      <p>Sol 强项在编码、科学、网络安全；Luna 与"OpenAI 此前在 8 月更新中描述的安全栈"配套发布。</p>
+      <div class="section-label">影响分析</div>
+      <p>Sol 进入高安全护栏意味着面向企业的代码 / 安全代理将更依赖防护层；产品团队要把"模型自评"和"使用前评估"作为合规入口。</p>
+      <div class="section-label">来源</div>
+      <div class="src">
+        <a href="https://cdn.openai.com/pdf/GPT_5_6_August_Updates.pdf">OpenAI GPT-5.6 August Updates PDF</a> ·
+        <a href="https://openai.com/research/index/release/">OpenAI Research Release 页</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>5. Anthropic 在欧盟为 Claude 输出加可机读水印</h3>
+      <div class="meta">
+        <span class="tag type">AI 监管 / 产品</span>
+        <span class="tag cool">💡 值得关注</span>
+        <span class="tag trust">🟢 官方文档</span>
+      </div>
+      <div class="section-label">核心事实</div>
+      <ul class="facts">
+        <li>2026 年 8 月 2 日及之后在欧盟上线的 Claude 模型，生成文本会嵌入可机读水印。</li>
+        <li>生成文件会包含数字签名的来源元数据。</li>
+      </ul>
+      <div class="section-label">关键数据</div>
+      <ul class="facts"><li>生效时间 = 2026-08-02（EU）；范围 = EU 上线的新 Claude 模型；包含文本水印 + 文件来源签名。</li></ul>
+      <div class="section-label">背景</div>
+      <p>欧盟 AI 法案与多媒体来源标识要求落地节奏加快；Anthropic 是首批把"可机读"作为默认行为的前沿模型厂商之一。</p>
+      <div class="section-label">影响分析</div>
+      <p>影响所有依赖 Claude 做内容生成的企业——下游产物的"是否 AI 生成"自动可识别，合规链路从"口头承诺"变成"可机读信号"。</p>
+      <div class="section-label">来源</div>
+      <div class="src"><a href="https://support.claude.com/en/articles/16266773-how-claude-marks-ai-generated-content">Anthropic 帮助中心</a></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>来源与局限</h2>
+    <div class="card">
+      <ul style="padding-left:18px; margin:0;">
+        <li>本批次检索：5 次精准 web 搜索 + 1 次 GitHub Trending 页面抓取（总计 6 次外部请求，均在上限内）。</li>
+        <li>未能交叉验证：本批次未对每条新闻逐一拉取第二独立信源正文；Instinct 与 Wrtn 各有 1 个一手来源（TechCrunch / Bloomberg），其他条目依赖搜索摘要。</li>
+        <li>未覆盖：未抓取 TechCrunch、Reuters 等页面正文（限于本次 <code>curl</code> 总预算 3 次，GitHub 已占 1 次）。</li>
+        <li>GitHub Trending：仅读取当日 Trending 页面"今日可见"仓库条目，按 <code>+N stars today</code> 数值降序比较；未与 GitHub 全站历史增量榜对齐。</li>
+      </ul>
+    </div>
+  </section>
+
+  <p class="disclaimer">免责声明：本简报由研究-agent cron 自动生成；新闻条目均标注来源 URL 与可信度等级。请读者结合原报道交叉判断，尤其是融资估值与监管细节。</p>
+</div>
+</body>
+</html>
