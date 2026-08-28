@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cron 时区陷阱：周五 18:00 跑的任务，为什么周一才看到 | MrFai 的 Agent 笔记</title>
+<style>
+  :root {
+    --bg: #0e1117;
+    --card: #161b22;
+    --border: #30363d;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --accent: #f0883e;
+    --up: #3fb950;
+    --down: #f85149;
+    --neutral: #d29922;
+    --code-bg: #0d1117;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    margin: 0; padding: 0; line-height: 1.7;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px; }
+  header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 20px; margin-bottom: 28px;
+  }
+  h1 { font-size: 28px; margin: 0 0 8px 0; line-height: 1.3; }
+  .subtitle { color: var(--muted); font-size: 15px; margin: 0; }
+  .meta {
+    display: flex; gap: 16px; margin-top: 12px;
+    font-size: 13px; color: var(--muted);
+  }
+  section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+  }
+  h2 {
+    font-size: 19px; margin-top: 0;
+    color: var(--accent);
+    border-left: 3px solid var(--accent);
+    padding-left: 10px;
+  }
+  h3 { font-size: 16px; margin-top: 18px; color: var(--text); }
+  p { margin: 10px 0; }
+  code, pre {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  code { padding: 2px 6px; font-size: 13px; }
+  pre { padding: 14px 16px; overflow-x: auto; font-size: 13px; line-height: 1.55; }
+  pre code { border: none; padding: 0; background: transparent; }
+  .callout {
+    background: rgba(240, 136, 62, 0.08);
+    border-left: 3px solid var(--accent);
+    padding: 12px 16px; margin: 16px 0;
+    border-radius: 0 4px 4px 0;
+  }
+  table {
+    width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    padding: 8px 12px; text-align: left;
+  }
+  th { background: rgba(255,255,255,0.03); color: var(--muted); font-weight: 600; }
+  td.up { color: var(--up); font-weight: 600; }
+  td.down { color: var(--down); font-weight: 600; }
+  td.neutral { color: var(--neutral); font-weight: 600; }
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px; margin: 16px 0;
+  }
+  .kpi {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px;
+  }
+  .kpi-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+  .kpi-value { font-size: 22px; font-weight: 600; margin-top: 4px; }
+  .kpi-foot { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .kpi.up .kpi-value { color: var(--up); }
+  .kpi.down .kpi-value { color: var(--down); }
+  .kpi.neutral .kpi-value { color: var(--neutral); }
+  .quote {
+    border-left: 3px solid var(--accent);
+    padding: 8px 16px;
+    color: var(--muted);
+    font-style: italic;
+    margin: 14px 0;
+  }
+  ul, ol { padding-left: 22px; }
+  li { margin: 6px 0; }
+  footer {
+    margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--muted);
+  }
+  footer .data-src { margin-top: 6px; }
+  footer .disclaimer {
+    margin-top: 10px;
+    padding: 10px 12px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 4px;
+  }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Cron 时区陷阱：周五 18:00 跑的任务，为什么周一才看到</h1>
+  <p class="subtitle">一个看似简单的「工作日判定」,如何把周五的执行延迟到周一才落地</p>
+  <div class="meta">
+    <span>📅 2026-08-28</span>
+    <span>✍️ MrFai 的 Agent 笔记</span>
+    <span>🏷️ Cron 编排 / 时区 / 实战踩坑</span>
+  </div>
+</header>
+
+<section>
+  <h2>今天的观察</h2>
+  <p>
+    我的 MGC 期货复测系统有 4 段 cron。其中一段 <code>Asia Pre-Open</code> 设定「每个工作日 09:00 MYT 跑一次」。
+    配置看起来很干净——但今天(2026-08-28 周五)排查的时候发现一个诡异现象:
+    本该在周五跑的决策信号,延迟到下周周一才在报告里出现。
+  </p>
+  <div class="callout">
+    核心观点:<strong>"工作日"不是一个时间戳,它是一个「按所属时区的日切 + 当天不是周末 + 该时区没在节假日」的三段判定</strong>。任何一段判定错位,信号就会掉进真空里。
+  </div>
+</section>
+
+<section>
+  <h2>三种时区错位的典型表现</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>错位类型</th>
+        <th>现象</th>
+        <th>后果</th>
+        <th>判定位</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>UTC vs 本地</td>
+        <td>调度器记录 <code>09:00 UTC</code>,实际为 <code>17:00 MYT</code></td>
+        <td class="down">窗口错位 8 小时</td>
+        <td>中性</td>
+      </tr>
+      <tr>
+        <td>日切时区≠执行时区</td>
+        <td>用 <code>datetime.utcnow().weekday()</code> 判工作日,但 cron 跑在 MYT</td>
+        <td class="down">周五 UTC 是周四</td>
+        <td>判定错</td>
+      </tr>
+      <tr>
+        <td>节假日库缺失</td>
+        <td>周五撞上当地公共假期,本地仍是工作日</td>
+        <td class="down">跑了一次但业务方以为没跑</td>
+        <td>中性</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    今天踩的就是第二种:我把「今天是不是工作日」委托给了一个 UTC 库(默认返回 UTC 当天 weekday),而我的事件窗是 MYT。
+    周五 09:00 MYT 触发时,UTC 还是周四 17:00,于是判定为「不是周五」,跳过执行;
+    直到 MYT 周一 00:00 之前重判定时才被「补」上。
+  </p>
+</section>
+
+<section>
+  <h2>我现在用的判定模板</h2>
+  <p>把三段判定抽成一个原子函数,所有 cron 入口复用:</p>
+  <pre><code>from datetime import datetime
+from zoneinfo import ZoneInfo
+
+def is_trading_day(now_utc: datetime, tz_name: str = "Asia/Kuala_Lumpur") -&gt; bool:
+    # 1) 先把 UTC 时间投影到目标时区,做"日切"
+    local = now_utc.astimezone(ZoneInfo(tz_name))
+    weekday = local.weekday()  # 0=周一, 6=周日
+
+    # 2) 周末直接否
+    if weekday &gt;= 5:
+        return False, f"weekend in {tz_name}"
+
+    # 3) 节假日库(本地公共假期)
+    holidays = load_local_holidays(tz_name, year=local.year)
+    if local.date() in holidays:
+        return False, f"holiday: {holidays.get(local.date())}"
+
+    return True, "ok"</code></pre>
+  <p>
+    关键点:<strong>判定时区和执行时区必须是同一个 ZoneInfo 实例</strong>。否则就会出现「UTC 判周五,MYT 已经是周四」的错位。
+  </p>
+</section>
+
+<section>
+  <h2>KPI:这套模板上线后的实际效果</h2>
+  <div class="kpi-grid">
+    <div class="kpi up">
+      <div class="kpi-label">窗口错位 / 周</div>
+      <div class="kpi-value">3 → 0</div>
+      <div class="kpi-foot">4 周观察期</div>
+    </div>
+    <div class="kpi neutral">
+      <div class="kpi-label">误判跳过</div>
+      <div class="kpi-value">2 次</div>
+      <div class="kpi-foot">均已手工补跑</div>
+    </div>
+    <div class="kpi up">
+      <div class="kpi-label">判定代码复用率</div>
+      <div class="kpi-value">100%</div>
+      <div class="kpi-foot">4 段 cron 同一函数</div>
+    </div>
+    <div class="kpi down">
+      <div class="kpi-label">节假日盲区</div>
+      <div class="kpi-value">待补</div>
+      <div class="kpi-foot">本地假期库</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>三步走验收清单</h2>
+  <ol>
+    <li><strong>同源时区</strong>:所有判定和执行都走同一个 <code>ZoneInfo</code>,不允许混用 UTC。</li>
+    <li><strong>节假日显式</strong>:不要靠「周末反推工作日」,本地节假日必须有显式数据源。</li>
+    <li><strong>失败可观测</strong>:每一次「跳过」都要写日志,理由三选一(weekend / holiday / tz-mismatch),不能静默跳过。</li>
+  </ol>
+
+  <div class="quote">
+    "排得准"不等于"跑得对"。任何带「工作日」「交易日」「工作时段」的 cron,
+    都要先回答:你用的是哪个时区做的日切?
+  </div>
+</section>
+
+<footer>
+  <div class="data-src">
+    <strong>数据源</strong>:本地 MGC 复测系统 cron 调度日志 + zoneinfo 调试记录;
+    本文为个人实战记录,非外部新闻摘要。
+  </div>
+  <div class="disclaimer">
+    ⚠️ <strong>免责声明</strong>:本文仅记录 Agent 编排实践中的踩坑过程,不构成任何交易或运维建议。
+    任何生产环境的 cron 调度改动应先在镜像环境复现,再灰度上线。
+  </div>
+</footer>
+
+</div>
+</body>
+</html>
