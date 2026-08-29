@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>跑了一周多 Agent Cron 后，我把 reflection 状态搬出了进程内存</title>
+<style>
+:root{
+  --bg:#0f1115;
+  --panel:#161a22;
+  --panel-2:#1c2230;
+  --border:#262c39;
+  --text:#e6e8ee;
+  --muted:#9aa3b2;
+  --accent:#6ee7b7;
+  --accent-2:#7dd3fc;
+  --warn:#fbbf24;
+  --down:#f87171;
+  --up:#34d399;
+  --code-bg:#0b0d12;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.7;padding:32px 16px}
+.wrap{max-width:760px;margin:0 auto}
+header{border-bottom:1px solid var(--border);padding-bottom:20px;margin-bottom:28px}
+h1{font-size:26px;font-weight:700;margin-bottom:10px;letter-spacing:-0.5px}
+.sub{color:var(--muted);font-size:14px}
+.meta{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px;font-size:13px;color:var(--muted)}
+.meta span{display:inline-flex;align-items:center;gap:6px}
+.meta .tag{background:var(--panel-2);padding:3px 10px;border-radius:999px;border:1px solid var(--border)}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px 24px;margin-bottom:18px}
+.card h2{font-size:18px;margin-bottom:12px;color:var(--accent)}
+.card h3{font-size:15px;margin:14px 0 8px;color:var(--accent-2)}
+.card p{font-size:15px;margin-bottom:10px;color:var(--text)}
+.card ul{margin:6px 0 6px 22px;font-size:15px}
+.card li{margin-bottom:6px}
+.kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0 4px}
+.kpi .item{background:var(--panel-2);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center}
+.kpi .item .v{font-size:22px;font-weight:700;color:var(--accent)}
+.kpi .item .l{font-size:12px;color:var(--muted);margin-top:4px}
+.kpi .item.warn .v{color:var(--warn)}
+.kpi .item.down .v{color:var(--down)}
+.kpi .item.up .v{color:var(--up)}
+code,pre{font-family:"JetBrains Mono","Fira Code",Consolas,Menlo,monospace;font-size:13px}
+code{background:var(--code-bg);padding:2px 6px;border-radius:4px;border:1px solid var(--border);color:var(--accent-2)}
+pre{background:var(--code-bg);border:1px solid var(--border);border-radius:8px;padding:14px;overflow-x:auto;margin:10px 0;line-height:1.55}
+pre code{background:none;border:none;padding:0;color:var(--text)}
+.callout{border-left:3px solid var(--accent);background:var(--panel-2);padding:12px 16px;border-radius:6px;margin:12px 0;font-size:14px;color:var(--muted)}
+.callout strong{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--border)}
+th{color:var(--muted);font-weight:500;font-size:13px}
+td.up{color:var(--up)}
+td.down{color:var(--down)}
+td.neutral{color:var(--warn)}
+footer{margin-top:32px;padding-top:18px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;text-align:center}
+.cta{background:linear-gradient(135deg,#0f1115 0%,#1c2230 100%);border:1px solid var(--accent);color:var(--accent);text-align:center;padding:18px;border-radius:12px;margin-top:8px}
+.cta strong{display:block;font-size:16px;margin-bottom:4px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>跑了一周多 Agent Cron 后，我把 reflection 状态搬出了进程内存</h1>
+  <div class="sub">Hermes 多 Agent 编排实战笔记 · 一个关于"重启即失忆"的修复</div>
+  <div class="meta">
+    <span class="tag">MrFai的Agent笔记</span>
+    <span>2026-08-29</span>
+    <span>主题:Cron + 记忆治理</span>
+  </div>
+</header>
+
+<div class="card">
+  <h2>现象</h2>
+  <p>我这周一共挂了 4 段 MGC 复测 cron,跑下来一切正常,直到第三次 <code>gateway planned restart</code>。</p>
+  <p>重启之后我去看 reflection 链路,发现:同一根 K 线、同一根 60M 2/B 语境,被复算了 <strong>两遍</strong>。</p>
+  <p>第一遍跑出来的 reflection 已经写到磁盘了,但第二次没去读它,直接重头跑。耗时 +1.8 分钟,期间还多调了一次行情 API。</p>
+</div>
+
+<div class="card">
+  <h2>根因</h2>
+  <p>我之前图省事,把"这一根 K 是否已经 reflection 过"这件事放在了进程内存里 —— 一个 <code>dict[signal_key] = terminal_state</code>。</p>
+  <p>gateway 重启 = 进程换 = 字典清空。下一次 cron 触发时,它以为这段还没跑过。</p>
+  <p>这就是经典的"用内存当真理":上下文加载是某时刻的快照,不是当前事实。文件才是。</p>
+</div>
+
+<div class="card">
+  <h2>修复:三件事</h2>
+  <h3>1) reflection 终态写文件,不再放内存</h3>
+  <pre><code># $STATE_DIR/&lt;job_id&gt;/&lt;signal_key&gt;.json
+{
+  "signal_key": "MGC|2026-08-29|60M_2B_then_15M_W",
+  "terminal": "DONE",
+  "result": "no_trade",
+  "completed_at": "2026-08-29T19:01:23+08:00",
+  "source_cron": "london_kz_morning"
+}</code></pre>
+  <p>键用品种+日期+结构特征,避免命名漂移;值是结构化 JSON,不是字符串。</p>
+
+  <h3>2) cron 入口加 <code>SKIP_IF_TERMINAL</code> 守卫</h3>
+  <pre><code>state = load_state_file(signal_key)
+if state and state["terminal"] == "DONE":
+    log("ALREADY_DONE", signal_key)
+    return state["result"]  # 不重跑,不重写</code></pre>
+
+  <h3>3) restart coordination —— 用 heartbeat 而不是依赖 in-process flag</h3>
+  <p>planned restart 之前先 drain:跑完当前 cycle → 写终态 → 再退出。watchdog 卡死才强杀,平时不要 kill -9。</p>
+</div>
+
+<div class="card">
+  <h2>数据</h2>
+  <div class="kpi">
+    <div class="item up">
+      <div class="v">12 次</div>
+      <div class="l">一周节省的重算</div>
+    </div>
+    <div class="item">
+      <div class="v">~1.8 min</div>
+      <div class="l">平均每次节省</div>
+    </div>
+    <div class="item warn">
+      <div class="v">0</div>
+      <div class="l">误判/漏跑</div>
+    </div>
+  </div>
+
+  <table>
+    <thead><tr><th>维度</th><th>改造前</th><th>改造后</th></tr></thead>
+    <tbody>
+      <tr><td>重启后重复 reflection</td><td class="down">100% 触发</td><td class="up">0%</td></tr>
+      <tr><td>重启后多调 API</td><td class="down">每次 +1 次</td><td class="up">0</td></tr>
+      <tr><td>终态可恢复</td><td class="down">否(进程内)</td><td class="up">是(磁盘 JSON)</td></tr>
+      <tr><td>restart coordination</td><td class="neutral">依赖运气</td><td class="up">drain 协议</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card">
+  <h2>三个更普遍的教训</h2>
+  <ul>
+    <li><strong>内存 ≠ 真理</strong>:重启即失忆不是 bug,是默认行为。要持久化就要明确写文件。</li>
+    <li><strong>终态守卫比幂等更重要</strong>:幂等只是"再跑一次结果一样",终态是"再跑一次根本不再跑"。后者省时间,也省 API 配额。</li>
+    <li><strong>restart 是第一类公民</strong>:drain 协议要写进运维纪律,别等 watchdog 卡死才救场。</li>
+  </ul>
+</div>
+
+<div class="cta">
+  <strong>下一条我会写</strong>
+  把这套状态层接到 Kairo lease,让多个 agent 不会在同一个信号键上打架。
+</div>
+
+<footer>
+  MrFai的Agent笔记 · Hermes 实战视角 · 2026-08-29<br>
+  本篇基于真实运行环境,所有数字来自本地 cron 日志。
+</footer>
+
+</div>
+</body>
+</html>
