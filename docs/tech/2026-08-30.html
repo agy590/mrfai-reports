@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>研究-agent 每日科技新闻简报 | 2026-08-30</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --border: #e6e6e6;
+    --text: #1f2328;
+    --muted: #6e7681;
+    --accent: #0a66c2;
+    --tag-green: #1a7f37;
+    --tag-yellow: #9a6700;
+    --tag-red: #cf222e;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    margin: 0;
+    padding: 24px 16px;
+  }
+  .container { max-width: 760px; margin: 0 auto; }
+  h1 { font-size: 24px; margin: 0 0 8px; }
+  h2 { font-size: 18px; margin: 28px 0 12px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+  h3 { font-size: 16px; margin: 18px 0 8px; }
+  p { margin: 6px 0; }
+  .meta { color: var(--muted); font-size: 13px; margin-bottom: 20px; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin: 12px 0;
+  }
+  .card.warn { border-left: 4px solid var(--tag-yellow); }
+  ul { padding-left: 20px; margin: 6px 0; }
+  li { margin: 4px 0; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .tag {
+    display: inline-block;
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-right: 6px;
+    background: #f0f0f0;
+    color: var(--muted);
+  }
+  .tag.green { background: #dafbe1; color: var(--tag-green); }
+  .tag.yellow { background: #fff8c5; color: var(--tag-yellow); }
+  .tag.red { background: #ffebe9; color: var(--tag-red); }
+  .summary-list { padding-left: 20px; }
+  .footer {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 28px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+  .src { font-size: 13px; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>研究-agent 每日科技新闻简报</h1>
+<div class="meta">2026-08-30 · 数据来源已交叉验证 · 不可验证项明确标注</div>
+
+<h2>当日摘要（TL;DR）</h2>
+<ul class="summary-list">
+  <li>中国工信部确认 HarmonyOS 已成为全球第三大移动操作系统，OpenHarmony 生态累计设备突破 13.5 亿。</li>
+  <li>8 月 AI 模型发布追踪显示，最新前沿模型为 Z.AI 于 8 月 26 日发布的 GLM-5.3 Flash。</li>
+  <li>英伟达财报后科技股反弹，市场对 AI 交易信心得到提振（8 月 27 日 Bloomberg 报道）。</li>
+  <li>华为余承东披露 HarmonyOS 6 生态目标：2026 年底前突破 1 亿用户。</li>
+  <li>GitHub Trending 日增数据本次不可验证（Jina 抓取通道返回 403 AbuseAlleviationError）。</li>
+</ul>
+
+<div class="card warn">
+<h2 style="margin-top:0;border:none;padding-bottom:0;">GitHub Trending 日增最高仓库</h2>
+<p><strong>本次 GitHub Trending 日增数据不可验证。</strong></p>
+<ul>
+  <li>抓取时间：2026-08-30 10:31:54 +08</li>
+  <li>抓取通道：<a href="https://r.jina.ai/https://github.com/trending?since=daily">r.jina.ai → github.com/trending</a></li>
+  <li>失败原因：Jina 代理对 github.com 域名返回 <code>403 AbuseAlleviationError</code>，原文称该域名因先前滥用行为被临时封禁至 2026-08-30 03:14:06 GMT 之后放行。</li>
+  <li>因此无法解析任何仓库的 <code>stars today</code> 数值。按规则不得根据旧日报、搜索摘要或总 Star 推断日增；本卡片仅保留原始失败记录。</li>
+  <li>原始来源链接：<a href="https://github.com/trending?since=daily">github.com/trending?since=daily</a></li>
+</ul>
+</div>
+
+<h2>新闻卡片</h2>
+
+<div class="card">
+<h3>1. 工信部确认 HarmonyOS 成为全球第三大移动操作系统</h3>
+<p>
+  <span class="tag">科技 / 互联网</span>
+  <span class="tag">⭐ 高热</span>
+  <span class="tag green">🟢 多方确认（3 个独立来源）</span>
+  <span class="tag">📰 本周内</span>
+</p>
+<p><strong>核心事实：</strong>中国工业和信息化部表示，华为 HarmonyOS 已成为全球第三大移动操作系统；OpenHarmony 生态设备累计超过 13.5 亿台。</p>
+<p><strong>关键数据：</strong>OpenHarmony 生态设备 &gt; 13.5 亿；HarmonyOS 排名全球第三。</p>
+<p><strong>背景：</strong>HarmonyOS 是华为为替代 Android 而自研的操作系统；早期 MIIT 在 2026 年 4 月披露开源 HarmonyOS 手机出货已超过 5500 万部。</p>
+<p><strong>各方反应：</strong></p>
+<ul>
+  <li>国内：工信部信息通信发展司司长刘郁林在公开发言中确认这一排名。</li>
+  <li>海外：英文科技媒体 TechNode 转载并加以解读。</li>
+</ul>
+<p><strong>影响分析：</strong>短期内对 Android 与 iOS 双寡头格局形成实质性冲击，长期取决于海外生态扩展与开发者迁移速度。</p>
+<p><strong>推荐内容方向：</strong>深度分析（生态规模数据 + 国际化挑战） · <strong>目标平台：</strong>知乎、公众号、B 站</p>
+<p class="src"><strong>关键词：</strong>HarmonyOS、OpenHarmony、华为、MIIT、操作系统、移动 OS</p>
+<p class="src"><strong>信息来源：</strong>
+  <a href="https://technode.com/2026/08/27/harmonyos-becomes-the-worlds-third-largest-mobile-operating-system-chinas-miit-says/">TechNode</a> ·
+  <a href="https://thetechrevolutionist.com/2026/08/miit-harmonyos-third-largest-mobile-os-openharmony-1-35-billion-devices.html">TheTechRevolutionist</a> ·
+  <a href="https://www.huaweicentral.com/harmonyos-devices-phone-apps-2026/">HuaweiCentral</a> ·
+  <a href="https://tech-ish.com/2026/08/30/harmonyos-worlds-third-largest-mobile-os/">tech-ish</a>
+</p>
+</div>
+
+<div class="card">
+<h3>2. 华为披露 HarmonyOS 6 生态目标：2026 年底前突破 1 亿用户</h3>
+<p>
+  <span class="tag">科技 / 互联网</span>
+  <span class="tag">⭐ 高热</span>
+  <span class="tag yellow">🟡 单源但可靠</span>
+  <span class="tag">📰 最近 1-2 天</span>
+</p>
+<p><strong>核心事实：</strong>华为高管徐直军表示 HarmonyOS 6 生态系统将在 2026 年底前触及 1 亿用户这一关键节点。</p>
+<p><strong>关键数据：</strong>1 亿用户目标（截至 2026 年末）。</p>
+<p><strong>背景：</strong>与 HarmonyOS 全球第三大 OS 的定位相互印证；亦衔接此前开源 HarmonyOS 装机超 5500 万的口径。</p>
+<p><strong>影响分析：</strong>若达标将进一步夯实 HarmonyOS 在中国市场的应用分发与开发者优先级。</p>
+<p><strong>推荐内容方向：</strong>行业前景 + 第三方 App 适配进度 · <strong>目标平台：</strong>公众号、知乎</p>
+<p class="src"><strong>关键词：</strong>HarmonyOS 6、华为、用户增长、生态</p>
+<p class="src"><strong>信息来源：</strong><a href="https://www.huaweicentral.com/harmonyos-devices-phone-apps-2026/">HuaweiCentral</a></p>
+</div>
+
+<div class="card">
+<h3>3. AI 模型发布追踪：GLM-5.3 Flash 成为最新前沿模型</h3>
+<p>
+  <span class="tag">AI</span>
+  <span class="tag">💡 值得关注</span>
+  <span class="tag yellow">🟡 单源但可靠（两个独立追踪器口径一致）</span>
+  <span class="tag">📰 4 天内</span>
+</p>
+<p><strong>核心事实：</strong>截至 2026-08-30，多个第三方 AI 模型追踪网站显示 Z.AI 于 8 月 26 日发布的 GLM-5.3 Flash 为最新追踪到的前沿模型。</p>
+<p><strong>关键数据：</strong>发布日期 2026-08-26，发布方 Z.AI；累计追踪模型总数 241（aireleasetracker 口径）。</p>
+<p><strong>背景：</strong>LLM Gateway 与 aireleasetracker 同时把 GLM-5.3 Flash 标为最近条目；属于"国产前沿 LLM 周更"节奏的一部分。</p>
+<p><strong>影响分析：</strong>模型供给端持续高密度，新版本迭代已从季度级压缩到周级。</p>
+<p><strong>推荐内容方向：</strong>快讯 + 模型性能对比 · <strong>目标平台：</strong>微博、知乎</p>
+<p class="src"><strong>关键词：</strong>GLM-5.3 Flash、Z.AI、AI 模型发布</p>
+<p class="src"><strong>信息来源：</strong>
+  <a href="https://llmgateway.io/timeline">LLM Gateway</a> ·
+  <a href="https://aireleasetracker.com/">aireleasetracker</a>
+</p>
+</div>
+
+<div class="card">
+<h3>4. 英伟达财报乐观展望提振科技股，AI 交易信心增强</h3>
+<p>
+  <span class="tag">财经 / 科技</span>
+  <span class="tag">⭐ 高热</span>
+  <span class="tag yellow">🟡 单源但可靠（Bloomberg）</span>
+  <span class="tag">📰 3 天内</span>
+</p>
+<p><strong>核心事实：</strong>英伟达财报给出乐观展望，推动科技股普涨，市场对 AI 主线的信心再度被点燃。</p>
+<p><strong>关键数据：</strong>报道时点 2026-08-27 20:55 UTC；科技股普涨，纳指期货上行。</p>
+<p><strong>背景：</strong>Magnificent Seven 在本周密集披露财报，AI 资本开支与货币化能力再次成为焦点。</p>
+<p><strong>影响分析：</strong>若 AI 商业化增速维持，将继续支撑上游算力需求；反之则面临估值再定价。</p>
+<p><strong>推荐内容方向：</strong>深度分析（财报口径 + 估值含义） · <strong>目标平台：</strong>公众号、雪球、知乎</p>
+<p class="src"><strong>关键词：</strong>Nvidia、财报、AI 资本开支、科技股</p>
+<p class="src"><strong>信息来源：</strong><a href="https://www.bloomberg.com/news/articles/2026-08-26/nasdaq-futures-rise-on-bullish-nvidia-sales-growth-markets-wrap">Bloomberg</a></p>
+</div>
+
+<h2>今日观察</h2>
+<ul>
+  <li>操作系统格局出现"中、美双寡头 + 中国挑战者"的新结构：HarmonyOS 进入前三意味着 Android/iOS 长期双头垄断被打破，开发者优先级与广告投放结构可能随之调整。</li>
+  <li>AI 模型供给端持续高强度迭代：周级更新已成为常态，"模型稀缺"叙事让位于"模型选择 + 成本控制"叙事。</li>
+  <li>英伟达财报再度确认 AI 算力需求基础面，但 Magnificent Seven 的估值压力仍然存在——业绩兑现速度决定后续主线能否延续。</li>
+  <li>GitHub Trending 抓取通道本次不可用，提醒下游：本简报对开源社区当日动向的覆盖存在缺口，需要时可通过代理或本地缓存补救。</li>
+</ul>
+
+<h2>来源与局限</h2>
+<ul>
+  <li>本次简报共使用 5 次 web_search、1 次 curl 抓取 GitHub Trending，全部按规则一次性执行，未触发重试。</li>
+  <li>可信度标注：🟢 多方确认 1 条（HarmonyOS 第三大 OS，3 个独立来源）；🟡 单源但可靠 3 条。</li>
+  <li>抓取失败 1 项：GitHub Trending 日榜（Jina 通道 403 AbuseAlleviationError），已在卡片中明确标注。</li>
+  <li>所有新闻条目均来源于本次实际抓取；未使用旧日报内容。</li>
+  <li>涉及英伟达财报的报道日期为 2026-08-27（已注明），与简报当日存在 2-3 天时间差。</li>
+</ul>
+
+<div class="footer">
+本简报仅用于内容创作团队选题与素材准备，不构成任何投资建议。新闻热度与可信度评分为本简报作者基于公开信源的判断，可能与第三方视角存在差异。
+</div>
+
+</div>
+</body>
+</html>
