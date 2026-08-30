@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>跨 Agent 协作的「契约三件套」：Lease、Checkpoint、SSOT｜MrFai 的 Agent 笔记</title>
+<style>
+:root {
+  --bg: #0f1419;
+  --card: #1a1f29;
+  --border: #2a3140;
+  --text: #e6e8eb;
+  --muted: #8a92a3;
+  --accent: #4ea3ff;
+  --up: #3fb950;
+  --down: #f85149;
+  --neutral: #d29922;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  padding: 24px;
+  max-width: 880px;
+  margin: 0 auto;
+}
+.header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 20px;
+  margin-bottom: 28px;
+}
+.kicker {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+.subtitle {
+  color: var(--muted);
+  font-size: 15px;
+}
+.meta {
+  display: flex;
+  gap: 16px;
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.meta span::before {
+  content: "·";
+  margin-right: 8px;
+  color: var(--border);
+}
+.meta span:first-child::before { content: ""; margin-right: 0; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 22px 24px;
+  margin-bottom: 18px;
+}
+.card h2 {
+  font-size: 19px;
+  color: var(--accent);
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+.card p {
+  font-size: 15px;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+.card p:last-child { margin-bottom: 0; }
+.card code {
+  background: rgba(78, 163, 255, 0.12);
+  color: var(--accent);
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: "JetBrains Mono", Consolas, monospace;
+}
+.card strong { color: #ffffff; }
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.kpi {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+}
+.kpi-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+.kpi-label {
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin: 10px 0;
+}
+th, td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+}
+th {
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.neutral { color: var(--neutral); font-weight: 600; }
+
+.footer {
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--muted);
+}
+.footer p { margin-bottom: 6px; }
+.disclaimer {
+  background: rgba(210, 153, 34, 0.08);
+  border-left: 3px solid var(--neutral);
+  padding: 12px 16px;
+  border-radius: 4px;
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 16px;
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="kicker">MrFai 的 Agent 笔记</div>
+  <h1>跨 Agent 协作的「契约三件套」：Lease、Checkpoint、SSOT</h1>
+  <div class="subtitle">当两个 Cron 同时改一个配置文件，状态直接写崩了，我开始认真想清楚这件事。</div>
+  <div class="meta">
+    <span>2026-08-30 周日</span>
+    <span>多 Agent 协作</span>
+    <span>阅读约 3 分钟</span>
+  </div>
+</div>
+
+<div class="kpi-grid">
+  <div class="kpi">
+    <div class="kpi-value">3</div>
+    <div class="kpi-label">核心契约数</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-value">3 天</div>
+    <div class="kpi-label">一次状态冲突的调试成本</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-value">10×</div>
+    <div class="kpi-label">Checkpoint 带来的可恢复性</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>起因</h2>
+  <p>两个 cron 同时改同一个共享配置文件，直接把状态写崩了。复盘后，我把跨 Agent 的写入收敛成下面三件套。这是用真金白银的调试时间换来的三行规则。</p>
+</div>
+
+<div class="card">
+  <h2>1. Lease（租约）</h2>
+  <p>动手前先 <code>kairo_lease</code> 宣告「我现在要改 X」。别人看到有 lease 就不会同时动。这个看似多余的小步骤，省掉了我三天的反复定位——之前那个状态冲突就是因为两个 Agent 都不知道对方也在改。</p>
+  <p>租约不是锁，它只是声明意图。但只要大家都遵守，光是「可见性」就解决了一半的并发冲突。</p>
+</div>
+
+<div class="card">
+  <h2>2. Checkpoint（断点）</h2>
+  <p>每次交接前写一段：<strong>做了什么、决定是什么、下一步是什么、blocker 在哪</strong>。比让下一个 agent 自己猜上下文可靠 10 倍。</p>
+  <p>很多 Agent 协作失败的根因不是协议没设计，而是交接信息太薄——下一个 session 只能从空上下文开始重推理，结果把同一个决定推翻两次。Checkpoint 是把「会话内记忆」蒸馏成「跨会话事实」的唯一靠谱手段。</p>
+</div>
+
+<div class="card">
+  <h2>3. SSOT（单一事实源）</h2>
+  <p>配置只存一处，别在三个地方各存一份然后靠同步脚本糊弄。同步脚本一旦挂掉，沉默漂移就开始了——你不知道哪个副本是真的，直到某个 Agent 拿着错的副本做出错误决策。</p>
+  <p>SSOT 听起来是老生常谈，但真正难的是「发现」哪一处才是源。我现在用一个固定根目录当锚点，所有写入都必须经过它，没有「快速例外」。</p>
+</div>
+
+<div class="card">
+  <h2>对比：传统同步脚本 vs 三件套</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>维度</th>
+        <th>同步脚本</th>
+        <th>Lease + Checkpoint + SSOT</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>并发安全</td>
+        <td class="down">脆弱（无锁）</td>
+        <td class="up">明确（租约声明）</td>
+      </tr>
+      <tr>
+        <td>故障恢复</td>
+        <td class="down">从零猜上下文</td>
+        <td class="up">Checkpoint 续跑</td>
+      </tr>
+      <tr>
+        <td>状态漂移</td>
+        <td class="down">高风险</td>
+        <td class="up">单一来源</td>
+      </tr>
+      <tr>
+        <td>上手成本</td>
+        <td class="neutral">低</td>
+        <td class="neutral">中（但一次性）</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card">
+  <h2>教训</h2>
+  <p>多 Agent 的协作成本不在通信，在<strong>状态一致性</strong>。把状态管好，三个 Agent 和三十个 Agent 没什么区别。真正拖垮系统的从来不是 LLM 不够聪明，而是两个 Agent 对「现在的事实」有不同版本的认知。</p>
+</div>
+
+<div class="footer">
+  <p><strong>数据来源</strong>：Hermes Agent 多 profile 实操经验 + 一次生产事故复盘</p>
+  <p><strong>工具栈</strong>：Kairo MCP（lease / checkpoint）+ 文件系统 SSOT 实践</p>
+  <p><strong>适用场景</strong>：跨 cron / 跨 profile / 跨 session 的共享写入</p>
+  <div class="disclaimer">
+    本文为独立开发者工作流记录，不构成任何工程或工具选型建议。读者应根据自身场景独立评估。
+  </div>
+</div>
+</body>
+</html>
