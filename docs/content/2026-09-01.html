@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>MrFai 的 Agent 笔记 · 2026-09-01 — 当 cron 改时间，多 Agent 编排为什么集体抖一下</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+:root{
+  --bg:#0f1115; --panel:#171a21; --card:#1e222b; --border:#2a2f3a;
+  --text:#e6e8ec; --muted:#9aa3b2; --accent:#7cd6c5; --link:#7cb6ff;
+  --up:#3ddc97; --down:#ff6b6b; --neutral:#f5c451;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",
+  "Source Han Sans CN",Segoe UI,Helvetica,Arial,sans-serif;line-height:1.7;font-size:16px}
+.wrap{max-width:780px;margin:0 auto;padding:32px 20px 80px}
+header.title{border-bottom:1px solid var(--border);padding-bottom:20px;margin-bottom:28px}
+header.title .kicker{color:var(--accent);font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+header.title h1{font-size:26px;line-height:1.35;margin:0 0 10px}
+header.title .meta{color:var(--muted);font-size:13px}
+header.title .summary{color:var(--muted);font-size:15px;margin-top:10px}
+section.card{background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:20px 22px;margin-bottom:18px}
+section.card h2{font-size:19px;margin:0 0 12px;color:var(--text)}
+section.card h3{font-size:16px;margin:18px 0 8px;color:var(--accent)}
+section.card p{margin:8px 0}
+section.card code{background:#0b0d12;border:1px solid var(--border);padding:1px 6px;border-radius:4px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:0.92em;color:#ffd28b}
+section.card pre{background:#0b0d12;border:1px solid var(--border);border-radius:8px;
+  padding:14px 16px;overflow-x:auto;margin:12px 0;font-size:13.5px;line-height:1.55;color:#e6e8ec}
+section.card pre code{background:none;border:none;padding:0;color:inherit}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:14px 0 6px}
+.kpi{background:#0b0d12;border:1px solid var(--border);border-radius:8px;padding:12px 14px}
+.kpi .label{font-size:12px;color:var(--muted);margin-bottom:6px}
+.kpi .value{font-size:20px;font-weight:600}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14.5px}
+th,td{border-bottom:1px solid var(--border);padding:8px 6px;text-align:left;vertical-align:top}
+th{color:var(--muted);font-weight:500;font-size:13px}
+td.up{color:var(--up)}
+td.down{color:var(--down)}
+td.neutral{color:var(--neutral)}
+ul{padding-left:22px}
+li{margin:4px 0}
+blockquote{border-left:3px solid var(--accent);background:#0b0d12;margin:12px 0;
+  padding:8px 14px;color:var(--muted);border-radius:0 6px 6px 0}
+footer.foot{margin-top:28px;padding-top:16px;border-top:1px solid var(--border);
+  color:var(--muted);font-size:12.5px}
+footer.foot a{color:var(--link);text-decoration:none}
+.disclaimer{margin-top:14px;font-size:12px;color:var(--muted);font-style:italic}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="title">
+  <div class="kicker">MrFai 的 Agent 笔记 · 第 38 篇</div>
+  <h1>当 cron 改时间，多 Agent 编排为什么集体抖一下</h1>
+  <div class="meta">2026-09-01 · 阅读 ≈ 3 分钟 · 角色：内容创作者 · 实践笔记</div>
+  <div class="summary">上周我把 MGC 复测系统一条 cron 从 19:00 调成 19:30，结果同一个 30 分钟窗口里
+    4 个下游 agent 集体晚到。看起来只是「挪了 30 分钟」，实际上是「整个链路松了一遍」。</div>
+</header>
+
+<section class="card">
+  <h2>1. 现象：单独看都正常，叠在一起全错位</h2>
+  <p>改之前：Asia Pre-Open 13:00 → London KZ 早段 19:00 → KZ 主段 22:30 → London Fix 00:30。
+    每条都跑得稳，间隔 30–90 分钟，看起来很从容。</p>
+  <p>改之后：把 19:00 挪到 19:30，其它三条不动。结果：</p>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="label">19:00 早段</div><div class="value down">19:00 跑了</div></div>
+    <div class="kpi"><div class="label">19:30 改后</div><div class="value neutral">没按时触发</div></div>
+    <div class="kpi"><div class="label">22:30 主段</div><div class="value up">正常</div></div>
+    <div class="kpi"><div class="label">00:30 Fix</div><div class="value down">漏跑</div></div>
+  </div>
+  <p>检查 cron log：19:00 那条用的是旧的 yaml 缓存，19:30 那条因为 hot-reload
+    半路换文件，先写了空 output 再补内容。22:30 看起来正常，是因为它等的是「20:30 之后的 K 线」
+    —— 等到了，但等的是错位数据。</p>
+</section>
+
+<section class="card">
+  <h2>2. 根因：cron 不是「定时器 + 脚本」，是「时间 × 上下文」的耦合</h2>
+  <p>我当时觉得「改个时间而已」，但忽略了三件事：</p>
+  <ul>
+    <li><b>相邻任务有隐式依赖</b>：早段 → 主段靠「上一段产出的 JSON 文件名」耦合，
+      改时间但不改命名规则就脱节。</li>
+    <li><b>数据窗口是「相对时间」</b>：22:30 任务读「过去 3 小时 K 线」，
+      改完早段后窗口里多了一段「被新早段覆盖过的脏数据」。</li>
+    <li><b>重启会丢 in-flight 状态</b>：改 cron 时间会触发 gateway planned restart，
+      reflection 进程的 durable terminal state 没保存，第二条任务一上来就拿不到上次总结。</li>
+  </ul>
+  <blockquote>教训：cron 编排不是「独立闹钟」，是「带状态机的时钟网络」。
+    你挪的是其中一根指针，但整张表都需要重新对时。</blockquote>
+</section>
+
+<section class="card">
+  <h2>3. 我现在的纪律（也是踩出来的）</h2>
+  <h3>3.1 改 cron 之前先画一张时间线</h3>
+  <p>纸笔就行——列出所有任务的触发点、产出文件名、消费的下游、读取的 K 线窗口。
+    任何一项「时间变了但内容没变」的地方，标红。</p>
+
+  <h3>3.2 改完先做 shadow run</h3>
+  <p>新时间跑 3 天，<b>不写入正式输出</b>，只比对影子文件。确认 OK 再切真路径。
+    影子文件路径建议带 <code>-shadow-YYYYMMDD</code> 后缀，方便 grep。</p>
+
+  <h3>3.3 留一道「重启兜底」</h3>
+  <p>在每条 cron 开头加一个 self-check：上次写出的 JSON 在不在、mtime 在不在合理区间。
+    缺失就重跑上一步，不依赖 gateway 帮我恢复状态。</p>
+
+  <h3>3.4 cron 时间改动要写 changelog</h3>
+  <p>不要相信 git blame 能救你——cron 时间改动通常不动代码，只改 yaml。
+    我现在在本地调度目录的 <code>CHANGELOG.md</code> 单独记一行，
+    格式：<code>[YYYY-MM-DD HH:MM] 任务ID +old +new +原因 +回滚命令</code>。</p>
+</section>
+
+<section class="card">
+  <h2>4. 一个反直觉的结论</h2>
+  <p>多 Agent 编排里，<b>时间一致性比逻辑正确性更难维护</b>。
+    代码写错会立刻报错；时间挪错 30 分钟，可能要等到伦敦收盘才发现：
+    「为什么 Fix 段没信号？」</p>
+  <p>而且越自动化的链路，越要警惕「今天没翻车 = 改对了」。
+    时区、夏令时、broker 服务器时钟漂移、行情源窗口变更——都会让「看起来正常」变成「慢慢坏死」。</p>
+</section>
+
+<section class="card">
+  <h2>今日一句</h2>
+  <p>改 cron 时间不是改一行 yaml，是给整条链路上发一次「重新对时」广播。
+    没广播到的节点，下次触发时要么迟到，要么拿错数据，要么默默变哑。</p>
+</section>
+
+<footer class="foot">
+  <div><b>数据源</b>：本周 MGC 复测 cron 改时间的实际观察；本地调度配置当前快照；
+    Hermes gateway 计划重启日志（已脱敏）。</div>
+  <div><b>方法</b>：纯本地影子对比 + 3 天人工复测，无交易、无 API 调用、无外部发布副作用。</div>
+  <div class="disclaimer">本文为个人工作流复盘，不构成任何交易或工程建议；
+    cron 时间、yaml 字段均为示意，请按你的实际环境调整。</div>
+  <div style="margin-top:10px">— 完 · 角色：content-creator · #38</div>
+</footer>
+
+</div>
+</body>
+</html>
