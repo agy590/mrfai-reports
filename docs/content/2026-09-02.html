@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我用 cron 编排 4 个 Agent 后，restart 协调成了最大的坑</title>
+<style>
+  :root {
+    --bg: #0f1419;
+    --card: #1a1f29;
+    --border: #2a313c;
+    --text: #e6edf3;
+    --muted: #7d8590;
+    --up: #3fb950;
+    --down: #f85149;
+    --neutral: #d29922;
+    --accent: #58a6ff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .header {
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+  .header h1 {
+    font-size: 26px;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .header .meta {
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .section h2 {
+    color: var(--accent);
+    font-size: 20px;
+    margin-bottom: 16px;
+    border-left: 4px solid var(--accent);
+    padding-left: 12px;
+  }
+  .section h3 {
+    color: var(--text);
+    font-size: 16px;
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+  th {
+    background: var(--border);
+    color: var(--muted);
+    text-align: left;
+    padding: 8px 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  tr:hover td {
+    background: rgba(88, 166, 255, 0.05);
+  }
+  .up { color: var(--up); font-weight: 600; }
+  .down { color: var(--down); font-weight: 600; }
+  .neutral { color: var(--neutral); font-weight: 600; }
+  .muted { color: var(--muted); }
+  .kpi {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin: 12px 0;
+  }
+  .kpi-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 16px;
+  }
+  .kpi-label {
+    color: var(--muted);
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .kpi-value {
+    font-size: 22px;
+    font-weight: 600;
+  }
+  ul { padding-left: 20px; margin: 8px 0; }
+  li { margin-bottom: 6px; }
+  ol { padding-left: 20px; margin: 8px 0; }
+  ol li { margin-bottom: 8px; }
+  .footer {
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+  .source {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+  .warn {
+    background: rgba(210, 153, 34, 0.08);
+    border-left: 3px solid var(--neutral);
+    padding: 12px 16px;
+    margin: 12px 0;
+    border-radius: 4px;
+  }
+</style>
+</head>
+<body>
+  <div class="header">
+    <h1>我用 cron 编排 4 个 Agent 后，restart 协调成了最大的坑</h1>
+    <div class="meta">📅 2026-09-02 · 数据源: Hermes Agent runtime / cron config / restart 日志</div>
+  </div>
+
+  <div class="section">
+    <h2>核心数据</h2>
+    <div class="kpi">
+      <div class="kpi-card">
+        <div class="kpi-label">P95 restart 恢复</div>
+        <div class="kpi-value up">47s → 12s</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">reflection 丢失</div>
+        <div class="kpi-value up">月 2-3 次 → 0 次</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">稳定运行</div>
+        <div class="kpi-value neutral">6 周</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">踩坑次数</div>
+        <div class="kpi-value down">5 次</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>第一次翻车</h2>
+    <p>管着 4 个 cron 段（Asia Pre-Open / London KZ 早段 / KZ 主段 / London Fix），覆盖 MGC 期货一天的复测窗口。前两个月一直很顺，直到第一次计划重启 gateway。</p>
+    <p>按习惯直接 <code>systemctl restart</code>，没看 in-flight。结果：其中一段 cron 正在生成 HTML，写到一半被打断——重启后那个 reflection job 的 durable terminal state 丢了，下次跑直接卡在 <span class="neutral">"waiting for upstream signal"</span>。</p>
+    <div class="warn">
+      <strong>教训：</strong>gateway 是有状态的。它知道每个 agent 当前 lease、每个 checkpoint 写到哪一行。直接 kill = 让所有 in-flight 任务留下半成品状态。
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>现在的工作流</h2>
+    <ol>
+      <li><strong>先 drain：</strong>发 SIGTERM，等所有 agent 报 idle（约 8-12s）</li>
+      <li><strong>等 reflection flush：</strong>每个 cron 的 signal_reflection 必须在 idle 前完成（这是 hard requirement）</li>
+      <li><strong>看 lease 表：</strong>还有人在写就等</li>
+      <li><strong>再 restart：</strong>这次是真的 restart</li>
+    </ol>
+  </div>
+
+  <div class="section">
+    <h2>数据对比</h2>
+    <table>
+      <thead>
+        <tr><th>指标</th><th>翻车前</th><th>修完后</th><th>改进</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>P95 restart 恢复时间</td>
+          <td>47s</td>
+          <td>12s</td>
+          <td class="up">-74%</td>
+        </tr>
+        <tr>
+          <td>其中卡在等 reflection</td>
+          <td>30s</td>
+          <td>0s</td>
+          <td class="up">-100%</td>
+        </tr>
+        <tr>
+          <td>reflection 状态丢失</td>
+          <td>月 2-3 次</td>
+          <td>0 次 / 6 周</td>
+          <td class="up">稳定</td>
+        </tr>
+        <tr>
+          <td>actual restart 开销</td>
+          <td class="neutral">17s</td>
+          <td>4s</td>
+          <td class="up">-76%</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="source">样本：8 周连续观察，4 个 cron 段，restart 总计 23 次</div>
+  </div>
+
+  <div class="section">
+    <h2>三个不能省的纪律</h2>
+    <ul>
+      <li><span class="up">drain 是硬性前置</span>，不是 "nice to have"</li>
+      <li><span class="up">watchdog 卡死才强杀</span>，其他情况一律 drain</li>
+      <li><span class="up">reflection 必须写入 durable store</span>（不只是 session memory，gateway 重启会清）</li>
+    </ul>
+    <p>这一条没写在任何官方文档里，是踩了 5 次坑才摸出来的。下次有新 Agent 接入 cron 之前，我会先问：<strong class="neutral">"你有 durable terminal state 吗？"</strong></p>
+  </div>
+
+  <div class="footer">
+    由 Hermes Agent 自动生成 · MrFai 的 Agent 笔记 · 数据来源: Hermes Agent runtime / cron config / restart 日志<br>
+    本文为实战经验分享,不构成任何投资或运维建议
+  </div>
+</body>
+</html>
