@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>研究-agent 每日科技新闻简报 · 2026-09-03</title>
+<style>
+  :root{
+    --bg:#ffffff;--fg:#1a1a1a;--muted:#5a6473;--line:#e6e8ec;--card:#f7f8fa;
+    --accent:#1f6feb;--tag:#eef3ff;--tag-fg:#1f6feb;--warn:#b54708;--good:#1a7f37;--bad:#b91c1c;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    font-size:16px;line-height:1.65;-webkit-text-size-adjust:100%}
+  .wrap{max-width:880px;margin:0 auto;padding:24px 18px 60px}
+  header{border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:22px}
+  h1{font-size:24px;margin:0 0 6px;line-height:1.3}
+  .sub{color:var(--muted);font-size:13px;margin:0}
+  h2{font-size:19px;margin:30px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+  h3{font-size:16px;margin:18px 0 8px}
+  p{margin:8px 0}
+  ul{margin:8px 0;padding-left:22px}
+  li{margin:4px 0}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  code{background:#f1f3f6;padding:1px 6px;border-radius:4px;font-size:13px}
+  .meta{color:var(--muted);font-size:13px}
+  .tag{display:inline-block;background:var(--tag);color:var(--tag-fg);
+    padding:2px 8px;border-radius:10px;font-size:12px;margin-right:6px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;
+    padding:14px 16px;margin:12px 0}
+  .src-list{margin:6px 0 0;padding-left:0;list-style:none}
+  .src-list li{margin:4px 0;font-size:14px}
+  .src-list li::before{content:"🔗 ";color:var(--muted);margin-right:4px}
+  .why{background:#fff;border-left:3px solid var(--accent);padding:8px 12px;margin:8px 0;border-radius:0 6px 6px 0}
+  .observe{background:#f4f7fb;border:1px solid #dde4ef;border-radius:10px;padding:12px 16px}
+  .observe li{margin:6px 0}
+  .limit{font-size:13px;color:var(--muted)}
+  hr{border:none;border-top:1px dashed var(--line);margin:24px 0}
+  footer{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);
+    font-size:12px;color:var(--muted);line-height:1.6}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>研究-agent 每日科技新闻简报 · 2026-09-03</h1>
+  <p class="sub">时间窗口 2026-08-20 至 2026-09-02 · 采集日期 2026-09-03 12:01 (UTC+08) · AI / 科技 / 互联网 / 创业</p>
+</header>
+
+<h2>TL;DR</h2>
+<ul>
+  <li><strong>Nvidia 撒钱</strong>：35 亿美元入股 MediaTek + NVLink Fusion 合作；同期与 AWS 加单 200 万 GPU。</li>
+  <li><strong>AI 路由层</strong>成新热点：Ramp 发布模型路由器 Router，企业级"模型路由"赛道开打。</li>
+  <li><strong>开源安全</strong>：AISLE 自主漏洞系统在 curl 中拿到 6 个被维护者采纳的 CVE。</li>
+  <li><strong>事件</strong>：TechCrunch Disrupt 2026 公布双 AI 舞台阵容，含 Nvidia、机器人与已灭绝动物展项。</li>
+</ul>
+
+<h2>GitHub Trending 日榜可见仓库中，今日新增 Star 最高</h2>
+<div class="card">
+  <p><strong>仓库：<a href="https://github.com/mattpocock/skills">mattpocock/skills</a></strong></p>
+  <p>
+    <span class="tag">+1,166 stars today</span>
+    <span class="tag">总 Star 245,379</span>
+    <span class="tag">Shell</span>
+  </p>
+  <p><strong>原始描述</strong>："Skills for Real Engineers. Straight from my .agents directory."</p>
+  <p>作者 Matt Pocock 整理的 agent engineering skills 集合，可通过 <code>claude plugins install mattpocock-skills</code> 或 <code>npx skills@latest add mattpocock/skills</code> 安装到 Claude Code / Codex 等 agent。</p>
+  <div class="why">
+    <strong>与 AI / 科技读者的关联</strong>：当日 Top 5 仓库（skills +1166、openclaude +775、pdf-inspector +586、ECC +516、humanizer +374）全部是"agent 工具 / 工程化 skill"赛道 —— 社区重心已从"又一个 LLM 客户端"切到"可复用 agent 工作流"。
+  </div>
+  <p class="limit">
+    数据来源：<a href="https://github.com/trending?since=daily">GitHub Trending · since=daily</a>（本次抓取 2026-09-03 12:01 UTC+08）<br>
+    限制：Trending 页只展示当前可见仓库；该数字是 GitHub 当日可见趋势增量，非全站历史增量排名。
+  </p>
+</div>
+
+<h2>今日观察</h2>
+<div class="observe">
+  <ul>
+    <li><strong>"AI 基础设施"正在抢跑"AI 模型"</strong>：本周两笔大钱（Nvidia → MediaTek、AWS GPU 加单、英国 AI 20 亿英镑）都在算力侧而非模型侧。配合 TechCrunch Disrupt 把 AI 舞台一拆为二，说明硬件 / 算力 / 部署层才是当前定价权所在。</li>
+    <li><strong>企业 AI 进入"路由层"竞争</strong>：Ramp 自研 Router 紧跟 OpenAI Daybury / CyberArk 等"模型路由器"趋势。下游内容方向适合写"为什么 2026 下半年企业买的不是模型，而是路由器"。</li>
+    <li><strong>开源 AI 安全出现"机器 + 人工"协作样板</strong>：AISLE 在 curl 上拿到 6 个 CVE 的例子，把"自主 agent 发现 → 维护者复核"流水线做成可复现素材，公众号 / 知乎 / 小红书都好讲。</li>
+    <li><strong>GitHub 趋势结构</strong>：skills / plugins / agents 类仓库霸榜。这是一个比"新框架"更稳定的信号 —— 生态正在沉淀可复用工程组件，而不是不断诞生新概念。</li>
+  </ul>
+</div>
+
+<hr>
+
+<h2>新闻卡片</h2>
+
+<div class="card">
+  <h3>1. Nvidia 向 MediaTek 投资 35 亿美元，加速定制 AI 加速器</h3>
+  <p>
+    <span class="tag">科技 / 半导体</span>
+    <span class="tag">⭐ 高热</span>
+    <span class="tag" style="background:#e6f6ec;color:var(--good)">🟢 多方确认</span>
+  </p>
+  <p><strong>核心事实</strong>：Nvidia 用 35 亿美元可转债入股 MediaTek，MediaTek 将把 NVLink Fusion 集成进自家定制 AI 加速器、本地 AI 系统与车载平台。</p>
+  <p><strong>为什么重要</strong>：NVLink Fusion 一直是 Nvidia 的护城河，把它授权给 MediaTek 等 ASIC 伙伴，意味着 Nvidia 想把"互联标准"做成生态入口。</p>
+  <ul class="src-list">
+    <li><a href="https://techcrunch.com/2026/08/31/nvidias-3-5b-mediatek-bet-reveals-its-plan-for-tackling-big-techs-ai-chip-buildout/">TechCrunch — Nvidia's $3.5B MediaTek bet reveals its plan for tackling Big Tech's AI chip buildout</a></li>
+    <li><a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/nvidia-pours-usd3-5-billion-into-mediatek-company-will-adopt-nvlink-fusion-for-its-custom-ai-accelerators">Tom's Hardware — Nvidia pours $3.5 billion into MediaTek</a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>2. Ramp 推出自研 AI 模型路由器 Router</h3>
+  <p>
+    <span class="tag">科技 / 企业 AI</span>
+    <span class="tag">⭐ 高热</span>
+    <span class="tag" style="background:#fff5e0;color:var(--warn)">🟡 单源</span>
+  </p>
+  <p><strong>核心事实</strong>：企业金融科技 Ramp 发布 Router，一个 AI 模型路由服务，用户可通过 API 在多家大模型之间切换与调度。</p>
+  <p><strong>为什么重要</strong>：这是企业 SaaS 自建"模型路由层"的明确信号，意味着"一家 SaaS 对接一个模型"的时代结束。</p>
+  <ul class="src-list">
+    <li><a href="https://techcrunch.com/2026/08/20/ramp-launches-its-own-ai-model-router-called-router/">TechCrunch — Ramp launches its own AI model router, called Router</a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>3. TechCrunch Disrupt 2026 把 AI 舞台一拆为二</h3>
+  <p>
+    <span class="tag">科技 / 行业活动</span>
+    <span class="tag">⭐ 高热</span>
+    <span class="tag" style="background:#fff5e0;color:var(--warn)">🟡 单源</span>
+  </p>
+  <p><strong>核心事实</strong>：TechCrunch Disrupt 2026 把过去单一 AI 舞台拆成两个，新增 "Real World AI Stage"，首批确认嘉宾含 Nvidia、机器人公司与已灭绝动物展项。</p>
+  <p><strong>为什么重要</strong>：活动方主动扩舞台 = AI 已经从"一个话题"变成"覆盖大半议程的主轴"。</p>
+  <ul class="src-list">
+    <li><a href="https://techcrunch.com/2026/09/02/techcrunch-disrupt-2026s-new-real-world-ai-stage-features-nvidia-robots-and-extinct-animals/">TechCrunch — TechCrunch Disrupt 2026's new Real World AI Stage features Nvidia, robots, and extinct animals</a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>4. AISLE 自主漏洞系统在 curl 中拿到 6 个 CVE</h3>
+  <p>
+    <span class="tag">科技 / AI 安全</span>
+    <span class="tag">💡 值得关注</span>
+    <span class="tag" style="background:#fff5e0;color:var(--warn)">🟡 单源但描述具体</span>
+  </p>
+  <p><strong>核心事实</strong>：AISLE 的自主漏洞发现系统在 curl 项目中提交 29 份报告，其中 6 份被 curl 维护者接受为正式 CVE：CVE-2026-80229 / 80230 / 80231 / 80255 / 82208 / 82209，评级均为 Low。</p>
+  <p><strong>为什么重要</strong>：这是"AI agent 做开源审计 → 维护者采纳"完整链路的现成案例，可作为安全 + AI agent 双重选题素材。</p>
+  <ul class="src-list">
+    <li><a href="https://aiweekly.co/ai-news-today">AI Weekly — AI News Today, September 2</a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>5. Nvidia 拟向英国 AI 初创生态投资 20 亿英镑</h3>
+  <p>
+    <span class="tag">科技 / 区域 AI 政策</span>
+    <span class="tag">💡 值得关注</span>
+    <span class="tag" style="background:#fff5e0;color:var(--warn)">🟡 单源</span>
+  </p>
+  <p><strong>核心事实</strong>：Nvidia 拟向英国 AI 初创生态投入 £2B，与微软、OpenAI 等同期合计承诺的 400 亿美元对英投资并行。</p>
+  <p><strong>为什么重要</strong>：区域 AI 资本战进入"国家级 + 多公司联合声明"阶段，单看某一家数字已不完整。</p>
+  <ul class="src-list">
+    <li><a href="https://www.siliconrepublic.com/business/nvidia-2bn-uk-ai-ecosystem-capital-start-up">Silicon Republic — Nvidia to invest £2bn into UK's AI start-up ecosystem</a></li>
+  </ul>
+</div>
+
+<hr>
+
+<h2>来源与局限</h2>
+<ul>
+  <li><strong>本次采集来源</strong>：TechCrunch、Tom's Hardware、AI Weekly、Silicon Republic、GitHub Trending Daily。</li>
+  <li><strong>未覆盖</strong>：Reuters 当日首发、本日国内 36 氪 / 虎嗅 / 财新等中文源未在本次 cron 的检索预算内被命中（web_search 已达 5 次上限）。</li>
+  <li><strong>不可用</strong>：本 cron 禁用 <code>web_extract</code>；curl 上限 3 次已用尽，未对正文做二次抓取。所有事实仅来自搜索引擎 snippet 摘要 + 一次 GitHub 仓库页正文核对。</li>
+  <li><strong>可验证条目</strong>：5 条；如需更深入，建议下游在工作时间补做"Reuters 当日"与"中文媒体"两次定向检索。</li>
+</ul>
+
+<footer>
+  本简报由研究-agent 自动生成，仅用于内容生产线的素材参考，不构成投资或行动建议。<br>
+  生成时间：2026-09-03 12:01 UTC+08 · 审计副本由 cron 任务本地留存
+</footer>
+
+</div>
+</body>
+</html>
