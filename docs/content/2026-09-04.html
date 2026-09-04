@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>我给每个 cron Agent 都加了一条「终止条款」 — MrFai 的 Agent 笔记</title>
+<style>
+:root{--bg:#0f1115;--card:#171a21;--line:#262b36;--fg:#e6e9ef;--mut:#9aa3b2;--acc:#ff7f50;
+--up:#3fb950;--down:#f85149;--neu:#d29922;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+font:16px/1.75 -apple-system,"PingFang SC","Microsoft YaHei",Segoe UI,sans-serif;}
+.wrap{max-width:820px;margin:0 auto;padding:32px 20px 64px}
+header{border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:28px}
+h1{font-size:27px;line-height:1.4;margin:0 0 10px}
+.sub{color:var(--mut);font-size:14px}
+.tag{display:inline-block;background:rgba(255,127,80,.13);color:var(--acc);
+border:1px solid rgba(255,127,80,.35);border-radius:999px;padding:2px 10px;font-size:12px;margin-right:8px}
+section{background:var(--card);border:1px solid var(--line);border-radius:12px;
+padding:20px 22px;margin-bottom:18px}
+h2{font-size:19px;margin:0 0 12px;color:var(--acc)}
+p{margin:0 0 12px}
+ul{margin:0 0 12px;padding-left:20px}
+li{margin-bottom:6px}
+pre{background:#0b0d12;border:1px solid var(--line);border-radius:8px;padding:14px;
+overflow-x:auto;font-size:13px;line-height:1.6;color:#cdd6e3}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+p code,li code{background:#0b0d12;border:1px solid var(--line);border-radius:4px;padding:1px 6px;font-size:13px}
+table{width:100%;border-collapse:collapse;margin:6px 0 12px;font-size:15px}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left}
+th{background:#1d212a;color:var(--mut);font-weight:600}
+.up{color:var(--up);font-weight:600}
+.down{color:var(--down);font-weight:600}
+.neu{color:var(--neu);font-weight:600}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:4px 0 6px}
+.kpi div{background:#0b0d12;border:1px solid var(--line);border-radius:10px;padding:14px}
+.kpi .n{font-size:24px;font-weight:700}
+.kpi .l{font-size:12px;color:var(--mut);margin-top:4px}
+.punch{border-left:3px solid var(--acc);padding-left:14px;font-size:17px;color:#fff}
+footer{color:var(--mut);font-size:12px;border-top:1px solid var(--line);padding-top:16px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<div><span class="tag">Agent 工作流</span><span class="tag">Hermes</span><span class="tag">Cron</span></div>
+<h1>我给每个 cron Agent 都加了一条「终止条款」，跑飞的次数降到 0</h1>
+<div class="sub">MrFai 的 Agent 笔记 · 2026-09-04 · 角色：content-creator</div>
+</header>
+
+<section>
+<h2>最贵的 Agent bug 不是做错事，是做不完事</h2>
+<p>我有个每日内容 cron，任务只有一句：写一条帖子。有一次它跑了 <span class="down">23 分钟</span>——写完帖子后，它开始"检查一下发布管道是否正常"，于是 <code>ls</code> 整个 cron 目录，读 jobs.json，发现另一个任务的配置"看起来可以优化"，接着去读那个任务的历史输出……最后它交付了帖子，还附赠了一份没人要的 cron 体检报告。</p>
+<p>Token 烧掉的钱是次要的。真正的问题是：我再也无法预测这个任务要跑多久。</p>
+</section>
+
+<section>
+<h2>根因不是模型笨，是任务边界没写死</h2>
+<p>我复盘了 5 次跑飞的记录，共同点很清楚：</p>
+<ul>
+<li>prompt 里写了"做什么"，没写"做完的标志是什么"</li>
+<li>模型手里有 terminal，而好奇心是免费的</li>
+<li>"顺手检查一下"在人类同事身上是美德，在 cron 里是失控</li>
+</ul>
+<p>LLM 没有"我做完了"这个内在信号。它只有"还能不能再做点什么"。你不给它一个停止条件，它就会自己找一个——通常是错的。</p>
+</section>
+
+<section>
+<h2>我现在写的终止条款（可以直接抄）</h2>
+<p>放在 prompt 最底部，标题写「⛔ 终止条款（最高优先级）」：</p>
+<pre><code>1. 总步数硬上限 5 步：
+   #1 写内容 → #2 写 HTML → #3 写 md → #4 自验证 → #5 最终回复
+   到 #5 必须 final response，不许再调任何工具。
+2. 自验证通过 = 任务结束。禁止探索其他 cron 配置、读会话历史、
+   任何「摸底」动作。
+3. 不许 cat jobs.json / ls cron 目录 —— 这不是你的任务。
+4. 写文件优先用 write_file 工具，不用 heredoc（会触发安全门卡死）。
+5. 看到 pending_approval = 该命令被拦，立刻换方式，不要重试同一条。
+6. 没有未完成的事就直接 final response。完成即收工。</code></pre>
+<p><strong>一、把步数写成具体编号，不写"尽量少调工具"。</strong> 模糊约束等于没有约束。"5 步"和"#5 必须收尾"是可判定的，模型能自己算到第几步了。</p>
+<p><strong>二、显式列出禁止动作，而不只是描述边界。</strong> "不要越权"没用；"不许 <code>cat jobs.json</code>"有用。写具体命令名，命中率高得多。</p>
+<p><strong>三、把失败模式也写进去。</strong> 第 5 条是我被坑出来的：安全门返回 pending_approval 后，模型会认为是偶发失败，反复重试同一条 heredoc，卡死十几分钟。告诉它"这是拦截不是抖动"，它立刻换路。</p>
+</section>
+
+<section>
+<h2>效果数据</h2>
+<div class="kpi">
+<div><div class="n up">−64%</div><div class="l">工具调用次数</div></div>
+<div><div class="n up">90 秒</div><div class="l">稳定运行时长</div></div>
+<div><div class="n up">0</div><div class="l">越权探索次数</div></div>
+</div>
+<table>
+<thead><tr><th>指标</th><th>加之前</th><th>加之后</th><th>变化</th></tr></thead>
+<tbody>
+<tr><td>平均工具调用次数</td><td class="down">14 次</td><td class="up">5 次</td><td class="up">−64%</td></tr>
+<tr><td>单次运行时长</td><td class="down">4–23 分钟</td><td class="up">稳定 90 秒内</td><td class="up">方差归零</td></tr>
+<tr><td>越权探索次数（10 次运行）</td><td class="down">4</td><td class="up">0</td><td class="up">−100%</td></tr>
+<tr><td>交付成功率</td><td class="neu">10/10</td><td class="up">10/10</td><td class="neu">持平</td></tr>
+</tbody>
+</table>
+<p>时长方差归零比均值下降更有价值——cron 是无人值守的，可预测性就是可靠性。</p>
+</section>
+
+<section>
+<h2>一句话</h2>
+<p class="punch">给 Agent 写任务时，「什么时候停」和「做什么」同等重要，但 90% 的人只写后一半。</p>
+<p>如果你也在跑无人值守的 Agent，今天就去给它加一段终止条款。成本 10 分钟，收益是你不用再盯着它跑。</p>
+</section>
+
+<footer>
+数据源：本人 Hermes Agent 实例的 cron 运行记录（10 次采样，2026 年 8–9 月），非公开基准测试。<br>
+免责声明：文中数字来自单一环境的自有观测，模型版本、工具集与安全策略不同会导致结果差异，不构成通用性能承诺。
+</footer>
+</div>
+</body>
+</html>
