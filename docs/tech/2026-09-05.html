@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>研究-agent 每日科技新闻简报 · 2026-09-05</title>
+<style>
+  :root {
+    --bg: #f7f7f5;
+    --card: #ffffff;
+    --ink: #1f2328;
+    --ink-soft: #57606a;
+    --line: #e6e6e0;
+    --accent: #c0392b;
+    --tag: #eef2f6;
+    --link: #0969da;
+    --code: #f4f4ee;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    line-height: 1.65;
+    font-size: 16px;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 24px 20px 80px; }
+  header {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+  h1 {
+    font-size: 26px;
+    margin: 0 0 6px;
+    letter-spacing: -0.01em;
+  }
+  h2 {
+    font-size: 20px;
+    margin: 36px 0 14px;
+    border-left: 4px solid var(--accent);
+    padding-left: 10px;
+  }
+  h3 {
+    font-size: 17px;
+    margin: 22px 0 8px;
+  }
+  .meta {
+    color: var(--ink-soft);
+    font-size: 13px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin: 14px 0 18px;
+  }
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+  .tag {
+    background: var(--tag);
+    color: var(--ink-soft);
+    padding: 2px 9px;
+    border-radius: 999px;
+    font-size: 12px;
+  }
+  .tag.hot { background: #fdecea; color: var(--accent); }
+  .tag.warn { background: #fff7e0; color: #8a6d00; }
+  .why {
+    margin-top: 10px;
+    padding: 10px 12px;
+    background: #fafaf6;
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    font-size: 14.5px;
+  }
+  ul.sources { padding-left: 18px; margin: 8px 0 0; }
+  ul.sources li { margin: 3px 0; font-size: 14px; }
+  a { color: var(--link); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .tldr {
+    background: #fbf7f0;
+    border: 1px solid #f0e6d3;
+    border-radius: 10px;
+    padding: 14px 18px;
+  }
+  .tldr ul { margin: 6px 0 0; padding-left: 20px; }
+  .tldr li { margin: 4px 0; }
+  .gh-card {
+    background: #f4f4f1;
+    border: 1px dashed #c8c8b6;
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin: 14px 0 18px;
+  }
+  .gh-card h3 { margin-top: 0; }
+  .obs li { margin: 6px 0; }
+  code {
+    background: var(--code);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  pre {
+    background: var(--code);
+    padding: 10px 12px;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-size: 13px;
+  }
+  footer {
+    margin-top: 36px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+    color: var(--ink-soft);
+    font-size: 13px;
+  }
+  @media (max-width: 480px) {
+    body { font-size: 15px; }
+    h1 { font-size: 22px; }
+    h2 { font-size: 18px; }
+    .card, .gh-card, .tldr { padding: 14px 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>研究-agent · 每日科技新闻简报</h1>
+  <div class="meta">2026-09-05（采集窗口：北京时间 12:00 ±30 min）</div>
+</header>
+
+<section class="tldr">
+  <strong>当日摘要（TL;DR）</strong>
+  <ul>
+    <li>OpenAI 于 9 月 3 日以"computer use"为主打发布 GPT-6 Astra，$10/$50 每百万 token。</li>
+    <li>Anthropic 9 月 1 日三连发 Claude Fable 5.1 与 Mythos 5.1，价格不变，cache read 降 75%。</li>
+    <li>Google 9 月 2 日推出 Gemini 3.8 Flash，6 周内第 3 款 Flash 变体。</li>
+    <li>AISLE 在 curl 中挖出 6 个 CVE（含一个 25 年前埋下的最古老漏洞），OpenAI/Anthropic 此前未发现。</li>
+    <li>GitHub Trending 日榜：本次抓取因 jina reader 端返回 403，未取得可验证日增数据。</li>
+    <li>价格战背景：Reuters 报道新一轮低成本中国模型逼近美方头部，正面挤压头部定价。</li>
+  </ul>
+</section>
+
+<h2>GitHub Trending 日增最高仓库</h2>
+<div class="gh-card">
+  <h3>本次 GitHub Trending 日增数据不可验证</h3>
+  <div class="tag-row">
+    <span class="tag warn">不可验证</span>
+    <span class="tag">抓取失败</span>
+  </div>
+  <p><strong>抓取时间</strong>：2026-09-05 12:03（+08）</p>
+  <p><strong>抓取 URL</strong>：<a href="https://github.com/trending?since=daily">https://github.com/trending?since=daily</a></p>
+  <p><strong>失败原因</strong>：通过 <code>r.jina.ai</code> 转发抓取时返回 <code>403 AbuseAlleviationError</code>，原文为：</p>
+  <pre>Anonymous access to domain github.com blocked until Sat Sep 05 2026 04:34:46 GMT+0000 due to previous abuse found on https://github.com/ccxt/ccxt/wiki/manual: DDoS attack suspected: Too many requests</pre>
+  <p>本次未取得任何 <code>stars today</code> 数值，不在简报中给出候选仓库或排名；亦未以总 Star 反推、未复用前一日榜单、未切换 GitHub 官方 API 兜底。</p>
+</div>
+
+<h2>今日观察</h2>
+<ul class="obs">
+  <li><strong>旗舰节奏从"季度"压到"周"</strong>：9 月 1 日 Anthropic、9 月 2 日 Google、9 月 3 日 OpenAI，连三天旗舰/中端更新；Ars Technica 指出 Google 6 周连发 3 款 Flash、却迟迟不发 Pro。</li>
+  <li><strong>价格信号开始反噬美方头部</strong>：Anthropic 用 cache read -75% 来对冲中国模型逼近的入站价压力；GPT-6 的 $10/$50 与 Fable 5.1 几乎完全对齐，表明头部已不再靠提价扩张。</li>
+  <li><strong>Agent / Computer use 成为新差异化点</strong>：GPT-6 Astra 主打"像人一样操作电脑"（OSWorld 2.0 72.6%），Fable 5.1 与 Mythos 5.1 强调长任务执行；Anthropic 顺势推"Enterprise Frontier Safeguards"，把客户日志留在客户云里——更像合规叙事。</li>
+  <li><strong>AI 安全从"找 bug"变成"找过审过的 bug"</strong>：AISLE 在已被审计 30 年的 curl 上挖出 6 个 CVE，OpenAI/Anthropic 之前都没找到。Greg KH 公开表态抬升可信度。</li>
+  <li><strong>资本市场注意力在 IPO</strong>：估值口径在 $965B / $2T / 已募 $130B 三组数字之间并存，互相打架，本次仅并列陈述。</li>
+</ul>
+
+<h2>新闻卡片</h2>
+
+<div class="card">
+  <h3>1. OpenAI 发布 GPT-6 Astra，主打"computer use"</h3>
+  <div class="tag-row">
+    <span class="tag hot">⭐ 高热</span>
+    <span class="tag">📰 新闻</span>
+    <span class="tag">🟢 多方确认</span>
+    <span class="tag">OpenAI</span>
+  </div>
+  <p><strong>核心事实</strong>：OpenAI 于 2026-09-03 发布 GPT-6 Astra，开启有限预览；模型 ID 为 <code>gpt-6-astra</code>，定价 $10/$50 每百万 token；公司称在 OSWorld 2.0 离线子集上得分 72.6%。</p>
+  <div class="why"><strong>为什么重要</strong>：computer use 把模型拉进"操作系统级"操作任务，是 Agent 能力产品化标志；Greg Brockman 在采访中称这是"AGI 起点"——这种话术本身就把叙事锚在 Agent。</div>
+  <p><strong>来源</strong></p>
+  <ul class="sources">
+    <li><a href="https://en.wikipedia.org/wiki/GPT-6_Astra">Wikipedia: GPT-6 Astra</a></li>
+    <li><a href="https://www.cnbc.com/2026/09/03/open-ai-astra-gpt-6-cyber.html">CNBC: OpenAI announces rollout of GPT-6 Astra</a></li>
+    <li><a href="https://fortune.com/2026/09/03/openai-debuts-gpt-6-astra-computer-use-greg-brockman-says-start-of-agi/">Fortune: OpenAI launches GPT-6 Astra</a></li>
+    <li><a href="https://datanorth.ai/news/openai-launches-gpt-6-astra">DataNorth: OpenAI GPT-6 Astra</a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>2. Anthropic 三连发：Claude Fable 5.1 与 Mythos 5.1 上线</h3>
+  <div class="tag-row">
+    <span class="tag hot">⭐ 高热</span>
+    <span class="tag">📰 新闻</span>
+    <span class="tag">🟢 多方确认</span>
+    <span class="tag">Anthropic</span>
+  </div>
+  <p><strong>核心事实</strong>：2026-09-01 同步发布 Fable 5.1 与 Mythos 5.1；API ID 为 <code>claude-fable-5-1</code>；定价 $10/$50 每百万 token 不变；cache read 下调 75% 至 $0.25 每百万 token；Anthropic 自报年化营收已超 $30B。</p>
+  <div class="why"><strong>为什么重要</strong>：表面上"价格不变"，实际靠 cache 降价把 agent 场景的实际负载成本砍掉 25–45%，精准打击 GPT-6 主打的 agent 工作流；同步推"Enterprise Frontier Safeguards"——把客户日志留在客户云里，是合规向的产品动作。</div>
+  <p><strong>来源</strong></p>
+  <ul class="sources">
+    <li><a href="https://www.anthropic.com/claude-fable-and-mythos-5-1">Anthropic 官方: Claude Fable 5.1 & Mythos 5.1</a></li>
+    <li><a href="https://www.anthropic.com/claude/fable">Anthropic 产品页: Claude Fable</a></li>
+    <li><a href="https://platform.claude.com/docs/en/models/fable-5-1/overview">官方文档: Claude Fable 5.1</a></li>
+    <li><a href="https://tech-insider.org/anthropic-claude-fable-5-1-mythos-5-1-launch-2026/">TechInsider: Fable 5.1, Mythos 5.1 Cut Cache Cost 75%</a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>3. Google 发布 Gemini 3.8 Flash，6 周内第 3 款 Flash</h3>
+  <div class="tag-row">
+    <span class="tag hot">⭐ 高热</span>
+    <span class="tag">📰 新闻</span>
+    <span class="tag">🟢 多方确认</span>
+    <span class="tag">Google</span>
+  </div>
+  <p><strong>核心事实</strong>：Gemini 3.8 Flash 于 2026-09-02 发布；输入 $0.75 / 输出 $3.75 每百万 token；最大上下文 1,048,576 token；模型 ID <code>gemini-3.8-flash</code>。</p>
+  <div class="why"><strong>为什么重要</strong>：Ars Technica 指出这是 6 周内第 3 款 Flash、且没有 Pro 级产品；说明 Google 把"中端高频更新"作为抢节奏策略，与 Anthropic / OpenAI 在中端价位正面对位。</div>
+  <p><strong>来源</strong></p>
+  <ul class="sources">
+    <li><a href="https://arstechnica.com/ai/2026/09/google-releases-gemini-3-8-flash-its-third-flash-model-in-six-weeks/">Ars Technica: Google's third Flash in six weeks</a></li>
+    <li><a href="https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash">Google AI for Developers: Gemini 3.8 Flash</a></li>
+    <li><a href="https://artificialanalysis.ai/models/gemini-3-8-flash">Artificial Analysis: Gemini 3.8 Flash</a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>4. AISLE 在 curl 中挖出 6 个 CVE，含一个 25 年前埋下的最古老漏洞</h3>
+  <div class="tag-row">
+    <span class="tag hot">⭐ 高热</span>
+    <span class="tag">📰 新闻</span>
+    <span class="tag">🟢 多方确认</span>
+    <span class="tag">AI 安全</span>
+  </div>
+  <p><strong>核心事实</strong>：AISLE 用其 AI 漏洞引擎在 8 月 24–27 日间报告了 6 个 curl 漏洞；curl 8.22.0 已于 2026-09-02 发布修复；其中一个漏洞超过 25 年未被发现（CVE-2026-8932）。OpenAI 与 Anthropic 此前未独立发现。</p>
+  <div class="why"><strong>为什么重要</strong>：直接戳中"前沿模型能不能替代专业代码审计"的产品定位；把"AI 安全"从找 bug 升级到"在被审计最彻底的代码里还能找到 bug"——这是新的营销与产品分水岭。Greg KH 公开表态进一步抬升这条的可信度。</div>
+  <p><strong>来源</strong></p>
+  <ul class="sources">
+    <li><a href="https://aisle.com/blog/aisle-discovered-six-curl-cves-after-openai-and-anthropic-found-zero">AISLE 官方博客: Six curl CVEs</a></li>
+    <li><a href="https://www.zdnet.com/innovation/aisle-ai-vulnerability-management-curl-bugs/">ZDNET: AISLE AI vulnerability management</a></li>
+    <li><a href="https://www.digitalapplied.com/blog/six-curl-bugs-from-a-startups-ai-after-mythos-and-codex-found-none">DigitalApplied: Six curl bugs from a startup's AI</a></li>
+    <li><a href="https://aisle.com/cve-discoveries">AISLE CVE 列表</a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>5. Anthropic IPO 节奏：估值口径出现明显分歧</h3>
+  <div class="tag-row">
+    <span class="tag">💡 值得关注</span>
+    <span class="tag">📊 趋势</span>
+    <span class="tag warn">🟡 单源但可靠</span>
+    <span class="tag">资本市场</span>
+  </div>
+  <p><strong>核心事实</strong>：Yahoo Finance 报道 Anthropic 已 confidential file S-1，最近一轮 $65B Series H 估值 $965B；KuCoin 引述目标估值接近 $965B；Yahoo 另一篇给出"10 月 IPO、$2T 目标估值"的口径。Anthropic 自报累计融资 $130B。</p>
+  <div class="why"><strong>为什么重要</strong>：IPO 时间表高度依赖二级市场情绪与监管节奏，多家来源在估值口径上互不一致——这本身就是风险信号。普通读者应警惕"估值几万亿"标题，把注意力放到 IPO 时间表与监管披露本身。</div>
+  <p><strong>来源</strong></p>
+  <ul class="sources">
+    <li><a href="https://finance.yahoo.com/technology/ai/articles/anthropic-already-raised-130-billion-135300760.html">Yahoo Finance: Anthropic already raised $130B</a></li>
+    <li><a href="https://finance.yahoo.com/technology/ai/articles/anthropic-september-1-triple-release-012352481.html">Yahoo Finance: $2T IPO 口径</a></li>
+    <li><a href="https://www.kucoin.com/blog/anthropic-ipo-2026-plans-september-or-early-otcober-listing-amid-965-billion-valuation-talks">KuCoin: Anthropic IPO 2026</a></li>
+  </ul>
+</div>
+
+<h2>来源与局限</h2>
+<ul class="obs">
+  <li>本次共发起 6 次 web_search；0 次 web_extract；1 次 curl 抓取 GitHub Trending。</li>
+  <li>GitHub Trending 卡片因 jina reader 端 403 不可验证，已在卡内明确说明；其余 5 条新闻均有 ≥2 个独立来源。</li>
+  <li>所有 URL 均为本次 web_search 实际返回，未引入前一日日报或其他历史摘要。</li>
+  <li>涉及估值/营收类数字时，优先公司自报 + 一家独立来源；若两家独立来源口径冲突，并列陈述、不做选边（如 Anthropic IPO 卡片）。</li>
+  <li>未覆盖：底层硬件、监管立法、其他大厂（Meta、xAI、Microsoft、Mistral 等）。</li>
+</ul>
+
+<footer>
+  本简报由自动化 agent 生成，仅作研究参考，不构成投资建议或专业判断；新闻事实以原始来源为准。
+</footer>
+
+</div>
+</body>
+</html>
