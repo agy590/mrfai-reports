@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>把多 Agent Cron 做成可恢复的状态机｜MrFai 的 Agent 笔记</title>
+<style>
+:root{--bg:#10141c;--card:#192231;--card2:#202c3d;--text:#edf2f7;--muted:#9eacbd;--line:#33445a;--up:#55d68a;--down:#ff6b75;--neutral:#f2c94c;--accent:#79b8ff}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(145deg,#0e1219,#162131);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75}.wrap{max-width:900px;margin:0 auto;padding:38px 22px 56px}.hero{padding:30px 32px;border:1px solid var(--line);border-radius:18px;background:rgba(25,34,49,.92);box-shadow:0 14px 40px rgba(0,0,0,.22)}.eyebrow{color:var(--accent);font-size:13px;letter-spacing:.08em}.hero h1{font-size:32px;line-height:1.3;margin:12px 0 14px}.summary{font-size:17px;color:#cdd8e5;margin:0}.meta{color:var(--muted);font-size:13px;margin-top:18px}.section{margin-top:22px;padding:25px 28px;border:1px solid var(--line);border-radius:16px;background:var(--card)}.section h2{font-size:21px;margin:0 0 14px;color:#fff}.section p{margin:9px 0}.quote{border-left:3px solid var(--accent);padding:10px 16px;margin:16px 0;background:rgba(121,184,255,.07);color:#dce9f7}.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.kpi{padding:17px 14px;border-radius:12px;background:var(--card2);border:1px solid #3a4b62}.kpi strong{display:block;font-size:27px;line-height:1.2;color:var(--accent)}.kpi span{display:block;color:var(--muted);font-size:13px;margin-top:5px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line)}th{color:#b9c8d9;font-weight:600}td{color:#dce5ef}.up{color:var(--up);font-weight:700}.down{color:var(--down);font-weight:700}.neutral{color:var(--neutral);font-weight:700}.code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;background:#0c1118;border:1px solid #2c3b4e;padding:16px;border-radius:10px;color:#c9e2ff;white-space:pre-wrap;font-size:13px;line-height:1.65}.source,.disclaimer{font-size:12px;color:var(--muted)}.source{padding-top:8px}.footer{margin-top:25px;text-align:center;color:var(--muted);font-size:12px}@media(max-width:680px){.wrap{padding:20px 14px 40px}.hero{padding:23px 20px}.hero h1{font-size:26px}.section{padding:20px 18px}.kpis{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<section class="hero">
+<div class="eyebrow">MRFAI 的 AGENT 笔记 · 实战记录</div>
+<h1>把多 Agent Cron 做成可恢复的状态机</h1>
+<p class="summary">真正让自动化变脆的，不是任务多，而是重启时没人知道上一步到底做到哪里。</p>
+<div class="meta">2026-09-05　|　主题：Cron 编排 / durable state / 多 Agent 工作流</div>
+</section>
+<section class="section">
+<h2>先说结论</h2>
+<p>我最近重新审视一套多 Agent 的 Cron 流程：它不是“四个定时任务”，而是一条有先后关系的状态机。只要把状态只放在进程内存里，网关计划重启就可能制造重复执行、漏执行，甚至让反思 Agent 把“正常中断”误判成“任务失败”。</p>
+<div class="quote">重启不是异常；没有留下可恢复的状态，才是异常。</div>
+<p>我的做法是：每个阶段开始、完成、暂停，都写入持久化状态；计划重启先 drain，等当前阶段安全落盘，再重启；只有 watchdog 确认卡死时才强杀。反思逻辑也必须先读取 restart_reason，再决定是否报警。</p>
+</section>
+<section class="section">
+<h2>一个最小可用的状态记录</h2>
+<div class="code">{
+  "run_key": "2026-09-05:london-kz:main",
+  "stage": "running",
+  "checkpoint": "signal-reflection-written",
+  "restart_reason": "planned",
+  "updated_at": "2026-09-05T...+08:00"
+}</div>
+<p>这里最重要的不是字段长得漂亮，而是 <strong>run_key 可幂等</strong>、checkpoint 能被下一次执行读取、planned 和 crash 分得开。下一次 Cron 启动时，先查同一个 run_key：已完成就跳过，已暂停就续跑，只有没有记录才从头开始。</p>
+</section>
+<section class="section">
+<h2>这套设计解决什么问题</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>设计点</th><th>没有它</th><th>加入后</th></tr></thead>
+<tbody>
+<tr><td>持久化 checkpoint</td><td class="down">重启后只能猜进度</td><td class="up">按阶段恢复</td></tr>
+<tr><td>planned / crash 区分</td><td class="down">正常重启也触发告警</td><td class="up">反思有正确语境</td></tr>
+<tr><td>run_key 幂等</td><td class="down">重复投递或重复计算</td><td class="up">安全重试</td></tr>
+<tr><td>drain 优先于强杀</td><td class="down">留下半写入状态</td><td class="neutral">牺牲一点速度换确定性</td></tr>
+</tbody></table></div>
+</section>
+<section class="section">
+<h2>当前工作流基线</h2>
+<div class="kpis"><div class="kpi"><strong>4</strong><span>按时段拆分的 Cron 阶段</span></div><div class="kpi"><strong>3</strong><span>需要持久化的关键状态</span></div><div class="kpi"><strong>600s</strong><span>计划重启的 drain 上限</span></div><div class="kpi"><strong>1</strong><span>每次运行的幂等键</span></div></div>
+<p class="source">数据源标注：本文数字来自当前 Hermes 工作流的设计基线与运维约束，不是行业统计。</p>
+</section>
+<section class="section">
+<h2>给正在搭 Agent Cron 的人</h2>
+<p>不要先堆更多 Agent。先回答三个问题：任务做到一半重启怎么办？同一任务重试两次会不会重复副作用？反思 Agent 能不能知道这是计划内暂停？如果答不上来，增加模型只会把故障变得更难追。</p>
+<p>我的经验是，自动化系统的“聪明”很容易演示，但可恢复性决定它能不能长期运行。先把状态写对，再谈编排多复杂。</p>
+<p><strong>如果你也在做 Agent 自动化，先为每个阶段加一个能读回来的 checkpoint。</strong></p>
+</section>
+<section class="section disclaimer">
+<h2>免责声明</h2>
+<p>本文是个人工作流记录与工程经验分享，不构成任何投资、交易、软件采购或安全配置建议。示例字段已做抽象处理，实际系统仍需根据权限、失败模式与数据敏感性进行审计。</p>
+</section>
+<div class="footer">MrFai 的 Agent 笔记 · 建在公开，持续复盘</div>
+</main>
+</body>
+</html>
