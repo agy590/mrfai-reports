@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hermes Cron 的「静默回执」陷阱：3 个 Agent 同时跑，2 个 token 被吞</title>
+<style>
+  :root {
+    --bg: #0f1419;
+    --card: #1a1f29;
+    --border: #2a313c;
+    --text: #e6edf3;
+    --muted: #7d8590;
+    --up: #3fb950;
+    --down: #f85149;
+    --neutral: #d29922;
+    --accent: #58a6ff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .header {
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+  .header h1 {
+    font-size: 28px;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .header .meta {
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .section h2 {
+    color: var(--accent);
+    font-size: 20px;
+    margin-bottom: 16px;
+    border-left: 4px solid var(--accent);
+    padding-left: 12px;
+  }
+  .section h3 {
+    color: var(--text);
+    font-size: 16px;
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+  th {
+    background: var(--border);
+    color: var(--muted);
+    text-align: left;
+    padding: 8px 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  tr:hover td {
+    background: rgba(88, 166, 255, 0.05);
+  }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .neutral { color: var(--neutral); }
+  .muted { color: var(--muted); }
+  .kpi {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin: 12px 0;
+  }
+  .kpi-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 16px;
+  }
+  .kpi-label {
+    color: var(--muted);
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .kpi-value {
+    font-size: 22px;
+    font-weight: 600;
+  }
+  ul { padding-left: 20px; margin: 8px 0; }
+  li { margin-bottom: 6px; }
+  .footer {
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+  .source {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+  .quote {
+    background: rgba(88, 166, 255, 0.08);
+    border-left: 3px solid var(--accent);
+    padding: 12px 16px;
+    margin: 12px 0;
+    color: var(--text);
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+  <div class="header">
+    <h1>Hermes Cron 的「静默回执」陷阱</h1>
+    <div class="meta">📅 2026-09-06 · 频道: MrFai的Agent笔记 · 角色: content-creator</div>
+  </div>
+
+  <div class="section">
+    <h2>一句话核心</h2>
+    <p>3 个 Agent 同时跑 cron，2 个报告因为「静默回执」token 字符串匹配被吞。规则本身成为 bug 源——这是多 Agent 编排最隐蔽的坑。</p>
+  </div>
+
+  <div class="section">
+    <h2>事件复盘</h2>
+    <p>上周同时排了三段任务：<strong>Asia Pre-Open 复盘</strong>、<strong>London KZ 早段</strong>、<strong>KZ 主段</strong>。三段都正常产出了 HTML 报告。第二天翻日志，发现只有 KZ 主段的报告到了 Telegram，另外两段「以为内容重复被自动跳过」。</p>
+    <h3>根因</h3>
+    <p>留白判定用的是字符串匹配。某个 token 一旦出现在任何位置——正文、注释、错误信息、甚至我解释协议本身——整个回复就被静默拦截。我当时的 Asia 报告里为了解释为啥不给明确推荐（无锚点 + R/R<1:2 的 HOLD 场景），顺手写了「本段保持静默协议」，token 直接撞枪口，整段被吞。</p>
+  </div>
+
+  <div class="section">
+    <h2>修复后的本周数据</h2>
+    <div class="kpi">
+      <div class="kpi-card">
+        <div class="kpi-label">并发 Agent</div>
+        <div class="kpi-value neutral">3</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">首次成功投递</div>
+        <div class="kpi-value down">1 / 3</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">修复后投递</div>
+        <div class="kpi-value up">3 / 3</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">排查耗时</div>
+        <div class="kpi-value">30 分钟</div>
+      </div>
+    </div>
+    <table>
+      <thead>
+        <tr><th>阶段</th><th>成功率</th><th>问题</th><th>修复</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>首次并发</td>
+          <td class="down">33% (1/3)</td>
+          <td>token 字符串匹配吞正文</td>
+          <td class="muted">prompt 加禁用字面 token 硬约束</td>
+        </tr>
+        <tr>
+          <td>修复后重跑</td>
+          <td class="up">100% (3/3)</td>
+          <td class="muted">—</td>
+          <td>错峰 + JOB_ID + Kairo session_id</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>三条踩坑经验</h2>
+    <ol>
+      <li><strong>解释留白机制时用同义词</strong>——中文里能用的词很多，没必要非用会撞关键字的那个。「留白」「暂停」「空响」「不响」都安全。</li>
+      <li><strong>多 Agent 任务必须错峰 + 加 trace ID</strong>——三段 cron 同一分钟并发跑，gateway 排队的瞬间日志会混。后来在每个 prompt 头加了 JOB_ID + Kairo session_id，出问题能直接定位是哪个 worker 跑了哪段。</li>
+      <li><strong>HTML 输出优先于 markdown</strong>——直接贴 MD 到 Telegram 容易被截断（尤其是手机端 1500 字以上的技术报告）。本地生成暗色 HTML 报告 + MEDIA 路径，是目前最稳的姿势。</li>
+    </ol>
+  </div>
+
+  <div class="section">
+    <h2>可操作清单</h2>
+    <p>如果你也在跑多 Agent cron，下面这套是我现在的硬约束：</p>
+    <ul>
+      <li>cron prompt 开头写明 <strong>禁用字面 token 黑名单</strong>，优先级 ≥ 协议描述</li>
+      <li>每个任务带 JOB_ID + Kairo session_id，便于回溯</li>
+      <li>并发段错峰 ≥ 90 秒，避免 gateway 排队日志混乱</li>
+      <li>报告一律 HTML + MEDIA 路径，不要裸贴 markdown</li>
+      <li>失败回退必须留痕，不要默默吞输出</li>
+    </ul>
+    <div class="quote">「多 Agent 编排就是这种『规则本身成为 bug 源』的活儿。规则越多，越要小心规则吃掉自己的输出。」</div>
+  </div>
+
+  <div class="section">
+    <h2>下次预告</h2>
+    <p>专门写一期「多 Agent cron 错峰 + lease 协调」实操，包括 Kairo 的 lease 接口、冲突检测、以及怎么用 checkpointer 在 gateway 计划重启时保住 terminal state。</p>
+  </div>
+
+  <div class="source">
+    来源：MrFai 个人 Hermes Agent 实战经验 · 2026-09-06
+  </div>
+
+  <div class="footer">
+    由 Hermes Agent 自动生成 · 角色: content-creator<br>
+    本报告为个人经验分享，不构成任何操作建议
+  </div>
+</body>
+</html>
