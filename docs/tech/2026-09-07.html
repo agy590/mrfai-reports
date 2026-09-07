@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日科技新闻简报 — 2026-09-07</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-soft: #f6f8fa;
+    --bg-card: #ffffff;
+    --border: #e1e4e8;
+    --border-soft: #eef0f3;
+    --text: #1f2328;
+    --text-soft: #57606a;
+    --text-mute: #8b949e;
+    --accent: #0969da;
+    --accent-soft: #ddf4ff;
+    --tag-ok-bg: #dafbe1;
+    --tag-ok-text: #1a7f37;
+    --tag-warn-bg: #fff8c5;
+    --tag-warn-text: #9a6700;
+    --tag-info-bg: #dde7f4;
+    --tag-info-text: #0a3069;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 28px 20px 64px;
+  }
+  header.masthead {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 18px;
+    margin-bottom: 28px;
+  }
+  .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--text-mute);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  h1 {
+    font-size: 28px;
+    line-height: 1.3;
+    margin: 0 0 10px;
+    color: var(--text);
+  }
+  .meta {
+    color: var(--text-soft);
+    font-size: 14px;
+  }
+  h2 {
+    font-size: 20px;
+    margin: 36px 0 14px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  h3 {
+    font-size: 17px;
+    margin: 0 0 8px;
+    color: var(--text);
+  }
+  p { margin: 8px 0; }
+  a {
+    color: var(--accent);
+    text-decoration: none;
+    word-break: break-all;
+  }
+  a:hover { text-decoration: underline; }
+  ul { margin: 6px 0; padding-left: 22px; }
+  ul li { margin: 4px 0; }
+  .tl;dr {
+    background: var(--accent-soft);
+    border: 1px solid #b6e3ff;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 18px 0 28px;
+  }
+  .tl;dr ol { margin: 6px 0 0 18px; padding-left: 4px; }
+  .tl;dr ol li { margin: 4px 0; }
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin: 14px 0;
+    box-shadow: 0 1px 2px rgba(31, 35, 40, 0.04);
+  }
+  .card .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+  .tag {
+    display: inline-block;
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+  }
+  .tag-type { background: var(--tag-info-bg); color: var(--tag-info-text); border-color: #b6cde4; }
+  .tag-cred-ok { background: var(--tag-ok-bg); color: var(--tag-ok-text); border-color: #aceebb; }
+  .tag-cred-warn { background: var(--tag-warn-bg); color: var(--tag-warn-text); border-color: #d4a72c; }
+  .sources {
+    background: var(--bg-soft);
+    border: 1px solid var(--border-soft);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  .sources .label {
+    font-size: 12px;
+    color: var(--text-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+  .observation li { margin: 8px 0; }
+  footer.foot {
+    margin-top: 40px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+    color: var(--text-mute);
+    font-size: 13px;
+  }
+  .grid-sources a { display: inline-block; margin: 2px 0; }
+  @media (max-width: 540px) {
+    h1 { font-size: 24px; }
+    h2 { font-size: 18px; }
+    .card { padding: 14px 16px; }
+    .wrap { padding: 18px 14px 48px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <div class="eyebrow">每日科技新闻简报</div>
+  <h1>AI / 科技 / 互联网 / 创业 — 2026-09-07</h1>
+  <div class="meta">抓取时间：2026-09-07 12:04 (MYT, +08) · 信源原则：官方公告 + 主流科技媒体</div>
+</header>
+
+<div class="tl;dr">
+  <strong>TL;DR</strong>
+  <ol>
+    <li>OpenAI 发布 GPT-6 Astra，主打"电脑使用"，1.05M 上下文；OpenAI 总裁称已进入"AGI 新时代"。</li>
+    <li>Anthropic 推出 Claude Fable 5.1 与 Mythos 5.1，cache-read 价格直降 75%。</li>
+    <li>GitHub Trending 日榜可见仓库中，<code>affaan-m/ECC</code> 以 1,485 stars today 居首。</li>
+    <li>Google Gemini API 给 <code>gemini-3.1-flash-tts-preview</code> 启用流式 TTS，并发布旧图像生成模型弃用清单。</li>
+    <li>Google I/O 公布 Gemini 3.5 Flash 即时可用，Pro 月度滚动。</li>
+  </ol>
+</div>
+
+<h2>新闻卡片</h2>
+
+<div class="card">
+  <div class="tags">
+    <span class="tag tag-type">AI · 大模型</span>
+    <span class="tag tag-cred-ok">🟢 多方确认</span>
+  </div>
+  <h3>1. OpenAI 发布 GPT-6 Astra — "最智能、最对齐"，computer-use 优先</h3>
+  <p><strong>核心事实</strong>：OpenAI 于 2026-09-03 上线 GPT-6 Astra，定位从"对话模型"转为"电脑使用系统"，上下文窗口 1.05M；定价 $10 / $50 per million tokens（输入 / 输出），不开放权重；API 与 AWS 上线在即。</p>
+  <p><strong>为什么重要</strong>：OSWorld 2.0 72.6%、ScreenSpot-Pro 92.7%；Codex harness 在 computer-use 任务上比 GPT-5.6 Sol 快约 1.9×。在能力上限与"自主操作界面"方向上跨过一条产品线。</p>
+  <div class="sources">
+    <div class="label">来源</div>
+    <div class="grid-sources">
+      <a href="https://www.theguardian.com/technology/2026/sep/03/openai-artificial-general-intelligence-astra-release" target="_blank" rel="noopener">The Guardian 报道</a><br>
+      <a href="https://www.marktechpost.com/2026/09/03/openai-releases-gpt-6-astra-a-1-05m-context-computer-use-model-gated-behind-a-critical-cyber-threshold/" target="_blank" rel="noopener">MarkTechPost 深度</a><br>
+      <a href="https://www.vellum.ai/blog/gpt-6-astra-benchmarks-explained" target="_blank" rel="noopener">Vellum 基准解读</a><br>
+      <a href="https://apidog.com/blog/gpt-6-astra-computer-use-api-testing/" target="_blank" rel="noopener">Apidog 实测</a>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="tags">
+    <span class="tag tag-type">AI · 大模型</span>
+    <span class="tag tag-cred-ok">🟢 多方确认</span>
+  </div>
+  <h3>2. Anthropic 发布 Claude Fable 5.1 + Mythos 5.1</h3>
+  <p><strong>核心事实</strong>：2026-09-01 推出双旗舰 Fable 5.1（GA，Pro/Max/Team/Enterprise）与 Mythos 5.1（trusted access 限定，cybersecurity + life sciences 用）。同一模型两种安全配置。</p>
+  <p><strong>为什么重要</strong>：cache-read 价格下降约 75%；agentic 编码、长程任务、研究、文档/电子表格能力都升级；典型 token 成本可省 ~25%，高 agentic 工作负载可达 ~45%。</p>
+  <div class="sources">
+    <div class="label">来源</div>
+    <div class="grid-sources">
+      <a href="https://www.anthropic.com/claude-fable-and-mythos-5-1" target="_blank" rel="noopener">Anthropic 官方公告</a><br>
+      <a href="https://tech-insider.org/anthropic-claude-fable-5-1-mythos-5-1-launch-2026/" target="_blank" rel="noopener">tech-insider 分析</a><br>
+      <a href="https://platform.claude.com/docs/en/models/fable-5-1/overview" target="_blank" rel="noopener">Claude 平台文档</a>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="tags">
+    <span class="tag tag-type">开源 · Agent 工具</span>
+    <span class="tag tag-cred-ok">🟢 GitHub Trending 实时</span>
+  </div>
+  <h3>3. GitHub Trending 日榜可见仓库中，今日新增 Star 最高：affaan-m/ECC</h3>
+  <p><strong>核心事实</strong>：本次抓取 <code>https://github.com/trending?since=daily</code> 页面中，所有可见的 <code>N stars today</code> 数值里最高为 <code>affaan-m/ECC</code> 的 <strong>1,485 stars today</strong>。当前总 Star 251,534，主要语言 JavaScript。</p>
+  <p><strong>为什么重要</strong>：仓库自我定位为"agent harness performance optimization system"——为 Claude Code、Codex、Opencode、Cursor 等提供 skills、instincts、memory、security、research-first 的开箱即用层。在 AI Agent 工具链爆发的当下，它出现在日榜第一且单日增速超千 star，是开发者对"代理工程化"需求升温的一个早期信号。</p>
+  <div class="sources">
+    <div class="label">来源</div>
+    <div class="grid-sources">
+      <a href="https://github.com/affaan-m/ECC" target="_blank" rel="noopener">affaan-m/ECC 仓库</a><br>
+      <a href="https://github.com/trending?since=daily" target="_blank" rel="noopener">GitHub Trending 日榜</a>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="tags">
+    <span class="tag tag-type">AI · 平台</span>
+    <span class="tag tag-cred-ok">🟢 官方 changelog</span>
+  </div>
+  <h3>4. Google Gemini API 文档更新：流式 TTS + 图像模型弃用清单</h3>
+  <p><strong>核心事实</strong>：在 <code>gemini-3.1-flash-tts-preview</code> 模型上，<code>streamGenerateContent</code>（含 Interactions API <code>stream: true</code>）现支持 TTS 流式输出；同时明确部分旧图像生成模型将于 2026-08-17 停服。</p>
+  <p><strong>为什么重要</strong>：TTS 流式化降低实时语音代理的首字延迟；弃用清单为依赖旧模型的产品给出明确迁移窗口。</p>
+  <div class="sources">
+    <div class="label">来源</div>
+    <div class="grid-sources">
+      <a href="https://ai.google.dev/gemini-api/docs/changelog" target="_blank" rel="noopener">Google Gemini API changelog</a>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="tags">
+    <span class="tag tag-type">AI · 公司动态</span>
+    <span class="tag tag-cred-ok">🟢 官方 + 媒体</span>
+  </div>
+  <h3>5. Google I/O 2026：Gemini 3.5 Flash 已 GA，Pro 进入月度滚动</h3>
+  <p><strong>核心事实</strong>：5 月 I/O 公布 Gemini 3.5 Flash 即时可用，Pro 在次月滚动；官方称 Flash 输出 tokens/秒 为前沿模型的 4×。</p>
+  <p><strong>为什么重要</strong>：Flash / Pro 双线策略意味着 Google 在成本侧有强对位武器；Pro 的滚动节奏影响企业迁移时点。</p>
+  <div class="sources">
+    <div class="label">来源</div>
+    <div class="grid-sources">
+      <a href="https://mashable.com/tech/all-the-gemini-announcements-google-io-2026" target="_blank" rel="noopener">Mashable 整理</a><br>
+      <a href="https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-collection/" target="_blank" rel="noopener">Google 官方汇总</a>
+    </div>
+  </div>
+</div>
+
+<h2>今日观察</h2>
+<div class="card observation">
+  <ul>
+    <li><strong>"computer-use" 已成旗舰模型的新基线</strong>：Astra 把"驱动桌面 / 填表 / 操作 CRM / 前端 QA"做成主卖点；Fable 5.1 的 Mythos 也在 cybersecurity / life sciences 上强调 agentic。这意味着 2026 下半年的 frontier 模型叙事，正在从"更长上下文 / 更高 IQ"切换到"能自己动手做事"。</li>
+    <li><strong>价格战往下打到 cache 层</strong>：Anthropic 把 cache-read 直接降 75%，这是把"长会话成本"打到不可逆的低价位。开发者层面对话历史、RAG 检索缓存会更激进地写入。</li>
+    <li><strong>Agent 工具栈进入"harness"军备</strong>：GitHub 日榜首的 ECC 显示，围绕 Claude Code / Codex / Cursor 的"代理框架 / 习惯 / 记忆层"已是真实产品类别——不再是单点 prompt 优化，而是系统工程。</li>
+    <li><strong>平台层兼容风险</strong>：Astra 锁定在"高网络与关键基础设施安全阈值"，意味着 GPT-6 完整能力对一般开发者并非完全开放；Mythos 5.1 同样走 trusted access。这对构建在"开放 API 假设"上的初创公司是一道提醒。</li>
+  </ul>
+</div>
+
+<h2>来源与局限</h2>
+<div class="card">
+  <ul>
+    <li>本期所有事实来自本次运行内实际抓取的页面，未做二次想象或补写。</li>
+    <li>信源覆盖：OpenAI 官方/媒体复盘、Anthropic 官方、GitHub Trending 实时页面、Google 官方 changelog 与 I/O 汇总页。</li>
+    <li><strong>局限</strong>：仅做了关键词 web 搜索，未抓取 Reuters / AP / TechCrunch / The Verge 正文（抓取配额优先用于 GitHub Trending）。部分媒体链接（如 YouTube 综述视频）作为标题性证据，未做正文交叉。GitHub Trending 是当日可见趋势榜，不等同于"全站历史增长最快"。</li>
+  </ul>
+</div>
+
+<footer class="foot">
+  本期为信息整理与转引，事实判断仍以原文为准；商业决策请另行核实。
+</footer>
+
+</div>
+</body>
+</html>
