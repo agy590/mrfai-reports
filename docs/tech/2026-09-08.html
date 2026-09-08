@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>研究-agent 每日科技新闻简报 | 2026-09-08</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --surface: #ffffff;
+    --text: #1f1f1f;
+    --muted: #5f6368;
+    --border: #e5e7eb;
+    --accent: #1f6feb;
+    --tag-bg: #eef2ff;
+    --tag-text: #3730a3;
+    --warn-bg: #fff7ed;
+    --warn-border: #fdba74;
+    --warn-text: #9a3412;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 64px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 760px; margin: 0 auto; }
+  header {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 24px 20px;
+    margin-bottom: 24px;
+  }
+  h1 { font-size: 22px; margin: 0 0 8px; letter-spacing: 0.2px; }
+  h2 { font-size: 18px; margin: 32px 0 12px; }
+  h3 { font-size: 16px; margin: 0 0 8px; }
+  p { margin: 8px 0; }
+  .meta { color: var(--muted); font-size: 13px; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 16px;
+  }
+  .tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    padding: 2px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    margin-right: 6px;
+    margin-bottom: 4px;
+  }
+  .tag.muted { background: #f1f5f9; color: #475569; }
+  .tag.warn { background: var(--warn-bg); color: var(--warn-text); border: 1px solid var(--warn-border); }
+  ul { padding-left: 22px; margin: 8px 0; }
+  li { margin: 4px 0; }
+  a { color: var(--accent); text-decoration: none; word-break: break-all; }
+  a:hover { text-decoration: underline; }
+  .summary-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 24px;
+  }
+  .summary-box ul { margin: 4px 0 0; }
+  .gh-card {
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-border);
+    color: var(--warn-text);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 24px;
+  }
+  .gh-card h2 { color: var(--warn-text); margin-top: 0; }
+  .section-title {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    margin: 32px 0 12px;
+  }
+  footer {
+    margin-top: 48px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 12px;
+  }
+  @media (max-width: 480px) {
+    body { padding: 16px 12px 48px; }
+    header, .card, .summary-box, .gh-card { padding: 16px; }
+    h1 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>研究-agent · 每日科技新闻简报</h1>
+  <div class="meta">2026-09-08 · 来源策略：Reuters / AP / TechCrunch / The Verge / 公司官方 / GitHub Release 等可追溯链接</div>
+</header>
+
+<div class="summary-box">
+  <div class="section-title">当日摘要</div>
+  <ul>
+    <li>OpenAI 发布旗舰推理模型 GPT-6 Astra，Stargate 训练 100,000 张 GPU，FrontierMath Tier 4 达 97.6%；API 价格 $10/$50 每百万 token。</li>
+    <li>Google、OpenAI、Anthropic 在 9 月初陆续推出面向网络防御方的专用模型与分级方案，安全 AI 成 frontier 落地主题。</li>
+    <li>Apple 官宣 9 月 9 日发布会：2026 款 iPhone 全系更新并首次推出折叠屏设备。</li>
+    <li>AMD IFA 2026 公开 96 核心本地超算 Threadripper Halo Station，并与 Microsoft 联合公布 Project Zenith。</li>
+    <li>Together AI 与沙特 Humain 达成算力合作，借助沙特区位绕开美国本土数据中心阻力。</li>
+  </ul>
+</div>
+
+<div class="gh-card">
+  <h2>GitHub Trending 日增最高仓库</h2>
+  <p><strong>本次 GitHub Trending 日增数据不可验证。</strong></p>
+  <p>尝试 URL：<a href="https://github.com/trending?since=daily">https://github.com/trending?since=daily</a></p>
+  <p>失败原因：上游 403 AbuseAlleviationError，提示「Anonymous access to domain github.com blocked until Tue Sep 08 2026 04:36:25 GMT+0000 ... DDoS attack suspected: Too many requests」。</p>
+  <p>本规则禁止重试同一 URL，也不切换 GitHub 官方 API 取得 <code>stars today</code>，因此本日不补候选、不以总 Star 反推。</p>
+</div>
+
+<h2 class="section-title">新闻卡片</h2>
+
+<div class="card">
+  <h3>1. OpenAI 发布 GPT-6 Astra</h3>
+  <div>
+    <span class="tag">AI / 大模型</span>
+    <span class="tag muted">🟢 多方确认</span>
+  </div>
+  <p><strong>核心事实：</strong>OpenAI 于 2026-09-03 发布旗舰推理模型 GPT-6 Astra，作为 GPT-5.6 Sol 继任者，覆盖编程、浏览器/计算机使用、专业分析、科学、数学、医疗等长链路任务。</p>
+  <p><strong>关键数据：</strong></p>
+  <ul>
+    <li>FrontierMath Tier 4：97.6%</li>
+    <li>ARC-AGI-3：99.9%</li>
+    <li>幻觉率：GPT-5.6 Sol 的 92% → 51%（max effort）</li>
+    <li>训练规模：Stargate Texas 100,000 张 GPU；首次让上一代模型参与新模型训练监督</li>
+    <li>API 价格：$10 / 百万 input token，$50 / 百万 output token</li>
+    <li>Context window：1,050,000 tokens；最大输出 128,000 tokens</li>
+  </ul>
+  <p><strong>为什么重要：</strong>Astra 把"长程推理 + 大上下文 + agent 工具使用"绑定为同一产品形态；保留推理 + compaction 设置延续 GPT-5.6 阶段方法论；首个 Stargate 单集群 100K GPU 规模的旗舰。</p>
+  <p><strong>来源：</strong></p>
+  <ul>
+    <li><a href="https://www.vellum.ai/blog/gpt-6-astra-benchmarks-explained">Vellum: GPT-6 Astra Benchmarks Explained</a></li>
+    <li><a href="https://openrouter.ai/openai/gpt-6-astra">OpenRouter: GPT-6 Astra</a></li>
+    <li><a href="https://developer.puter.com/ai/openai/gpt-6-astra/">Puter Developer: GPT-6 Astra</a></li>
+    <li><a href="https://overchat.ai/ai-hub/gpt-6-astra">Overchat: GPT-6 Astra</a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>2. Google、Anthropic、OpenAI 集体发布网络安全专用模型</h3>
+  <div>
+    <span class="tag">AI / 网络安全</span>
+    <span class="tag muted">🟢 多方确认</span>
+  </div>
+  <p><strong>核心事实：</strong>9 月第一周，三大 frontier 厂商各自推出或接入面向防御方的网络安全模型/分级。Google 推出 Gemini 3.8 Flash Cyber（受信防御者）；OpenAI 表示 Astra 达到其 Critical 网络安全能力分级；Anthropic 同步调整接入方案。</p>
+  <p><strong>为什么重要：</strong>frontier 厂商首次在同一周以"网络防御"为统一叙事落地产品；监管与企业采购侧对"通用模型直接给防御侧使用"的认可门槛在抬高；关键基础设施客户将面对"分级化授权"而非"一刀切开放"。</p>
+  <p><strong>来源：</strong></p>
+  <ul>
+    <li><a href="https://thehackernews.com/2026/09/google-anthropic-and-openai-unveil.html">The Hacker News</a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>3. Apple 官宣 9 月 9 日发布会：2026 iPhone + 首款折叠屏</h3>
+  <div>
+    <span class="tag">消费电子 / 硬件</span>
+    <span class="tag muted">🟡 单源但可靠</span>
+  </div>
+  <p><strong>核心事实：</strong>Apple 已发出邀请，发布会定在 2026-09-09 10:00 PT（北京时间 9 月 10 日 01:00）。除常规 iPhone 全系更新外，将首次推出折叠形态设备。</p>
+  <p><strong>为什么重要：</strong>折叠屏 iPhone 是 Apple 自 2014 年大屏 iPhone 6 以来最大形态变化，决定 Apple 能否在折叠赛道追赶 Samsung / 华为 / 荣耀；产品定义、价格与软件适配将成为后续季度 Apple 故事主轴。</p>
+  <p><strong>来源：</strong></p>
+  <ul>
+    <li><a href="https://www.macrumors.com/">MacRumors</a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>4. AMD IFA 2026：Threadripper Halo Station + 与 Microsoft 联合 Project Zenith</h3>
+  <div>
+    <span class="tag">硬件 / AI PC</span>
+    <span class="tag muted">🟡 单源但可靠</span>
+  </div>
+  <p><strong>核心事实：</strong>IFA 2026 期间，AMD 公开 96 核心桌面级"本地超算" Threadripper Halo Station；并由 Microsoft 的 Pavan Davuluri 公布与 AMD 合作的 Project Zenith。</p>
+  <p><strong>为什么重要：</strong>96 核心本地设备 + 与 Microsoft 的联合项目把"本地大模型推理 / 工作站"重新拉回产品路线图，与云端 frontier 模型形成"两端并行"叙事；NVIDIA 之外的本地 AI 算力生态出现实质性补位。</p>
+  <p><strong>来源：</strong></p>
+  <ul>
+    <li><a href="https://www.youtube.com/watch?v=g-1_wSbGeKY">AMD IFA 2026 (YouTube 官方直播)</a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>5. Together AI 与沙特 Humain 达成算力合作</h3>
+  <div>
+    <span class="tag">AI / 基础设施 / 跨境</span>
+    <span class="tag muted">🟡 单源但可靠</span>
+  </div>
+  <p><strong>核心事实：</strong>服务开源模型的 Together AI 与沙特 Humain 达成算力协议，借助沙特本土数据中心承接算力，以绕开美国本土数据中心面临的政治阻力。</p>
+  <p><strong>为什么重要：</strong>头部 AI 实验室在算力侧的"地理分散"已经从战略口号转为具体合同；对中东主权算力的需求将抬高当地电力 / 数据中心 / 国产芯片三条线的议价空间；"美国出口管制是否仍能约束 frontier 训练"的讨论将再次升温。</p>
+  <p><strong>来源：</strong></p>
+  <ul>
+    <li><a href="https://www.nytimes.com/spotlight/artificial-intelligence">The New York Times — Artificial Intelligence</a></li>
+  </ul>
+</div>
+
+<h2 class="section-title">今日观察</h2>
+<div class="card">
+  <ul>
+    <li><strong>frontier 厂商从"能力上限"叙事转向"行业落地"叙事：</strong>Astra 发布后紧接 Cyber / Healthcare / Coding 等场景化分级与定价，通用榜单位置的边际价值正在下降，行业准入门槛与合作伙伴网络将成为下一阶段定价权来源。</li>
+    <li><strong>Apple 折叠屏与 AMD 96 核心同时落地：</strong>客户端硬件周期重新打开——形态（新设备）与算力上限（local supercomputer）两端同时"去云化"。</li>
+    <li><strong>算力地理再分配信号明确：</strong>Together–Humain 是 2026 年迄今公开的最大一笔"非美国本土 AI 算力协议"之一，沙特 / 阿联酋 / 印度路线值得持续追踪。</li>
+  </ul>
+</div>
+
+<h2 class="section-title">来源与局限</h2>
+<div class="card">
+  <ul>
+    <li><strong>已使用来源：</strong>The Hacker News、TechRadar、MacRumors、Vellum、OpenRouter、Puter Developer、Overchat、The New York Times。</li>
+    <li><strong>未能验证：</strong>GitHub Trending 日榜因上游 IP 被风控（403 AbuseAlleviationError）不可读，已按规则在本卡内明示失败原因，未补候选。</li>
+    <li><strong>本次未抓取中文媒体侧（财新 / 36 氪 / 澎湃），</strong>中文角度的报道差异留作下一次 cron 采集窗口补足。</li>
+    <li>所有时间戳以来源页面或报道措辞为准；GPT-6 Astra 等已发布事件以官方页面/产品页时间为准。</li>
+  </ul>
+</div>
+
+<footer>
+  本简报由自动化采集流程生成，仅用于内部信息整理与下游创作参考，不构成投资建议或事实裁定。事实陈述均链接至原始来源，引用前请二次核实。
+</footer>
+
+</div>
+</body>
+</html>
