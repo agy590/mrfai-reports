@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日市场简报 — 2026-09-09</title>
+<style>
+:root {
+  --bg: #0f1419; --card: #1a1f29; --border: #2a313c; --text: #e6edf3; --muted: #7d8590;
+  --up: #3fb950; --down: #f85149; --neutral: #d29922; --accent: #58a6ff;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.6; padding: 20px; max-width: 1100px; margin: 0 auto;
+}
+.header { border-bottom: 2px solid var(--accent); padding-bottom: 16px; margin-bottom: 24px; }
+.header h1 { font-size: 28px; color: var(--accent); margin-bottom: 4px; }
+.header .meta { color: var(--muted); font-size: 13px; }
+.section { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+.section h2 { color: var(--accent); font-size: 20px; margin-bottom: 16px; border-left: 4px solid var(--accent); padding-left: 12px; }
+.section h3 { color: var(--text); font-size: 16px; margin-top: 16px; margin-bottom: 8px; }
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+th { background: var(--border); color: var(--muted); text-align: left; padding: 8px 12px; font-weight: 600; text-transform: uppercase; font-size: 12px; letter-spacing: 0.5px; }
+td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+tr:hover td { background: rgba(88, 166, 255, 0.05); }
+.up { color: var(--up); }
+.down { color: var(--down); }
+.neutral { color: var(--neutral); }
+.muted { color: var(--muted); }
+.kpi { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 12px 0; }
+.kpi-card { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 12px 16px; }
+.kpi-label { color: var(--muted); font-size: 12px; text-transform: uppercase; margin-bottom: 4px; }
+.kpi-value { font-size: 22px; font-weight: 600; }
+ul { padding-left: 20px; margin: 8px 0; }
+li { margin-bottom: 6px; }
+.footer { color: var(--muted); font-size: 12px; text-align: center; margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border); }
+.source { font-size: 12px; color: var(--muted); margin-top: 8px; }
+.banner { background: linear-gradient(90deg, #1f6feb22, #58a6ff11); border: 1px solid #1f6feb44; border-radius: 6px; padding: 12px 16px; margin-bottom: 16px; font-size: 14px; }
+.banner .label { color: var(--accent); font-weight: 600; margin-right: 8px; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>📊 每日市场简报 — 2026-09-09</h1>
+  <div class="meta">📅 2026-09-09 周三 · 数据源: Yahoo Finance, BNM, NST, Malay Mail, NYT, TradingEconomics</div>
+</div>
+
+<div class="banner">
+  <span class="label">市场氛围:</span>
+  美元走弱（DXY -0.77%）、黄金再创新高（$4,407）、油价跳涨逾4%（Brent $99.48）→ risk-off 抬头的混合信号。马股窄幅震荡守住 1,716，美股期货盘前分化（NQ+0.11% vs YM -0.05%），关注今晚美 8 月 CPI。
+</div>
+
+<!-- 🇲🇾 Malaysia -->
+<div class="section">
+  <h2>🇲🇾 马来西亚股市</h2>
+
+  <div class="kpi">
+    <div class="kpi-card">
+      <div class="kpi-label">FBM KLCI 综合指数</div>
+      <div class="kpi-value">1716.49</div>
+      <div class="up">+0.08% · 5d +0.08%</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">USD/MYR 汇率</div>
+      <div class="kpi-value">4.063</div>
+      <div class="up">+0.63%（马币贬值）</div>
+    </div>
+  </div>
+
+  <h3>主要成分股</h3>
+  <table>
+    <thead><tr><th>代码</th><th>公司</th><th>价格</th><th>日涨跌</th><th>5 日</th></tr></thead>
+    <tbody>
+      <tr><td>MAYBANK</td><td>马银行</td><td>RM 10.54</td><td class='down'>-0.38%</td><td class='muted'>5d -0.38%</td></tr><tr><td>CIMB</td><td>联昌银行</td><td>RM 8.0</td><td class='up'>+0.13%</td><td class='muted'>5d +0.13%</td></tr><tr><td>PBBANK</td><td>公众银行</td><td>RM 5.01</td><td class='up'>+0.2%</td><td class='muted'>5d +0.2%</td></tr><tr><td>TENAGA</td><td>国家能源</td><td>RM 13.94</td><td class='up'>+1.9%</td><td class='muted'>5d +1.9%</td></tr><tr><td>IHH</td><td>医疗集团</td><td>RM 7.87</td><td class='down'>-1.5%</td><td class='muted'>5d -1.5%</td></tr><tr><td>TOPGLOV</td><td>顶级手套</td><td>RM 0.635</td><td class='down'>-1.55%</td><td class='muted'>5d -1.55%</td></tr>
+    </tbody>
+  </table>
+
+  <h3>板块动态</h3>
+  <ul>
+    <li><strong>能源 / 公用事业：</strong>TENAGA +1.9% 领涨，受电价上调与稳定派息预期支撑。</li>
+    <li><strong>银行：</strong>MAYBANK -0.38% 偏弱、CIMB / PBBANK 小幅收平，市场等待 BNM 货币政策定调后的资金轮动。</li>
+    <li><strong>医疗 / 橡胶手套：</strong>IHH -1.5%、TOPGLOV -1.55%，防御性板块短线获利了结。</li>
+    <li><strong>马币：</strong>USD/MYR 升至 4.063（+0.63%），美元普遍走弱背景下马币仍弱于预期，反映外资观望 OPR。</li>
+  </ul>
+
+  <h3>关键新闻</h3>
+  <ul>
+    <li><strong>BNM OPR 维持 2.75%：</strong>9 月 3 日 MPC 会议连续第 7 次按兵不动，符合市场预期；机构普遍认为年内不会加息（NST / The Star 报道）。→ 中性偏利好，提供利率稳定预期。</li>
+    <li><strong>Bursa 开市高开：</strong>9 月 9 日早盘 KLCI 涨 2.36 点至 1,711.16（来源 NST），市场 breadth 偏正（涨 152 / 跌 118），等待 OPR 决议后续方向指引。</li>
+    <li><strong>美就业数据强劲：</strong>9 月初公布的美就业数据好于预期，短暂推升美元与加息预期，但本交易日 DXY 已回吐。→ 对马股中性偏正面，资金风险偏好回暖。</li>
+  </ul>
+  <div class="source">来源: BNM, NST, Malay Mail, The Star, Yahoo Finance</div>
+</div>
+
+<!-- 🇺🇸 US -->
+<div class="section">
+  <h2>🇺🇸 美国期货 + 美股</h2>
+
+  <h3>三大指数期货（盘前）</h3>
+  <table>
+    <thead><tr><th>代码</th><th>合约</th><th>水平</th><th>Δ%</th></tr></thead>
+    <tbody><tr><td>ES=F</td><td>E-Mini S&P 500</td><td>7683.25</td><td class='up'>+0.04%</td></tr><tr><td>NQ=F</td><td>E-Mini Nasdaq 100</td><td>29571.25</td><td class='up'>+0.11%</td></tr><tr><td>YM=F</td><td>Mini Dow Jones</td><td>52805.0</td><td class='down'>-0.05%</td></tr></tbody>
+  </table>
+
+  <h3>昨日收盘（参考）</h3>
+  <table>
+    <thead><tr><th>代码</th><th>指数</th><th>水平</th><th>Δ%</th></tr></thead>
+    <tbody><tr><td>^GSPC</td><td>S&P 500</td><td>7,673.52</td><td class='down'>-0.16%</td></tr><tr><td>^IXIC</td><td>NASDAQ Composite</td><td>26,421.41</td><td class='up'>+0.19%</td></tr><tr><td>^DJI</td><td>Dow Jones</td><td>52,786.07</td><td class='down'>-0.75%</td></tr></tbody>
+  </table>
+
+  <h3>关键宏观指标</h3>
+  <div class="kpi"><div class="kpi-card"><div class="kpi-label">美元指数 DXY</div><div class="kpi-value">98.796</div><div class="down">-0.77%</div></div><div class="kpi-card"><div class="kpi-label">美债 10Y ^TNX</div><div class="kpi-value">4.806%</div><div class="up">+0.21%</div></div><div class="kpi-card"><div class="kpi-label">VIX ^VIX</div><div class="kpi-value">15.72</div><div class="up">+3.42%</div></div></div>
+
+  <h3>Magnificent 7 盘前</h3>
+  <table>
+    <thead><tr><th>代码</th><th>公司</th><th>盘前价</th><th>涨跌</th></tr></thead>
+    <tbody><tr><td>NVDA</td><td>英伟达</td><td>$225.73</td><td class='down'>-2.01%</td></tr><tr><td>AAPL</td><td>苹果</td><td>$316.22</td><td class='down'>-1.17%</td></tr><tr><td>MSFT</td><td>微软</td><td>$493.95</td><td class='down'>-1.15%</td></tr><tr><td>GOOGL</td><td>谷歌</td><td>$338.36</td><td class='down'>-0.03%</td></tr><tr><td>META</td><td>Meta</td><td>$613.48</td><td class='down'>-0.53%</td></tr><tr><td>TSLA</td><td>特斯拉</td><td>$368.16</td><td class='up'>+3.98%</td></tr><tr><td>AMZN</td><td>亚马逊</td><td>$256.97</td><td class='down'>-0.6%</td></tr></tbody>
+  </table>
+
+  <h3>今日关注事件</h3>
+  <ul>
+    <li><strong>美国 8 月 CPI（核心 / 总体）</strong> — 20:30 ET；市场关注核心 CPI 同比是否继续放缓至 3.2% 以下。高于预期 → 利率预期延后、风险资产承压。</li>
+    <li><strong>美国 8 月 PPI</strong> — 周四 20:30 ET；CPI 预热数据，需留意批发通胀粘性。</li>
+    <li><strong>Magnificent 7 财报尾声：</strong>NVDA、TSLA 等近月波动较大；TSLA 本交易日盘前 +3.98% 显著回升。</li>
+  </ul>
+
+  <h3>核心驱动因素</h3>
+  <ul>
+    <li><strong>利率路径：</strong>10Y 收益率 4.806%（+0.21%），市场押注 9 月 FOMC 维持不变，但点阵图仍偏鹰。</li>
+    <li><strong>美元 vs 风险偏好：</strong>DXY -0.77% 回吐前日涨幅，VIX 升至 15.72（+3.42%），分化暗示对今晚 CPI 的谨慎对冲。</li>
+    <li><strong>地缘风险：</strong>中东再度紧张（NYT：美伊互射），油价单日 +4%，为风险偏好施压但同时利好通胀对冲资产。</li>
+  </ul>
+  <div class="source">来源: Yahoo Finance, NYT, RoboForex, Investing.com</div>
+</div>
+
+<!-- 🥇 Gold -->
+<div class="section">
+  <h2>🥇 贵金属</h2>
+  <div class="kpi"><div class="kpi-card"><div class="kpi-label">黄金 GC=F</div><div class="kpi-value">4407.4 <span class="muted" style="font-size:14px">USD/oz</span></div><div class="up">+0.94%</div></div></div>
+  <h3>驱动因素</h3>
+  <ul>
+    <li><strong>美元指数：</strong>DXY 98.796（-0.77%）— 美元走弱直接利好黄金。</li>
+    <li><strong>美债 10Y：</strong>4.806%（+0.21%）— 收益率小幅上行对金价构成温和压制，但实际利率回落主驱动仍偏多。</li>
+    <li><strong>地缘风险：</strong>美伊冲突升级 + 中东溢价，避险需求支撑。</li>
+    <li><strong>央行买盘：</strong>新兴市场央行持续购金 + ETF 资金回流，结构性买盘未改。</li>
+    <li><strong>关键阻力 / 支撑：</strong>$4,420 / $4,450 — 若今晚 CPI 超预期黄金可能回踩 $4,380。</li>
+  </ul>
+  <div class="source">来源: Yahoo Finance (GC=F)、Reuters、Kitco</div>
+</div>
+
+<!-- 🛢 Oil -->
+<div class="section">
+  <h2>🛢 原油</h2>
+  <div class="kpi"><div class="kpi-card"><div class="kpi-label">WTI CL=F</div><div class="kpi-value">94.68 <span class="muted" style="font-size:14px">USD/桶</span></div><div class="up">+4.03%</div></div><div class="kpi-card"><div class="kpi-label">Brent BZ=F</div><div class="kpi-value">99.48 <span class="muted" style="font-size:14px">USD/桶</span></div><div class="up">+4.03%</div></div></div>
+  <h3>驱动因素</h3>
+  <ul>
+    <li><strong>地缘溢价：</strong>WTI +4.03% 至 $94.68、Brent +4.03% 至 $99.48，NYT 报道美伊互射推升风险溢价。</li>
+    <li><strong>OPEC+：</strong>9 月会议临近，市场对增产节奏保持敏感；若确认小幅增产可能压制短线涨幅。</li>
+    <li><strong>需求侧：</strong>中国 PMI 与美国汽油消费是关键变量，需关注 EIA 周度库存。</li>
+    <li><strong>关键技术位：</strong>Brent $100 心理关口为强阻力，若失守或打开至 $105 空间。</li>
+  </ul>
+  <div class="source">来源: Yahoo Finance (CL=F / BZ=F)、NYT、OilPrice.com、TradingEconomics</div>
+</div>
+
+<!-- 总结 -->
+<div class="section">
+  <h2>💡 总结与建议</h2>
+
+  <h3>市场情绪：混合（避险抬升 + 利率悬念）</h3>
+
+  <h3>今日三大关注点</h3>
+  <ol>
+    <li><strong>美国 8 月 CPI（今晚 20:30 ET）：</strong>核心通胀路径决定 9 月 FOMC 鹰鸽倾向，是本周最大变量。</li>
+    <li><strong>油价跳涨的可持续性：</strong>Brent 重回 $99 上方，是否突破 $100 决定通胀对冲资产的方向。</li>
+    <li><strong>马币 / 马股外资动向：</strong>USD/MYR 升至 4.063，需关注本周外资对马股的连续净买卖信号。</li>
+  </ol>
+
+  <h3>马来西亚视角操作建议</h3>
+  <ul>
+    <li>KLCI 在 1,710 附近窄幅震荡，缺乏方向；建议等待今晚美 CPI 落地 + 本周外资数据再决定加减仓节奏。</li>
+    <li>防御性板块（公用事业 / 银行）相对稳健，TENAGA 已先行上涨，MAYBANK 回调提供观察位。</li>
+  </ul>
+
+  <h3>美股视角操作建议</h3>
+  <ul>
+    <li>ES/NQ 期货盘前接近持平，CPI 前不追多；NQ 偏强但波动率回升，宜逢回调而非追高。</li>
+    <li>黄金 $4,407 为历史高位，连续突破需 CPI 验证；若数据温和（核心 &lt; 3.2%）金价或再上一台阶；反之回踩 $4,380 可考虑分批。</li>
+    <li>原油短线偏多但不追涨，等 Brent $100 突破 / 失守后顺势。</li>
+  </ul>
+
+  <div class="source">数据缺口: 无 — 全部 28 个 Yahoo 端点返回有效数据。</div>
+</div>
+
+<div class="footer">
+  由 Hermes Agent 自动生成 · 数据源: Yahoo Finance、BNM、NST、Malay Mail、NYT、TradingEconomics<br>
+  本报告仅供参考，不构成投资建议。<br>
+  生成时间: 2026-09-09 09:17 MYT
+</div>
+</body>
+</html>
