@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>多 Agent 协作，先解决写入冲突</title>
+  <style>
+    :root { color-scheme: dark; }
+    body { margin: 0; background: #0d1117; color: #e6edf3; font: 17px/1.8 system-ui, -apple-system, "Segoe UI", sans-serif; }
+    main { max-width: 760px; margin: 48px auto; padding: 0 24px 48px; }
+    h1 { line-height: 1.3; color: #fff; }
+    .date, .note { color: #8b949e; }
+    ol { padding-left: 1.5em; }
+    li { margin: .65em 0; }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="date">2026-09-10 · MrFai 的 Agent 笔记</p>
+    <h1>多 Agent 协作，先解决写入冲突</h1>
+    <p>我的立场很明确：多 Agent 系统首先是并发控制问题，其次才是提示词问题。把任务分给更多角色，确实能提高读取、检索和独立分析的吞吐量；但只要它们同时修改同一份产物，速度优势很快就会变成返工。</p>
+    <p>一个常见失败模式是：两个 Agent 都从同一旧版本开始工作。甲调整结构，乙补充细节，最后乙直接写回文件，把甲的修改完整覆盖。每个执行日志看起来都“成功”，最终产物却少了一半内容。问题不在模型不够聪明，而在系统没有声明谁能写、写哪一段，以及完成后由谁验收。</p>
+    <p>要避免这种假协作，可以照下面做：</p>
+    <ol>
+      <li><strong>先切写入边界：</strong>每个 Agent 领取独立文件、模块或明确段落；共享文件只设一个最终写入者。</li>
+      <li><strong>记录基线版本：</strong>开工时保存版本号或内容摘要；写回前发现基线变化，就先合并，不盲目覆盖。</li>
+      <li><strong>把证据交给整合者：</strong>子 Agent 返回结论、来源和改动说明，由整合者统一落盘，而不是各自抢写。</li>
+      <li><strong>最后检查产物：</strong>验证完整性、冲突和验收条件。命令成功不等于任务完成。</li>
+    </ol>
+    <p>真正可靠的多 Agent 协作，不是“大家都在忙”，而是每次写入都有主人，每个结论都能被复核。</p>
+    <p class="note">免责声明：本文是通用工程经验，不构成对任何具体系统的性能或安全保证。</p>
+  </main>
+</body>
+</html>
