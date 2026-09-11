@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日科技新闻简报 | 2026-09-11</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    max-width: 860px; margin: 0 auto; padding: 24px 18px 48px;
+    background: #ffffff; color: #1a1a1a; line-height: 1.65; font-size: 16px;
+  }
+  h1 { font-size: 26px; margin: 0 0 8px; color: #111; border-bottom: 2px solid #111; padding-bottom: 8px; }
+  h2 { font-size: 20px; margin-top: 32px; margin-bottom: 12px; color: #222; border-left: 4px solid #2563eb; padding-left: 10px; }
+  h3 { font-size: 17px; margin-top: 20px; margin-bottom: 8px; color: #1f2937; }
+  .meta { color: #6b7280; font-size: 13px; margin-bottom: 24px; }
+  .tldr {
+    background: #f5f7fb; border-left: 4px solid #2563eb; padding: 14px 16px; border-radius: 4px;
+    margin-bottom: 24px;
+  }
+  .tldr ul { margin: 6px 0 0; padding-left: 20px; }
+  .tldr li { margin-bottom: 6px; }
+  .card {
+    border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px 18px; margin-bottom: 18px;
+    background: #fafafa;
+  }
+  .card.trending { border-color: #f59e0b; background: #fffbeb; }
+  .card h3 a { color: #111; text-decoration: none; }
+  .card h3 a:hover { color: #2563eb; text-decoration: underline; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 10px; }
+  .tag { display: inline-block; background: #eef2ff; color: #3730a3; padding: 2px 9px; border-radius: 12px; font-size: 12px; }
+  .tag.hot { background: #fef3c7; color: #92400e; }
+  .tag.green { background: #dcfce7; color: #166534; }
+  .tag.amber { background: #fef3c7; color: #92400e; }
+  .facts, .reactions, .impact { margin: 8px 0; }
+  .label { font-weight: 600; color: #374151; }
+  ul.compact { margin: 6px 0 6px 18px; padding: 0; }
+  ul.compact li { margin-bottom: 4px; }
+  a { color: #2563eb; text-decoration: none; word-break: break-all; }
+  a:hover { text-decoration: underline; }
+  .sources { background: #f9fafb; padding: 10px 12px; border-radius: 4px; font-size: 14px; }
+  .sources ol { margin: 6px 0 0 18px; padding: 0; }
+  .observation { background: #ecfdf5; border-left: 4px solid #10b981; padding: 14px 16px; border-radius: 4px; margin-top: 24px; }
+  .disclaimer, .limits {
+    margin-top: 24px; padding: 14px 16px; border-radius: 4px; font-size: 14px;
+  }
+  .limits { background: #fff7ed; border-left: 4px solid #f97316; }
+  .disclaimer { background: #fef2f2; border-left: 4px solid #ef4444; color: #4b5563; }
+  code { background: #f3f4f6; padding: 1px 5px; border-radius: 3px; font-size: 14px; }
+  @media (max-width: 600px) {
+    body { padding: 16px 12px 32px; font-size: 15px; }
+    h1 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<h1>每日科技新闻简报 | 2026-09-11</h1>
+<p class="meta">抓取窗口：2026-09-11 12:01 MYT ｜ 范围：AI / 开源 / 半导体 / 支付 / 消费硬件 / 安全</p>
+
+<div class="tldr">
+  <strong>当日摘要（TL;DR）</strong>
+  <ul>
+    <li><strong>DeepSeek-V4.1-Flash 上线</strong>：9 月 10 日发布，多模态、MIT 开源，$0.15/$0.60 每百万 token，1M 上下文。</li>
+    <li><strong>Positron AI 完成 $875M C 轮</strong>：估值 $5B，七个月翻四倍，Asimov 推理芯片 TSMC N3P 流片，2027H2 量产。</li>
+    <li><strong>Ant × Visa × Mastercard 联合 KYA</strong>：9 月 10 日发布 "Know Your Agent" 互操作框架。</li>
+    <li><strong>微软 9 月 Patch Tuesday</strong>：单月修复 ~973 CVE，含 2 个已被在野利用的 zero-day。</li>
+    <li><strong>Apple 9 月发布会</strong>：首款折叠 iPhone Duo + iPhone 18 Pro 全系 + Watch Series 12 / Ultra 4 + AirPods 5。</li>
+    <li><strong>GitHub Trending 日增最高</strong>：<a href="https://github.com/ayghri/i-have-adhd">ayghri/i-have-adhd</a> +3,882 stars today。</li>
+  </ul>
+</div>
+
+<div class="card trending">
+  <h3>GitHub Trending 日增最高仓库</h3>
+  <p><span class="label">GitHub Trending 日榜可见仓库中，今日新增 Star 最高</span>：
+    <a href="https://github.com/ayghri/i-have-adhd"><strong>ayghri/i-have-adhd</strong></a></p>
+  <div class="tags">
+    <span class="tag hot">+3,882 stars today</span>
+    <span class="tag">总 Star 38,664</span>
+    <span class="tag">Python</span>
+  </div>
+  <p><span class="label">与 AI/科技读者相关的判断：</span>本日 Trending 第一名集中在开发者生活/效率类小工具，而非新模型或 agent 框架——可见本周开发者注意力仍在"工具箱"型项目。</p>
+  <p><span class="label">GitHub Trending 原始来源：</span><a href="https://github.com/trending?since=daily">github.com/trending?since=daily</a></p>
+  <p><span class="label">本次抓取时间：</span>2026-09-11 12:01 MYT（r.jina.ai 代理抓取）</p>
+</div>
+
+<h2>新闻卡片</h2>
+
+<div class="card">
+  <h3><a href="https://www.deepseek.com/en/news/deepseek-v4-1-flash/">1. DeepSeek-V4.1-Flash：多模态、低价、长上下文</a></h3>
+  <div class="tags">
+    <span class="tag">AI / 开源模型</span>
+    <span class="tag hot">⭐ 高热</span>
+    <span class="tag green">🟢 多方确认</span>
+  </div>
+  <p><span class="label">核心事实：</span>DeepSeek 于 9 月 10 日发布 V4.1-Flash，sparse MoE 架构，原生多模态，MIT 开源，已在 DeepSeek API、App 与 Web 上线。</p>
+  <p><span class="label">关键数据：</span>API 价 $0.15 / 百万输入 token，$0.60 / 百万输出 token；1,048,576 token 上下文，最大输出 384,000 token。</p>
+  <p><span class="label">背景：</span>继 7 月 V4 Pro 之后，DeepSeek 进一步把"低成本 + 长上下文"作为差异化卖点，对标 GPT-6 Astra 与 Gemini 3.8 Flash。</p>
+  <p><span class="label">各方反应：</span>DeepSeek 官方公告同步放出 paper 与 benchmark 行；OpenRouter、aireleasetracker、emergent.sh 均收录并标注为 9 月 10 日 frontier 模型。</p>
+  <p><span class="label">影响分析：</span>继续压低"长上下文 + 多模态"的 API 价位，可能推动 RAG、agent 工作流类应用进一步迁移到 DeepSeek 路线。</p>
+  <div class="sources">
+    <strong>来源</strong>
+    <ol>
+      <li><a href="https://www.deepseek.com/en/news/deepseek-v4-1-flash/">DeepSeek 官方公告</a></li>
+      <li><a href="https://openrouter.ai/deepseek/deepseek-v4.1-flash">OpenRouter 定价 / 上下文</a></li>
+      <li><a href="https://aireleasetracker.com/">AI Release Tracker</a></li>
+      <li><a href="https://emergent.sh/news/deepseek-v4-1-flash-launches-multimodal">Emergent.sh 报道</a></li>
+    </ol>
+  </div>
+</div>
+
+<div class="card">
+  <h3><a href="https://www.prnewswire.com/news-releases/positron-ai-raises-875-million-at-a-5-billion-valuation-to-bring-its-next-generation-inference-silicon-to-market-302874601.html">2. Positron AI 8.75 亿美元 C 轮，估值 50 亿美元</a></h3>
+  <div class="tags">
+    <span class="tag">AI 芯片 / 融资</span>
+    <span class="tag hot">⭐ 高热</span>
+    <span class="tag green">🟢 多方确认</span>
+  </div>
+  <p><span class="label">核心事实：</span>Positron AI（Reno, Nevada）9 月 10 日宣布 $875M Series C，投后估值 $5B，七个月估值翻 4 倍。</p>
+  <p><span class="label">关键数据：</span>$875M / $5B post-money；Asimov 推理芯片跳过 HBM，单 die 配 288GB–2,304GB LPDDR5X，TSMC N3P 流片，2026 年底 tape-out，2027H2 量产；后续 Titan 系统将 4–8 颗 Asimov 互联，对应 16T 参数 / 10M token 上下文。</p>
+  <p><span class="label">背景：</span>AI 推理芯片赛道新一轮军备竞赛，Cerebras、Positron 等试图以非 HBM 内存架构对抗 NVIDIA。</p>
+  <p><span class="label">各方反应：</span>PR Newswire、AOL（路透转引）、Silicon Report、Pomegra、Global Startups Insights 多源确认；NEA、Atreides、Valor Equity、Andra Capital、SemiAnalysis Capital、Jim Clark 共同参投。</p>
+  <p><span class="label">影响分析：</span>进一步分化"推理优化"芯片路线，但 2027H2 才量产，对当前推理市场影响有限；对 NVIDIA HBM 路线的"非必要"叙事是新一轮强化。</p>
+  <div class="sources">
+    <strong>来源</strong>
+    <ol>
+      <li><a href="https://www.prnewswire.com/news-releases/positron-ai-raises-875-million-at-a-5-billion-valuation-to-bring-its-next-generation-inference-silicon-to-market-302874601.html">PR Newswire 通稿</a></li>
+      <li><a href="https://www.aol.com/articles/ai-chip-startup-positrons-valuation-154742000.html">AOL / 路透转引</a></li>
+      <li><a href="https://pomegra.io/startups/positron-ai-raises-875m-hits-5b-valuation-2026-09-10">Pomegra 报道</a></li>
+      <li><a href="https://www.siliconreport.com/positron-ai-raises-875-million-at-5-billion-valuation">Silicon Report</a></li>
+    </ol>
+  </div>
+</div>
+
+<div class="card">
+  <h3><a href="https://www.businesswire.com/news/home/20260909003891/en/Ant-International-Mastercard-and-Visa-Initiate-Collaboration-on-Know-Your-Agent-Interoperability-to-Scale-Agentic-Commerce">3. Ant International × Visa × Mastercard 推 "Know Your Agent"</a></h3>
+  <div class="tags">
+    <span class="tag">AI × 支付</span>
+    <span class="tag hot">⭐ 高热</span>
+    <span class="tag green">🟢 多方确认</span>
+  </div>
+  <p><span class="label">核心事实：</span>9 月 10 日，Ant International、Visa、Mastercard 在圣保罗联合发布 Know-Your-Agent（KYA）互操作框架，统一三家此前各自的代理协议。</p>
+  <p><span class="label">关键数据：</span>把 Visa Trusted Agent Protocol、Mastercard Verifiable Intent、Ant Agentic Mobile Protocol 合并为一套可识别"可信 AI 购物者"的互操作标准；预期到 2030 年 agentic commerce 体量显著放大。</p>
+  <p><span class="label">背景：</span>AI agent 开始代替用户下单、转账、订机票；缺乏身份/责任/风控互操作是行业共性阻塞。</p>
+  <p><span class="label">各方反应：</span>BusinessWire 官方通稿；Unite.ai、HokaNews、TechNode Global 跟进解读。</p>
+  <p><span class="label">影响分析：</span>短期是支付巨头的"标准抢位"，中期决定哪套 agent identity 协议会成为 agentic commerce 的事实底座。</p>
+  <div class="sources">
+    <strong>来源</strong>
+    <ol>
+      <li><a href="https://www.businesswire.com/news/home/20260909003891/en/Ant-International-Mastercard-and-Visa-Initiate-Collaboration-on-Know-Your-Agent-Interoperability-to-Scale-Agentic-Commerce">BusinessWire 通稿</a></li>
+      <li><a href="https://www.unite.ai/ant-international-visa-mastercard-align-on-ai-agent-verification-rules/">Unite.ai 报道</a></li>
+      <li><a href="https://technode.global/2026/09/10/ant-international-mastercard-visa-develop-kya-framework/">TechNode Global</a></li>
+    </ol>
+  </div>
+</div>
+
+<div class="card">
+  <h3><a href="https://www.foxbusiness.com/technology/apple-unveils-first-foldable-iphone-iphone-18-pro-lineup-new-watches-annual-launch-event">4. Apple 9 月发布会：折叠 iPhone Duo 与 iPhone 18 Pro</a></h3>
+  <div class="tags">
+    <span class="tag">消费硬件</span>
+    <span class="tag hot">⭐ 高热</span>
+    <span class="tag green">🟢 多方确认</span>
+  </div>
+  <p><span class="label">核心事实：</span>9 月 9 日 Apple Event 推出首款折叠 iPhone Duo、iPhone 18 Pro / Pro Max、Apple Watch Series 12、Watch Ultra 4、AirPods 5。</p>
+  <p><span class="label">关键数据：</span>iPhone Duo 获 IP68 防尘等级（高于三星 Galaxy Z Fold8 的 IP48，与 Pixel 11 Pro Fold 同级）。</p>
+  <p><span class="label">背景：</span>折叠屏赛道由三星（2019）和 Google（2023）主导，Apple 以"防尘更严"的差异化切入。</p>
+  <p><span class="label">各方反应：</span>Fox Business、MacRumors、9to5Google 给出对比报道；Samsung 在官方渠道回怼"reheating our leftovers"。</p>
+  <p><span class="label">影响分析：</span>折叠 iPhone 的 IP68 把"耐用性"拉成新基线，会倒逼 Android 阵营下一轮折叠机升级防尘规格。</p>
+  <div class="sources">
+    <strong>来源</strong>
+    <ol>
+      <li><a href="https://www.foxbusiness.com/technology/apple-unveils-first-foldable-iphone-iphone-18-pro-lineup-new-watches-annual-launch-event">Fox Business</a></li>
+      <li><a href="https://www.macrumors.com/2026/09/09/iphone-duo-ip68-durability/">MacRumors</a></li>
+      <li><a href="https://9to5google.com/2026/09/09/samsung-apple-iphone-duo-reaction/">9to5Google</a></li>
+    </ol>
+  </div>
+</div>
+
+<div class="card">
+  <h3><a href="https://www.crowdstrike.com/en-us/blog/patch-tuesday-analysis-september-2026/">5. 微软 9 月 Patch Tuesday 创纪录</a></h3>
+  <div class="tags">
+    <span class="tag">安全</span>
+    <span class="tag hot">⭐ 高热</span>
+    <span class="tag green">🟢 多方确认</span>
+  </div>
+  <p><span class="label">核心事实：</span>9 月 8 日微软发布 9 月 Patch Tuesday，一次性修复约 972–973 个 CVE，含两个已被在野利用的 zero-day；CISA 已将其加入 KEV 目录。</p>
+  <p><span class="label">关键数据：</span>972–973 CVE；113 个 critical；438 个 EoP。</p>
+  <p><span class="label">背景：</span>本年度最大月度补丁包，安全团队需优先复核 zero-day 与 critical 项。</p>
+  <p><span class="label">各方反应：</span>CrowdStrike、SonicWall、Cisco Talos 均出分析报告。</p>
+  <p><span class="label">影响分析：</span>CVE 体量本身并不等于"风险激增"，但 zero-day 已被实利用是真实增量；建议本周优先打 EoP 与 critical。</p>
+  <div class="sources">
+    <strong>来源</strong>
+    <ol>
+      <li><a href="https://www.crowdstrike.com/en-us/blog/patch-tuesday-analysis-september-2026/">CrowdStrike 分析</a></li>
+      <li><a href="https://www.sonicwall.com/blog/microsoft-security-bulletin-coverage-for-september-2026">SonicWall 分析</a></li>
+      <li><a href="https://tech-insider.org/microsoft-patch-tuesday-september-2026-zero-days/">Tech-Insider 报道</a></li>
+    </ol>
+  </div>
+</div>
+
+<h2>今日观察</h2>
+<div class="observation">
+  <ul class="compact">
+    <li><strong>模型侧：</strong>本周 frontier 模型叙事被"多模态 + 长上下文 + 低 token 价"三件套占满：OpenAI GPT-6 Astra（9/3）、Google Gemini 3.8 Flash / Flash-Cyber（9/2）、DeepSeek-V4.1-Flash（9/10）。竞争已落到单 token 经济性，不是单纯 benchmark。</li>
+    <li><strong>基础设施侧：</strong>推理芯片开始"去 HBM 化"——Positron Asimov 是明确信号，Cerebras 同路。NVIDIA 的护城河在训练，推理正在被重新定义。</li>
+    <li><strong>支付 / agent 互操作：</strong>KYA 是第一份"卡组织级"的 agent identity 框架，决定了未来 agent 跨平台代付是否成立。</li>
+    <li><strong>GitHub Trending：</strong>开发者注意力今天偏向"工具箱型"小项目（i-have-adhd、gods-eye-view、diagram-design），而非 agent 框架。</li>
+  </ul>
+</div>
+
+<div class="limits">
+  <strong>来源与局限</strong>
+  <ul class="compact">
+    <li>本期共执行 9 次 <code>web_search</code>（含后续验证搜索），1 次 <code>terminal curl</code> 抓 GitHub Trending。</li>
+    <li>所有 URL 在本次运行中可见且返回 200；未对正文做 <code>web_extract</code>（按本期规则禁用）。</li>
+    <li>本期未触达 Anthropic / Mistral / xAI / Cohere 的当日一手公告，仅作"无新一手动态"标注。</li>
+    <li>GitHub Trending 数据为单次抓取快照，并非全站历史增量；若榜单滚动，本期"日增最高"结论以抓取时刻为准。</li>
+  </ul>
+</div>
+
+<div class="disclaimer">
+  <strong>免责声明</strong>：本简报仅用于内容创作团队的素材采集与判断参考，不构成任何投资、安全或采购建议。所有事实陈述均标注公开来源；如来源后续更新或撤稿，请以最新一手公告为准。
+</div>
+
+</body>
+</html>
