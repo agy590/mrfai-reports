@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日市场简报 — 2026-09-11</title>
+<style>
+  :root {
+    --bg: #0f1419;
+    --card: #1a1f29;
+    --border: #2a313c;
+    --text: #e6edf3;
+    --muted: #7d8590;
+    --up: #3fb950;
+    --down: #f85149;
+    --neutral: #d29922;
+    --accent: #58a6ff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .header {
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+  .header h1 {
+    font-size: 28px;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .header .meta {
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .section h2 {
+    color: var(--accent);
+    font-size: 20px;
+    margin-bottom: 16px;
+    border-left: 4px solid var(--accent);
+    padding-left: 12px;
+  }
+  .section h3 {
+    color: var(--text);
+    font-size: 16px;
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+  th {
+    background: var(--border);
+    color: var(--muted);
+    text-align: left;
+    padding: 8px 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  tr:hover td {
+    background: rgba(88, 166, 255, 0.05);
+  }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .neutral { color: var(--neutral); }
+  .muted { color: var(--muted); }
+  .kpi {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin: 12px 0;
+  }
+  .kpi-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 16px;
+  }
+  .kpi-label {
+    color: var(--muted);
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .kpi-value {
+    font-size: 22px;
+    font-weight: 600;
+  }
+  ul { padding-left: 20px; margin: 8px 0; }
+  li { margin-bottom: 6px; }
+  .footer {
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+  .source {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+</style>
+</head>
+<body>
+  <div class="header">
+    <h1>📊 每日市场简报 — 2026-09-11</h1>
+    <div class="meta">📅 2026-09-11 09:18 MYT · 数据源: Yahoo Finance · web_search (Reuters, NYT, APAC News, Nowflation, Trading Economics)</div>
+  </div>
+
+  <div class="section">
+    <h2>🇲🇾 马来西亚股市</h2>
+    <div class="kpi">
+      <div class="kpi-card">
+        <div class="kpi-label">KLCI 综合指数</div>
+        <div class="kpi-value down">1705.42 <span class="muted" style="font-size:14px">(-0.55%)</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">USD/MYR</div>
+        <div class="kpi-value up">4.071 <span class="muted" style="font-size:14px">(+0.72%)</span></div>
+      </div>
+    </div>
+
+    <h3>KLCI 5 日走势</h3>
+    <p class="muted">9/7: 1714.79 → 9/8: 1714.40 → 9/9: 1714.34 → 9/11: 1705.42。前三日高位窄幅震荡，今日跌破 1,710 支撑,跌 0.55%。</p>
+
+    <h3>USD/MYR 5 日走势</h3>
+    <p class="muted">9/7: 4.0417 → 9/8: 4.0436 → 9/9: 4.0556 → 9/10: 4.0647 → 9/11: 4.071。马币持续走弱,5 日贬值约 0.72%,与油价上涨(进口能源成本上升)及美元企稳同步。</p>
+
+    <h3>主要成分股</h3>
+    <table>
+      <thead>
+        <tr><th>代码</th><th>公司</th><th>涨跌</th><th>备注</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1155.KL</td><td>MAYBANK 马银行</td><td class="down">-0.95%</td><td>银行板块跟跌大盘</td></tr>
+        <tr><td>1023.KL</td><td>CIMB 联昌银行</td><td class="down">-1.25%</td><td>同银行板块走弱</td></tr>
+        <tr><td>1295.KL</td><td>PBBANK 公众银行</td><td class="down">-3.00%</td><td>跌幅最大成分股</td></tr>
+        <tr><td>5347.KL</td><td>TENAGA 国家能源</td><td class="down">-0.14%</td><td>防御属性相对抗跌</td></tr>
+        <tr><td>5225.KL</td><td>IHH 医疗集团</td><td class="down">-0.13%</td><td>基本持平</td></tr>
+        <tr><td>7113.KL</td><td>TOPGLOV 顶级手套</td><td class="up">+19.38%</td><td>异常强势,可能有利好催化</td></tr>
+      </tbody>
+    </table>
+
+    <h3>板块动态</h3>
+    <ul>
+      <li><strong>油气/能源相关</strong>:受国际油价飙升至 $102 (WTI) 冲击,大马作为油气出口国短期受益,但进口能源成本同步上升,板块呈分化。</li>
+      <li><strong>银行</strong>:三大行齐跌 1-3%,美联储 9 月议息前市场情绪偏谨慎。</li>
+      <li><strong>手套(7113.KL)</strong>:逆势 +19%,量价异常,需查公司公告或行业催化。</li>
+    </ul>
+
+    <h3>关键新闻</h3>
+    <ul>
+      <li><strong>油价飙升拖累大马股市</strong>(Malay Mail 9/10):KLCI 早盘跌 7.52 点至 1,706.82,反映能源进口成本担忧。</li>
+      <li><strong>KLCI 持续走弱</strong>(Kakiforex 9/11):午后跌 10.47 点至 1,703.87,印证今日跌势延续。</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🇺🇸 美国期货 + 美股</h2>
+    <div class="kpi">
+      <div class="kpi-card">
+        <div class="kpi-label">ES=F (S&P 500 期货)</div>
+        <div class="kpi-value up">7613.75 <span class="muted" style="font-size:14px">(+0.20%)</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">NQ=F (Nasdaq 期货)</div>
+        <div class="kpi-value up">29150.75 <span class="muted" style="font-size:14px">(+0.05%)</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">YM=F (Dow 期货)</div>
+        <div class="kpi-value up">52236.0 <span class="muted" style="font-size:14px">(+0.27%)</span></div>
+      </div>
+    </div>
+
+    <h3>关键宏观指标</h3>
+    <table>
+      <thead><tr><th>指标</th><th>水平</th><th>涨跌</th></tr></thead>
+      <tbody>
+        <tr><td>美元指数 DXY</td><td>99.045</td><td class="down">-0.12%</td></tr>
+        <tr><td>10Y 美债收益率 ^TNX</td><td>4.944%</td><td class="up">+3.82% (约 +18bp)</td></tr>
+        <tr><td>VIX 恐慌指数</td><td>17.84</td><td class="up">+22.78%</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Magnificent 7(隔夜收盘,9/10 美股已收市)</h3>
+    <table>
+      <thead><tr><th>代码</th><th>公司</th><th>收盘价</th><th>涨跌</th></tr></thead>
+      <tbody>
+        <tr><td>NVDA</td><td>英伟达</td><td>218.36</td><td class="down">-2.37%</td></tr>
+        <tr><td>AAPL</td><td>苹果</td><td>326.57</td><td class="up">+3.56%</td></tr>
+        <tr><td>MSFT</td><td>微软</td><td>492.44</td><td class="up">+0.16%</td></tr>
+        <tr><td>GOOGL</td><td>谷歌</td><td>332.60</td><td class="up">+0.59%</td></tr>
+        <tr><td>META</td><td>Meta</td><td>644.38</td><td class="down">-1.42%</td></tr>
+        <tr><td>TSLA</td><td>特斯拉</td><td>363.56</td><td class="down">-1.16%</td></tr>
+        <tr><td>AMZN</td><td>亚马逊</td><td>251.89</td><td class="down">-0.20%</td></tr>
+      </tbody>
+    </table>
+
+    <h3>今日关注事件(美东 / MYT)</h3>
+    <ul>
+      <li><strong>美国 8 月 CPI</strong>:8:30 AM ET / <strong>20:30 MYT</strong>(今日!)。市场预期 3.4% YoY,核心 CPI 是 Fed 关注重点。Cleveland Fed Nowcast 预测 3.34%。这是本周最大宏观变量,直接决定 9 月 FOMC 利率路径。</li>
+      <li><strong>FOMC 9 月议息会议</strong>:9/16-17,本次 CPI 是最后关键参考。</li>
+    </ul>
+
+    <h3>核心驱动因素</h3>
+    <ul>
+      <li><strong>滞胀担忧升温</strong>:油价单周飙 12%(地缘+OPEC+),VIX 单日跳升 22.78%,市场在为 CPI 不确定定价。</li>
+      <li><strong>利率路径模糊</strong>:10Y 收益率重回 4.94% 高位,反映通胀粘性预期;但 DXY 走弱 (-0.12%),黄金同步走弱 (-1.17%),传统避险逻辑失效——市场更像在押注"通胀粘性 + 利率长期高位"。</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🥇 贵金属</h2>
+    <div class="kpi">
+      <div class="kpi-card">
+        <div class="kpi-label">COMEX 黄金 GC=F</div>
+        <div class="kpi-value down">$4378.00 <span class="muted" style="font-size:14px">(-1.17%)</span></div>
+      </div>
+    </div>
+
+    <h3>驱动因素</h3>
+    <ul>
+      <li><strong>美元</strong>:DXY 99.045,小幅走弱(-0.12%),对金价中性偏多。</li>
+      <li><strong>美债 10Y</strong>:4.944%,大幅上行约 +18bp,持有黄金机会成本上升,压制金价。</li>
+      <li><strong>风险偏好</strong>:VIX 飙升至 17.84(+22.78%),传统避险该涨,但金价反向走弱——市场在抛黄金买美债/抗通胀资产,反映滞胀预期而非地缘避险。</li>
+      <li><strong>关键事件</strong>:今日 20:30 MYT CPI 数据是关键,若核心通胀超预期,Fed 鹰派预期升温,金价可能下测 $4,350 支撑。</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🛢 原油</h2>
+    <div class="kpi">
+      <div class="kpi-card">
+        <div class="kpi-label">WTI CL=F</div>
+        <div class="kpi-value up">$102.41 <span class="muted" style="font-size:14px">(+11.95%)</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Brent BZ=F</div>
+        <div class="kpi-value up">$107.46 <span class="muted" style="font-size:14px">(+11.61%)</span></div>
+      </div>
+    </div>
+
+    <h3>驱动因素</h3>
+    <ul>
+      <li><strong>地缘冲突</strong>:美伊紧张升级,霍尔木兹海峡(SOE)航运活动下降,Brent 上周累涨 8.5%,WTI 涨 9.6%(Reuters/APAC News)。</li>
+      <li><strong>OPEC+</strong>:9 月会议倾向维持产量不变,在地缘扰动背景下供给侧无增量对冲。</li>
+      <li><strong>需求侧</strong>:亚洲买家抢购原油,Dubai 油价逼近 $100,反映实际需求强劲。</li>
+      <li><strong>通胀外溢</strong>:油价 $100+ 直接推高美国能源 CPI 分项,今晚 CPI 报告能源分项大概率偏热。</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>💡 总结与建议</h2>
+    <h3>市场情绪</h3>
+    <p><strong>滞胀风险显著升温</strong>(Stagflation fear rising)。Risk-off 已不再由"恐慌+避险黄金"主导,而是"通胀粘性+利率长期高位"的真实利率逻辑——VIX 涨但金价跌、美债收益率破 4.94% 即此结构信号。</p>
+
+    <h3>今日三大关注点</h3>
+    <ol>
+      <li><strong>美国 8 月 CPI(20:30 MYT)</strong>:核心通胀粘性是核心变量,若 YoY > 3.4% 或核心 > 3.3%,市场将重新定价 Fed 9 月不动+年内不降息,美股/黄金承压,美元走强。</li>
+      <li><strong>地缘风险溢价</strong>:油价 $100+ 已定价部分地缘风险,若伊朗局势缓解,油价快速回吐,可能引发跨资产连锁反应(通缩预期重燃)。</li>
+      <li><strong>马币贬值压力</strong>:USD/MYR 5 日贬 0.72%,若油价继续上行+ Fed 鹰派,MYR 可能测试 4.10 关口。</li>
+    </ol>
+
+    <h3>马来西亚视角操作建议</h3>
+    <ul>
+      <li><strong>油气/能源出口股</strong>(如 Petronas 相关):短期受益油价,留意 OPEC+ 会议后的获利了结窗口。</li>
+      <li><strong>马币资产</strong>:USD/MYR 突破 4.07,出口型(如电子制造)短期受益,进口型(零售/汽车)承压。</li>
+      <li><strong>银行板块</strong>:今日普跌 1-3%,已计入部分利率风险溢价,等待今晚 CPI 落地后再决策。</li>
+    </ul>
+
+    <h3>美股视角操作建议</h3>
+    <ul>
+      <li><strong>今晚 CPI 前不建议重仓</strong>:VIX +22.78% 已显示期权市场对冲情绪升温,日内波动可能放大。</li>
+      <li><strong>若 CPI 符合预期(3.3-3.4%)</strong>:S&P 7,600 / Nasdaq 29,000 支撑有效,科技股或领涨反弹。</li>
+      <li><strong>若 CPI 超预期</strong>:S&P 可能下测 7,500,关注 NVDA/SMCI 等高估值 AI 链回调风险;防御板块(必需消费/公用事业)相对抗跌。</li>
+    </ul>
+
+    <div class="source">注:本报告所有数据基于 Yahoo Finance API 实时报价(2026-09-11 09:07 MYT)+ web_search 国际媒体报道。期货价格以美东时段 9/10 收盘后盘后交易为准,CPI 实际值需待 20:30 MYT 公布后更新。</div>
+  </div>
+
+  <div class="footer">
+    由 Hermes Agent 自动生成 · 数据来源: Yahoo Finance (KLSE、Mag7、Futures、Commodities、DXY、TNX、VIX)、Reuters、APAC News Network、NYT、Nowflation、Cleveland Fed<br>
+    本报告仅供参考,不构成投资建议 · 实际交易请自行决策
+  </div>
+</body>
+</html>
