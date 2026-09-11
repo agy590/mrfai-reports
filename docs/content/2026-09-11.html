@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent 越"贴心"越慢：上下文不是越多越好</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    max-width: 720px;
+    margin: 40px auto;
+    padding: 0 20px;
+    line-height: 1.75;
+    color: #222;
+    background: #fafafa;
+  }
+  h1 { font-size: 1.6em; margin-bottom: 0.2em; }
+  .date { color: #888; font-size: 0.9em; margin-bottom: 1.5em; }
+  .stance {
+    background: #fffbe6;
+    border-left: 4px solid #f5b400;
+    padding: 12px 16px;
+    margin: 1.2em 0;
+  }
+  .failure {
+    background: #fdecea;
+    border-left: 4px solid #d93025;
+    padding: 12px 16px;
+    margin: 1.2em 0;
+  }
+  ol.steps {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    padding: 16px 16px 16px 36px;
+  }
+  ol.steps li { margin-bottom: 0.6em; }
+  .disclaimer {
+    margin-top: 2em;
+    padding-top: 1em;
+    border-top: 1px dashed #ccc;
+    font-size: 0.85em;
+    color: #777;
+  }
+</style>
+</head>
+<body>
+<h1>Agent 越"贴心"越慢：上下文不是越多越好</h1>
+<p class="date">2026-09-11 · MrFai 的 Agent 笔记</p>
+
+<div class="stance">
+  <strong>立场：</strong>把 Agent 当人脑喂资料，结果就是它既慢又糊涂。"给它更多上下文"从来都不是免费的，它有真实成本。
+</div>
+
+<p>
+  早期做长任务 Agent 的时候，我踩过一个很典型的坑：为了让模型"更懂我在干什么"，把历史任务、操作手册、用户偏好、错误码表全部塞进 system prompt，单次上下文堆到了 30KB 左右。直觉上觉得"资料全 = 决策准"，结果完全相反。
+</p>
+
+<div class="failure">
+  <strong>失败模式：</strong>上下文越长，单次决策的信噪比越低。模型会在中间段落迷失，忘记最初的目标；调用变慢，token 成本翻倍，但准确率没有上升，有时候反而下降。问题不在模型不够大，而在我把噪声当成了信号。
+</div>
+
+<p>后来我把上下文分层管理，效果立竿见影。给同样想给 Agent "加料"的朋友四步建议：</p>
+
+<ol class="steps">
+  <li><strong>分层放资料：</strong>操作手册放 Skills 或工具描述；短期上下文放 system prompt；长期记忆走外部检索。不要全塞进一段里。</li>
+  <li><strong>每段都说明"为什么用我"：</strong>一段历史、一条偏好，都要交代它和当前任务的关系，模型才知道该忽略哪段。</li>
+  <li><strong>超过 ~10KB 先做摘要 + 索引：</strong>让模型按需取，而不是一次性吞下整本"百科全书"。</li>
+  <li><strong>每次任务结束清理 session 状态：</strong>避免下一次任务继承上一次的噪声。干净的起点比"齐全的历史"更有价值。</li>
+</ol>
+
+<p>
+  现在我做新 Agent，第一件事是问自己："这段内容，是放 system prompt，还是放工具描述，还是放外部检索？" 多想这一步，后面省下的不只是 token，还有无数次"它为什么又跑偏了"的 debug 时间。
+</p>
+
+<p class="disclaimer">
+  本文为个人工程经验分享，不构成任何技术或投资建议。所有数据来自本地实验，非外部产品评测。
+</p>
+
+</body>
+</html>
