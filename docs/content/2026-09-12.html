@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>别把 Agent 当记事本 — 上下文腐烂是 Agent 工程里最常见的自杀方式</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; max-width: 720px; margin: 40px auto; padding: 0 20px; color: #1a1a1a; line-height: 1.75; }
+  h1 { font-size: 1.6em; line-height: 1.4; margin-bottom: 0.4em; }
+  .meta { color: #777; font-size: 0.9em; margin-bottom: 1.6em; }
+  p { margin: 1em 0; }
+  ol { padding-left: 1.4em; }
+  ol li { margin: 0.5em 0; }
+  .disclaimer { margin-top: 2em; padding-top: 1em; border-top: 1px solid #eee; color: #888; font-size: 0.85em; }
+</style>
+</head>
+<body>
+<article>
+<h1>别把 Agent 当记事本 — 上下文腐烂是 Agent 工程里最常见的自杀方式</h1>
+<div class="meta">2026-09-12 · MrFai 的 Agent 笔记</div>
+
+<p>Agent 的质量不是 prompt 长度决定的。上下文窗口不是越大越好, 这件事我是在一次复盘里真正挨了一拳才认的。</p>
+
+<p>早期我让一个 research agent 把所有检索片段、历史结论、用户偏好一次性塞进上下文, 想让它"参考更全"。结果恰恰相反: 输出开始自相矛盾, 同一论据被同时用来支持相反的结论; 任务越复杂, 崩溃越快。这就是常说的 context rot: 信息越多, 模型对核心指令的注意力被稀释得越稀, 中段的细节最先失忆, 末尾的格式要求也被吞掉。</p>
+
+<p>教训是简单的, 修起来却反复踩坑。后来我把它压成下面这套最小习惯, 至少让本地小模型不再"看似聪明地胡说":</p>
+
+<ol>
+  <li><strong>分层记忆</strong>: 任务级只放当前任务的事实, 项目级放稳定约定 (例如输出格式), 长期记忆单独索引, 用的时候按需检索, 不要全量复制。</li>
+  <li><strong>设上下文预算</strong>: 单次任务总输入不超过窗口的 40%, 剩下留给生成; 超过就截断最旧的检索片段, 而不是继续往里塞。</li>
+  <li><strong>关键指令放首尾</strong>: 开头放目标, 结尾放格式与验收; 中间是噪声, 注意力最弱。</li>
+  <li><strong>每完成一个子任务就压缩</strong>: 让 agent 自己用两三百字总结前一段, 再把摘要往下传; 旧摘要存档而不是反复回填。</li>
+</ol>
+
+<p>Agent 工程里最难的部分不是模型, 是约束: 约束它记住什么, 约束它忘记什么。上下文不是免费的 buffer, 是要付费的认知带宽。</p>
+
+<div class="disclaimer">
+本文是个人工程笔记, 观点来自本地实验; 不同模型与版本行为会变, 不构成任何产品或投资建议。
+</div>
+</article>
+</body>
+</html>
