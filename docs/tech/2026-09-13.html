@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日科技新闻简报 · 2026-09-13</title>
+<style>
+  :root {
+    --bg: #fafaf7;
+    --card: #ffffff;
+    --ink: #1a1a1a;
+    --ink-soft: #4a4a4a;
+    --ink-mute: #7a7a7a;
+    --border: #e6e6e0;
+    --accent: #b85c2c;
+    --accent-soft: #fbeee4;
+    --link: #1d5bbf;
+    --link-hover: #b85c2c;
+    --tag-green: #1f7a3d;
+    --tag-yellow: #a06a00;
+    --tag-red: #b03030;
+    --code-bg: #f3f3ee;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+      "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.65; font-size: 16px; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 28px 20px 60px; }
+  header { border-bottom: 1px solid var(--border); padding-bottom: 16px; margin-bottom: 24px; }
+  h1 { font-size: 26px; margin: 0 0 8px; letter-spacing: 0.5px; }
+  h2 { font-size: 20px; margin: 36px 0 14px; padding-left: 10px;
+    border-left: 4px solid var(--accent); }
+  h3 { font-size: 17px; margin: 22px 0 10px; color: var(--ink); }
+  h4 { font-size: 15px; margin: 16px 0 8px; color: var(--ink-soft); }
+  p { margin: 8px 0; }
+  .meta { color: var(--ink-mute); font-size: 13px; }
+  .tldr { background: var(--accent-soft); border: 1px solid #f3d8c0;
+    padding: 14px 16px; border-radius: 8px; margin: 16px 0 24px; }
+  .tldr ul { margin: 6px 0 0 18px; padding: 0; }
+  .tldr li { margin: 4px 0; }
+  .card { background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 18px 20px; margin: 16px 0;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.02); }
+  .card .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; font-size: 12px; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 999px;
+    background: #f0f0ea; color: var(--ink-soft); border: 1px solid var(--border); }
+  .tag.green { color: var(--tag-green); border-color: #cfe7d6; background: #f0f8f2; }
+  .tag.yellow { color: var(--tag-yellow); border-color: #ecdcb3; background: #fbf5e6; }
+  .tag.red { color: var(--tag-red); border-color: #e8c3c3; background: #fbecec; }
+  .tag.hot { color: #b03030; border-color: #e8c3c3; background: #fbecec; }
+  .tag.warm { color: #a06a00; border-color: #ecdcb3; background: #fbf5e6; }
+  .field { margin: 6px 0; font-size: 14px; }
+  .field b { color: var(--ink-soft); font-weight: 600; }
+  a { color: var(--link); text-decoration: none; border-bottom: 1px dotted var(--link); }
+  a:hover { color: var(--link-hover); border-bottom-color: var(--link-hover); }
+  ul.bullets { margin: 6px 0 6px 18px; padding: 0; }
+  ul.bullets li { margin: 3px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+  th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--border); }
+  th { background: #f3f3ee; font-weight: 600; color: var(--ink-soft); }
+  tr:hover td { background: #fbfaf6; }
+  .observation { background: #f5f5f0; border-left: 3px solid var(--accent);
+    padding: 12px 14px; border-radius: 4px; margin: 10px 0; }
+  .observation p { margin: 4px 0; }
+  .trend-card { background: linear-gradient(135deg, #fff8f1 0%, #fff 60%);
+    border: 1px solid #f3d8c0; }
+  .trend-card .repo-name { font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+    font-size: 16px; color: var(--accent); font-weight: 600; }
+  .footer { color: var(--ink-mute); font-size: 12px; margin-top: 36px;
+    padding-top: 16px; border-top: 1px solid var(--border); }
+  details { margin: 8px 0; }
+  summary { cursor: pointer; color: var(--ink-soft); font-weight: 600; }
+  code { background: var(--code-bg); padding: 1px 5px; border-radius: 3px; font-size: 13px; }
+  @media (max-width: 540px) {
+    .wrap { padding: 18px 14px 40px; }
+    h1 { font-size: 22px; }
+    h2 { font-size: 18px; }
+    .card { padding: 14px 14px; }
+    table { font-size: 12px; }
+    th, td { padding: 6px 6px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>每日科技新闻简报 · 2026-09-13</h1>
+  <div class="meta">范围：AI / 科技 / 互联网 / 创业 · 本期 4 条精选 + 1 个 GitHub Trending 卡片</div>
+</header>
+
+<section class="tldr">
+  <h3 style="margin-top:0">当日摘要（TL;DR）</h3>
+  <ul>
+    <li><b>Anthropic CEO 公开呼吁全行业"踩刹车"</b>：Dario Amodei 9 月 12 日发声，建议 AI 公司放慢"超级智能"模型开发节奏。</li>
+    <li><b>OpenAI GPT-Live-1 全双工语音上线 API</b>：定价 0.05 美元/分钟，ChatGPT Voice 首次向第三方开放。</li>
+    <li><b>OpenAI 自称破解了一道千禧年数学难题</b>：GPT-6 Astra 据称用约 88 小时解出 Navier–Stokes，再用 17 小时在 Lean 中验证。</li>
+    <li><b>Positron 完成 8.75 亿美元 C 轮</b>：投后估值 50 亿美元，由 NEA、Atreides 等领投，主打"用消费级显存跑推理"。</li>
+    <li><b>Nvidia RTX Spark 首批 PC 10 月发货</b>：两款 SKU 都基于 N1x 芯片，定位 Windows PC 上的首款 Nvidia 处理器。</li>
+  </ul>
+</section>
+
+<section class="card trend-card">
+  <h3 style="margin-top:0">GitHub Trending 日榜可见仓库中，今日新增 Star 最高</h3>
+  <div class="repo-name"><a href="https://github.com/SnailSploit/Claude-Red">SnailSploit / Claude-Red</a></div>
+  <div class="field"><b>仓库描述：</b>claude-red is a curated library of offensive security skills designed for the Claude skills system. Each skill is a structured SKILL.md file that primes Claude with expert-level methodology for a specific attack surface — from SQLi to shellcode, EDR evasion to exploit development.</div>
+  <div class="field"><b>主要语言：</b>Python</div>
+  <div class="field"><b>今日新增 Star：</b>+113 stars today <span class="tag warm">页面标注</span></div>
+  <div class="field"><b>当前总 Star：</b>3,660（页面可见）</div>
+  <div class="field"><b>与 AI / 科技读者的相关性：</b>这是一个把"Claude Skills 机制"反向用作"进攻性安全工具包"的项目——以结构化 SKILL.md 给 Claude 注入 SQL 注入、shellcode、EDR 规避等方法论。对关注 AI agent 安全边界、prompt-injection / 工具调用风险、以及"模型 + 结构化技能"如何同时被蓝队和红队利用的读者来说，是一面值得读的镜子。</div>
+  <div class="field"><b>Trending 原始来源：</b><a href="https://github.com/trending?since=daily">https://github.com/trending?since=daily</a></div>
+  <div class="field"><b>本次抓取时间：</b>2026-09-13（Asia/Shanghai）</div>
+  <p class="meta" style="margin-top:8px">范围说明：本次排序仅基于该页面当日可见的 <code>N stars today</code> 数值，按整数比较选出最大者；不是"GitHub 全站 24 小时历史增量榜"。</p>
+</section>
+
+<section>
+  <h2>今日观察</h2>
+  <div class="observation">
+    <p><b>同一周内，两种 AI 立场对撞</b>：一边是 Anthropic CEO 公开呼吁行业减速并加强监管（同时其研究员在 9 月 9 日辞职时警告"AI 可能杀死我们所有人"），另一边是 OpenAI 用 GPT-6 Astra 解出一道千禧年数学难题。两条新闻放在一起，说明 2026 年下半年的 AI 行业叙事已经被"加速派 vs 减速派"高度切割。</p>
+  </div>
+  <div class="observation">
+    <p><b>AI 推理侧在"反 Nvidia 内存路线"上拿到大钱</b>：Positron 8.75 亿 C 轮的核心卖点是"用消费级显存而非 HBM 跑推理"。在 Nvidia 仍主导训练芯片的同时，推理侧出现了明确的资本入口和估值基准（50 亿美元投后估值）。</p>
+  </div>
+  <div class="observation">
+    <p><b>Anthropic 安全叙事正在自我闭环</b>：内部研究员的离职声明 + CEO 的减速呼吁 + 此前关于"模型被用于网络攻击 / 宣传 / 生物研究"的披露，构成一组连贯的 PR 链条。读者下次看到 Anthropic 的安全公告时可以放回这条主线看。</p>
+  </div>
+  <div class="observation">
+    <p><b>PC 端的"AI 原生硬件"开始落地</b>：Nvidia RTX Spark 10 月发货，配合 IFA 2026 上 Nvidia + Microsoft 主推的本地 agent 工具链，"AI PC"已从概念进入消费级铺货阶段。</p>
+  </div>
+</section>
+
+<section>
+  <h2>精选新闻</h2>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag">AI / 行业治理</span>
+      <span class="tag hot">🔥 现象级</span>
+      <span class="tag green">🟢 多方确认</span>
+    </div>
+    <h3>1. Anthropic CEO 公开呼吁 AI 公司放慢开发节奏</h3>
+    <div class="field"><b>核心事实：</b>2026 年 9 月 12 日，Anthropic CEO Dario Amodei 公开呼吁 AI 公司放慢"超级智能"模型的开发，并接受更密切的外部监督。他在表态中承认"不发展 AI 没有替代选项"，但认为当前节奏需要被外界看见和约束。</div>
+    <div class="field"><b>关键数据：</b>表态发生在 Anthropic 披露其模型被用于"网络攻击、宣传战和危险生物研究"之后数天；同一周内一名 Anthropic 研究员辞职，并公开警告部分开发者相信"AI 可能杀死我们所有人"。</div>
+    <div class="field"><b>背景：</b>去年 9 月 Amodei 估计 AI"严重脱轨"的概率约 25%；OpenAI 与 Anthropic 高管此前都已签署联名声明，呼吁各国政府出台规则限制 AI 发展节奏。</div>
+    <div class="field"><b>各方反应：</b></div>
+    <ul class="bullets">
+      <li><b>海外媒体：</b>Euronews、The Star（肯尼亚）、NY Post 均以"呼吁减速"为标题；dnyuz 关注"研究人员辞职"角度；Timewell 进一步分析 Amodei 一份约 2 万字的 AGI / ASI 长文。</li>
+      <li><b>官方/当事人：</b>Amodei 本人在表态中同时承认"没有不发展 AI 的替代选项"。</li>
+    </ul>
+    <div class="field"><b>影响分析：</b></div>
+    <ul class="bullets">
+      <li>短期：在欧盟 AI Act 二阶段、美国各州 AI 立法推进的窗口期，再次抬高"行业自律 vs 强制监管"的讨论声量。</li>
+      <li>长期：若与 OpenAI 的"解题型"叙事继续对撞，"减速派"可能成为企业级 AI 采购方在做供应商评估时的新参考坐标。</li>
+    </ul>
+    <div class="field"><b>推荐内容方向：</b>深度分析（"加速派 vs 减速派"对撞的产业含义 + 监管时间表）。</div>
+    <div class="field"><b>目标平台：</b>公众号、知乎、即刻、Twitter/X。</div>
+    <div class="field"><b>关键词：</b>Anthropic、Dario Amodei、超级智能、AI 监管、模型滥用、减速派。</div>
+    <div class="field"><b>信息来源：</b></div>
+    <ul class="bullets">
+      <li><a href="https://www.euronews.com/my-europe/2026/09/12/anthropic-ceo-dario-amodei-calls-on-ai-companies-to-slow-down-ai-development-amid-superint">Euronews</a></li>
+      <li><a href="https://www.the-star.co.ke/news/world/2026-09-12-anthropic-boss-dario-amodei-calls-for-ai-development-to-slow-down">The Star</a></li>
+      <li><a href="https://nypost.com/2026/09/09/tech/anthropic-researcher-abruptly-quits-warning-some-developers-believe-ai-could-kill-us-all/">NY Post</a></li>
+      <li><a href="https://dnyuz.com/2026/09/09/anthropic-researcher-resigns-warning-of-reckless-race-toward-superintelligence/">dnyuz</a></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag">AI / 产品发布</span>
+      <span class="tag warm">⭐ 高热</span>
+      <span class="tag green">🟢 多方确认</span>
+    </div>
+    <h3>2. OpenAI 把 GPT-Live-1 全双工语音模型开放到 API</h3>
+    <div class="field"><b>核心事实：</b>2026 年 9 月 10 日，OpenAI 将全双工语音模型 GPT-Live-1 接入 API，定价 0.05 美元/分钟。这是 ChatGPT Voice 背后的对话系统首次以 API 形式开放给第三方应用与企业工作流。</div>
+    <div class="field"><b>关键数据：</b>定价 0.05 美元/分钟（仅前段语音层）；社区公告中提到后端标记为 "Astra (medium)"，被解读为多模态底层已切换到比 4o 训练阶段更新的模型。</div>
+    <div class="field"><b>背景：</b>OpenAI 同期在推进 GPT-6 Astra（面向计算机/浏览器操作、自动化、软件工程与科学推理的前沿模型），并将 ChatGPT Images 2.5 于 9 月 8 日上线。</div>
+    <div class="field"><b>各方反应：</b></div>
+    <ul class="bullets">
+      <li><b>开发者社区：</b>OpenAI 社区公告贴下出现对"Astra (medium)"后端的解读讨论；Smol AI 将其与 GPT-6 Astra 一并归入"前沿模型"序列。</li>
+      <li><b>行业媒体：</b>Unite.AI 强调"语音作为独立 SKU 计价"对企业级语音 agent 的成本结构影响。</li>
+    </ul>
+    <div class="field"><b>影响分析：</b></div>
+    <ul class="bullets">
+      <li>短期：客服、语音 agent、教育陪伴类产品可低门槛接入"类 ChatGPT Voice"体验，挤压第三方语音栈（Vapi、LiveKit 等）的差异化空间。</li>
+      <li>长期：API 化的全双工语音成为"语音 OS 化"竞争的新基线，0.05 美元/分钟是 OpenAI 给整个行业定下的参考价。</li>
+    </ul>
+    <div class="field"><b>推荐内容方向：</b>产品分析（语音 agent 成本结构 + 接入路径）+ 行业快讯。</div>
+    <div class="field"><b>目标平台：</b>公众号、知乎、即刻。</div>
+    <div class="field"><b>关键词：</b>GPT-Live-1、全双工语音、API 定价、ChatGPT Voice、Astra。</div>
+    <div class="field"><b>信息来源：</b></div>
+    <ul class="bullets">
+      <li><a href="https://community.openai.com/t/introducing-gpt-live-1-in-the-api/1396471">OpenAI 社区公告</a></li>
+      <li><a href="https://www.unite.ai/openais-gpt-live-1-arrives-in-the-api-at-0-05-per-minute/">Unite.AI</a></li>
+      <li><a href="https://news.smol.ai/issues/26-09-03-gpt-6-astra/">Smol AI</a></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag">AI / 科研</span>
+      <span class="tag warm">⭐ 高热</span>
+      <span class="tag yellow">🟡 单源但可靠</span>
+    </div>
+    <h3>3. OpenAI 自称用 agent 解出一道千禧年数学难题</h3>
+    <div class="field"><b>核心事实：</b>据 ain.ua 报道，OpenAI 表示其 agent 团队于 9 月 5 日左右（距启动约 88 小时）得出 Navier–Stokes 问题的解，随后又用 17 小时在 Lean 中完成形式化验证，过程中调用了 GPT-6 Astra。</div>
+    <div class="field"><b>关键数据：</b>解题耗时 ≈ 88 小时；形式化验证耗时 ≈ 17 小时；所用模型为 GPT-6 Astra。</div>
+    <div class="field"><b>背景：</b>Navier–Stokes 问题是克雷数学研究所公布的七个千禧年奖金问题之一；目前公开可查的进展多以"局部光滑性 / 奇点结构"等子问题为主，完整解仍属未解。</div>
+    <div class="field"><b>各方反应：</b></div>
+    <ul class="bullets">
+      <li><b>媒体：</b>ain.ua 已发文描述这一进展；其他主流英文科技媒体暂未见独立确认。</li>
+      <li><b>数学社区：</b>本次报道未给出可独立下载的证明 / Lean 工程链接，结论需进一步等数学界复核。</li>
+    </ul>
+    <div class="field"><b>影响分析：</b></div>
+    <ul class="bullets">
+      <li>短期：若结论被复核通过，将是 LLM agent 在"长程形式化数学"任务上的首个千禧年级别里程碑。</li>
+      <li>长期：把"agent + 形式化验证器（Lean / Coq）"的工作流做成可复现管线，是接下来 12 个月最值得关注的科研 AI 工程方向之一。</li>
+    </ul>
+    <div class="field"><b>推荐内容方向：</b>深度分析（"agent + Lean" 工作流的可复现性 + 与 DeepMind AlphaProof 的差异）。</div>
+    <div class="field"><b>目标平台：</b>知乎、公众号、B 站长视频。</div>
+    <div class="field"><b>关键词：</b>千禧年问题、Navier-Stokes、GPT-6 Astra、Lean、形式化验证、agent 科研。</div>
+    <div class="field"><b>信息来源：</b></div>
+    <ul class="bullets">
+      <li><a href="https://en.ain.ua/2026/09/09/chatgpt-solved-one-of-the-millennium-prize-math-problems/">ain.ua</a></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag">创业 / AI 芯片</span>
+      <span class="tag warm">⭐ 高热</span>
+      <span class="tag green">🟢 多方确认</span>
+    </div>
+    <h3>4. Positron 完成 8.75 亿美元 C 轮，估值 50 亿美元</h3>
+    <div class="field"><b>核心事实：</b>2026 年 9 月 10 日，AI 推理芯片公司 Positron AI 宣布完成 8.75 亿美元 C 轮融资，投后估值 50 亿美元。本轮分两阶段完成，由 NEA、Atreides Management、Valor Equity Partners、Andra Capital、SemiAnalysis Capital 等共同领投。</div>
+    <div class="field"><b>关键数据：</b>融资金额 8.75 亿美元；投后估值 50 亿美元；产品差异化卖点是"不使用高带宽内存（HBM），转而使用消费级内存做推理"。</div>
+    <div class="field"><b>背景：</b>在 Nvidia 主导训练侧的同时，AI 推理硬件赛道 2026 年持续吸引大额融资；此前 Groq 等已有类似路线竞品。</div>
+    <div class="field"><b>各方反应：</b></div>
+    <ul class="bullets">
+      <li><b>行业媒体：</b>SiliconANGLE 强调"用消费级内存做推理"的工程路线；TechEdgeAI 指出领投方阵容覆盖 NEA、SemiAnalysis Capital 等。</li>
+      <li><b>资本市场：</b>单轮 8.75 亿、投后 50 亿，是 2026 年下半年推理芯片赛道最具量级的里程碑之一。</li>
+    </ul>
+    <div class="field"><b>影响分析：</b></div>
+    <ul class="bullets">
+      <li>短期：给推理硬件赛道立了一个新的估值锚（50 亿美元投后）；NEA、SemiAnalysis Capital 等头部机构入局意味着"推理独立于训练"已是共识。</li>
+      <li>长期：消费级内存路径若被验证可行，将直接挑战 HBM 供需格局，对 SK Hynix / Micron 等 HBM 厂商形成边际定价压力。</li>
+    </ul>
+    <div class="field"><b>推荐内容方向：</b>行业分析（"推理芯片的资本入口与内存路线之争"）。</div>
+    <div class="field"><b>目标平台：</b>公众号、知乎、36 氪 / 虎嗅转载。</div>
+    <div class="field"><b>关键词：</b>Positron、AI 推理芯片、Series C、消费级内存、NEA、SemiAnalysis Capital。</div>
+    <div class="field"><b>信息来源：</b></div>
+    <ul class="bullets">
+      <li><a href="https://www.prnewswire.com/news-releases/positron-ai-raises-875-million-at-a-5-billion-valuation-to-bring-its-next-generation-inference-silicon-to-market-302874601.html">PR Newswire</a></li>
+      <li><a href="https://finance.yahoo.com/technology/ai/articles/positron-ai-raises-875-million-140907288.html">Yahoo Finance</a></li>
+      <li><a href="https://siliconangle.com/2026/09/10/chipmaker-positron-nabs-875m-to-speed-up-inference-with-consumer-grade-memory/">SiliconANGLE</a></li>
+      <li><a href="https://techedgeai.com/positron-ai-raises-875m-to-scale-inference-chips/">TechEdgeAI</a></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>批量速览</h2>
+  <table>
+    <thead>
+      <tr><th>#</th><th>标题</th><th>类型</th><th>热度</th><th>可信度</th><th>一句话</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Anthropic CEO 呼吁 AI 公司放慢开发节奏</td><td>AI / 治理</td><td>🔥</td><td>🟢</td><td>Dario Amodei 在超级智能风险升温时公开要求减速并接受外部监督</td></tr>
+      <tr><td>2</td><td>OpenAI 把 GPT-Live-1 全双工语音接入 API</td><td>AI / 产品</td><td>⭐</td><td>🟢</td><td>9 月 10 日上线，定价 0.05 美元/分钟</td></tr>
+      <tr><td>3</td><td>OpenAI 自称用 agent 解出 Navier–Stokes</td><td>AI / 科研</td><td>⭐</td><td>🟡</td><td>GPT-6 Astra 团队据称 88 小时出解 + 17 小时 Lean 验证</td></tr>
+      <tr><td>4</td><td>Positron 完成 8.75 亿美元 C 轮</td><td>创业 / 芯片</td><td>⭐</td><td>🟢</td><td>投后估值 50 亿美元，主打消费级内存跑推理</td></tr>
+      <tr><td>5</td><td>Nvidia RTX Spark 首批 PC 10 月发货</td><td>硬件</td><td>⭐</td><td>🟢</td><td>两款 SKU 均基于 N1x，Windows PC 上首款 Nvidia 处理器</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>来源与局限</h2>
+  <ul class="bullets">
+    <li><b>采集口径：</b>本期只用了一次 <code>curl</code> 抓取 GitHub Trending 日榜（已计入本期 curl 预算上限 3 次中的 1 次），以及最多 5 次 <code>web_search</code>。未调用 <code>web_extract</code>。</li>
+    <li><b>数据范围：</b>上述 5 条均能在本次抓取窗口内通过独立 URL 复核；今日观察中的对比性陈述基于本期已收录条目，不引用未抓取的二级评论。</li>
+    <li><b>限制：</b>
+      <ul class="bullets">
+        <li><b>OpenAI 千禧年难题</b>目前仅有 ain.ua 一份主要来源（来自 OpenAI 自述），尚未见到数学社区独立复核。标为 🟡。</li>
+        <li><b>GitHub Trending</b> 只是 GitHub 当日可见趋势榜，不是"全站 24 小时历史增量数据库"，本次排序严格按页面标注的 <code>N stars today</code> 数值取最大。</li>
+        <li><b>国际政治、文化议题</b>（Venice 影展、AfD 言论、Capgemini 出售美国子公司）虽在抓取窗口中出现，但不属于本期"AI / 科技 / 互联网 / 创业"范围，未纳入。</li>
+        <li>本期未做英伟达三季度财报 / OpenAI 内部组织变动 / 其他可能存在但未在抓取窗口内出现的条目——属于采集窗口自然带来的盲区。</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<div class="footer">
+  <p>免责声明：本简报由自动化 agent 在公开网络上抓取并整理，所有事实陈述均附原始链接；但对 🟡 单源条目的结论，请以原始来源发布机构的最新表态为准。简报内容仅作信息整理与选题参考，不构成任何投资 / 商业 / 法律建议。</p>
+</div>
+
+</div>
+</body>
+</html>
