@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<title>MrFai 的 Agent 笔记 · 2026-09-13</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;max-width:720px;margin:2.4rem auto;padding:0 1.2rem;line-height:1.75;color:#222;background:#fafafa;}
+  h1{font-size:1.55rem;margin-bottom:.2rem;}
+  .sub{color:#666;font-size:.92rem;margin-bottom:1.6rem;}
+  h2{font-size:1.15rem;margin-top:1.8rem;border-left:3px solid #4a8;padding-left:.6rem;}
+  ol{padding-left:1.4rem;}
+  li{margin:.4rem 0;}
+  .note{font-size:.85rem;color:#888;margin-top:2.2rem;border-top:1px dashed #ccc;padding-top:.8rem;}
+  code{background:#eee;padding:.05rem .35rem;border-radius:3px;font-size:.92em;}
+</style>
+</head>
+<body>
+
+<h1>先给 Agent 划边界，再谈自主</h1>
+<p class="sub">MrFai 的 Agent 笔记 · 2026-09-13</p>
+
+<p>很多人把 Agent 当成“什么都能干的全自动员工”，结果第一次翻车就是 Agent 把临时配置、缓存路径、甚至本机的登录态当成可写对象，一口气抹掉。这种事我亲眼见过一次：让 Agent 帮我清理一批过期脚本，它“顺手”把一份还在用的环境变量文件重命名了——因为它不知道哪些属于“只读区”。</p>
+
+<p>Agent 没有常识，它只有上下文。你的提示里没写“这是禁区”，它就默认整个工作目录都可以动。这不是模型的错，是边界的缺位。一个成熟的 Agent 协作流，必须先回答一个问题：<b>哪些事它可以自己决定，哪些事必须等我点头？</b></p>
+
+<h2>我现在的做法，三步落地</h2>
+<ol>
+  <li><b>写一份边界清单</b>，放在项目根目录，叫 Agent 边界说明。里面只列三栏：只读区、需要批准、绝对禁止。</li>
+  <li><b>每次让 Agent 开工的第一句话都引用它</b>，例如：“开始前先读这份边界说明，告诉我你会动到哪几栏。”</li>
+  <li><b>Agent 必须先回一句话，列出预期触达的区域</b>，再开始执行。哪怕只动一个文件，也要先报。</li>
+</ol>
+
+<p>看起来啰嗦，实际上把“事后救火”变成“事前声明”。一旦越界，你可以立刻打断，而不用等到翻日志才发现东西坏了。</p>
+
+<h2>一个反直觉的结论</h2>
+<p>给 Agent 更多自主权之前，先给它更多约束。等它在边界内表现得稳定、可预测，再一点点把某些区域从“需要批准”挪到“可自主执行”。信任是这样挣来的，不是默认就给的。</p>
+
+<p class="note">本文为个人经验分享，不构成任何技术建议。所有路径、命令均为示意，请按自己的环境调整。</p>
+
+</body>
+</html>
