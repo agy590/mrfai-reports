@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<title>让 Agent 真正干活的，不是提示词，而是停止条件</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB",sans-serif;max-width:720px;margin:48px auto;padding:0 24px;color:#1f2328;line-height:1.75;background:#fafbfc}
+h1{font-size:24px;margin-bottom:8px;color:#0b1220}
+h2{font-size:18px;margin-top:32px;color:#0b1220}
+.meta{color:#6b7280;font-size:13px;margin-bottom:24px}
+.steps{background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:16px 20px}
+.steps li{margin:8px 0}
+.disclaimer{margin-top:40px;font-size:12px;color:#9aa3af;border-top:1px solid #e5e7eb;padding-top:16px}
+strong{color:#0b1220}
+</style>
+</head>
+<body>
+<h1>让 Agent 真正干活的，不是提示词，而是停止条件</h1>
+<p class="meta">MrFai 的 Agent 笔记 · 2026-09-14</p>
+
+<p>很多人调试 Agent 卡在“提示词写得不够好”，其实问题往往在更后面：<strong>这个 Agent 不知道什么时候该停</strong>。没有清晰的停止条件，再聪明的模型也会陷入三种坏循环——空转试探、过度验证、原地改写。</p>
+
+<h2>我踩过的坑：让 Agent 替自己“修”代码</h2>
+<p>有一次让 Agent 修一个报错的脚本。它读了一遍报错，改了一行；再跑，又错；再读，再改。表面上看很努力，实际在原地打转，因为它没有“同一处报错超过两次就停下来汇报”的硬规则。<strong>没有停止条件的 Agent，不是勤奋，是在浪费你的时间和它的上下文窗口</strong>。</p>
+
+<h2>一个判断标准</h2>
+<p>好的停止条件必须可被外部验证，而不是模型自己“感觉差不多就行”。比如：测试通过、命令返回码为 0、目标文件存在、接口返回字段非空。一旦验证手段本身就模糊，停止就永远不会发生。</p>
+
+<h2>读者今天能照做的四步</h2>
+<ol class="steps">
+  <li>为每个 Agent 任务写一行 <strong>done = ?</strong>，用一句具体结果描述完成态。</li>
+  <li>把验证手段写成可执行命令或断言，不要用“看起来对”这种自然语言。</li>
+  <li>加一条重复上限：同一报错或同一修改出现 N 次（我常用 3 次）就强制停下，输出当前状态。</li>
+  <li>把停止动作标准化为“checkpoint + 下一步建议”，别让它自由发挥下一步。</li>
+</ol>
+
+<p>Agent 的能力上限被高估过很多次，但它的<span>失控</span>方式始终很朴素：不知道什么时候停。下次再觉得它“卡住了”，先去检查停止条件，而不是去换更花哨的提示词。</p>
+
+<p class="disclaimer">本文为个人工程随笔，不构成任何产品推荐或投资建议；提及的实践来源于作者自身的开发与调试场景。</p>
+</body>
+</html>
