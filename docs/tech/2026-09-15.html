@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日科技新闻简报 | 2026-09-15</title>
+<style>
+  :root{--bg:#fafafa;--card:#fff;--text:#1f2328;--muted:#57606a;--accent:#0969da;--border:#d0d7de;--tag:#eaeef2;--shadow:0 1px 3px rgba(31,35,40,.08)}
+  *{box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.6;margin:0;padding:24px 16px;max-width:920px;margin-left:auto;margin-right:auto}
+  header{border-bottom:1px solid var(--border);padding-bottom:16px;margin-bottom:24px}
+  h1{font-size:1.6rem;margin:0 0 8px}
+  .meta{color:var(--muted);font-size:.9rem}
+  h2{font-size:1.25rem;margin:32px 0 12px;border-left:4px solid var(--accent);padding-left:10px}
+  h3{font-size:1.05rem;margin:20px 0 8px}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin-bottom:14px;box-shadow:var(--shadow)}
+  .meta-row{font-size:.85rem;color:var(--muted);margin-bottom:8px}
+  .tag{display:inline-block;background:var(--tag);color:var(--text);padding:2px 8px;border-radius:12px;font-size:.75rem;margin-right:6px;margin-top:4px}
+  .tag.hot{background:#fff1e6;color:#cf222e}
+  .tag.ok{background:#dafbe1;color:#1a7f37}
+  .tag.warn{background:#fff8c5;color:#9a6700}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  ul{margin:6px 0 8px 0;padding-left:20px}
+  .gh-card{background:linear-gradient(180deg,#f6f8fa,#fff);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:8px;padding:16px 20px;margin-bottom:14px}
+  .gh-meta{font-size:.85rem;color:var(--muted);margin-bottom:6px}
+  .stars{color:#cf222e;font-weight:600}
+  footer{border-top:1px solid var(--border);margin-top:32px;padding-top:16px;color:var(--muted);font-size:.85rem}
+  @media (max-width:600px){body{padding:16px 10px}h1{font-size:1.3rem}.card,.gh-card{padding:12px 14px}}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>📰 每日科技新闻简报 · 2026-09-15</h1>
+  <div class="meta">范围：AI / 大模型 / 开发者工具 / 互联网平台 / 创业与开源 · 抓取时间：2026-09-15</div>
+</header>
+
+<h2>📌 当日摘要（TL;DR）</h2>
+<div class="card">
+<ul>
+  <li><strong>前沿三家"私下联合"</strong>：The Information 报道 OpenAI / Anthropic / Google DeepMind 已成立非公开工作组，应对网络安全滥用。</li>
+  <li><strong>OpenAI 上线 <code>gpt-6-astra</code></strong>：$10 / $50 per 1M tokens、上下文 1.05M、输出 128K，正面对位 Fable 5.1。</li>
+  <li><strong>Anthropic Fable 5.1 GA</strong> + Claude Code 修复 agent team prompt cache 命中率问题。</li>
+  <li><strong>GitHub Trending 日榜可见仓库中，今日新增 Star 最高</strong>：<a href="https://github.com/JustVugg/colibri">JustVugg/colibri</a>（+2,173 stars today，纯 C 本地 MoE 推理引擎）。</li>
+  <li><strong>欧洲资金面持续走强</strong>：Molten Ventures 募集 €2.03 亿新基金，专注英国与欧洲成长期科技公司。</li>
+</ul>
+</div>
+
+<h2>⭐ GitHub Trending 日增最高仓库</h2>
+<div class="gh-card">
+  <div class="gh-meta">GitHub Trending 日榜 · 本次抓取：2026-09-15</div>
+  <h3><a href="https://github.com/JustVugg/colibri">JustVugg/colibri</a></h3>
+  <p><strong>今日新增：</strong><span class="stars">+2,173 stars today</span> · <strong>当前总 Star：</strong>32,332 · <strong>Fork：</strong>3,404 · <strong>语言：</strong>C</p>
+  <p><em>原始描述：</em>"Run frontier MoE models on hardware you already own — pure C, zero deps, experts streamed from disk. Tiny engine, immense model. 🐦"</p>
+  <p><strong>对 AI / 科技读者的判断：</strong>纯 C + 零依赖 + 磁盘流式加载 experts，瞄准"在本地消费级硬件上跑前沿 MoE"。和 vLLM、llama.cpp、ollama 已有的本地路线正面竞争；尤其值得关注它在 RTX 40/50 系消费级 GPU 上的实际吞吐和内存上限。</p>
+  <p>来源：<a href="https://github.com/trending?since=daily">GitHub Trending Daily</a></p>
+</div>
+
+<h2>📰 新闻卡片</h2>
+
+<div class="card">
+  <div class="meta-row">
+    <span class="tag">AI</span><span class="tag">政策与安全</span><span class="tag hot">⭐ 高热</span><span class="tag warn">🟡 单源但可靠</span>
+  </div>
+  <h3>1. OpenAI / Google DeepMind / Anthropic 被曝设立非公开"前沿模型工作组"</h3>
+  <p><strong>核心事实：</strong>The Information 记者 Leo Schwartz 报道，三家前沿模型公司就网络安全滥用场景联合设立非公开工作组，共享威胁情报与缓解策略。</p>
+  <p><strong>背景：</strong>三家此前已各自上线"Cyber AI Models、Safeguards、Access Programs"；Anthropic 因 Claude 被用于对真实系统的未授权访问，已暂停面向外部的预发布模型网络攻击评估。</p>
+  <p><strong>为什么重要：</strong>前沿模型三家首次被点名"私下联合"，对监管叙事、行业卡特尔化争论与开源生态都是重要变量。</p>
+  <p><strong>推荐方向：</strong>深度解读 + 国内外报道差异对比</p>
+  <p><strong>来源：</strong><a href="https://thehackernews.com/2026/09/google-anthropic-and-openai-unveil.html">The Hacker News</a> · <a href="https://aiweekly.co/ai-news-today">AI Weekly</a></p>
+</div>
+
+<div class="card">
+  <div class="meta-row">
+    <span class="tag">AI</span><span class="tag">大模型</span><span class="tag hot">⭐ 高热</span><span class="tag ok">🟢 多方确认</span>
+  </div>
+  <h3>2. OpenAI 发布 <code>gpt-6-astra</code> 公开快照</h3>
+  <p><strong>核心事实：</strong><code>gpt-6-astra</code> 标准定价 $10 / cached $1 / cache write $12.50 / 输出 $50（per 1M tokens），上下文 1.05M，最大输出 128K。</p>
+  <p><strong>为什么重要：</strong>把"百万级上下文 + 长输出"的价格拉到与 GPT-4 时代高端档持平，对 RAG、长文档 agent、代码 agent 三条赛道都会形成挤压。</p>
+  <p><strong>推荐方向：</strong>定价对比表 + 适用场景拆解</p>
+  <p><strong>来源：</strong><a href="https://llm-stats.com/ai-news">llm-stats AI News</a></p>
+</div>
+
+<div class="card">
+  <div class="meta-row">
+    <span class="tag">AI</span><span class="tag">开发者工具</span><span class="tag hot">⭐ 高热</span><span class="tag ok">🟢 多方确认</span>
+  </div>
+  <h3>3. Anthropic Fable 5.1 GA + Claude Code 提示缓存修复</h3>
+  <p><strong>核心事实：</strong>Fable 5.1 于 9 月 1 日 GA，定价与 Fable 5 相同（$10 / $50 per 1M）。Claude Code 侧修复"agent-team 队友在第二轮重发首轮 tool / skill 公告导致请求前缀变化、错过 prompt cache"的问题；<code>/model</code> picker 与 VS Code 模型标签改为展示模型名而非底层 Bedrock / Vertex 原始 ID。</p>
+  <p><strong>为什么重要：</strong>prompt cache 命中率直接影响成本与延迟；这次修复对重度使用 sub-agent 的团队是真金白银的账单级影响。</p>
+  <p><strong>推荐方向：</strong>开发者向解读 + Claude Code 工作流实测</p>
+  <p><strong>来源：</strong><a href="https://releasebot.io/updates/anthropic">Releasebot — Anthropic Updates</a></p>
+</div>
+
+<div class="card">
+  <div class="meta-row">
+    <span class="tag">创投</span><span class="tag">欧洲</span><span class="tag warn">💡 值得关注</span><span class="tag warn">🟡 单源但可靠</span>
+  </div>
+  <h3>4. Molten Ventures 募集 €2.03 亿新基金</h3>
+  <p><strong>核心事实：</strong>英国 VC Molten Ventures 推出 €2.03 亿新基金，聚焦英国与欧洲成长期科技公司。EU-Startups 统计 2026 年其累计披露资本接近 €30 亿。</p>
+  <p><strong>为什么重要：</strong>在欧洲一级市场整体降温叙事下，单只 €2 亿级新基金是少数明确"成长期仍有钱"的信号。</p>
+  <p><strong>推荐方向：</strong>快讯 + 欧洲科技板块资金面观察</p>
+  <p><strong>来源：</strong><a href="https://www.eu-startups.com/2026/09/molten-ventures-raises-e203-million-to-back-uk-and-european-growth-stage-tech-companies/">EU-Startups</a></p>
+</div>
+
+<div class="card">
+  <div class="meta-row">
+    <span class="tag">创业</span><span class="tag">HealthTech</span><span class="tag warn">💡 值得关注</span><span class="tag warn">🟡 单源但可靠</span>
+  </div>
+  <h3>5. Stockholm HealthTech 公司 Eyedentity 完成 SEK 1,500 万首轮融资</h3>
+  <p><strong>核心事实：</strong>斯德哥尔摩 Eyedentity 完成 SEK 1,500 万（约 €140 万 / $160 万）首轮，投资方包括 Norrsken Launcher、KI Innovation 与天使投资人，用于扩展 AI 驱动的眼科诊断平台，目标是在常规体检中捕捉致命眼癌。</p>
+  <p><strong>为什么重要：</strong>北欧 + AI + 医疗早筛三方叠加，是 2026 年欧洲 AI 应用层比较典型的"窄场景落地"样本。</p>
+  <p><strong>推荐方向：</strong>快讯 + 行业应用案例</p>
+  <p><strong>来源：</strong><a href="https://startupmafia.eu/healthtech-funding-stockholms-eyedentity-raises-sek15m-to-catch-deadly-eye-cancer-during-routine-check-ups">Startup Mafia</a></p>
+</div>
+
+<h2>🔍 今日观察</h2>
+<div class="card">
+<ul>
+  <li><strong>前沿模型军备竞赛从"谁更长"转向"谁更便宜"</strong>：<code>gpt-6-astra</code> 与 Fable 5.1 同时把百万级上下文的标价压到 $10 档位，长上下文不再是溢价 SKU。</li>
+  <li><strong>本地 MoE 路线在 GitHub 上重新出圈</strong>：colibri 单日 +2,173 stars，"在你已有硬件上跑前沿 MoE"的需求仍在扩张，纯 C + 零依赖是吸引力的关键。</li>
+  <li><strong>前沿三家"私下协作"叙事进入媒体视野</strong>：监管、卡特尔与开源社区都会因此重新校准立场，下周大概率会有跟进报道。</li>
+  <li><strong>欧洲资金面与北美形成温差</strong>：欧洲仍有 €2 亿级新基金落地，而北美公开市场更多在消化 AI 估值与监管不确定性。</li>
+</ul>
+</div>
+
+<h2>📎 来源与局限</h2>
+<div class="card">
+<ul>
+  <li><strong>本次实际抓取：</strong><code>https://r.jina.ai/https://github.com/trending?since=daily</code>（1 次）+ <code>web_search</code> ×3。</li>
+  <li><strong>未调用 <code>web_extract</code></strong>（按规则禁用）；正文细节需另起任务。</li>
+  <li><strong>数据局限：</strong>新闻时间戳以信源页面为准，跨平台时差未做人工对齐；GitHub Trending"日榜"是当日可见窗口，不是全站 24h 累计增量数据库。</li>
+  <li><strong>过滤纪律：</strong>已主动避开招聘帖、营销稿、纯转载与无来源条目。</li>
+</ul>
+</div>
+
+<footer>
+免责声明：本简报仅作为信息整理与素材参考，不构成投资建议或产品推荐。所有链接指向第三方公开页面，访问结果以原页面实时状态为准。
+</footer>
+
+</body>
+</html>
