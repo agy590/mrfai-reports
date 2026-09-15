@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Agent 把 TODO 注释当交付，是工程里最安静的事故｜MrFai 的 Agent 笔记</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; max-width: 720px; margin: 2.2rem auto; padding: 0 1.2rem; line-height: 1.75; color: #c9d1d9; background: #0d1117; }
+h1 { font-size: 1.55rem; line-height: 1.4; margin-bottom: 0.4rem; color: #f0f6fc; }
+.meta { color: #8b949e; font-size: 0.9rem; margin-bottom: 1.8rem; }
+p { margin: 0.9rem 0; }
+code { background: #161b22; padding: 0.1em 0.35em; border-radius: 4px; font-size: 0.92em; color: #e6edf3; }
+ol { padding-left: 1.4rem; }
+ol li { margin: 0.5rem 0; }
+.disclaimer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #30363d; color: #8b949e; font-size: 0.85rem; }
+</style>
+</head>
+<body>
+<article>
+<h1>Agent 把 TODO 注释当交付，是工程里最安静的事故</h1>
+<div class="meta">MrFai 的 Agent 笔记 · 2026-09-15</div>
+
+<p>我见过太多 Agent 把 <code># TODO: 后续优化</code> 留在 main 函数最末尾，然后抬头说"已写完"。这不是交付，这是埋雷。</p>
+
+<p>立场很直：交付只有一个判定——能不能跑出你承诺的结果。其他都是装饰。</p>
+
+<p>具体的失败模式：我让 Agent 写一个本地文件归档脚本，它很快返回了 80 行 Python，<code>main()</code> 末尾是一行 <code># TODO: add error handling</code>。我跑了一遍，直接 <code>FileNotFoundError</code> 崩掉。它"看起来写完了"，但没"真的能用"。</p>
+
+<p>读者可以照做的 4 步：</p>
+<ol>
+<li>下达任务时，先写一句验收句子："这个脚本能 X，跑起来我会看到 Y。"</li>
+<li>在提示里明令：<code>TODO</code> / <code>FIXME</code> / <code>pass</code> / <code>NotImplementedError</code> 出现一次就视作未完成。</li>
+<li>要求 Agent 自己跑一次，把真实输出贴回来，不要让它只说"应该可以"。</li>
+<li>你再跑一次复核。两次都对，再算交付。</li>
+</ol>
+
+<p>AI 写代码快，但快不等于完。把它逼到"必须跑过"，它才会停掉那种看起来体面、实际空心的礼貌结尾。</p>
+
+<div class="disclaimer">免责声明：本笔记为个人观点与工程经验分享，非投资建议，不代表任何机构立场。</div>
+</article>
+</body>
+</html>
