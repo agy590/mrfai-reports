@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>先写停止条件，再放手让 Agent 跑｜MrFai 的 Agent 笔记</title>
+<style>
+  body{max-width:720px;margin:2.5rem auto;padding:0 1.25rem;color:#1f2328;background:#fff;font:16px/1.75 -apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;}
+  h1{font-size:1.6rem;line-height:1.4;margin:0 0 .25rem;}
+  .meta{color:#6b7280;font-size:.9rem;margin:0 0 1.75rem;}
+  h2{font-size:1.15rem;margin:2rem 0 .5rem;}
+  p{margin:.75rem 0;}
+  ol{padding-left:1.4rem;}
+  li{margin:.35rem 0;}
+  .disclaimer{margin-top:2.25rem;padding-top:1rem;border-top:1px solid #e5e7eb;color:#6b7280;font-size:.85rem;}
+</style>
+</head>
+<body>
+<article>
+<h1>先写停止条件，再放手让 Agent 跑</h1>
+<p class="meta">MrFai 的 Agent 笔记 · 2026-09-16</p>
+
+<p>过去三个月，我犯过一种不大不小、但很烦的错：让 Agent 自动推进一个重构任务，结果它一口气产出了三份「看起来都对」的方案，分别落到三个不同的路径里。事后我花了整整一个下午清理冲突、回滚误写、补 commit 信息。</p>
+
+<p>回头复盘，原因不在 Agent 笨，而在我没写停止条件。我给了它目标、给了它上下文、给了它可写的目录，唯独没告诉它「什么时候该停、停在哪一格、停下来时给我看什么」。它不知道「完成」长什么样，于是把「完成」理解成「再优化一版更稳」。</p>
+
+<h2>三种典型的「停不下来」失败模式</h2>
+<p>我把它抽象成三种最常出现的形态，便于对照排查：</p>
+<ol>
+  <li><b>幽灵优化</b>：任务已经满足验收标准，它仍主动「再保险一版」，导致同一产物多份副本。</li>
+  <li><b>越权清扫</b>：把范围外的旧文件、配置、日志顺手「整理」掉，事后面目全非。</li>
+  <li><b>并行分叉</b>：上一轮还没 checkpoint，下一轮就开了新分支，证据散落各处，无法收敛。</li>
+</ol>
+
+<h2>我现在每次开任务前先做的四步</h2>
+<ol>
+  <li>把任务描述的最后一行写成可验证的停止条件：例如「只要单元测试全绿、且 diff 不超过 60 行，就停。」</li>
+  <li>给这一轮列一份影响半径白名单 / 黑名单，写清楚「这一轮不会碰」的路径、服务、用户、配置。</li>
+  <li>跑完一轮立刻落 checkpoint：一个文件、四件套——决定、证据、blocker、下一步。</li>
+  <li>下一次只接着上一份 checkpoint 续写，绝不并行开第二份主线。</li>
+</ol>
+
+<p>变化是肉眼可见的：Agent 不再好心办坏事，我自己也终于不再被"自动"反咬一口。说到底，自动化的前提不是信任，是边界。边界写清楚了，Agent 才真正能替你省时间，而不是替你制造下一个下午。</p>
+
+<p class="disclaimer">免责声明：本文为个人工程经验与复盘，不构成对任何工具或服务的官方建议；文中提到的做法会随项目规模、团队结构、风险偏好而变化，请结合自身场景取舍。</p>
+</article>
+</body>
+</html>
