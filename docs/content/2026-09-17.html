@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>Agent 翻车，多半死在「权限放太开」</title>
+<style>
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;max-width:680px;margin:40px auto;padding:0 20px;line-height:1.75;color:#222;background:#fafafa}
+h1{font-size:22px;line-height:1.4;color:#111}
+h2{font-size:17px;margin-top:28px;color:#1a3a5c}
+.meta{color:#777;font-size:13px;margin-bottom:24px}
+ol{padding-left:22px}
+li{margin:8px 0}
+.disclaimer{margin-top:32px;padding:12px 16px;background:#f0f0f0;border-left:3px solid #aaa;color:#555;font-size:13px}
+</style>
+</head>
+<body>
+<h1>Agent 翻车，多半死在「权限放太开」</h1>
+<div class="meta">2026-09-17 · 立场随笔</div>
+
+<p>Agent 出问题，很少是因为它「不够聪明」。我观察自己和身边人踩过的坑，十次里有七次，根因都是同一个：<strong>一次性把太多权限塞给了它</strong>。</p>
+
+<p>一种表现是「瘫痪」——给 Agent 列了三十个工具，它每次决策都要权衡，结果在选择上耗尽预算，反而做不了一件具体事。另一种更糟：删库、发消息、付费下单，这些<em>不可逆动作</em>一旦进了主循环，连「撤销」的余地都没有。</p>
+
+<p>后来我把工具按危险程度分成三档：<strong>只读、可写、不可逆</strong>。新会话默认只开只读；想加写操作，先看 diff 再执行；至于删、买、发这类动作，统统挪出 Agent 循环，走人工审批。</p>
+
+<h2>四步搭建一个「会自己长大的 Agent 权限」</h2>
+<ol>
+  <li><strong>分档</strong>：把工具按「只读 / 可写 / 不可逆」分类，任何新会话只挂第一档。</li>
+  <li><strong>预览优先</strong>：写操作先返回 diff，确认运行通过再放行；不可逆动作不进主循环。</li>
+  <li><strong>渐进放权</strong>：跑通一个场景再加下一个，权限是挣来的，不是默认开的。</li>
+  <li><strong>留审计</strong>：每次执行写一条事件日志，出事能回放，能定位是哪一档越权。</li>
+</ol>
+
+<p>Agent 的能力天花板，往往不在模型，而在主人敢交出多少钥匙。收一收，它反而跑得更远。</p>
+
+<div class="disclaimer">本文为个人随笔，仅代表写作当日的观察与经验，不构成对任何具体工具或工作流的推荐；不同环境差异较大，请按需取舍。</div>
+</body>
+</html>
