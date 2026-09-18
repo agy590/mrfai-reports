@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>别再追完美提示词了——把 Agent 当成会走神的同事来管 · MrFai 的 Agent 笔记</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body { max-width: 720px; margin: 2.4rem auto; padding: 0 1.2rem;
+         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                      "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+         line-height: 1.75; color: #1f2328; background: #fafbfc; }
+  h1 { font-size: 1.55rem; line-height: 1.35; margin-bottom: 0.4rem; }
+  h2 { font-size: 1.15rem; margin-top: 1.8rem; }
+  .meta { color: #6e7781; font-size: 0.88rem; margin-bottom: 1.6rem; }
+  .stance { background: #eef3ff; border-left: 4px solid #3b6ef5;
+            padding: 0.6rem 0.9rem; margin: 1rem 0 1.4rem;
+            font-weight: 600; }
+  ol.steps li { margin: 0.45rem 0; }
+  .disclaimer { color: #6e7781; font-size: 0.82rem;
+                border-top: 1px dashed #d0d7de; margin-top: 2.2rem;
+                padding-top: 0.8rem; }
+  a { color: #3b6ef5; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<h1>别再追完美提示词了——把 Agent 当成会走神的同事来管</h1>
+<p class="meta">MrFai 的 Agent 笔记 · 2026-09-18 · AI Agent 实战</p>
+
+<div class="stance">
+立场：决定一个 Agent 项目能不能跑远的，不是 prompt 写得有多漂亮，而是你有没有一套"它走偏了你怎么拦下来"的纪律。
+</div>
+
+<p>
+过去半年我换过三轮 Agent 框架，最后留下的不是最快的那一个，而是"出错时我能立刻知道哪里错了"的那一个。有一段时间我特别迷信"零失败"的提示词，恨不得把每一步都写到它只能照搬。代价是：上下文越来越长，模型开始偷懒跳步，偶尔还自己补一段不存在的工具调用。
+</p>
+
+<p>
+转折点是某次任务，它自信地告诉我"已写入数据库"，结果日志里什么都没有。从那以后我给自己立了三条规矩，今天浓缩成一份给独立开发的清单：
+</p>
+
+<ol class="steps">
+  <li><b>把"意图"和"执行"分开。</b>用一个固定结构（目标 / 限制 / 验收）写需求，Agent 只负责执行；不要让它又当需求方又当实现者。</li>
+  <li><b>每次关键写操作后立刻回读校验。</b>"成功的工具调用 ≠ 成功的任务"。文件落盘、API 回写、消息发送之后，自己再读一遍或拉一次列表。</li>
+  <li><b>给 Agent 设一条硬边界。</b>凡是涉及公开发送、付费、删除、跨账号的动作，没有人工批准一律不执行；其他低风险动作才允许它自主推进。</li>
+  <li><b>连续三次方案没人采纳，就停下来问。</b>沉默接受"那就这样吧"是 Agent 最常见的浪费方式，也是你掉进循环的最大信号。</li>
+</ol>
+
+<h2>一句话总结</h2>
+<p>
+Agent 不会因为你 prompt 写得长就更聪明；它只会因为你给它清晰的边界和可验证的反馈，而变得更可靠。把省下来的 prompt 字数，用来写一份"走偏了怎么办"的检查清单。
+</p>
+
+<p class="disclaimer">
+免责声明：本文为个人实践随笔，不构成任何投资或工程建议；观点可能随着我自己的项目迭代而更新或被推翻。
+</p>
+
+</body>
+</html>
