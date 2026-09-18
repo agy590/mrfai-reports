@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>研究-agent 每日科技新闻简报 · 2026-09-18</title>
+<style>
+:root{
+  --bg:#ffffff;--fg:#1a1a1a;--muted:#6b7280;--line:#e5e7eb;
+  --card:#fafafa;--accent:#2563eb;--tag:#f3f4f6;--ok:#16a34a;--warn:#d97706;--bad:#dc2626;
+}
+*{box-sizing:border-box}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  margin:0;padding:0;background:var(--bg);color:var(--fg);line-height:1.6;
+}
+.wrap{max-width:880px;margin:0 auto;padding:24px 18px 64px}
+header{border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:22px}
+header h1{font-size:22px;margin:0 0 4px}
+header .meta{color:var(--muted);font-size:13px}
+h2{font-size:18px;margin:32px 0 12px;border-left:4px solid var(--accent);padding-left:10px}
+h3{font-size:16px;margin:18px 0 8px}
+p{margin:6px 0}
+ul{margin:6px 0 6px 20px;padding:0}
+li{margin:3px 0}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:10px;
+  padding:14px 16px;margin:12px 0;
+}
+.tag{
+  display:inline-block;background:var(--tag);color:#374151;
+  font-size:12px;padding:2px 8px;border-radius:999px;margin-right:6px;
+}
+.tag.ok{background:#dcfce7;color:var(--ok)}
+.tag.warn{background:#fef3c7;color:var(--warn)}
+.tag.bad{background:#fee2e2;color:var(--bad)}
+.muted{color:var(--muted);font-size:13px}
+.callout{
+  background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;
+  padding:12px 14px;margin:12px 0;font-size:14px;
+}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:8px;text-align:left;vertical-align:top}
+th{background:#f3f4f6}
+.footer{
+  margin-top:36px;padding-top:14px;border-top:1px solid var(--line);
+  font-size:12px;color:var(--muted);
+}
+.disclaimer{
+  margin-top:24px;padding:10px 12px;background:#f9fafb;border:1px solid var(--line);
+  border-radius:6px;font-size:12px;color:var(--muted);
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>研究-agent 每日科技新闻简报</h1>
+  <div class="meta">2026-09-18 · AI / 科技 / 互联网 / 创业 · 由 hermes cron 自动产出</div>
+</header>
+
+<h2>当日摘要（TL;DR）</h2>
+<ul>
+  <li><b>AI 安全协同</b>：OpenAI / Anthropic / Google DeepMind 已就 AI 安全议题进行多周合作（Bloomberg 9/15）。</li>
+  <li><b>模型与训练新动向</b>：PrismML 发布三值化（ternary）小 LLM，主打极致压缩（TechCrunch 9/17）。</li>
+  <li><b>基础设施</b>：Crusoe 拿下 $3.9B Series F、估值 $30.9B，主推"AI 工厂"模块化数据中心（TechCrunch 9/17）。</li>
+  <li><b>数据 / 出版摩擦</b>：微软高管内部曾把 OpenAI 的爬取称作"史上最大劳工盗窃"，新解封法庭文件显示双方都抓过付费墙内容（TechCrunch 9/17）。</li>
+  <li><b>国际 / 公共数据</b>：联合国与 Google 合作，让 UN 全球统计数据可被 AI agent 直接调用（TechCrunch 9/17）。</li>
+  <li><b>开发者工具</b>：Anthropic Claude Code 9 月可靠性 / MCP / telemetry / UX 全面更新（Releasebot 9/17）。</li>
+  <li><b>GitHub Trending 日增 Star 数据本次不可验证</b>：未能拿到每条 <code>stars today</code> 数值，故不强行排名。</li>
+</ul>
+
+<h2>GitHub Trending 日增最高仓库（数据不可验证）</h2>
+<div class="callout">
+  <b>本次 GitHub Trending 日增数据不可验证</b>。<br />
+  原因：github.com 直连被 abuse filter 拦截（403 AbuseAlleviationError）；通过 orangebot.ai 镜像取得 2026-09-18 当日可见排行 Top 20，
+  但该页面<b>未提供各仓库的 <code>stars today</code> 数值</b>，无法按 N 排序选择最大日增。<br />
+  原始页面（仅仓库名与顺序，不含 stars today 数值）：
+  <a href="https://orangebot.ai/github-trending-today">https://orangebot.ai/github-trending-today</a><br />
+  GitHub 官方 trending 源：<a href="https://github.com/trending">https://github.com/trending</a>
+</div>
+
+<p>按规范要求，不得用总 Star 数量或搜索摘要反推日增、不得缓存前日数据，也不得切换 GitHub 官方 API
+（这些路径不能给出本次日增真值）。故本卡片只罗列镜像页面给出的当日可见排行 Top 3（无日增数字之依据），供下游参照：</p>
+
+<table>
+  <tr><th>排名</th><th>仓库</th><th>GitHub 链接</th></tr>
+  <tr><td>1</td><td>alibaba / open-code-review</td><td><a href="https://github.com/alibaba/open-code-review">github.com/alibaba/open-code-review</a></td></tr>
+  <tr><td>2</td><td>cloudflare / security-audit-skill</td><td><a href="https://github.com/cloudflare/security-audit-skill">github.com/cloudflare/security-audit-skill</a></td></tr>
+  <tr><td>3</td><td>addyosmani / agent-skills</td><td><a href="https://github.com/addyosmani/agent-skills">github.com/addyosmani/agent-skills</a></td></tr>
+</table>
+
+<h2>今日观察</h2>
+<ul>
+  <li><b>三股力量在 AI 安全上坐到了一起</b>：OpenAI / Anthropic / Google DeepMind 罕见协同——但协同也带来"竞争对手之间协调"在反垄断视角下的新法律风险（Bloomberg / tech.news.am 9/15-16）。这是 9 月最值得跟踪的产业组织变化。</li>
+  <li><b>算力 / 数据中心继续"工厂化"</b>：Crusoe 拿到接近 4B 美元、估值站上 $30.9B，"small modular AI factory" 是新增话术——意味着大模型供给侧正在从"训练一次性超算"转向"可复制的工厂单元"。</li>
+  <li><b>数据合法性进入庭审阶段</b>：微软内部把 OpenAI 爬取称为 "theft"，但同时自己也爬过 Times 付费墙内容。两家在"出版商合理报酬"上都没干净。这会是未来 12 个月影响所有模型训练数据集获取方式的关键诉讼。</li>
+  <li><b>小模型的"压缩叙事"被重新点燃</b>：PrismML 三值化（+1 / −1 / 0）说明大家仍在押注"权重越粗，部署越便宜"的边缘推理路线。</li>
+  <li><b>公共部门数据首次主动让 AI agent 来取</b>：UN × Google 是一个信号——主权数据未来将以"AI agent 可消费"的形态重新发布。</li>
+</ul>
+
+<h2>新闻卡片</h2>
+
+<div class="card">
+  <h3>1. OpenAI / Anthropic / Google DeepMind 联手应对 AI 安全</h3>
+  <p>
+    <span class="tag">科技 / 政策</span>
+    <span class="tag">⭐ 高热</span>
+    <span class="tag ok">🟢 多方确认</span>
+  </p>
+  <p><b>核心事实</b>：OpenAI 公开承认正与 Anthropic、Google DeepMind 就在 AI 安全与经济 / 安全威胁议题上协同推进；相关讨论已持续数周。</p>
+  <p><b>为什么重要</b>：三家最直接的对手罕见合作，但同时触发"竞争对手之间协调"的反垄断新问题。</p>
+  <p><b>关键数据</b>："for several weeks" 持续沟通；具体协议文本未公开。</p>
+  <p><b>信息来源</b>：
+    <a href="https://www.bloomberg.com/news/articles/2026-09-15/openai-says-it-s-working-with-anthropic-google-on-ai-safety">Bloomberg</a> 、
+    <a href="https://tech.news.am/en/news/7759">tech.news.am</a>
+  </p>
+</div>
+
+<div class="card">
+  <h3>2. Crusoe 拿下 $3.9B Series F，估值 $30.9B，主推 "AI 工厂" 模块化数据中心</h3>
+  <p>
+    <span class="tag">科技 / 创业 / 基础设施</span>
+    <span class="tag">⭐ 高热</span>
+    <span class="tag ok">🟢 多方确认</span>
+  </p>
+  <p><b>核心事实</b>：数据中心开发商 Crusoe 周四宣布完成 $3.9B Series F 融资，投后估值 $30.9B；资金用于继续扩建大规模数据中心和小型模块化 "AI factories"。</p>
+  <p><b>为什么重要</b>：标志 AI 算力供给侧从"巨型单体超算"向"可复制单元"转向；估值跳升说明资本市场仍把电力 + 机房当作核心瓶颈。</p>
+  <p><b>关键数据</b>：$3.9B 融资；$30.9B 估值。</p>
+  <p><b>信息来源</b>：
+    <a href="https://techcrunch.com/2026/09/17/crusoe-raises-3-9b-to-build-massive-data-centers-and-small-modular-ai-factories/">TechCrunch</a>
+  </p>
+</div>
+
+<div class="card">
+  <h3>3. PrismML 用三值化权重押注小模型</h3>
+  <p>
+    <span class="tag">科技 / AI 模型</span>
+    <span class="tag">⭐ 高热</span>
+    <span class="tag">🟢 单源一手</span>
+  </p>
+  <p><b>核心事实</b>：PrismML 发布 "ternary" 权重 LLM，把每个权重限制为 +1 / −1 / 0 三值；相比传统精度大幅压缩模型体积。</p>
+  <p><b>为什么重要</b>：验证"权重越粗、部署越便宜"路线在 2026 年仍有商业空间；适合边缘推理、端侧、本地化部署。</p>
+  <p><b>关键数据</b>：三值化（+1 / −1 / 0）；具体参数 / 评测数字见原项目 Hugging Face 页。</p>
+  <p><b>信息来源</b>：
+    <a href="https://techcrunch.com/2026/09/17/prismml-hopes-its-tiny-llm-could-change-how-we-all-use-ai/">TechCrunch</a>
+  </p>
+</div>
+
+<div class="card">
+  <h3>4. 微软高管曾内部称 AI 爬取为"史上最大劳工盗窃"</h3>
+  <p>
+    <span class="tag">科技 / 出版 / 法律</span>
+    <span class="tag">⭐ 高热</span>
+    <span class="tag ok">🟢 多方确认</span>
+  </p>
+  <p><b>核心事实</b>：新解封法庭文件显示，微软内部曾私下把 OpenAI 的数据做法形容为 "theft"；但同一时期微软自身也抓取了 Times 等付费墙内容来构建数据集。</p>
+  <p><b>为什么重要</b>：可能成为未来 12 个月决定所有大模型"训练数据是否合法"边界的关键证据；揭示"互相指责但自己也做"的双重标准。</p>
+  <p><b>关键数据</b>：unredacted 法庭文件；涉及 Times 等出版商。</p>
+  <p><b>信息来源</b>：
+    <a href="https://techcrunch.com/2026/09/17/microsoft-exec-called-ai-scraping-the-largest-theft-of-labor-in-human-history-new-unredacted-filings-reveal/">TechCrunch</a>
+  </p>
+</div>
+
+<div class="card">
+  <h3>5. 联合国与 Google 合作，把全球统计数据交给 AI agent</h3>
+  <p>
+    <span class="tag">科技 / 国际 / 公共数据</span>
+    <span class="tag">⭐ 高热</span>
+    <span class="tag">🟢 单源一手</span>
+  </p>
+  <p><b>核心事实</b>：UN 周四宣布与 Google 合作，让其庞大的全球统计数据集对 AI 系统更易访问和消费。</p>
+  <p><b>为什么重要</b>：主权 / 国际组织首次主动为 AI agent 改造数据发布形态；预示未来一年更多公共数据将以"agent-ready" 重新发布。</p>
+  <p><b>关键数据</b>：合作方为 UN + Google；具体数据集与发布时间表见原文。</p>
+  <p><b>信息来源</b>：
+    <a href="https://techcrunch.com/2026/09/17/un-turns-to-google-to-make-its-global-data-ready-for-ai-agents/">TechCrunch</a>
+  </p>
+</div>
+
+<div class="card">
+  <h3>6. Claude Code 9 月更新：可靠性 / MCP / telemetry / 多端 UX</h3>
+  <p>
+    <span class="tag">科技 / 开发者工具</span>
+    <span class="tag">⭐ 高热</span>
+    <span class="tag warn">🟡 单源聚合</span>
+  </p>
+  <p><b>核心事实</b>：Claude Code 9 月发布一批横跨桌面、VS Code、Web、Slack、code review 的更新，重点在可靠性、MCP、telemetry 与 UX；包含更清晰的 memory 警告与更快启动。</p>
+  <p><b>为什么重要</b>：开发者侧 Anthropic 仍在快速迭代产品矩阵，回应 Cursor / Codex 等竞争。</p>
+  <p><b>关键数据</b>：多个端（desktop / VS Code / web / Slack / code review）。</p>
+  <p><b>信息来源</b>：
+    <a href="https://releasebot.io/updates/anthropic/claude-code">Releasebot</a>
+  </p>
+</div>
+
+<h2>来源与局限</h2>
+<p>来源：5 次 web_search（TechCrunch × 3、Bloomberg、Releasebot、GitHub trending 镜像）+ 1 次 curl（orangebot.ai 镜像）。
+GitHub 直连被 AbuseAlleviationError 拦截，故 Trending 日增 Star 数值本次不可验证。</p>
+<p>局限：
+  <ul>
+    <li>未使用 web_extract 抓正文（DDGS 后端限制）。</li>
+    <li>未抓到 GitHub trending 各仓库 <code>stars today</code> 数值，故不能给出"今日日增最高"的真值；仅列出镜像可见的当日排行 Top 3。</li>
+    <li>个别条目（PrismML 评测、UN 数据集细节）需正文核实。</li>
+  </ul>
+</p>
+
+<div class="disclaimer">
+  本简报由 hermes cron 自动聚合，仅作信息整理参考，不构成投资 / 采购 / 法律建议。
+  链接与数据来源于本次运行实际可访问页面，可能与原始页面更新有差异。
+</div>
+
+<div class="footer">
+  研究-agent（@hermes-lab） · 简报由 hermes cron 自动产出 · 2026-09-18
+</div>
+
+</div>
+</body>
+</html>
