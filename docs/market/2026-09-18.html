@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日市场简报 — 2026-09-18</title>
+<style>
+  :root {
+    --bg: #0f1419;
+    --card: #1a1f29;
+    --border: #2a313c;
+    --text: #e6edf3;
+    --muted: #7d8590;
+    --up: #3fb950;
+    --down: #f85149;
+    --neutral: #d29922;
+    --accent: #58a6ff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .header {
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+  .header h1 {
+    font-size: 28px;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .header .meta {
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .section h2 {
+    color: var(--accent);
+    font-size: 20px;
+    margin-bottom: 16px;
+    border-left: 4px solid var(--accent);
+    padding-left: 12px;
+  }
+  .section h3 {
+    color: var(--text);
+    font-size: 16px;
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+  th {
+    background: var(--border);
+    color: var(--muted);
+    text-align: left;
+    padding: 8px 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  tr:hover td {
+    background: rgba(88, 166, 255, 0.05);
+  }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .neutral { color: var(--neutral); }
+  .muted { color: var(--muted); }
+  .kpi {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin: 12px 0;
+  }
+  .kpi-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 16px;
+  }
+  .kpi-label {
+    color: var(--muted);
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .kpi-value {
+    font-size: 22px;
+    font-weight: 600;
+  }
+  ul { padding-left: 20px; margin: 8px 0; }
+  li { margin-bottom: 6px; }
+  .footer {
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+  .source {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+</style>
+</head>
+<body>
+  <div class="header">
+    <h1>每日市场简报 — 2026-09-18</h1>
+    <div class="meta">📅 2026-09-18 09:35 MYT · 数据源: Yahoo Finance / Trading Economics / The Star Malaysia / CNBC / Federal Reserve / BNM / OPEC</div>
+  </div>
+
+  <!-- KPI 网格 -->
+  <div class="section">
+    <h2>📊 核心指标速览</h2>
+    <div class="kpi">
+      <div class="kpi-card">
+        <div class="kpi-label">FBM KLCI</div>
+        <div class="kpi-value down">1676.57 <span class="muted" style="font-size:13px">(-1.26%)</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">USD/MYR</div>
+        <div class="kpi-value down">4.085 <span class="muted" style="font-size:13px">(+1.06%)</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">S&P 500 期货</div>
+        <div class="kpi-value down">7697.00 <span class="muted" style="font-size:13px">(-0.13%)</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Nasdaq 期货</div>
+        <div class="kpi-value down">29652.75 <span class="muted" style="font-size:13px">(-0.30%)</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">DXY 美元指数</div>
+        <div class="kpi-value up">100.22 <span class="muted" style="font-size:13px">(+0.76%)</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">10Y 美债收益率</div>
+        <div class="kpi-value down">4.947% <span class="muted" style="font-size:13px">(-0.56%)</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">VIX 恐慌</div>
+        <div class="kpi-value up">15.44 <span class="muted" style="font-size:13px">(-2.53%)</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">黄金 COMEX</div>
+        <div class="kpi-value up">$4400.0 <span class="muted" style="font-size:13px">(+1.11%)</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">WTI 原油</div>
+        <div class="kpi-value down">$101.21 <span class="muted" style="font-size:13px">(-0.18%)</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Brent 原油</div>
+        <div class="kpi-value down">$104.03 <span class="muted" style="font-size:13px">(-1.56%)</span></div>
+      </div>
+    </div>
+    <p class="source">所有报价来自 Yahoo Finance 实时接口（美股为盘前/盘中期货报价，原油/黄金为美东 2026-09-17 收盘价）。MYR 走弱= USD/MYR 上涨。</p>
+  </div>
+
+  <!-- 马来西亚 -->
+  <div class="section">
+    <h2>🇲🇾 马来西亚股市（重点 1）</h2>
+
+    <h3>KLCI 综合指数</h3>
+    <ul>
+      <li><strong>最新水平：</strong> 1676.57 点（-1.26% / -21.4 点）</li>
+      <li><strong>5 日走势：</strong> 自 1698 高点连续两日回落，1679 → 1676，月内已累计 -3.38%（Trading Economics, 2026-09-17）</li>
+      <li><strong>市场结构：</strong> 卖压广泛（"broad-based selling pressure"），蓝筹与中小盘同步走弱（The Star Malaysia, 2026-09-17）</li>
+    </ul>
+
+    <h3>马币 USD/MYR</h3>
+    <ul>
+      <li><strong>汇率：</strong> 4.085（+1.06%）</li>
+      <li><strong>5 日趋势：</strong> 4.042 → 4.073 → 4.085，连续 3 日走弱，触及一个月低点</li>
+      <li><strong>背景：</strong> 跟随强势美元同步承压，与 FBM KLCI 同步走低（The Star, 2026-09-17）</li>
+    </ul>
+
+    <h3>主要成分股</h3>
+    <table>
+      <thead><tr><th>代码</th><th>公司</th><th>价格</th><th>涨跌</th><th>涨跌幅</th></tr></thead>
+      <tbody>
+        <tr><td>1155.KL</td><td>Maybank 马银行</td><td>10.36</td><td class="down">-0.10</td><td class="down">-0.96%</td></tr>
+        <tr><td>1023.KL</td><td>CIMB 联昌银行</td><td>7.67</td><td class="down">-0.30</td><td class="down">-3.76%</td></tr>
+        <tr><td>1295.KL</td><td>Public Bank 公众银行</td><td>4.81</td><td class="down">-0.04</td><td class="down">-0.82%</td></tr>
+        <tr><td>5347.KL</td><td>Tenaga 国家能源</td><td>13.34</td><td class="down">-0.30</td><td class="down">-2.20%</td></tr>
+        <tr><td>5225.KL</td><td>IHH 医疗集团</td><td>7.67</td><td class="down">-0.09</td><td class="down">-1.16%</td></tr>
+        <tr><td>7113.KL</td><td>Top Glove 顶级手套</td><td>0.78</td><td class="down">-0.05</td><td class="down">-6.02%</td></tr>
+      </tbody>
+    </table>
+    <p class="source">来源: Yahoo Finance 实时报价（2026-09-18 09:35 MYT）</p>
+
+    <h3>板块动态（观察层面）</h3>
+    <ul>
+      <li><strong>银行板块：</strong> 三大行全部收跌，CIMB 跌幅最深（-3.76%），反映马币贬值环境下外资对本地银行风险偏好下降</li>
+      <li><strong>公用事业：</strong> Tenaga -2.20%，跟随大盘走弱，无明显独立催化</li>
+      <li><strong>医疗：</strong> IHH -1.16%，与马币走弱负相关（外债占比高）</li>
+      <li><strong>手套出口：</strong> Top Glove -6.02%，单日跌幅最大，触发因素可能与马币小幅利好不符——需关注后续基本面信号</li>
+    </ul>
+
+    <h3>关键新闻（仅观察层）</h3>
+    <ul>
+      <li><strong>FBM KLCI 收低 + 马币创月内新低</strong>（The Star, 2026-09-17）：广泛抛压 + 美元/马币同步走弱，外资对马来西亚资产偏好下降</li>
+      <li><strong>BNM 维持 OPR 在 2.75%</strong>（Bank Negara Malaysia, 2026-09-03）：货币政策委员会 9/3 会议决定保持不变，GDP 增长约 5% 区间，劳动力市场稳定（失业 2.9%）</li>
+      <li><strong>下半年增长展望</strong>（gobear.com.my, 2026-05）：通胀控制在 1.5-2.5%，整体宏观环境支持 OPR 维持现状</li>
+    </ul>
+  </div>
+
+  <!-- 美国 -->
+  <div class="section">
+    <h2>🇺🇸 美国期货 + 美股（重点 2）</h2>
+
+    <h3>三大指数期货</h3>
+    <table>
+      <thead><tr><th>期货</th><th>水平</th><th>Δ</th><th>Δ%</th><th>备注</th></tr></thead>
+      <tbody>
+        <tr><td>ES=F (S&P 500 Sep 26)</td><td>7697.00</td><td class="down">-9.75</td><td class="down">-0.13%</td><td>周三 Fed 加息后回稳</td></tr>
+        <tr><td>NQ=F (Nasdaq 100 Sep 26)</td><td>29652.75</td><td class="down">-89.25</td><td class="down">-0.30%</td><td>科技股分化</td></tr>
+        <tr><td>YM=F (Dow Sep 26)</td><td>52208.00</td><td class="down">-11</td><td class="down">-0.02%</td><td>工业股基本持平</td></tr>
+      </tbody>
+    </table>
+
+    <h3>关键宏观指标</h3>
+    <ul>
+      <li><strong>美元指数 DXY：</strong> 100.22（+0.76%）— Fed 加息后维持强势</li>
+      <li><strong>10Y 美债收益率 ^TNX：</strong> 4.947%（-0.56% / -2.8bp）— 自前次 5.03% 高位小幅回落</li>
+      <li><strong>VIX 恐慌指数 ^VIX：</strong> 15.44（-2.53%）— 维持低位，市场未现恐慌</li>
+    </ul>
+
+    <h3>Magnificent 7 盘前</h3>
+    <table>
+      <thead><tr><th>代码</th><th>公司</th><th>盘前价</th><th>涨跌</th><th>涨跌幅</th></tr></thead>
+      <tbody>
+        <tr><td>NVDA</td><td>英伟达</td><td>219.34</td><td class="up">+5.43</td><td class="up">+2.54%</td></tr>
+        <tr><td>AAPL</td><td>苹果</td><td>337.00</td><td class="up">+4.59</td><td class="up">+1.38%</td></tr>
+        <tr><td>MSFT</td><td>微软</td><td>497.75</td><td class="up">+7.45</td><td class="up">+1.52%</td></tr>
+        <tr><td>GOOGL</td><td>谷歌</td><td>347.33</td><td class="up">+4.46</td><td class="up">+1.30%</td></tr>
+        <tr><td>META</td><td>Meta</td><td>682.31</td><td class="up">+9.01</td><td class="up">+1.34%</td></tr>
+        <tr><td>TSLA</td><td>特斯拉</td><td>366.20</td><td class="up">+8.14</td><td class="up">+2.27%</td></tr>
+        <tr><td>AMZN</td><td>亚马逊</td><td>251.19</td><td class="up">+5.23</td><td class="up">+2.13%</td></tr>
+      </tbody>
+    </table>
+    <p class="source">来源: Yahoo Finance 盘前数据（2026-09-18）。Mag 7 全线反弹，但 ES/NQ 期货仍小幅走弱 — 信号分化。</p>
+
+    <h3>今日关注事件</h3>
+    <ul>
+      <li><strong>8:30 ET 美国经济数据</strong>：今日无主要宏观数据公布，主要关注企业层面信号</li>
+      <li><strong>FOMC 后续效应</strong>：周三（2026-09-17）Fed 加息 25bp 至 3.75-4%，点阵图暗示年内或再加息一次；周四美股已大跌（道指 -750 点），市场仍在消化这一转向</li>
+      <li><strong>下周关注</strong>：PPI（9/10 已过）→ CPI（关注下一次发布日）</li>
+    </ul>
+
+    <h3>核心驱动因素</h3>
+    <ul>
+      <li><strong>Fed 政策转向：</strong> 2023 年以来首次加息，主席 Powell 强调"通胀担忧"（TheStreet, 2026-09-17）</li>
+      <li><strong>收益率曲线：</strong> 10Y 突破 5%（9/15）后小幅回落，但整体仍处于 19 年高位（Schwab / Benzinga）</li>
+      <li><strong>油价回落：</strong> 沙特东西管道恢复产能，Brent -1.56%（Trading Economics, 2026-09-17）</li>
+    </ul>
+  </div>
+
+  <!-- 贵金属 -->
+  <div class="section">
+    <h2>🥇 贵金属</h2>
+    <ul>
+      <li><strong>COMEX 黄金主力 GC=F：</strong> $4400.0 美元/盎司（+1.11%）</li>
+      <li><strong>5 日走势：</strong> 4351.9 → 4332.8 → 4387.5 → 4400.0，结构走强</li>
+      <li><strong>驱动因素：</strong>
+        <ul>
+          <li>美元指数 100.22（+0.76%）— 通常压制黄金</li>
+          <li>10Y 美债 4.947%（-2.8bp）— 略降，支持黄金</li>
+          <li>现货金 $4397.2（Convex, Sep 18）— 与期货同步</li>
+          <li>背景：Fed 加息周期内黄金通常承压，但本轮金价逆势走强（capitagrow.com 2025-12 标记"4,400 是全球金融市场的转折点"）</li>
+        </ul>
+      </li>
+    </ul>
+    <p class="source">来源: Yahoo Finance / Convex / Trading Economics</p>
+  </div>
+
+  <!-- 原油 -->
+  <div class="section">
+    <h2>🛢 原油</h2>
+    <ul>
+      <li><strong>WTI CL=F：</strong> $101.21 美元/桶（-0.18%）</li>
+      <li><strong>Brent BZ=F：</strong> $104.03 美元/桶（-1.56%）</li>
+      <li><strong>5 日走势：</strong> WTI 从 105.83 高点回落；Brent 从 108.75 跌至 104，连续两日走弱</li>
+      <li><strong>驱动因素（供应端）：</strong> 沙特计划在"未来几天"恢复 East-West 管道约一半产能，6 周内完全恢复（Trading Economics, 2026-09-17）</li>
+      <li><strong>需求端：</strong> WTI 月内仍 +21.50%，年同比 +61.45% — 长期看仍处结构性强势区间</li>
+      <li><strong>地缘：</strong> 未见新的供应中断事件，溢价开始消化</li>
+    </ul>
+    <p class="source">来源: Yahoo Finance / Trading Economics / OPEC MOMR</p>
+  </div>
+
+  <!-- 总结 -->
+  <div class="section">
+    <h2>💡 总结与观察（仅观察层）</h2>
+
+    <h3>市场情绪</h3>
+    <p><strong>震荡偏 risk-off</strong> — 美元强 + 黄金强 + VIX 低位 + 美股期货走弱 + 马股普跌，呈现典型的"美元紧缩 + 避险并行"格局。</p>
+
+    <h3>今日三大关注点（仅观察层）</h3>
+    <ol>
+      <li><strong>Fed 政策传导</strong>：周三加息 25bp + 点阵图暗示再加息一次的影响仍在发酵，市场仍在评估"高利率持续期"</li>
+      <li><strong>马币/马股联动</strong>：USD/MYR 触及一个月新低，FBM KLCI 单日 -1.26%，反映外资对马来西亚资产偏好减弱</li>
+      <li><strong>油价回落但结构性偏强</strong>：沙特管道恢复使 Brent -1.56%，但月内 WTI 仍 +21%，中长期供应溢价未消</li>
+    </ol>
+
+    <h3>马来西亚视角</h3>
+    <ul>
+      <li>KLCI 1676 月内 -3.38%，但同比仍 +4.74%（Trading Economics）</li>
+      <li>BNM OPR 2.75% 维持（2026-09-03 决议），与 Fed 路径形成利差扩大压力，是马币走弱的结构性原因之一</li>
+      <li>本地银行股（CIMB -3.76%）跌幅显著大于指数，反映外资对本地金融板块的离场信号</li>
+    </ul>
+
+    <h3>美股视角</h3>
+    <ul>
+      <li>Mag 7 盘前全线 +1.3% ~ +2.5%，但 ES/NQ 期货仍小幅走弱 — 个股强 / 指数弱的"分化开盘"</li>
+      <li>VIX 15.44 维持低位（< 20），市场未现恐慌，但周四 -750 点已显示对 Fed 转向的敏感度</li>
+      <li>10Y 收益率 4.947% 略低于 5% 高位，但仍是 19 年高位附近，对成长股估值仍是结构性压制</li>
+    </ul>
+
+    <h3>数据缺口</h3>
+    <ul>
+      <li>本日尚未公布新的经济数据；下一次关键数据需关注 Fed 官员讲话和下周 CPI（日期未在本次检索中确认）</li>
+      <li>Yahoo Finance 友好代码验证：`MAYBANK.KL` 等 5/6 旧友好代码仍 Not Found（2026-06-15 起），本报告统一使用 6 位数字代码</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    由 Hermes Agent 自动生成 · 数据来源: Yahoo Finance / Trading Economics / The Star Malaysia / CNBC / Federal Reserve / BNM<br>
+    本报告为宏观经济与跨市场观察，不构成投资建议
+  </div>
+</body>
+</html>
