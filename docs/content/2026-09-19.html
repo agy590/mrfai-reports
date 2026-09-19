@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>把 Agent 当同事，不是当工具 — MrFai 的 Agent 笔记</title>
+<style>
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; max-width: 760px; margin: 2.2rem auto; padding: 0 1.2rem; color: #1f2937; line-height: 1.75; }
+  h1 { font-size: 1.6rem; margin-bottom: 0.4rem; }
+  h2 { font-size: 1.15rem; margin-top: 1.6rem; }
+  .meta { color: #6b7280; font-size: 0.9rem; margin-bottom: 1.8rem; }
+  ol li { margin-bottom: 0.55rem; }
+  .summary { background: #f3f4f6; padding: 0.9rem 1.1rem; border-left: 3px solid #6b7280; margin: 1.4rem 0; }
+  .disclaimer { color: #9ca3af; font-size: 0.82rem; margin-top: 2.4rem; border-top: 1px solid #e5e7eb; padding-top: 0.8rem; }
+</style>
+</head>
+<body>
+
+<h1>把 Agent 当同事，不是当工具</h1>
+<p class="meta">MrFai 的 Agent 笔记 · 2026-09-19</p>
+
+<p><strong>立场：</strong>Agent 不是万能助手，更像一个刚入职、记性不好但打字很快的同事。把它当工具用，你会被它的流畅欺骗；把它当同事用，给它明确的边界和验收标准，它才能稳定交付。</p>
+
+<h2>一个常见的失败模式</h2>
+<p>很多人第一次让 Agent 写代码、做研究、跑分析时，会给一句"帮我把这段优化一下"或"调研一下 XX 行业"。Agent 会很快吐出一份看起来完整的结果：结构清晰、有数据有结论。</p>
+<p>问题在于：当你对领域不熟时，你没办法分辨这份结果里有几分是真的、几分是它在顺着你的预期填空。这不是 Agent 故意骗你，而是它的默认行为就是"给出听起来合理的回答"。如果不给它可验证的事实来源和明确边界，它就会默认补全。</p>
+<p>更糟的是，Agent 的会话上下文是临时的。下次开会它不记得上次说过什么；项目换环境，路径、约定、进度全要重新说明。把每次任务当成一个独立项目来交付，比把它当成一个持续在线的同事，更接近现实。</p>
+
+<h2>四个可以照做的步骤</h2>
+<ol>
+  <li><strong>先写一个 5 行内的"任务合同"</strong>：目标、输入、输出格式、禁止事项、验收标准。没有验收标准的任务，等于生产了一堆最后没人复核的中间文件。</li>
+  <li><strong>强制要求 Agent 给出可验证的引用</strong>：文件路径、命令输出、截图，而不是抽象描述。让它"展示证据"而不是"展示结果"。</li>
+  <li><strong>每完成一个子任务就 checkpoint</strong>：把当前的结论、决定、阻塞、下一步写下来。中断或交接前先固化，再继续；不固化就交接，等于让下一个人猜。</li>
+  <li><strong>3 次未落地就换方向</strong>：同一个方案连续三次没被采纳、没被执行、没产生行动，别再换说法，直接告诉使用者："这条路径我没走通，要不要换条路？"沉默接受浪费不是协作。</li>
+</ol>
+
+<div class="summary">一句话总结：Agent 能放大你已有的工作方式。如果你的方式是模糊的、不可验证的、靠灵感的，Agent 会把这种模糊以十倍速度放大。先定义合同，再让它动手。</div>
+
+<p class="disclaimer">本文为个人工程经验分享，不构成投资或技术建议。</p>
+
+</body>
+</html>
