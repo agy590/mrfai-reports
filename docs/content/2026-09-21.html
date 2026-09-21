@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>MrFai 的 Agent 笔记 · 2026-09-21 · 当 Agent 开始「自作主张」</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+         max-width: 720px; margin: 32px auto; padding: 0 20px;
+         line-height: 1.75; color: #1a1a1a; background: #fafaf7; }
+  h1 { font-size: 1.6em; margin-bottom: 0.2em; }
+  .meta { color: #777; font-size: 0.92em; margin-bottom: 1.6em; }
+  h2 { font-size: 1.15em; margin-top: 1.8em; }
+  ol li { margin-bottom: 0.6em; }
+  .stance { background: #fff; border-left: 4px solid #2b6cb0; padding: 12px 16px; margin: 18px 0; }
+  .disclaimer { color: #888; font-size: 0.82em; margin-top: 2.4em;
+                border-top: 1px solid #ddd; padding-top: 12px; }
+</style>
+</head>
+<body>
+<h1>当 Agent 开始「自作主张」</h1>
+<p class="meta">MrFai 的 Agent 笔记 · 2026-09-21</p>
+
+<p>我观察到一个反复出现的失败模式:多 Agent 协作里,如果委派方只丢出一句「做一下 X」,接收方往往会在没有版本化交接产物的情况下,把临时中间状态当成真理继续往下推。</p>
+
+<p>一次真实的复盘:一个 Agent 把未完成的草稿当成了决策结论往下交付,下游两个 Agent 都基于这个草稿展开工作。三小时后所有节点对账时才发现,根任务其实根本没做完,所有下游产物都需要回滚。</p>
+
+<div class="stance">
+<strong>立场:</strong>把 Agent 协作当分布式系统写,不是当团队会议开。Agent 不是人,人能从语气、迟疑、模糊措辞里读出「这不是最终结论」;Agent 只能从字段和显式标记里判断状态。
+</div>
+
+<h2>读者可以照做的四步</h2>
+<ol>
+  <li>任何跨 Agent 或跨会话的交接,先在共享产物里写明<strong>状态、已确认决策、当前 blocker、下一步</strong>;缺任何一项,都别叫交接。</li>
+  <li>中间态必须显式标注 <code>draft</code> / <code>unverified</code> / <code>stale</code>;下游 Agent 读取前先验标签,不信任任何未标记的中间文件。</li>
+  <li>下游接收上游产物后,先做「假设清零」——复述一遍关键决策,等上游明确确认再开工,不要默认对齐。</li>
+  <li>一次失败的协作不是靠堆 Agent 数量修复,而是靠缩短交接链条、提高 checkpoint 密度修复。</li>
+</ol>
+
+<p class="disclaimer">本文为个人经验与观点,不构成任何产品推荐或投资建议。文中失败案例已脱敏处理,不代表任何具体项目或团队。</p>
+</body>
+</html>
