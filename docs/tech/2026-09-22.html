@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日科技新闻简报 · 2026-09-22</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 24px 20px 60px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; color: #1a1a1a; background: #fafafa; line-height: 1.65; font-size: 16px; }
+  .wrap { max-width: 760px; margin: 0 auto; }
+  h1 { font-size: 28px; line-height: 1.3; margin: 0 0 8px; color: #0b3d91; }
+  h2 { font-size: 22px; margin: 40px 0 14px; padding-bottom: 6px; border-bottom: 2px solid #e6e6e6; color: #0b3d91; }
+  h3 { font-size: 18px; margin: 24px 0 10px; color: #163a73; }
+  .meta { color: #666; font-size: 14px; margin: 0 0 20px; }
+  .tldr { background: #eef4ff; border-left: 4px solid #0b3d91; padding: 14px 18px; border-radius: 4px; margin: 18px 0 28px; }
+  .tldr h3 { margin-top: 0; color: #0b3d91; }
+  .tldr ul { margin: 6px 0 0 18px; padding: 0; }
+  .tldr li { margin: 4px 0; }
+  .badge { display: inline-block; font-size: 12px; padding: 2px 8px; border-radius: 10px; margin-right: 6px; vertical-align: middle; }
+  .badge-heat-high { background: #ffe4e4; color: #b00020; }
+  .badge-heat-mid { background: #fff4d6; color: #8a6100; }
+  .badge-heat-low { background: #e6f4ea; color: #1e7a3a; }
+  .badge-time { background: #e3eaf5; color: #1a3a6e; }
+  .badge-trust-high { background: #e6f4ea; color: #1e7a3a; }
+  .badge-trust-mid { background: #fff4d6; color: #8a6100; }
+  .badge-trust-low { background: #fdecea; color: #b71c1c; }
+  .card { background: #fff; border: 1px solid #e6e6e6; border-radius: 8px; padding: 18px 20px; margin: 14px 0; box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
+  .card h3 { margin-top: 0; }
+  .tags { margin: 6px 0 12px; }
+  .why { background: #fff8e1; border-left: 3px solid #d4a017; padding: 10px 14px; margin: 10px 0; border-radius: 3px; font-size: 15px; }
+  .src { font-size: 14px; color: #555; }
+  .src a { color: #0b6bcb; text-decoration: none; word-break: break-all; }
+  .src a:hover { text-decoration: underline; }
+  .src li { margin: 4px 0; }
+  .src ul { margin: 6px 0 0 18px; padding: 0; }
+  .unavail { background: #fdecea; border-left: 4px solid #b71c1c; padding: 14px 18px; border-radius: 4px; margin: 18px 0; }
+  .observation { background: #f5f5f5; border-left: 4px solid #555; padding: 14px 18px; border-radius: 4px; margin: 18px 0; }
+  .footer-note { margin-top: 40px; padding-top: 16px; border-top: 1px solid #e6e6e6; color: #777; font-size: 13px; }
+  code { background: #f0f0f0; padding: 2px 6px; border-radius: 3px; font-size: 14px; }
+  @media (max-width: 480px) {
+    body { padding: 16px 14px 40px; font-size: 15px; }
+    h1 { font-size: 22px; }
+    h2 { font-size: 18px; }
+    h3 { font-size: 16px; }
+    .card { padding: 14px 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>每日科技新闻简报 · 2026-09-22</h1>
+<p class="meta">抓取窗口：2026-09-22（UTC+08） · 简报生成：研究-agent</p>
+
+<section class="tldr">
+  <h3>当日摘要（TL;DR）</h3>
+  <ul>
+    <li>OpenAI 官宣 DevDay 2026：9 月 29 日旧金山。</li>
+    <li>高通骁龙峰会 2026 今日在 Maui 开幕，首日发布 8 Elite Gen 6 / Gen 6 Pro（2nm）。</li>
+    <li>Anthropic 9 月威胁报告：指控数十万 Kimi 用户被路由到 Claude。</li>
+    <li>WordPress Core 曝出 CSRF 漏洞 Click2Shell，公开 PoC 已发布。</li>
+    <li>苹果 iPhone 18 Pro Max 据报通过软件限制电池容量。</li>
+    <li>GitHub Trending 日增数据：本次不可验证。</li>
+  </ul>
+</section>
+
+<div class="card unavail">
+  <h3>GitHub Trending 日增最高仓库</h3>
+  <p><strong>本次 GitHub Trending 日增数据不可验证。</strong></p>
+  <p>抓取命令：<code>curl -L --max-time 20 'https://r.jina.ai/https://github.com/trending?since=daily'</code></p>
+  <p>返回：HTTP 403，<code>AbuseAlleviationError: Anonymous access to domain github.com blocked ... due to previous abuse found on https://github.com/diegosouzapw/OmniRoute/wiki/Proxy-Subscriptions</code></p>
+  <p>原始链接（供手动核验）：<a href="https://github.com/trending?since=daily">https://github.com/trending?since=daily</a></p>
+  <p>按规则，本卡不杜撰候选仓库或日增 star 数，不缓存旧数据、不按总 Star 反推、不切换 API 取得日增真值。</p>
+</div>
+
+<section class="observation">
+  <h3>今日观察</h3>
+  <ul>
+    <li><strong>发布会密度集中</strong>：DevDay（9/29）、骁龙峰会（9/22–24）、iPhone 18 Pro Max 规则争议——本周是 Q3 末的硬件 + 开发者活动周。</li>
+    <li><strong>安全议题升温</strong>：WordPress Click2Shell CSRF + Anthropic 报告的模型路由劫持，本日安全事件占比较高。</li>
+    <li><strong>GitHub 抓取不稳定</strong>：r.jina.ai 对 GitHub 匿名访问 403，建议后续日报切换备用方案或错峰抓取。</li>
+  </ul>
+</section>
+
+<h2>新闻卡片</h2>
+
+<div class="card">
+  <h3>1. OpenAI 官宣 DevDay 2026：9 月 29 日旧金山</h3>
+  <div class="tags">
+    <span class="badge badge-heat-mid">⭐ 高热</span>
+    <span class="badge badge-time">📰 官方公告</span>
+    <span class="badge badge-trust-high">🟢 多方确认</span>
+  </div>
+  <p><strong>核心事实：</strong>OpenAI 官方页面显示 DevDay 2026 将于 9 月 29 日在旧金山举办，定位「年度最大活动」，目前开放邮件通知订阅。</p>
+  <p><strong>为什么重要：</strong>DevDay 是 OpenAI 公布新模型 / 工具 / API 的主舞台，临近发布会通常意味着接下来一周会有密集预告。</p>
+  <p class="src"><strong>来源：</strong></p>
+  <ul class="src">
+    <li><a href="https://openai.com/index/devday-2026/">OpenAI 官方页面（已通过 r.jina.ai 抓取验证）</a></li>
+    <li><a href="https://juliangoldie.com/openai-devday-2026-date/">Julian Goldie 二手报道</a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>2. 高通骁龙峰会开幕：Snapdragon 8 Elite Gen 6 / Gen 6 Pro 发布</h3>
+  <div class="tags">
+    <span class="badge badge-heat-mid">⭐ 高热</span>
+    <span class="badge badge-time">🚨 突发（开幕日）</span>
+    <span class="badge badge-trust-mid">🟡 单源但可靠</span>
+  </div>
+  <p><strong>核心事实：</strong>骁龙峰会 2026 于 9 月 22–24 日在夏威夷 Maui 举行，首日高通推出两款 Snapdragon 8 Elite 芯片：8 Elite Gen 6 与更高规格的 Gen 6 Pro，均采用 2nm 工艺。</p>
+  <p><strong>为什么重要：</strong>2nm 制程节点对 Android 阵营的能效与发热是一次跃迁，Gen 6 Pro 定位通常对应次年旗舰机型。</p>
+  <p class="src"><strong>来源：</strong></p>
+  <ul class="src">
+    <li><a href="https://gadgetsnow.indiatimes.com/tech-news/snapdragon-summit-2026-what-qualcomm-will-launch-in-maui-on-22-september/articleshow/134379177.cms">Gadgets Now</a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>3. Anthropic 9 月威胁情报报告：指控 Kimi 用户被路由至 Claude</h3>
+  <div class="tags">
+    <span class="badge badge-heat-low">💡 值得关注</span>
+    <span class="badge badge-time">📰 本月发布</span>
+    <span class="badge badge-trust-mid">🟡 单源（当事方）</span>
+  </div>
+  <p><strong>核心事实：</strong>Anthropic 在 2026 年 9 月威胁情报报告中称，发生过「用户以为自己与 Kimi 对话，实际流量被路由到 Claude 模型」的情况，涉及「数十万人」。</p>
+  <p><strong>为什么重要：</strong>若属实，这是首次披露大规模模型路由劫持 / 冒充事件，影响 AI 服务身份验证与用户信任。</p>
+  <p class="src"><strong>来源：</strong></p>
+  <ul class="src">
+    <li><a href="https://www.linkedin.com/pulse/you-thought-were-talking-kimi-anthropic-says-claude-kenan-ayvataş-wtfzf">LinkedIn 文章（Anthropic 报告摘要）</a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>4. WordPress Core 曝出 CSRF 漏洞 Click2Shell，PoC 已公开</h3>
+  <div class="tags">
+    <span class="badge badge-heat-mid">⭐ 高热（安全圈）</span>
+    <span class="badge badge-time">🚨 突发（昨日披露）</span>
+    <span class="badge badge-trust-high">🟢 多方确认</span>
+  </div>
+  <p><strong>核心事实：</strong>BleepingComputer 报道 WordPress Core 组件曝出名为 Click2Shell 的跨站请求伪造（CSRF）漏洞，技术细节与 PoC 已被公开发布。</p>
+  <p><strong>为什么重要：</strong>WordPress 占全球 CMS 极高份额，Core 级 CSRF 可被用于提权或站点接管。</p>
+  <p class="src"><strong>来源：</strong></p>
+  <ul class="src">
+    <li><a href="https://www.bleepingcomputer.com/">BleepingComputer</a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>5. iPhone 18 Pro Max 据报通过软件限制电池容量</h3>
+  <div class="tags">
+    <span class="badge badge-heat-low">💡 值得关注</span>
+    <span class="badge badge-time">🚨 突发（9/22 报道）</span>
+    <span class="badge badge-trust-mid">🟡 单源但可靠</span>
+  </div>
+  <p><strong>核心事实：</strong>tech-ish 报道，苹果通过软件方式限制 iPhone 18 Pro Max 电池容量，以满足某条航运 / 运输法规要求。</p>
+  <p><strong>为什么重要：</strong>若属实，硬件标称容量与实际可用容量不一致，可能影响续航评测与消费者预期。</p>
+  <p class="src"><strong>来源：</strong></p>
+  <ul class="src">
+    <li><a href="https://tech-ish.com/2026/09/22/apple-is-limiting-iphone-18-pro-max-battery-in-software-to-meet-a-shipping-rule/">tech-ish</a></li>
+  </ul>
+</div>
+
+<h2>来源与局限</h2>
+<ul>
+  <li><strong>覆盖</strong>：官方公告（OpenAI）、专业安全媒体（BleepingComputer）、行业报道（tech-ish、Gadgets Now）、当事方报告（Anthropic）。</li>
+  <li><strong>局限</strong>：
+    <ul>
+      <li>GitHub Trending 本次不可验证，已显式标注。</li>
+      <li>本日未涉及国内厂商一手公告（无新浪 / 36 氪 / 财新等中文一手源）。</li>
+      <li>单源条目（卡片 2、3、5）按规则标注「单源但可靠」或「值得关注」。</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="footer-note">
+  <p><strong>免责声明：</strong>本简报基于本次运行实际抓取到的公开信息整理，仅作研究 / 参考用途，不构成投资建议。事实性内容已尽量标注来源；如需进一步核实，请通过上方 URL 自行查阅原文。</p>
+</div>
+
+</div>
+</body>
+</html>
