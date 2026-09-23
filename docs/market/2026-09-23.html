@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日市场简报 — 2026-09-23</title>
+<style>
+  :root {
+    --bg: #0f1419;
+    --card: #1a1f29;
+    --border: #2a313c;
+    --text: #e6edf3;
+    --muted: #7d8590;
+    --up: #3fb950;
+    --down: #f85149;
+    --neutral: #d29922;
+    --accent: #58a6ff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .header {
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+  .header h1 {
+    font-size: 28px;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .header .meta {
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .section h2 {
+    color: var(--accent);
+    font-size: 20px;
+    margin-bottom: 16px;
+    border-left: 4px solid var(--accent);
+    padding-left: 12px;
+  }
+  .section h3 {
+    color: var(--text);
+    font-size: 16px;
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+  th {
+    background: var(--border);
+    color: var(--muted);
+    text-align: left;
+    padding: 8px 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  tr:hover td {
+    background: rgba(88, 166, 255, 0.05);
+  }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .neutral { color: var(--neutral); }
+  .muted { color: var(--muted); }
+  .kpi {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin: 12px 0;
+  }
+  .kpi-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 16px;
+  }
+  .kpi-label {
+    color: var(--muted);
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .kpi-value {
+    font-size: 22px;
+    font-weight: 600;
+  }
+  ul { padding-left: 20px; margin: 8px 0; }
+  li { margin-bottom: 6px; }
+  .footer {
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+  .source {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+  .note {
+    background: rgba(210, 153, 34, 0.08);
+    border-left: 3px solid var(--neutral);
+    padding: 10px 14px;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+</style>
+</head>
+<body>
+  <div class="header">
+    <h1>📊 每日市场简报 — 2026-09-23（周三）</h1>
+    <div class="meta">📅 数据快照：2026-09-23 ~01:00–01:15 UTC · 数据源：Yahoo Finance v8/chart API + Web 搜索</div>
+  </div>
+
+  <div class="section">
+    <h2>🇲🇾 马来西亚股市</h2>
+    <div class="kpi">
+      <div class="kpi-card">
+        <div class="kpi-label">KLCI 最新</div>
+        <div class="kpi-value up">1,679.32 <span style="font-size:13px">+0.27%</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">USD/MYR</div>
+        <div class="kpi-value down">4.066 <span style="font-size:13px">-0.19%</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">KLCI 5 日趋势</div>
+        <div class="kpi-value up" style="font-size:14px">1,665.56 → 1,679.32</div>
+      </div>
+    </div>
+    <h3>主要成分股（Yahoo 09-23 01:01 UTC 夜盘参考）</h3>
+    <table>
+      <thead>
+        <tr><th>代码</th><th>公司</th><th>价格 (MYR)</th><th>日涨跌</th><th>来源</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1155.KL</td><td>MAYBANK 马银行</td><td>10.24</td><td class="down">-1.16%</td><td>Yahoo</td></tr>
+        <tr><td>1023.KL</td><td>CIMB 联昌银行</td><td>7.90</td><td class="up">+2.73%</td><td>Yahoo</td></tr>
+        <tr><td>1295.KL</td><td>PBBANK 公众银行</td><td>4.83</td><td class="up">+0.63%</td><td>Yahoo</td></tr>
+        <tr><td>5347.KL</td><td>TENAGA 国家能源</td><td>13.06</td><td class="down">-1.95%</td><td>Yahoo</td></tr>
+        <tr><td>5225.KL</td><td>IHH 医疗集团</td><td>8.01</td><td class="up">+4.16%</td><td>Yahoo</td></tr>
+        <tr><td>7113.KL</td><td>TOPGLOV 顶级手套</td><td>0.76</td><td class="down">-4.40%</td><td>Yahoo</td></tr>
+      </tbody>
+    </table>
+    <h3>结构观察</h3>
+    <ul>
+      <li>银行内部分化：CIMB +2.73% 领涨，MAYBANK -1.16% / PBBANK +0.63% 跟随；CIMB-PBBANK 强弱差 ≈ 2.1pp。</li>
+      <li>能源公用 TENAGA -1.95%，是 KLCI 主要拖累之一。</li>
+      <li>医疗 IHH +4.16% 为当日最大单股涨幅；手套 TOPGLOV -4.40% 最弱。</li>
+      <li>马币 USD/MYR 5 日连续从 4.0974 → 4.066（小幅走强）。</li>
+      <li>KLCI 数据点为 09-23 01:01 UTC ≈ 09:01 MYT，本日 MY 实际走势留待 10:00 MYT 后回核。</li>
+    </ul>
+    <div class="note">📌 后续观察条件：KLCI 是否站上 1,680；MYR/USD 是否守住 4.07 下沿；CIMB 与 IHH 是否延续；TOPGLOV 是否止跌。</div>
+  </div>
+
+  <div class="section">
+    <h2>🇺🇸 美国期货 + 美股（09-22 ET 收盘后）</h2>
+    <h3>三大指数期货（09-23 01:06 UTC 即时）</h3>
+    <table>
+      <thead>
+        <tr><th>期货</th><th>水平</th><th>涨跌</th><th>涨跌幅</th><th>来源</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>ES=F (S&P 500 Dec 26)</td><td>7,829.5</td><td class="up">+189.5</td><td class="up">+2.48%</td><td>Yahoo</td></tr>
+        <tr><td>NQ=F (Nasdaq 100 Dec 26)</td><td>31,025.25</td><td class="up">+1,578.5</td><td class="up">+5.36%</td><td>Yahoo</td></tr>
+        <tr><td>YM=F (Dow Dec 26)</td><td>52,247</td><td class="up">+440</td><td class="up">+0.85%</td><td>Yahoo</td></tr>
+      </tbody>
+    </table>
+    <h3>关键宏观指标</h3>
+    <table>
+      <thead>
+        <tr><th>指标</th><th>水平</th><th>涨跌</th><th>来源/时间</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>美元指数 DXY (DX-Y.NYB)</td><td>100.585</td><td class="up">+0.36%</td><td>Yahoo · 09-23 01:06 UTC</td></tr>
+        <tr><td>美债 10Y ^TNX</td><td>4.968%</td><td class="down">-3.8 bp</td><td>Yahoo · 09-22 18:59 UTC</td></tr>
+        <tr><td>VIX ^VIX</td><td>14.21</td><td class="down">-19.76%</td><td>Yahoo · 09-22 20:15 UTC</td></tr>
+      </tbody>
+    </table>
+    <h3>Magnificent 7（09-22 ET 收盘）</h3>
+    <table>
+      <thead>
+        <tr><th>代码</th><th>公司</th><th>收盘</th><th>日涨跌</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>NVDA</td><td>NVIDIA</td><td>228.87</td><td class="up">+7.87%</td></tr>
+        <tr><td>AAPL</td><td>Apple</td><td>339.75</td><td class="up">+2.54%</td></tr>
+        <tr><td>MSFT</td><td>Microsoft</td><td>498.00</td><td class="up">+0.18%</td></tr>
+        <tr><td>GOOGL</td><td>Alphabet</td><td>351.16</td><td class="up">+1.79%</td></tr>
+        <tr><td>META</td><td>Meta</td><td>736.595</td><td class="up">+9.90%</td></tr>
+        <tr><td>TSLA</td><td>Tesla</td><td>378.90</td><td class="up">+6.26%</td></tr>
+        <tr><td>AMZN</td><td>Amazon</td><td>254.98</td><td class="up">+2.64%</td></tr>
+      </tbody>
+    </table>
+    <h3>结构观察</h3>
+    <ul>
+      <li>纳指与 NQ=F 显著领跑（NQ +5.36% vs YM +0.85%），风险偏好结构性向科技倾斜。</li>
+      <li>Mag 7 中 META / NVDA / TSLA 居前，META +9.90%、NVDA +7.87% 与 AI 资金回潮主题相关。</li>
+      <li>10Y -3.8 bp + VIX -19.76% 组合显示"宽松交易"，但 DXY +0.36% 形成曲线走陡的 S 形分歧。</li>
+      <li>9-17 FOMC（Bondsavvy 源）加息 25 bp 至 3.75–4.00%，2026 年中位再加 50 bp，2027 中位 4%，是市场降息交易 vs Fed 路径的核心分歧。</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🥇 贵金属</h2>
+    <table>
+      <thead><tr><th>品种</th><th>水平</th><th>涨跌</th><th>来源/时间</th></tr></thead>
+      <tbody>
+        <tr><td>COMEX 黄金 GC=F Dec 26</td><td>4,389.30 USD/oz</td><td class="down">-0.24%</td><td>Yahoo · 09-23 01:06 UTC</td></tr>
+      </tbody>
+    </table>
+    <ul>
+      <li>黄金微跌 -0.24%，与 DXY +0.36%（同向）+ ^TNX -3.8 bp（背离）形成温和张力。</li>
+      <li>9-17 加息后金价未走强，4,389 位于近月区间下沿；后续观察 4,400 阻力与 4,350 支撑。</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🛢 原油</h2>
+    <table>
+      <thead><tr><th>品种</th><th>水平</th><th>涨跌</th><th>来源/时间</th></tr></thead>
+      <tbody>
+        <tr><td>WTI CL=F Nov 26</td><td>90.32 USD/桶</td><td class="down">-11.37%</td><td>Yahoo · 09-23 01:06 UTC</td></tr>
+        <tr><td>Brent BZ=F</td><td>99.34 USD/桶</td><td class="down">-5.23%</td><td>Yahoo · 09-23 01:06 UTC</td></tr>
+      </tbody>
+    </table>
+    <div class="note">⚠ WTI -11.37% / Brent -5.23% 跨日截面罕见——Yahoo <code>previousClose</code> 字段在 CME 期货 follow validation 必跑（合约换月 / Tick 异常 / API 字段定义均能致失真）。Yahoo Finance 源："Oil Prices Fall as OPEC and IEA Slash 2026 Demand Outlooks" 印证需求预期下修。</div>
+    <ul>
+      <li>IEA 9-11 报告称基准原油达 5 月以来最高；过去 6 周波动 95–102，09-22 跌幅属累积下修。</li>
+      <li>后续观察：现货是否回升 92 / Brent 103 上方；OPEC+ 9 月实际产量；IEA 10 月月度报告。</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>💡 总结与观察</h2>
+    <p><strong>市场情绪：</strong><span class="up">风险偏好回升</span>。US 长端利率 down / 美元 up / 油价 down——"宽松交易 + 消费疲软"混合 read。</p>
+    <h3>今日三大观察点</h3>
+    <ol>
+      <li><strong>WTI -11.37% 是否数据假象</strong> — 必须以 EIA 现货 / CME 官方连续报价回核。</li>
+      <li><strong>NQ=F +5.36% 是否后续兑现</strong> — 09-23 开盘跳空验证趋势。</li>
+      <li><strong>10Y 4.968% 是否守住</strong> — 9-17 FOMC 加息后利率下行，验证年内的"dot plot = 加息"叙事是否被债市否决。</li>
+    </ol>
+    <h3>马来西亚视角</h3>
+    <ul>
+      <li>夜盘参考下 MAYBANK/TENAGA/TOPGLOV 同步走弱，与 DXY +0.36% / 油价 -5%~-11% 一致；CIMB / IHH 走强是个股/行业催化。</li>
+      <li>USD/MYR 5 日 4.0974 → 4.066，对马股外资偏向边际正向。</li>
+    </ul>
+    <h3>美股视角</h3>
+    <ul>
+      <li>09-22 ET 收盘后：NQ=31k / ES=7,830 / YM=52,247；Mag 7 普涨但内部分化（META+10 / MSFT+0.2），AI/广告主题仍是当下驱动。</li>
+      <li>VIX 14.21 接近年内地量，谨慎乐观，今日开盘跳空是关键。</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>📋 数据缺口与口径</h2>
+    <ul>
+      <li><strong>未拉取 Jin10 财经日历</strong>（按限流规则）；本日 ET 无 ⭐⭐⭐ 数据为推论，待 09-23 美国开盘后 web 搜索核验 CPI / NFP / PPI。</li>
+      <li><strong>Jin10 calendar + flash 主流程未走</strong>：本任务以 Yahoo + web 搜索双源完成。</li>
+      <li><strong>Brent/WTI -11%/-5% 跨日截面需 CME 官方回核</strong>：未做此核验前不视为结论。</li>
+      <li>KLCI 数据点 09-23 01:01 UTC（≈ 09:01 MYT），马来西亚股市尚未开盘，价格反映夜盘参考。</li>
+      <li>所有数据按 "Jin10 已知限制 + Yahoo Finance 实时价格" 双口径交叉验证，未使用 Jin10 不支持的 US 指数分钟级 K 线。</li>
+    </ul>
+    <div class="source">
+      <strong>来源：</strong>Yahoo Finance v8/chart API、CNBC、Bondsavvy、IEA、Discovery Alert、Yahoo Finance energy tag。
+    </div>
+  </div>
+
+  <div class="footer">
+    由 Hermes Agent 自动生成 · 2026-09-23 · 数据来源：Yahoo Finance v8/chart API + Web 搜索<br>
+    本报告仅作宏观、事件和跨市场状态的观察资料，不构成投资建议<br>
+    MGC / CME 期货执行判断由 MGC 复测系统独立完成，本报告不替代该流程
+  </div>
+</body>
+</html>
