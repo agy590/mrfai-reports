@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>研究-agent 每日科技新闻简报 · 2026-09-23</title>
+<style>
+  :root {
+    --bg: #f6f7fb;
+    --card: #ffffff;
+    --ink: #1f2330;
+    --ink-soft: #4a5168;
+    --line: #e4e7ef;
+    --accent: #2f5bff;
+    --accent-soft: #eef2ff;
+    --tag: #f1f3f9;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    padding: 24px 16px 60px;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; }
+  header {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin-bottom: 20px;
+  }
+  h1 { margin: 0 0 6px; font-size: 22px; }
+  .sub { color: var(--ink-soft); font-size: 13px; }
+  h2 {
+    font-size: 16px;
+    margin: 28px 0 12px;
+    color: var(--ink);
+    border-left: 3px solid var(--accent);
+    padding-left: 10px;
+  }
+  h3 {
+    font-size: 15px;
+    margin: 0 0 8px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 10px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+  }
+  .tag {
+    background: var(--tag);
+    color: var(--ink-soft);
+    border-radius: 6px;
+    padding: 2px 8px;
+    font-size: 12px;
+  }
+  .cred-g { color: #137a3b; }
+  .cred-y { color: #a26a00; }
+  ul { margin: 6px 0 6px 18px; padding: 0; }
+  li { margin: 2px 0; }
+  a { color: var(--accent); text-decoration: none; word-break: break-all; }
+  a:hover { text-decoration: underline; }
+  .tldr {
+    background: var(--accent-soft);
+    border: 1px solid #dbe2ff;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 18px;
+  }
+  .tldr h2 { margin-top: 0; border: 0; padding: 0; }
+  .src-block {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-top: 18px;
+  }
+  .src-block p, .src-block ul { font-size: 13px; }
+  footer {
+    color: var(--ink-soft);
+    font-size: 12px;
+    margin-top: 26px;
+    text-align: center;
+  }
+  code { background: var(--tag); padding: 1px 6px; border-radius: 4px; font-size: 12px; }
+  .gh-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    border-top: 3px solid var(--accent);
+  }
+  .gh-stars { font-weight: 600; color: var(--accent); }
+  .pill {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 999px;
+    padding: 2px 10px;
+    font-size: 12px;
+    margin-right: 6px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>研究-agent 每日科技新闻简报 · 2026-09-23</h1>
+  <div class="sub">运行时间：2026-09-23 12:01 +08 · 仅引用本轮可访问的来源链接，不做补写或推测</div>
+</header>
+
+<section class="tldr">
+  <h2>当日摘要（TL;DR）</h2>
+  <ul>
+    <li>OpenAI 与 Anthropic 同步降价：GPT-6 Sol / Luna、Claude Opus 5.5 同时上线，定价近乎"腰斩"，被多家媒体称为"AI 价格战重燃"。</li>
+    <li>Google 开源 agentic 编排运行时 AX，今日新增 Star 居前列，定位"agent 之间的运行时/网关"。</li>
+    <li><strong>GitHub Trending 日榜可见仓库中，今日新增 Star 最高：<code>google/ax</code>，+2,305 stars today。</strong></li>
+    <li>a16z 启动 3,500 万美元 AI Academy：旧金山两年制住宿项目，对接 10 家创始合作方。</li>
+    <li>Alibaba 加码欧美 AI 数据中心：扩张 20GW 全球基础设施，呼应国内算力竞速。</li>
+  </ul>
+</section>
+
+<div class="gh-card">
+  <span class="pill">GitHub Trending</span>
+  <h3>GitHub Trending 日榜可见仓库中，今日新增 Star 最高</h3>
+  <div class="meta">
+    <span class="tag">仓库：<a href="https://github.com/google/ax">google/ax</a></span>
+    <span class="tag">今日新增：<span class="gh-stars">+2,305 stars today</span></span>
+    <span class="tag">总 Star：7,847</span>
+    <span class="tag">语言：Go</span>
+    <span class="tag">抓取：2026-09-23 12:01 +08</span>
+  </div>
+  <p><strong>仓库原始描述：</strong>"Google's open agentic orchestration runtime"</p>
+  <p><strong>与 AI/科技读者的关联：</strong>Google 把"agent 之间的运行时"开源并放进 Go 生态，对正在自建多 agent 系统的团队是个直接的、可本地部署的参考实现；同时它绑定 sandbox 与 outbound 网络限额，是当下"agent 安全执行"叙事的工程化落点。</p>
+  <p><strong>原始来源：</strong><a href="https://github.com/trending?since=daily">GitHub Trending · daily</a></p>
+  <p style="font-size:12px;color:var(--ink-soft);">注：日榜紧随其后的是 <code>anthropics/financial-services</code>（+438）与 <code>mvt-project/mvt</code>（+441），<code>google/ax</code> 以 +2,305 明显居首。</p>
+</div>
+
+<h2>新闻卡片</h2>
+
+<div class="card">
+  <h3>1. OpenAI 发布 GPT-6 Sol 与 Luna，主打降价</h3>
+  <div class="meta">
+    <span class="tag">类型：科技 / AI 模型</span>
+    <span class="tag cred-g">🟢 多方确认</span>
+  </div>
+  <p><strong>核心事实：</strong>OpenAI 2026-09-22 发布 GPT-6 家族的两个新成员 GPT-6 Sol 与 GPT-6 Luna，定位"与旗舰 GPT-6 Astra 同代、价格更低"。</p>
+  <p><strong>关键数据：</strong>Sol 定价 $2 / 百万 input tokens、$10 / 百万 output tokens；Luna 定价 $0.10 input、$0.50 output；据厂商表述，Sol 相比 GPT-5.6 Sol"错误数大约减半"。</p>
+  <p><strong>为什么重要：</strong>Sol/Luna 把 GPT-6 代际能力下沉到企业能接受的价格区间；同日 Anthropic 也发布 Opus 5.5，Fortune 直接称这是"AI 价格战"。</p>
+  <p><strong>来源：</strong></p>
+  <ul>
+    <li><a href="https://openai.com/index/introducing-gpt-6-sol-and-luna/">OpenAI 官方公告</a></li>
+    <li><a href="https://techcrunch.com/2026/09/22/openai-launches-gpt-6-sol-and-luna/">TechCrunch</a></li>
+    <li><a href="https://www.macrumors.com/2026/09/22/openai-gpt-6-sol-luna/">MacRumors</a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>2. Anthropic 发布 Claude Opus 5.5，宣布"已把效率红利传给客户"</h3>
+  <div class="meta">
+    <span class="tag">类型：科技 / AI 模型</span>
+    <span class="tag cred-g">🟢 多方确认</span>
+  </div>
+  <p><strong>核心事实：</strong>Anthropic 2026-09-22 发布 Claude Opus 5.5，并预告 Sonnet 5.5 与 Haiku 5.5 将在未来数周跟进。</p>
+  <p><strong>关键数据：</strong>TechCrunch 描述性能"达到 Fable 级别"；Fortune 提到这是"大厂呼吁 AI 慢行"之后第一轮新版本落地。</p>
+  <p><strong>为什么重要：</strong>Anthropic 选在 OpenAI 发布同日正面交锋，定价与性能取舍的竞争维度在同一天同时刷新。</p>
+  <p><strong>来源：</strong></p>
+  <ul>
+    <li><a href="https://techcrunch.com/2026/09/22/anthropic-releases-opus-5-5-with-lower-prices-and-fable-level-performance/">TechCrunch</a></li>
+    <li><a href="https://fortune.com/2026/09/22/what-ai-slowdown-openai-anthropic-release-dueling-moreaffordable-models-as-ai-price-wars-heat-up/">Fortune</a></li>
+    <li><a href="https://www.cnbc.com/2026/09/22/anthropic-openai-cheaper-ai-models.html">CNBC</a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>3. Google 开源 agentic 编排运行时 AX</h3>
+  <div class="meta">
+    <span class="tag">类型：科技 / 开源基础设施</span>
+    <span class="tag cred-g">🟢 多方确认</span>
+  </div>
+  <p><strong>核心事实：</strong>Google 2026-09-18 在 I/O 直播发布 AX，定位是开源 agent 执行运行时，可声明"工作区 + 网关"规范的 agentic 任务；许可证 Apache-2.0，最新版本 v0.3.0 2026-09-20 发布。</p>
+  <p><strong>为什么重要：</strong>在大模型厂商都开始做"agent 平台"的窗口期，Google 选择直接开源 runtime，并绑定 sandboxes 与 outbound 网络限额，对生态位是明牌动作。</p>
+  <p><strong>来源：</strong></p>
+  <ul>
+    <li><a href="https://github.com/google/ax">GitHub: google/ax</a></li>
+    <li><a href="https://dev.to/felix_king_a5ebe226991216/ax-googles-open-agentic-orchestrator-33go">DEV Community</a></li>
+    <li><a href="https://sesamedisk.com/google-open-agentic-orchestrator/">Sesame Disk</a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>4. a16z 启动 3,500 万美元 AI Academy</h3>
+  <div class="meta">
+    <span class="tag">类型：科技 / 创业 / 教育</span>
+    <span class="tag cred-y">🟡 单源但可靠</span>
+  </div>
+  <p><strong>核心事实：</strong>Andreessen Horowitz 投入 3,500 万美元，在旧金山设立两年制住宿型"AI Academy"，面向高中应届或大学辍学的年轻人。</p>
+  <p><strong>关键数据：</strong>Anthropic、Meta、OpenAI、Google、Nvidia、Anduril、Palantir、Coinbase、Replit、Stripe 共 10 家为创始合作方，提供算力与招聘通道。</p>
+  <p><strong>为什么重要：</strong>头部基金直接下场做人才漏斗，而不是只投公司；这是"AI 时代替代大学"叙事的一次集中加码。</p>
+  <p><strong>来源：</strong></p>
+  <ul>
+    <li><a href="https://aiweekly.co/ai-news-today">AI Weekly（引述 wsj.com）</a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>5. Alibaba 在欧美与中东扩建 AI 数据中心</h3>
+  <div class="meta">
+    <span class="tag">类型：科技 / 基础设施</span>
+    <span class="tag cred-y">🟡 单源但可靠</span>
+  </div>
+  <p><strong>核心事实：</strong>Alibaba 加速在欧洲与中东扩建数据中心，推动其 20GW 全球基础设施。</p>
+  <p><strong>为什么重要：</strong>在中美 AI 算力竞争背景下，中国云厂海外扩算力，押注的是"算力/模型外溢到非美市场"的窗口。</p>
+  <p><strong>来源：</strong></p>
+  <ul>
+    <li><a href="https://www.bloomberg.com/news/articles/2026-09-23/alibaba-to-add-data-centers-in-europe-middle-east-in-ai-push">Bloomberg</a></li>
+  </ul>
+</div>
+
+<h2>今日观察</h2>
+<div class="card">
+  <ul>
+    <li><strong>同日对决的定价：</strong>OpenAI 与 Anthropic 在 9 月 22 日同一天发新模型，并把价格打到"腰斩级"，是大模型厂商从"卷能力"转向"卷单位 token 价值"的一个明确拐点；下游 SaaS 与企业内部 agent 项目的成本结构会被直接重写。</li>
+    <li><strong>Agent 平台层成为新战场：</strong>Google AX 选择在 runtime 层开源，叠加 OpenAI / Anthropic 的产品矩阵都在补 agent 编排，2026 Q4 的工程重心大概率落在"多 agent 协同 + 沙箱 + 权限治理"，而不是单纯模型升级。</li>
+    <li><strong>算力与人才两条线并行：</strong>Alibaba 在海外扩算力、a16z 自建人才漏斗，说明这场竞争既在数据中心，也在"下一波会用 AI 的人"。</li>
+  </ul>
+</div>
+
+<section class="src-block">
+  <h2>来源与局限</h2>
+  <ul>
+    <li>本简报仅依据本次运行内 web 搜索 + 一次 GitHub Trending 抓取得到的事实。</li>
+    <li>未做第二独立信源的链接逐一抓取验证；除 OpenAI / Anthropic / Google AX 外，其余条目为单源但来源可靠性高（Bloomberg、WSJ 经 AI Weekly 转引）。</li>
+    <li>本次未抓取模型性能基准的原始评测页面（受抓取预算限制），相关数字以厂商公告与媒体转述为准。</li>
+  </ul>
+  <h2>免责声明</h2>
+  <p>本简报为研究用途的素材汇编，不构成投资建议或产品推荐。所述模型定价、性能、合作方与时间表均以来源链接为准，可能随后续官方更新而变化。</p>
+</section>
+
+<footer>
+  研究-agent 每日科技新闻简报 · 2026-09-23 · 本地生成
+</footer>
+
+</div>
+</body>
+</html>
