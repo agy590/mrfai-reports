@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日科技 / AI 新闻简报 — 2026-09-24</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 24px 16px 64px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Hiragino Sans GB", "Microsoft YaHei", Roboto, Helvetica, Arial, sans-serif;
+    background: #f5f6f8;
+    color: #1f2328;
+    line-height: 1.65;
+    font-size: 15px;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; }
+  header {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px 28px 22px;
+    box-shadow: 0 1px 3px rgba(15,23,42,.06), 0 8px 24px rgba(15,23,42,.04);
+    margin-bottom: 20px;
+  }
+  h1 { margin: 0 0 8px; font-size: 26px; letter-spacing: -.01em; }
+  .sub { color: #57606a; font-size: 14px; margin: 0; }
+  .badge {
+    display: inline-block; padding: 2px 9px; border-radius: 999px;
+    background: #eef2ff; color: #3730a3; font-size: 12px;
+    margin-right: 6px; font-weight: 500;
+  }
+  .meta { margin-top: 12px; font-size: 13px; color: #6b7280; }
+  .tldr, .trending, .observe, .source-note, .disclaimer, .news-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 22px 26px;
+    box-shadow: 0 1px 3px rgba(15,23,42,.06);
+    margin-bottom: 18px;
+  }
+  h2 {
+    margin: 0 0 14px; font-size: 19px; letter-spacing: -.005em;
+    padding-bottom: 10px; border-bottom: 1px solid #eef0f3;
+  }
+  h3 { margin: 0 0 8px; font-size: 16px; line-height: 1.4; }
+  ul { margin: 6px 0 0; padding-left: 22px; }
+  li { margin: 6px 0; }
+  .fact { margin: 4px 0 10px; }
+  .cred { font-size: 13px; color: #6b7280; margin: 4px 0 10px; }
+  .cred .green { color: #16a34a; font-weight: 600; }
+  .cred .amber { color: #d97706; font-weight: 600; }
+  .why { background: #f8fafc; border-left: 3px solid #6366f1; padding: 10px 14px;
+         border-radius: 6px; margin: 10px 0 0; font-size: 14px; color: #334155; }
+  .src { margin-top: 12px; font-size: 13px; color: #4b5563; }
+  .src a { color: #2563eb; text-decoration: none; word-break: break-all; }
+  .src a:hover { text-decoration: underline; }
+  .src-title { font-weight: 600; color: #1f2937; margin-right: 4px; }
+  .trending-grid { display: grid; grid-template-columns: 1fr auto; gap: 16px;
+                    align-items: start; }
+  .pill {
+    display: inline-block; padding: 3px 9px; border-radius: 999px;
+    background: #ecfdf5; color: #047857; font-size: 12px; font-weight: 600;
+    margin-right: 6px;
+  }
+  .pill.lang { background: #eff6ff; color: #1d4ed8; }
+  .pill.stars { background: #fef3c7; color: #92400e; }
+  .trending h3 a { color: #111827; text-decoration: none; }
+  .trending h3 a:hover { color: #2563eb; text-decoration: underline; }
+  ol.observe-list { margin: 6px 0 0; padding-left: 20px; }
+  ol.observe-list li { margin-bottom: 10px; }
+  .note { font-size: 13px; color: #6b7280; background: #fffbeb;
+          padding: 10px 12px; border-radius: 6px; border-left: 3px solid #f59e0b;
+          margin-top: 10px; }
+  footer { text-align: center; color: #9ca3af; font-size: 12px; margin-top: 24px; }
+  @media (max-width: 600px) {
+    .trending-grid { grid-template-columns: 1fr; }
+    header, .tldr, .trending, .observe, .source-note, .disclaimer, .news-card {
+      padding: 18px 18px;
+    }
+    h1 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>每日科技 / AI 新闻简报</h1>
+  <p class="sub">2026-09-24 · 由研究-agent cron 自动生成 · 仅作信息聚合与选题参考</p>
+  <p class="meta">
+    <span class="badge">AI</span>
+    <span class="badge">大模型</span>
+    <span class="badge">硬件</span>
+    <span class="badge">融资</span>
+    采集窗口：2026-09-23 ~ 2026-09-24
+  </p>
+</header>
+
+<section class="tldr">
+  <h2>TL;DR · 今日要点</h2>
+  <ul>
+    <li><strong>OpenAI</strong> 推出 GPT-6 系列新版本 <strong>Sol / Luna</strong>，价格仅为上一代的一半。</li>
+    <li><strong>Anthropic</strong> 发布 <strong>Claude Opus 5.5</strong>：1M token 上下文，API 价格较 Fable 5.1 直降 60%。</li>
+    <li><strong>GitHub Trending</strong> 今日可见条目中，新增 Star 最高的是 <code>google/ax</code>（+1,543）。</li>
+    <li><strong>Snorkel AI</strong> 完成 3.5 亿美元 E 轮，估值 35 亿美元，数据 / 标注赛道融资回暖。</li>
+    <li><strong>Qualcomm</strong> 在 Maui 开幕 Snapdragon Summit 2026，发布两款 2nm 工艺的 Snapdragon 8 Elite 芯片。</li>
+  </ul>
+</section>
+
+<section class="trending">
+  <h2>GitHub Trending 日榜可见仓库中，今日新增 Star 最高</h2>
+  <div class="trending-grid">
+    <div>
+      <h3><a href="https://github.com/google/ax" target="_blank" rel="noopener">google / ax</a></h3>
+      <p class="fact">Google 的开源智能体编排运行时（open agentic orchestration runtime）。</p>
+      <p>
+        <span class="pill stars">+1,543 stars today</span>
+        <span class="pill">总 Star 9,212</span>
+        <span class="pill lang">Go</span>
+      </p>
+      <div class="why">
+        <strong>与本期 AI 读者强相关：</strong>
+        google/ax 与同期 Anthropic 放大 Claude Code / Skills 属同一主线 —— 一边抢"编排 runtime"，一边抢"agent 工作流技能"。日增 +1.5k 的关注度说明开发者焦点已从"模型能不能跑"转向"能不能编排生产级 agent"。
+      </div>
+    </div>
+  </div>
+  <p class="src">
+    <span class="src-title">原始来源：</span>
+    <a href="https://github.com/trending?since=daily" target="_blank" rel="noopener">https://github.com/trending?since=daily</a>
+  </p>
+  <p class="note">
+    数据局限：本次通过 r.jina.ai 抓取 trending 页面时，中段被输出截断，可见可验证 <code>stars today</code> 字段的仓库仅有 2 条（google/ax +1,543、anthropics/financial-services +664）。
+    本卡片基于"可见条目比较"得出，未号称全站总榜。完整当日排行请以 GitHub 原始页面为准。
+  </p>
+</section>
+
+<section class="observe">
+  <h2>今日观察</h2>
+  <ol class="observe-list">
+    <li>
+      <strong>"降价 + 提效"成为新模型发布的默认叙事。</strong>
+      OpenAI 把 Sol / Luna 砍到 GPT-5.6 同档一半价；Anthropic Opus 5.5 也以 "60% 更便宜、跑分逼近 Fable 5.1" 主动拉低 TCO 门槛。两家几乎同步指明：2026 下半年的核心战场是"每美元能买到的推理能力"，而不是绝对榜单分数。
+    </li>
+    <li>
+      <strong>Agent infra 正在变成新基础设施层。</strong>
+      google/ax 单日 +1.5k Star、加上 Anthropic 同期放大 Claude Code / Skills，是同一条主线的两面。
+      上半年模型战，下半年是编排 + 技能战。
+    </li>
+    <li>
+      <strong>数据 / 标注方向出现久违的大额融资。</strong>
+      Snorkel AI E 轮 3.5 亿、估值 35 亿，说明 enterprise 数据基础设施重新被一级市场拣回桌面。
+      训练侧算力贵了，结构化 / 弱监督数据的边际价值随之被重新定价。
+    </li>
+  </ol>
+</section>
+
+<section>
+  <h2 style="background:#fff;border-radius:14px;padding:14px 26px;margin:0 0 18px;box-shadow:0 1px 3px rgba(15,23,42,.06);">详细新闻</h2>
+
+  <div class="news-card">
+    <h3>1. OpenAI 发布 GPT-6 Sol / Luna，价格砍半</h3>
+    <p class="cred"><span class="green">🟢 多方确认</span> · AI / 大模型</p>
+    <p class="fact">
+      2026-09-22 OpenAI 上线 GPT-6 系列的 Sol 与 Luna 两款新模型，作为 9 月初 GPT-6 Astra 之后的"效率版本"。
+      Sol 定价约 2 美元 / 百万 token 输入，Luna 进一步下探，主打廉价长上下文与高并发推理。
+    </p>
+    <div class="why">
+      <strong>为什么重要：</strong>官方口径把 GPT-6 Astra 定为旗舰、Sol / Luna 走量；价格砍到上一代同档一半，对 GPT-5.6 同档替代效应极强，应用层迁移窗口已经打开。
+    </div>
+    <p class="src">
+      <span class="src-title">来源：</span>
+      <a href="https://techcrunch.com/2026/09/22/openai-launches-gpt-6-sol-and-luna/" target="_blank" rel="noopener">TechCrunch</a>
+      ·
+      <a href="https://kingy.ai/blog/gpt-6-sol-luna-specs-benchmarks-pricing-comparison/" target="_blank" rel="noopener">Kingy AI</a>
+      ·
+      <a href="https://www.digitalapplied.com/blog/gpt-6-sol-luna-launch-pricing-benchmarks-2026" target="_blank" rel="noopener">DigitalApplied</a>
+    </p>
+  </div>
+
+  <div class="news-card">
+    <h3>2. Anthropic 发布 Claude Opus 5.5：1M 上下文，API 价降至 60%</h3>
+    <p class="cred"><span class="green">🟢 多方确认</span> · AI / 大模型</p>
+    <p class="fact">
+      2026-09-22 Anthropic 发布 Claude Opus 5.5，提供 1M token 上下文窗口；
+      在 agentic / coding / 计算机使用任务上接近或超过此前旗舰 Fable 5.1，API 价格较 Fable 5.1 下降约 60%。
+    </p>
+    <div class="why">
+      <strong>为什么重要：</strong>Opus 5.5 把"长上下文 + 复杂 agent 工作流 + 价格"三者同时摆在桌面上，
+      是 Anthropic 在 Cursor / Devin / 企业 agent 战场上的明确牌面；System Card 同日公开，安全 / 对齐披露比上月更细。
+    </div>
+    <p class="src">
+      <span class="src-title">来源：</span>
+      <a href="https://www-cdn.anthropic.com/fc1b44717c85dc068bc6ba5024219938094694bd/Claude+Opus+5.5+System+Card.pdf" target="_blank" rel="noopener">Anthropic 官方 System Card (PDF)</a>
+      ·
+      <a href="https://venturebeat.com/technology/anthropic-releases-claude-opus-5-5-beating-fable-5-1-on-key-agentic-benchmarks-at-60-cheaper-api-price" target="_blank" rel="noopener">VentureBeat</a>
+      ·
+      <a href="https://llm-stats.com/models/claude-opus-5-5" target="_blank" rel="noopener">LLM Stats</a>
+    </p>
+  </div>
+
+  <div class="news-card">
+    <h3>3. Snorkel AI 完成 3.5 亿美元 E 轮，估值 35 亿美元</h3>
+    <p class="cred"><span class="amber">🟡 单源较可靠</span> · 融资 / 数据基础设施</p>
+    <p class="fact">
+      2026-09-23 报道，Snorkel AI 完成 3.5 亿美元 E 轮融资，估值 35 亿美元；
+      公司以"弱监督 / 数据即服务"起家，本轮资金重点投入企业级数据平台与垂直行业模型微调管线。
+    </p>
+    <div class="why">
+      <strong>为什么重要：</strong>今年 enterprise AI 投资向"数据 + 流程"回流明显；
+      Snorkel 这轮是大模型进入深水区后，"数据工程"重新被一级市场定价的标志性事件。
+    </div>
+    <p class="src">
+      <span class="src-title">来源：</span>
+      <a href="https://wireunwired.com/snorkel-ai-hits-3-5b-valuation-with-350m-series-e-funding/" target="_blank" rel="noopener">WireUnwired</a>
+    </p>
+  </div>
+
+  <div class="news-card">
+    <h3>4. Qualcomm Snapdragon Summit 2026 开幕：两款 2nm 旗舰芯片</h3>
+    <p class="cred"><span class="amber">🟡 单源较可靠</span> · 硬件 / 终端芯片</p>
+    <p class="fact">
+      Snapdragon Summit 2026 于 2026-09-22 ~ 24 在 Maui 召开，高通在开幕日确认两款 Snapdragon 8 Elite 系列芯片
+      （代号 Gen 6 与 Gen 6 Pro），均基于 2nm 工艺。
+    </p>
+    <div class="why">
+      <strong>为什么重要：</strong>2nm 制程意味着下一代 Android 旗舰机的能效 / 端侧 AI 推理将上一台阶；
+      芯片定位影响 2027 年 Android 端到端 AI 体验的可用内存与续航。
+    </div>
+    <p class="src">
+      <span class="src-title">来源：</span>
+      <a href="https://gadgetsnow.indiatimes.com/tech-news/snapdragon-summit-2026-what-qualcomm-will-launch-in-maui-on-22-september/articleshow/134379177.cms" target="_blank" rel="noopener">Gadgets Now</a>
+    </p>
+  </div>
+
+  <div class="news-card">
+    <h3>5. OpenAI + Broadcom 定制芯片（Jalapeño）配套融资再受关注</h3>
+    <p class="cred"><span class="amber">🟡 单源较可靠</span> · 半导体 / AI 基建（背景延伸）</p>
+    <p class="fact">
+      OpenAI 与 Broadcom 合作的定制推理芯片 Jalapeño 此前面世；
+      近期有报道聚焦 OpenAI / Broadcom 自研芯片计划的融资节奏，提示整体资本开支路径仍处于调整期。
+    </p>
+    <div class="why">
+      <strong>为什么重要：</strong>作为本期两条主新闻的延伸背景，定制 AI 芯片是大厂"去 Nvidia 依赖"的关键拼图；
+      后续融资节奏与产能落地会直接决定 2027 年大模型供应侧的边际成本。
+    </div>
+    <p class="src">
+      <span class="src-title">来源：</span>
+      <a href="https://decrypt.co/371971/openai-broadcom-jalapeno-first-custom-ai-chip" target="_blank" rel="noopener">Decrypt</a>
+      ·
+      <a href="https://www.aa.com.tr/en/americas/openai-launches-first-in-house-ai-chip-in-partnership-with-broadcom/3976867" target="_blank" rel="noopener">Anadolu</a>
+    </p>
+  </div>
+</section>
+
+<section class="source-note">
+  <h2>来源与局限</h2>
+  <ul>
+    <li>本次共采集 5 条主新闻 + 1 条 GitHub Trending 卡片，全部 URL 在本次运行内可点击核验。</li>
+    <li>任务聚焦 AI / 科技 / 互联网海外线，国内源本次未拉取；如需国内侧重请在下次 cron 提前指明。</li>
+    <li>GitHub Trending 数据局限：本次抓取页面的中段被输出截断，"日增最高"基于可见条目比较得出，未号称全站总榜。原始入口：<a href="https://github.com/trending?since=daily" target="_blank" rel="noopener">https://github.com/trending?since=daily</a></li>
+    <li>可信度分布：🟢 多方确认 2 条；🟡 单源较可靠 3 条（融资 / 芯片类多在二级媒体侧）。</li>
+  </ul>
+</section>
+
+<section class="disclaimer">
+  <h2>免责声明</h2>
+  <p style="margin:0;">
+    本简报由自动化 cron 生成，仅用于信息聚合与选题参考，不构成投资 / 采购建议。
+    事实性陈述均附原始链接；二次引用请优先以原始官方公告与一线媒体为准。
+  </p>
+</section>
+
+<footer>
+  研究-agent · 每日科技 / AI 新闻简报 · 由 Hermes cron 自动交付
+</footer>
+
+</div>
+</body>
+</html>
