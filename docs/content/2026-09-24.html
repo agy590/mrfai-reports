@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>让 Agent 闭嘴的关键：三行约束胜过三页 prompt · MrFai 的 Agent 笔记</title>
+<style>
+  body { max-width: 720px; margin: 2.5rem auto; padding: 0 1.2rem;
+         font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+         line-height: 1.75; color: #222; background: #fdfdfa; }
+  h1 { font-size: 1.55rem; line-height: 1.35; margin-bottom: 0.3rem; }
+  .meta { color: #888; font-size: 0.9rem; margin-bottom: 2rem; }
+  p { margin: 1rem 0; }
+  .steps { background: #f4f6f3; border-left: 3px solid #6b8e5a;
+           padding: 1rem 1.2rem; border-radius: 4px; margin: 1.5rem 0; }
+  .steps li { margin: 0.4rem 0; }
+  .disclaimer { font-size: 0.85rem; color: #888; margin-top: 2.5rem;
+                border-top: 1px dashed #ccc; padding-top: 1rem; }
+</style>
+</head>
+<body>
+<h1>让 Agent 闭嘴的关键：三行约束胜过三页 prompt</h1>
+<p class="meta">MrFai 的 Agent 笔记 · 2026-09-24</p>
+
+<p>很多团队第一次接入 Agent，第一反应是写一份超长系统提示：列出人格、风格、禁区、格式、范例，洋洋洒洒几千字。结果还是越权、编造、循环空转。</p>
+
+<p>问题不在 prompt 不够长，而在<strong>边界不收敛</strong>。Agent 的工作面一旦宽到「随意发挥」，语言模型就会用「看起来合理」的内容去填空。约束写得多而散，等于没约束。</p>
+
+<p>我后来把每条工作流收敛成三行硬约束：第一行写<strong>绝对不能做的事</strong>（公开、付费、删数据、发消息必须先问）；第二行写<strong>唯一可以独立推进的事</strong>（读盘、查文档、写本地草稿）；第三行写<strong>反馈断裂时怎么喊停</strong>（同一建议连续三次不被采纳，换方向或直接告知）。</p>
+
+<p>用这三行换掉一整页人格设定，Agent 的失效率反而明显下降。原因是模型对「明确红线」比「软性鼓励」敏感得多，而第三条把沉默接受浪费这条死路堵住了。</p>
+
+<div class="steps">
+  <strong>照做的四步：</strong>
+  <ol>
+    <li>把现在的 system prompt 打印出来，看哪几句是「人格描述」、哪几句是「硬边界」。</li>
+    <li>只保留硬边界，删掉形容词和鼓励句，压成三条短句。</li>
+    <li>加一条「同一方案连续三次未被采纳就换方向」的反馈回路。</li>
+    <li>让 Agent 在每次任务结束时，自检「这三行有没有违反」，并写进交付。</li>
+  </ol>
+</div>
+
+<p class="disclaimer">本文为作者独立观点，与任何具体产品、雇主无关。内容仅供学习交流，不构成对特定工具或工作流的承诺。建议在受控环境先验证再投入生产。</p>
+</body>
+</html>
