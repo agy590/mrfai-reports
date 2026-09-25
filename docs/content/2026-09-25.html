@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent 别靠记忆：每次开工先写交接清单 · MrFai 的 Agent 笔记</title>
+<meta name="description" content="关于 AI Agent 持久状态与交接纪律的工程经验。">
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Hiragino Sans GB", "Microsoft YaHei", Roboto, sans-serif;
+    line-height: 1.75;
+    max-width: 720px;
+    margin: 2.5rem auto;
+    padding: 0 1.25rem;
+    color: #1f1f1f;
+    background: #fafafa;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { color: #e6e6e6; background: #15151a; }
+    a { color: #7ab7ff; }
+  }
+  h1 { font-size: 1.55rem; line-height: 1.35; margin-bottom: 0.25rem; }
+  .meta { color: #888; font-size: 0.9rem; margin-bottom: 1.75rem; }
+  h2 { font-size: 1.1rem; margin-top: 1.75rem; }
+  p { margin: 0.85rem 0; }
+  ol { padding-left: 1.4rem; }
+  ol li { margin: 0.45rem 0; }
+  .stance {
+    border-left: 3px solid #4a90e2;
+    padding: 0.5rem 0 0.5rem 0.9rem;
+    margin: 1.2rem 0;
+    background: rgba(74,144,226,0.06);
+    border-radius: 0 4px 4px 0;
+  }
+  .disclaimer {
+    margin-top: 2.5rem;
+    padding-top: 1rem;
+    border-top: 1px dashed #999;
+    font-size: 0.85rem;
+    color: #888;
+  }
+  .signoff { margin-top: 1.5rem; font-style: italic; color: #666; }
+</style>
+</head>
+<body>
+
+<h1>Agent 别靠记忆：每次开工先写交接清单</h1>
+<p class="meta">2026-09-25 · MrFai 的 Agent 笔记 · 主题：Agent 协作与持久状态</p>
+
+<p>Agent 跑久了最常见的崩溃，不是模型变笨，而是它忘事。</p>
+
+<p>我做多 Agent 协作时踩过最贵的一次坑：一个子 Agent 跑了一个半小时，处理一组跨配置文件的共享写入任务。它一路很顺，结果中途运行环境被重启了一轮，会话上下文丢了。它重新起来后想"接着干"，于是又开始扫描目录、重新读文件、对任务凭印象拼参数。最后输出一份看起来很像样的报告，但里面相当一部分事实是它"记得"上一轮是这样的——实际文件早被另一轮覆盖过。</p>
+
+<p>那次没有造成外发事故，是因为发布脚本要求对目标文件做存在性与签名二次校验，把它拦了下来。但复盘时我才看清：把"上下文"当成"工作状态"，是 Agent 工作流里最高频也最隐蔽的反模式。上下文是加载时的快照，会过期；磁盘上的文件才是规则和状态的权威来源。</p>
+
+<div class="stance">
+  <strong>立场：</strong>Agent 没有持久记忆。每次开工前先重读，凭印象接力是事故，不是进度。
+</div>
+
+<h2>立刻能用的四步</h2>
+<ol>
+  <li><strong>开工前 re-read 三件套</strong>：当前 plan / 任务描述 / 单一事实源（SSOT）。模型加载时的快照和磁盘现实经常差好几个版本，不要凭印象接手。</li>
+  <li><strong>每完成一个子任务就写一次盘</strong>：更新进度文件或 checkpoint；不要等"全部做完再总结"，因为"全部做完"常常不会发生。</li>
+  <li><strong>决策与 blocker 写到文件里</strong>：聊天窗口是过路站，文件才是交接件。下次任何 Agent（包括未来的自己）捡起来，三行证据就够它上手。</li>
+  <li><strong>跨 Agent 共享写入前先租约</strong>：写之前宣告意图，写完留证据、下一步和 blocker。沉默接受不是协作，重复摩擦不能一直隐身。</li>
+</ol>
+
+<p>如果你的 Agent 已经跑了超过三十分钟，却一次磁盘都没写过，那它大概率正在"靠记忆"。这是事故，不是进度。</p>
+
+<p class="signoff">— 写给明天的自己，以及所有接手别人 Agent 的那个人。</p>
+
+<p class="disclaimer">
+本文为作者原创的工程经验与观点，发布于「MrFai 的 Agent 笔记」。文中不构成对任何具体产品或服务的推荐，亦不代表任何雇主或合作方立场。如需转载请保留作者署名与原文链接。
+</p>
+
+</body>
+</html>
