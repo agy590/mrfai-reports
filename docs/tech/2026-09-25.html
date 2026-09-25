@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>研究-agent 每日科技新闻简报 · 2026-09-25</title>
+<style>
+  :root {
+    --bg: #f7f7f5;
+    --fg: #1f2328;
+    --muted: #57606a;
+    --accent: #0a3069;
+    --card: #ffffff;
+    --border: #e3e3e0;
+    --tag-bg: #eef2f7;
+    --tag-fg: #0a3069;
+    --quote: #f3f4f1;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 24px 20px 64px;
+  }
+  header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+  h1 {
+    font-size: 1.6rem;
+    margin: 0 0 6px;
+    color: var(--accent);
+    letter-spacing: 0.5px;
+  }
+  .sub {
+    color: var(--muted);
+    font-size: 0.92rem;
+    margin: 0;
+  }
+  h2 {
+    font-size: 1.18rem;
+    color: var(--accent);
+    margin: 32px 0 12px;
+    border-left: 4px solid var(--accent);
+    padding-left: 10px;
+  }
+  h3 {
+    font-size: 1.02rem;
+    margin: 18px 0 8px;
+    color: #111;
+  }
+  p { margin: 8px 0; }
+  ul { padding-left: 22px; margin: 6px 0 12px; }
+  li { margin: 4px 0; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(10,48,105,0.25); }
+  a:hover { border-bottom-color: var(--accent); }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin: 14px 0;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  }
+  .meta {
+    color: var(--muted);
+    font-size: 0.88rem;
+    margin: 4px 0 10px;
+  }
+  .tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--tag-fg);
+    border-radius: 999px;
+    padding: 2px 10px;
+    font-size: 0.78rem;
+    margin-right: 6px;
+  }
+  .cred { font-size: 0.85rem; color: var(--muted); }
+  .tldr {
+    background: #fbfbf8;
+    border-left: 4px solid #6b8e23;
+    padding: 12px 14px;
+    border-radius: 6px;
+  }
+  .obs {
+    background: var(--quote);
+    border-left: 4px solid #c2a679;
+    padding: 12px 14px;
+    border-radius: 6px;
+  }
+  .source-list a { display: block; margin: 4px 0; word-break: break-all; }
+  footer {
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+  .disclaimer { font-size: 0.85rem; color: var(--muted); }
+  @media (max-width: 520px) {
+    .wrap { padding: 18px 14px 48px; }
+    h1 { font-size: 1.35rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>研究-agent · 每日科技新闻简报</h1>
+    <p class="sub">2026-09-25（周五） · 北京时间 12:00 截稿 · 第 60 期</p>
+  </header>
+
+  <section>
+    <h2>TL;DR · 当日摘要</h2>
+    <div class="tldr">
+      <ul>
+        <li><b>Anthropic 发布 Claude Opus 5.5</b>：9 月 22 日上线官方页，性能对位 Fable 5.1，运行成本比 Opus 5 低 40%。</li>
+        <li><b>OpenAI 同日推出 GPT-6 Sol 与 GPT-6 Luna</b>：TechCrunch 9 月 22 日报道，Luna 价格腰斩，主打高效率。</li>
+        <li><b>Google / OpenAI / Anthropic 三家筹建"前沿 AI 标准机构"</b>：暂名 Frontier AI Standards Agency（SAFA），已接触 Sriram Krishnan 拟任负责人。</li>
+        <li><b>GitHub Trending 日榜新星王：vectorize-io/hindsight</b>：今日 +1,668 stars，总 Star 27.9k，Agent 长期记忆赛道。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>GitHub Trending 日增最高仓库</h2>
+    <div class="card">
+      <h3><a href="https://github.com/vectorize-io/hindsight">vectorize-io / hindsight</a></h3>
+      <p class="meta">Hindsight: Agent Memory That Learns · Python · 27,900 ★ · 2,697 forks</p>
+      <p><span class="tag">+1,668 stars today</span><span class="tag">本日 Trending 最高日增</span></p>
+      <p>按本次抓取页面可见仓库的 <code>stars today</code> 整数降序排序后，<b>1,668</b> 为最大值（GitHub Trending 是当日可见榜单，不是全站历史增量数据库）。</p>
+      <p>与 AI / 科技读者相关的一条判断：仓库命中当下最热的"Agent 长期记忆"赛道；与同期 <code>google/ax</code>（+1,373）、<code>anthropics/financial-services</code>（+509）、<code>obra/superpowers</code>（+611）共同形成"Agent 运行时 + 推理优化 + 金融场景"三主轴。</p>
+      <p class="cred">原始来源：<a href="https://github.com/trending?since=daily">GitHub Trending · Daily</a> · 本次抓取时间 2026-09-25 12:00 +08</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>今日新闻卡片</h2>
+
+    <div class="card">
+      <h3>1. Anthropic 发布 Claude Opus 5.5</h3>
+      <p class="meta">类型：AI 模型 · 时效：9 月 22 日发布 · 可信度：🟢 多方确认（官方页 + 三家英文科技媒体）</p>
+      <p><b>核心事实</b>：Anthropic 于 2026-09-22 上线 Claude Opus 5.5。官方页称其性能在大多数任务上对位 Claude Fable 5.1，运行成本比 Opus 5 低 40%；OpenRouter 列出 API 定价为 $4 / $20 每百万 token（输入 / 输出），上下文窗口 1,000,000 token，最大输出 128,000 token。</p>
+      <p><b>为什么重要</b>：Opus 5.5 是 Anthropic 把"前沿能力"和"低运行成本"第一次明确写在同一页产品上——定价下调直接呼应 DeepSeek / Mistral 等开源权重阵营对闭源前沿模型的价格压力。</p>
+      <p><b>来源</b>：<a href="https://www.anthropic.com/claude-opus-5-5">Anthropic 官方页（Opus 5.5）</a> · <a href="https://www.macrumors.com/2026/09/22/anthropic-claude-opus-5-5/">MacRumors</a> · <a href="https://9to5mac.com/2026/09/22/anthropic-upgrades-claude-with-new-opus-5-5-model-details-here/">9to5Mac</a> · <a href="https://openrouter.ai/anthropic/claude-opus-5-5">OpenRouter 定价</a></p>
+    </div>
+
+    <div class="card">
+      <h3>2. OpenAI 推出 GPT-6 Sol 与 GPT-6 Luna</h3>
+      <p class="meta">类型：AI 模型 · 时效：9 月 22 日发布 · 可信度：🟢 多方确认</p>
+      <p><b>核心事实</b>：TechCrunch 2026-09-22 报道，OpenAI 同日发布 GPT-6 Sol 与 GPT-6 Luna；Luna 定位"最高效率款"，API 列表价格为上一代 GPT-5.6 Luna 的一半。报道称 OpenAI 在发布稿中直接对照 Anthropic 最新模型。</p>
+      <p><b>为什么重要</b>：Luna 价格腰斩与 Opus 5.5 同日上线，是头部闭源实验室在"性价比"上第一次同步动作；Sol 则代表 GPT-6 主线继续推高上下文 / 综合智能上限。</p>
+      <p><b>来源</b>：<a href="https://techcrunch.com/2026/09/22/openai-launches-gpt-6-sol-and-luna/">TechCrunch</a> · <a href="https://evolink.ai/blog/gpt-6-luna-release-date">Evolink（渠道与定价汇总）</a></p>
+    </div>
+
+    <div class="card">
+      <h3>3. Google / OpenAI / Anthropic 拟共建"前沿 AI 标准机构"</h3>
+      <p class="meta">类型：AI 治理 · 时效：9 月 23-24 日 · 可信度：🟡 单源但可靠（The Information 原报道，多家英文媒体复述）</p>
+      <p><b>核心事实</b>：Google、OpenAI、Anthropic 三家正推进成立一家私人资助的自治标准机构，暂名 <b>Frontier AI Standards Agency</b>（亦称 SAFA，Standards Authority for Frontier AI），目标在 2026 年底或 2027 年初启动，无政府监管介入；已接触前白宫 AI 顾问 Sriram Krishnan 拟任负责人。Krishnan 于 2026 年 6 月离任时曾公开表态"There will not be an FDA for AI"。</p>
+      <p><b>为什么重要</b>：三家头部实验室把"安全标准制定权"放到自己主导的私人机构里，是 2026 下半年最重要的治理信号；接下来要看 Krishnan 是否真的接任、章程里是否真能做到审计独立。</p>
+      <p><b>来源</b>：<a href="https://www.explainx.ai/blog/openai-google-anthropic-safa-private-ai-safety-body-2026">ExplainX 复述</a> · <a href="https://aiweekly.co/alerts/google-openai-anthropic-court-sriram-krishnan-for-ai-safety-body">AIWeekly</a> · <a href="https://www.bankinfosecurity.com/google-openai-anthropic-plan-frontier-ai-standards-body-a-32926">Bank Info Security</a> · <a href="https://phemex.com/news/article/google-openai-and-anthropic-form-new-ai-safety-standards-body-97758">Phemex News</a></p>
+    </div>
+
+  </section>
+
+  <section>
+    <h2>今日观察</h2>
+    <div class="obs">
+      <p><b>三家头部同步"降价 + 抬安全姿态"</b>：Anthropic Opus 5.5 与 OpenAI GPT-6 Luna 选在同一窗口（9 月 22 日）发布，且 Luna 直接砍半、Opus 5.5 自报便宜 40%——这是对开源权重阵营的同步回应。</p>
+      <p><b>前沿安全自治进入"招兵买马"阶段</b>：SAFA / Frontier AI Standards Agency 仍处筹建期，最值得跟踪的不是章程，而是 Krishnan 是否真接任——他 6 月刚因反对 AI 版 FDA 离开白宫，这一人事本身就是信号。</p>
+      <p><b>Agent 基础设施在 Trending 上集体上涨</b>：hindsight、google/ax、strands-agents/harness-sdk、HKUDS/CLI-Anything、superdesigndev/treg 集中在 Agent 运行时 / 工具调用 / 长期记忆上——9 月开发者侧的主线，已经从"模型对比"转向"怎么让模型长期、稳定、跨进程工作"。</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>来源与局限</h2>
+    <div class="card">
+      <ul>
+        <li>本期所有 URL 均来自本次运行（5 次 <code>web_search</code> + 2 次 <code>curl</code> 经 <code>r.jina.ai</code> 代理抓取）。</li>
+        <li>SAFA 一条依赖 The Information 9 月 23-24 日原报道，多家英文媒体复述，标 🟡 而非 🟢。</li>
+        <li>未抓取国内中文媒体（微博热搜、36 氪等），本期不包含国内厂商一手动态；下次需追加国内源配额。</li>
+        <li>工具配额：web_search 5/5 用尽，curl 2/3，剩 1 次预算留作下次。</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <p class="disclaimer"><b>免责声明</b>：本简报由自动化 agent 生成，仅供下游内容创作团队参考。所有事实条目在写入时均附可追溯 URL，但新闻事件仍在演化，请在引用前再次核对一手来源并确认时效。</p>
+    <p class="disclaimer">研究-agent · 每日科技新闻简报 · 由 Hermes 自动化生成</p>
+  </footer>
+</div>
+</body>
+</html>
