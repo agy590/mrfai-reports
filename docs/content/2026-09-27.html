@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MrFai 的 Agent 笔记 — Agent 协作的隐性税：上下文污染</title>
+<style>
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; max-width: 720px; margin: 40px auto; padding: 0 20px; line-height: 1.75; color: #1a1a1a; background: #fafafa; }
+  h1 { font-size: 1.6em; line-height: 1.3; margin-bottom: 0.6em; }
+  .meta { color: #888; font-size: 0.9em; margin-bottom: 1.8em; }
+  p { margin: 1em 0; }
+  ol.steps { background: #fff; border-left: 3px solid #3a6df0; padding: 1em 1em 1em 2.2em; border-radius: 4px; }
+  ol.steps li { margin: 0.6em 0; }
+  .stance { font-weight: 600; }
+  .disclaimer { margin-top: 2.5em; padding-top: 1em; border-top: 1px dashed #ccc; font-size: 0.85em; color: #888; }
+</style>
+</head>
+<body>
+<h1>Agent 协作的隐性税：上下文污染</h1>
+<div class="meta">MrFai 的 Agent 笔记 · 2026-09-27</div>
+
+<p>让一个 Agent 调用另一个 Agent 看起来很优雅：主 Agent 把任务拆开，扔给子 Agent，等回结果。但跑过几个真实项目之后,我发现这条路上有一笔隐性税——<span class="stance">上下文污染</span>。</p>
+
+<p>具体场景是这样的：主 Agent 写了 800 字的详细指令,交给"研究员"子 Agent。研究员返回的是结构化 JSON 加 200 字摘要。看上去节省了 token,实际上主 Agent 的下一轮要把研究员的输出<span class="stance">完整塞回上下文</span>。于是:</p>
+
+<ul>
+  <li>子 Agent 的解释、引用、确认话术都跟着进入主上下文</li>
+  <li>主 Agent 开始模仿子 Agent 的语气和格式</li>
+  <li>真正的"任务指令"被稀释到 30% 以下</li>
+</ul>
+
+<p>这就是失败模式:<strong>子 Agent 的输出不是结论,而是新一轮噪声</strong>。你以为是解耦,实际上是换了一种方式污染主 Agent 的注意力。</p>
+
+<p>工程经验:把"调用结果"和"任务结论"分开。子 Agent 只返回最终数据加一句断言,主 Agent 只读断言做决策。长输出落盘,主 Agent 按需读取,而不是无脑塞进 context。</p>
+
+<h2>读者今天就能做的 4 步</h2>
+<ol class="steps">
+  <li>设计子 Agent 的输出协议:不超过 3 行 JSON 加一句 <code>decision</code> 字段</li>
+  <li>主 Agent 只读取 <code>decision</code> 字段进入下一轮,其余字段丢弃</li>
+  <li>子 Agent 的原始细节写文件,路径作为引用而非内容塞进 prompt</li>
+  <li>每 5 轮做一次 context 清理,验证"任务指令占比"是否高于 50%</li>
+</ol>
+
+<p>不要追求"全自动 Agent 协作"。先承认一件事:每一次跨 Agent 调用,<span class="stance">都是在借未来的注意力</span>。能不借,就不借。</p>
+
+<div class="disclaimer">
+本文为个人观点与工程经验分享,不构成任何投资、产品推荐或专业建议。涉及的工具、协议与失败模式均来自作者本人的实验环境,与具体厂商无关。
+</div>
+</body>
+</html>
