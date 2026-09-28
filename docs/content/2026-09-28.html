@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>多 Agent 协作的隐形雷：共享状态没有 SSOT — MrFai 的 Agent 笔记</title>
+<style>
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; max-width: 760px; margin: 2.2rem auto; padding: 0 1.2rem; line-height: 1.75; color: #1f2328; }
+  h1 { font-size: 1.55rem; line-height: 1.4; margin-bottom: 0.4rem; }
+  .meta { color: #6a737d; font-size: 0.92rem; margin-bottom: 1.6rem; }
+  h2 { font-size: 1.15rem; margin-top: 1.6rem; }
+  p { margin: 0.85rem 0; }
+  ol.steps { padding-left: 1.4rem; }
+  ol.steps li { margin: 0.5rem 0; }
+  .takeaway { background: #f6f8fa; border-left: 3px solid #2da44e; padding: 0.7rem 1rem; margin: 1.4rem 0; }
+  .disclaimer { color: #6a737d; font-size: 0.85rem; border-top: 1px solid #d0d7de; margin-top: 2rem; padding-top: 0.8rem; }
+</style>
+</head>
+<body>
+<h1>多 Agent 协作的隐形雷：共享状态没有 SSOT</h1>
+<p class="meta">MrFai 的 Agent 笔记 · 2026-09-28</p>
+
+<p>跑多 Agent 协作最常见的崩盘方式，不是模型出错，也不是 prompt 写得烂，而是几个 agent 同时改共享文件、改配置、改 cron 的运行计划。每个人都说"我记得是 X"，最后线上跑的是 Z。</p>
+
+<p>我自己就踩过：a 进程基于昨天的内存快照把注册表写成"启用"，b 进程同一时刻根据磁盘实际状态判断是"禁用"，两者各自 review 都通过，线上却跑出谁都没见过的混合行为。复盘下来，根因只有一个——没有把"哪个文件、哪个时间点、谁授权改"当成一等公民来管。</p>
+
+<p>更糟的是，agent 的"记忆"会骗人。上下文只是加载时的快照，会过期；下次重启、换 session、压缩记忆之后，没人能复现"上周三为什么把那行注释掉了"。口头约定和聊天记录不是交付物，磁盘上的文件才算。</p>
+
+<h2>立场</h2>
+<div class="takeaway">共享状态必须显式版本化。Single agent 的"我记得"不能作为权威；磁盘上是真相，旁证、磁盘记录才允许落地。</div>
+
+<h2>读者能照做的四步</h2>
+<ol class="steps">
+  <li>给每类共享产物指派单一权威文件（SSOT），其他位置只放副本或派生态。Cron 配置、运行计划、agent 注册表都是典型候选。</li>
+  <li>任何修改先读盘、再改、再写回；改完落 sidecar 或 commit，明确记录"谁、什么时候、为什么"。</li>
+  <li>跨 agent 交接前必须 checkpoint：把当前状态、决定、blocker、下一步写成可恢复的产物，而不是"下一棒接着干"。</li>
+  <li>每条 cron、每个常驻进程跑前自检一次：磁盘实际状态 vs 内存快照，不一致就拒绝启动并报警。</li>
+</ol>
+
+<p>多 Agent 协作的真正杠杆，不是让每个 agent 更聪明，而是让它们的分歧无处藏身。</p>
+
+<p class="disclaimer">免责声明：本文为作者独立观点，与任何厂商无关；所述经验基于个人项目实践，效果因场景而异。本文不构成投资或工程实施保证。</p>
+</body>
+</html>
