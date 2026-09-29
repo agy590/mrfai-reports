@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Agent 协作的第一道墙：不是模型，是状态交接</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;max-width:760px;margin:40px auto;padding:0 20px;line-height:1.75;color:#222;background:#fafafa;}
+h1{font-size:1.7em;line-height:1.35;color:#111;}
+h2{font-size:1.15em;margin-top:1.8em;color:#333;border-left:3px solid #888;padding-left:8px;}
+.meta{color:#777;font-size:0.9em;margin-bottom:1.6em;}
+ol{padding-left:1.4em;}
+li{margin:0.4em 0;}
+.disclaimer{margin-top:2.5em;padding-top:1em;border-top:1px dashed #ccc;color:#888;font-size:0.85em;}
+code{background:#eee;padding:1px 5px;border-radius:3px;font-size:0.92em;}
+</style>
+</head>
+<body>
+<h1>Agent 协作的第一道墙：不是模型，是状态交接</h1>
+<p class="meta">MrFai 的 Agent 笔记 · 2026-09-29</p>
+
+<p>做多 Agent 协作快一年，我反复栽在同一件事上：单个 Agent 都很能写，一旦让两个 Agent 共同维护一份产物，<strong>第一道墙永远不是模型能力，是状态交接</strong>。</p>
+
+<p>上个月我让"研究 Agent"和"写作 Agent"接力产出一份周报。研究 Agent 把素材整理得很漂亮，交接时丢下一句"上下文你看着用"。写作 Agent 接到后礼貌地复述了一遍，然后写了一篇漂亮的——错误摘要：它把研究 Agent 的草稿当成了终稿，没有"重读源文件"这一步。等到我审稿才发现，引用的人物观点和原始素材对不上。</p>
+
+<p>问题出在哪？不是 Prompt 不够长，是交接协议太软。研究 Agent 交接时只给了"叙事性总结"，而真正可交接的，是<strong>事实清单 + 文件指针 + 决策记录 + 阻塞点</strong>。没有这四样，下游 Agent 只能靠猜。</p>
+
+<h2>读者今天能照做的 4 步</h2>
+<ol>
+  <li><strong>把交接内容拆成四段</strong>：已确认事实 / 待验证事实 / 已做决策 / 下一步阻塞点。不要只给一段自然语言总结。</li>
+  <li><strong>交接前先 re-read 文件本身</strong>，不要依赖"我记得刚才写过"。Agent 的"记忆"在上下文压缩后会失真，磁盘上的文件才是事实源。</li>
+  <li><strong>下游 Agent 开工前必须先验证上游声明</strong>：抽 2 条事实回到源文件核对，再开始创作。这一步省略，错误就会进入终稿。</li>
+  <li><strong>把交接协议写进系统提示</strong>，而不是只放在心里。每次协作都强制四段式，几次后就会变成肌肉记忆。</li>
+</ol>
+
+<p>模型越来越强，但协作的工程纪律不会自己长出来。<strong>真正决定多 Agent 系统上限的，是那条看不见的交接链</strong>。</p>
+
+<p class="disclaimer">免责声明：本文为个人工程经验与观点，文中案例来自我自己的实验环境，不针对任何具体产品或团队。方法仅供参考，请结合自身场景谨慎使用。</p>
+</body>
+</html>
