@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日市场简报 — 2026-09-29</title>
+<style>
+  :root {
+    --bg: #0f1419;
+    --card: #1a1f29;
+    --border: #2a313c;
+    --text: #e6edf3;
+    --muted: #7d8590;
+    --up: #3fb950;
+    --down: #f85149;
+    --neutral: #d29922;
+    --accent: #58a6ff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .header { border-bottom: 2px solid var(--accent); padding-bottom: 16px; margin-bottom: 24px; }
+  .header h1 { font-size: 28px; color: var(--accent); margin-bottom: 4px; }
+  .header .meta { color: var(--muted); font-size: 13px; }
+  .section { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+  .section h2 { color: var(--accent); font-size: 20px; margin-bottom: 16px; border-left: 4px solid var(--accent); padding-left: 12px; }
+  .section h3 { color: var(--text); font-size: 16px; margin-top: 16px; margin-bottom: 8px; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+  th { background: var(--border); color: var(--muted); text-align: left; padding: 8px 12px; font-weight: 600; text-transform: uppercase; font-size: 12px; letter-spacing: 0.5px; }
+  td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+  tr:hover td { background: rgba(88, 166, 255, 0.05); }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .neutral { color: var(--neutral); }
+  .muted { color: var(--muted); }
+  .kpi { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 12px 0; }
+  .kpi-card { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 12px 16px; }
+  .kpi-card .label { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+  .kpi-card .value { font-size: 18px; font-weight: 600; }
+  ul { margin: 8px 0 8px 20px; }
+  li { margin-bottom: 4px; }
+  .footer { color: var(--muted); font-size: 12px; border-top: 1px solid var(--border); padding-top: 16px; margin-top: 24px; }
+  .badge { display: inline-block; background: var(--border); color: var(--muted); padding: 2px 8px; border-radius: 10px; font-size: 11px; margin-right: 6px; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>📊 每日市场简报 — 2026-09-29</h1>
+  <div class="meta">观察范围：🇲🇾 马来西亚 · 🇺🇸 美国 · 贵金属 · 原油 ｜ 快照采集 09:00–09:16 MYT ｜ 仅作跨市场状态观察，不含任何交易建议</div>
+</div>
+
+<!-- 马来西亚 -->
+<div class="section">
+  <h2>🇲🇾 马来西亚股市</h2>
+  <div class="kpi">
+    <div class="kpi-card"><div class="label">KLCI (^KLSE)</div><div class="value">1,664.11 <span class="down">−0.73%</span></div></div>
+    <div class="kpi-card"><div class="label">USD/MYR</div><div class="value">4.078 <span class="up">+0.13%</span></div></div>
+    <div class="kpi-card"><div class="label">BNM OPR</div><div class="value">2.75% <span class="muted">（维持，9-3）</span></div></div>
+  </div>
+  <p><strong>KLCI 5 日走势：</strong>周一收盘 1,670.02（−0.09%），今日开盘直接跌破昨收向下试探 1,664 区间，缺乏催化下情绪谨慎（KLSE Screener / Malay Mail，2026-09-28）。MYR 较参考收盘 4.0727 略走弱。</p>
+  <h3>主要成分股</h3>
+  <table>
+    <thead><tr><th>代码</th><th>公司</th><th>涨跌</th><th>备注</th></tr></thead>
+    <tbody>
+      <tr><td>1155.KL</td><td>MAYBANK 马银行</td><td class="up">+0.39%</td><td>银行板块温和偏多</td></tr>
+      <tr><td>1023.KL</td><td>CIMB 联昌银行</td><td class="up">+0.25%</td><td>同上</td></tr>
+      <tr><td>1295.KL</td><td>PBBANK 公众银行</td><td class="down">−1.04%</td><td>板块内分化，无单独催化</td></tr>
+      <tr><td>5347.KL</td><td>TENAGA 国家能源</td><td class="down">−1.52%</td><td>随油价分化</td></tr>
+      <tr><td>5225.KL</td><td>IHH 医疗集团</td><td class="down">−1.25%</td><td>弱势震荡</td></tr>
+      <tr><td>7113.KL</td><td>TOPGLOV 顶级手套</td><td class="down">−5.19%</td><td>前期获利回吐延续（The Star，2026-09-29）</td></tr>
+    </tbody>
+  </table>
+  <h3>板块动态</h3>
+  <ul>
+    <li><strong>手套：</strong>TOPG −5.19% 属前期超涨的技术性回调；Phillip Capital 9-23 报告将评级从 SELL 上调至 HOLD，目标价 RM0.75（i3investor，2026-09-23）。</li>
+    <li><strong>银行：</strong>MAYBANK/CIMB 微涨，反映市场预期 BNM 短期内不会调整 OPR（BNM 9-3 决定，2026-09-03）。</li>
+    <li><strong>油气/能源：</strong>TENAGA 走弱而原油走强，板块内分化。</li>
+    <li><strong>科技：</strong>Inari Amertron 周一跌 ~4% 至 RM2.55（The Star，2026-09-29）。</li>
+  </ul>
+  <h3>关键新闻</h3>
+  <ul>
+    <li><span class="badge">BNM</span>维持 OPR 2.75%（第八次连续），经济学家预期 11 月继续按兵不动（Bernama，2026-09-03；bnm.gov.my）。</li>
+    <li><span class="badge">手套</span>板块获利了结延续；Phillip Capital 预计 4Q26 净利 RM95–100m（The Star，2026-09-29）。</li>
+  </ul>
+</div>
+
+<!-- 美国 -->
+<div class="section">
+  <h2>🇺🇸 美国期货 + 美股</h2>
+  <h3>三大指数期货（09:05–09:06 MYT = 美东周一收盘后夜盘）</h3>
+  <table>
+    <thead><tr><th>期货</th><th>水平</th><th>Δ</th><th>Δ%</th><th>备注</th></tr></thead>
+    <tbody>
+      <tr><td>ES=F (S&amp;P 500)</td><td>7,737.00</td><td class="down">−35.5</td><td class="down">−0.46%</td><td>周一收盘弱势延续</td></tr>
+      <tr><td>NQ=F (Nasdaq 100)</td><td>30,507.50</td><td class="down">−257.25</td><td class="down">−0.84%</td><td>受 TSLA/META/GOOGL 拖累</td></tr>
+      <tr><td>YM=F (Dow)</td><td>51,782</td><td class="down">−91.0</td><td class="down">−0.18%</td><td>相对抗跌</td></tr>
+    </tbody>
+  </table>
+  <div class="kpi">
+    <div class="kpi-card"><div class="label">DXY</div><div class="value">101.212 <span class="up">+0.11%</span></div></div>
+    <div class="kpi-card"><div class="label">^TNX (10Y)</div><div class="value">5.24% <span class="down">+27.2 bp</span></div></div>
+    <div class="kpi-card"><div class="label">^VIX</div><div class="value">16.07 <span class="down">+13.09%</span></div></div>
+  </div>
+  <p><strong>^TNX：</strong>周一盘中曾触 5.2741%，为 2007 年 6 月以来最高（Herald Business / livemint，2026-09-29）。驱动来自弱国债拍卖需求 + Fed 10 月加息预期升温至 ~70%（CME FedWatch）；通胀预期本身（2Y breakeven）本周几乎未动（investinglive，2026-09-29）。</p>
+  <h3>Magnificent 7（04:00 MYT = 美东周一收盘）</h3>
+  <table>
+    <thead><tr><th>代码</th><th>公司</th><th>收盘价</th><th>Δ%</th></tr></thead>
+    <tbody>
+      <tr><td>NVDA</td><td>英伟达</td><td>228.86</td><td class="up">+0.65%</td></tr>
+      <tr><td>AAPL</td><td>苹果</td><td>338.40</td><td class="down">−0.17%</td></tr>
+      <tr><td>MSFT</td><td>微软</td><td>509.22</td><td class="up">+1.52%</td></tr>
+      <tr><td>GOOGL</td><td>谷歌</td><td>342.75</td><td class="down">−3.44%</td></tr>
+      <tr><td>META</td><td>Meta</td><td>715.62</td><td class="down">−3.46%</td></tr>
+      <tr><td>TSLA</td><td>特斯拉</td><td>357.45</td><td class="down">−4.76%</td></tr>
+      <tr><td>AMZN</td><td>亚马逊</td><td>246.15</td><td class="down">−4.76%</td></tr>
+    </tbody>
+  </table>
+  <h3>今日关注事件（美东时间）</h3>
+  <ul>
+    <li><strong>22:00 ET</strong> — JOLTS（8 月职位空缺，BLS 预定；fedratecalc，2026-09-29）</li>
+    <li><strong>明日 9-30 08:30 ET</strong> — GDP Q2 三次预估 + 个人收支/PCE 通胀（BEA / BLS）</li>
+    <li><strong>10-14 08:30 ET</strong> — 9 月 CPI（BLS schedule）</li>
+    <li><strong>10-28 14:00 ET</strong> — FOMC 利率决议（federalreserve.gov 日历）</li>
+  </ul>
+  <h3>核心驱动</h3>
+  <ul>
+    <li>10Y 收益率突破 5.27% + Brent 油价跳涨共振，是周一美股大跌的直接催化（livemint / Herald Business，2026-09-29）。</li>
+  </ul>
+</div>
+
+<!-- 贵金属 -->
+<div class="section">
+  <h2>🥇 贵金属</h2>
+  <div class="kpi">
+    <div class="kpi-card"><div class="label">GC=F 黄金主力</div><div class="value">4,154.60 <span class="down">−3.79%</span></div></div>
+    <div class="kpi-card"><div class="label">DXY</div><div class="value">101.21 <span class="up">+0.11%</span></div></div>
+    <div class="kpi-card"><div class="label">10Y ^TNX</div><div class="value">5.24% <span class="down">+27.2 bp</span></div></div>
+  </div>
+  <p><strong>驱动：</strong>实际利率跳升主导昨日黄金大跌；避险买金被完全抵消。美国拒绝伊朗"七点方案" + 霍尔木兹海峡重开谈判反复，避险需求与利率压力互冲（thestar.com.my / Reuters via livemint，2026-09-29）。</p>
+</div>
+
+<!-- 原油 -->
+<div class="section">
+  <h2>🛢 原油</h2>
+  <div class="kpi">
+    <div class="kpi-card"><div class="label">WTI CL=F</div><div class="value">93.37 <span class="up">+1.31%</span></div></div>
+    <div class="kpi-card"><div class="label">Brent BZ=F</div><div class="value">98.81 <span class="down">−4.14%</span></div></div>
+    <div class="kpi-card"><div class="label">Brent-WTI 价差</div><div class="value">~5.44 美元 <span class="muted">5 月以来最高</span></div></div>
+  </div>
+  <ul>
+    <li><strong>供应：</strong>OPEC+ 9-6 决定 10 月维持配额不变；10-4 会议是下一观察窗口（hellenicshippingnews，2026-09-28）。</li>
+    <li><strong>霍尔木兹：</strong>特朗普拒绝伊朗方案后油价一度跳涨 $4+，卡塔尔斡旋谈判预期使其回落（livemint，2026-09-29）。</li>
+    <li><strong>沙特东西管道：</strong>被无人机袭击后已恢复约一半流量至 ~350 万桶/日；UBS 称霍尔木兹通行回升至 ~740 万桶/日，但仍低于冲突前。</li>
+    <li><strong>Brent-WTI 价差：</strong>美国可能限制柴油出口的市场预期推升 Brent 相对 WTI 溢价。</li>
+  </ul>
+</div>
+
+<!-- 总结 -->
+<div class="section">
+  <h2>💡 总结与观察</h2>
+  <p><strong>市场情绪：</strong><span class="down">risk-off</span>（美债收益率跳升 + 油价反复 + 霍尔木兹地缘风险共振）。</p>
+  <h3>今日三大关注点</h3>
+  <ol>
+    <li>美东 22:00 JOLTS（8 月）—— 验证劳动力市场是否继续降温，决定 Fed 10 月加息预期走向。</li>
+    <li>国债拍卖与 Fed 官员讲话 —— 10Y 收益率是否突破 5.25% 技术阻力（investinglive，2026-09-29）。</li>
+    <li>霍尔木兹谈判 + 卡塔尔斡旋 —— 直接影响 Brent 与全球通胀预期。</li>
+  </ol>
+  <h3>马来西亚视角观察</h3>
+  <ul>
+    <li>银行温和上行与 BNM 维持 OPR 一致；MYR 微贬反映外部利差压力。若 10Y 美债继续走高，关注外资对马股高息股（银行/电信）边际配置变化。</li>
+    <li>TOPG −5.19% 是技术性回调非基本面恶化（Phillip Capital 上调至 HOLD，目标价 RM0.75）。</li>
+  </ul>
+  <h3>美股视角观察</h3>
+  <ul>
+    <li>周一收盘已计入"利率上行 + 地缘溢价"双重压制；NVDA/MSFT 相对抗跌，TSLA/META/GOOGL/AMZN 跌幅集中在 3–5%，呈典型"科技权重股估值修正"特征。</li>
+    <li>今晚 JOLTS 与本周 PCE 将决定 10Y 利率与 Fed 路径的关键再定价窗口。</li>
+  </ul>
+</div>
+
+<div class="footer">
+  <strong>数据源：</strong>Yahoo Finance（24 个代码 09:00–09:15 MYT 快照）、Federal Reserve 公开日历、BLS release schedule、BEA、bnm.gov.my、KLSE Screener / Malay Mail / The Star（马股新闻）、Reuters via livemint / Herald Business / investinglive / Hellenic Shipping News（美股与商品新闻）。<br>
+  <strong>免责声明：</strong>本简报仅作跨市场状态观察，不含任何交易建议。MGC 行情验证与执行判断由独立 MGC 流程负责，本报告不替代、不注入、不触发该流程。
+</div>
+</body>
+</html>
