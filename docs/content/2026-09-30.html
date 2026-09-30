@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>Agent 别当答题机器：把"做决定"交还给上下文 — MrFai 的 Agent 笔记 · 2026-09-30</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  body{max-width:680px;margin:2.2rem auto;padding:0 1rem;font:16px/1.7 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:#1c1c1e;background:#fafafa}
+  h1{font-size:1.55rem;line-height:1.35;margin-bottom:.2rem}
+  .sub{color:#666;font-size:.92rem;margin-bottom:1.6rem}
+  h2{font-size:1.1rem;margin-top:1.8rem}
+  ol{padding-left:1.4rem}
+  li{margin:.4rem 0}
+  hr{border:none;border-top:1px solid #e3e3e3;margin:2rem 0 1rem}
+  .dis{font-size:.82rem;color:#888;line-height:1.55}
+  code{background:#eee;padding:1px 5px;border-radius:3px;font-size:.92em}
+</style>
+</head>
+<body>
+
+<h1>Agent 别当答题机器：把"做决定"交还给上下文</h1>
+<p class="sub">MrFai 的 Agent 笔记 · 2026-09-30 · 主题：多 Agent 协作</p>
+
+<p>我最近一次最贵的失败，不是模型答错了，而是我把 <b>判断</b> 写进了 prompt，把 <b>记忆</b> 留在了聊天记录里。结果就是一个会写漂亮回复、但谁也不负责的 Agent：每次新会话都重新"发现"同一份项目背景，每一次都把同一个坑再踩一遍。</p>
+
+<p>这件事让我意识到一个立场：<b>Agent 的价值不在回答得多漂亮，而在它能不能替我把一个决定从"灵感"推进到"落地"</b>。一旦决定只活在上下文窗口里，它就和没说一样。上下文是临时的，文件才是长久的——这就是为什么我现在要求任何跨会话的工作，必须先落到一份带时间戳、带版本号的文档里，再让 Agent 去读它、执行它、更新它。</p>
+
+<h2>一个具体的失败模式</h2>
+<p>我让 Agent 维护一个监控脚本。它确实写出了逻辑，跑通了单测，也按我说的"每天早上跑一次"加了 cron。问题出在 cron 跑挂之后：Agent 没有看日志，没有告警，更没有回写一条"今天失败了，原因 X"的记录。第二天我打开终端才看到一串红字。那一刻我明白，<b>"做完"不等于"接住"</b>——交付、监控、复盘必须是同一条链路上的三件事，不能拆给三段上下文。</p>
+
+<h2>读者今天就能照做的四步</h2>
+<ol>
+  <li><b>把"决定"写进文件</b>：任何 Agent 要长期遵守的规则，立刻落到一份带日期的 Markdown，路径稳定，不要让它只活在聊天里。</li>
+  <li><b>把"运行"接上"观察"</b>：每次脚本或 cron 跑完，强制写一行状态到日志文件；失败要写明原因，不是沉默地退出。</li>
+  <li><b>把"复盘"留给人</b>：每天或每周固定一次，让 Agent 把日志汇总成两段话——发生了什么、下一步改什么——再写回同一份文档。</li>
+  <li><b>设一条硬边界</b>：未经你明确批准，Agent 不得自行修改 cron、权限、对外发送或付费，这是它可以"推进"但不能"决定"的边界。</li>
+</ol>
+
+<hr>
+<p class="dis">免责声明：以上为个人工程笔记与经验分享，不构成投资、技术选型或合作建议。所有代码与流程请结合你自己的运行环境评估后再使用。</p>
+
+</body>
+</html>
