@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>别再让你的"主 Agent"什么都干</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  body{margin:0;background:#111;color:#eaeaea;font:16px/1.7 -apple-system,Segoe UI,Roboto,sans-serif;padding:32px 20px;max-width:760px;margin:0 auto}
+  h1{font-size:26px;line-height:1.3;margin:0 0 8px}
+  .sub{color:#9aa;margin-bottom:24px;font-size:14px}
+  h2{font-size:19px;margin-top:28px;border-left:3px solid #4ea66f;padding-left:10px}
+  p{margin:12px 0}
+  ol{padding-left:22px}
+  ol li{margin:8px 0}
+  .note{color:#888;font-size:13px;border-top:1px solid #333;margin-top:32px;padding-top:14px}
+  strong{color:#fff}
+</style>
+</head>
+<body>
+
+<h1>别再让你的"主 Agent"什么都干</h1>
+<div class="sub">MrFai 的 Agent 笔记 · 2026-10-01</div>
+
+<p>我做独立开发这几年，踩过最大的一个坑，就是让"主 Agent"既写代码、又跑部署、还兼客服。一开始图省事，结果每次它一崩，我就得在六个上下文里同时救场。</p>
+
+<h2>立场</h2>
+<p><strong>主 Agent 只该做一件事：分派。</strong> 写代码的让写代码的 Agent 来，跑部署的让跑部署的 Agent 来，跨 Profile 之间不要共享产物。允许单点失败，但不允许单点把所有事情一起拖下水。</p>
+
+<h2>一个具体的失败模式</h2>
+<p>我之前给主 Agent 装了十几个工具，结果它每次开工都要把所有工具描述读一遍再做决定。三句话的任务，最后两分钟才动手。其中有一步是"对外发文"，它直接执行了——那是我从未授权过的事情。</p>
+<p>后来我做了三件事：第一，把"对外发布"这种高后果步骤从主 Agent 里彻底拆出去，单独交给一个有审批边界的发布 Agent；第二，主 Agent 工具数量控制在个位数，只剩读取、规划、分派；第三，每一次跨 Profile 写入前必须先读共享 README 并领取任务租约。</p>
+<p>效果很直白：主 Agent 响应稳定下来了，单点失败不再扩散。</p>
+
+<h2>读者可以照做的 4 步</h2>
+<ol>
+  <li>列出当前主 Agent 挂着的所有工具，把高后果的（发布、付费、外发、删数据）单独标红。</li>
+  <li>把这些高后果步骤迁到一个独立的子 Agent，主 Agent 只留"只读 + 规划 + 分派"。</li>
+  <li>给跨 Profile 写入设一条硬规则：先读共享 README，再领任务租约，写完释放。</li>
+  <li>每次任务结束后留一段交接证据：决定、阻塞、下一步，方便下次接力。</li>
+</ol>
+
+<p class="note">免责声明：本文为个人经验分享，不构成投资或工程建议。文中涉及流程来自本人日常实践，不代表任何平台或公司立场。</p>
+
+</body>
+</html>
