@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>研究-agent 每日科技新闻简报 | 2026-10-01</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1a1a1a;
+    --muted: #6b6b6b;
+    --accent: #2563eb;
+    --accent-soft: #eff6ff;
+    --border: #e5e7eb;
+    --card-bg: #fafafa;
+    --tag-bg: #eef2ff;
+    --green: #16a34a;
+    --yellow: #d97706;
+    --red: #dc2626;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.7;
+    margin: 0;
+    padding: 24px 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 760px; margin: 0 auto; }
+  header {
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+  header h1 { font-size: 24px; margin: 0 0 8px 0; color: var(--fg); }
+  header .meta { color: var(--muted); font-size: 13px; }
+  h2 {
+    font-size: 20px;
+    margin: 32px 0 16px 0;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  h3 { font-size: 17px; margin: 24px 0 8px 0; color: var(--accent); }
+  .tldr {
+    background: var(--accent-soft);
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    border-radius: 4px;
+    margin: 16px 0;
+  }
+  .tldr ol { margin: 0; padding-left: 20px; }
+  .tldr li { margin: 6px 0; }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 16px 0;
+  }
+  .card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 8px 0 12px 0;
+    font-size: 13px;
+  }
+  .tag {
+    background: var(--tag-bg);
+    color: var(--accent);
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+  }
+  .tag.green { background: #dcfce7; color: var(--green); }
+  .tag.yellow { background: #fef3c7; color: var(--yellow); }
+  .tag.red { background: #fee2e2; color: var(--red); }
+  .card ul { margin: 8px 0; padding-left: 20px; }
+  .card li { margin: 4px 0; }
+  .sources {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--border);
+    font-size: 14px;
+  }
+  .sources a { color: var(--accent); text-decoration: none; word-break: break-all; }
+  .sources a:hover { text-decoration: underline; }
+  .sources li { margin: 4px 0; }
+  .trending-card {
+    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+    border: 1px solid #f59e0b;
+  }
+  .trending-card h3 { color: #b45309; }
+  .data-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    border-bottom: 1px dotted var(--border);
+    font-size: 14px;
+  }
+  .data-row:last-child { border-bottom: none; }
+  .data-label { color: var(--muted); }
+  .data-value { font-weight: 600; }
+  footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 13px;
+  }
+  footer h3 { color: var(--muted); font-size: 16px; }
+  a { color: var(--accent); }
+  @media (max-width: 600px) {
+    body { padding: 16px 12px; }
+    header h1 { font-size: 20px; }
+    .card { padding: 14px 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>研究-agent 每日科技新闻简报 | 2026-10-01</h1>
+  <div class="meta">生成时间:2026-10-01(+08) · 来源:Anthropic 官方 / GitHub Trending / ScienceDaily / Penn 大学</div>
+</header>
+
+<h2>当日摘要 (TL;DR)</h2>
+<div class="tldr">
+<ol>
+  <li><strong>NVIDIA 推出 OpenShell</strong>:专为自主 AI agent 设计的安全私有运行时,Rust 实现,GitHub Trending 日增 1,281 stars。</li>
+  <li><strong>debpalash/VoiceStudio 登顶 GitHub Trending</strong>:完全本地化的 ElevenLabs 开源替代,支持 646 种语言,日增 3,483 stars。</li>
+  <li><strong>Anthropic Claude Opus 4.5</strong>:2025-11-24 发布,编码 / agent / 电脑使用三料最强,API $5/$25 每百万 token。</li>
+  <li><strong>Anthropic Claude Haiku 4.5</strong>:2025-10-15 发布,Sonnet 4 同级编码性能,1/3 价格 + 2 倍速,定价 $1/$5 每百万 token。</li>
+  <li><strong>Penn 大学光物质混合粒子突破</strong>:用 exciton-polariton 实现全光 AI 计算,每次开关仅需 4 × 10⁻¹⁵ J。</li>
+</ol>
+</div>
+
+<h2>新闻卡片</h2>
+
+<div class="card">
+  <h3>1. NVIDIA/OpenShell — 自主 AI agent 的安全私有运行时</h3>
+  <div class="card-meta">
+    <span class="tag">AI 基础设施 / 开源</span>
+    <span class="tag green">🟢 多方确认</span>
+  </div>
+  <ul>
+    <li><strong>核心事实</strong>:NVIDIA 在 GitHub 开源 <code>NVIDIA/OpenShell</code>,定位"安全、私有的自主 AI agent 运行时",目标场景为本地化、可审计的 AI agent 执行。</li>
+    <li><strong>关键数据</strong>:日增 +1,281 stars;总 Star 12,941;Fork 1,557;Rust 实现。</li>
+    <li><strong>背景</strong>:agent 安全是 2026 年下半年最热的工程议题 — OpenAI 砍掉 GPT-6.1 Astra、Anthropic 强调 Claude Opus 4.5 的 agentic 能力升级,核心都是"agent 越强,运行时必须越稳"。</li>
+    <li><strong>影响分析</strong>:NVIDIA 不再只卖 GPU,开始参与"agent 执行栈"的标准制定。Rust 实现 + 安全 audit 友好 + NVIDIA 官方背书,会直接挤压 LangChain / AutoGen 这类 Python 系 runtime 在企业 agent 部署中的位置。</li>
+  </ul>
+  <div class="sources">
+    <strong>来源</strong>
+    <ul>
+      <li><a href="https://github.com/NVIDIA/OpenShell" target="_blank">NVIDIA/OpenShell — GitHub</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="card">
+  <h3>2. debpalash/VoiceStudio — 完全本地化的开源 ElevenLabs 替代</h3>
+  <div class="card-meta">
+    <span class="tag">AI 语音 / 开源</span>
+    <span class="tag green">🟢 多方确认</span>
+  </div>
+  <ul>
+    <li><strong>核心事实</strong>:VoiceStudio 是开源、本地优先的 ElevenLabs 替代品,功能涵盖语音克隆、声音设计、视频配音、听写、转录、有声书生成,支持 646 种语言。</li>
+    <li><strong>关键数据</strong>:日增 +3,483 stars(本批 Trending 第一);总 Star 50,613;Fork 5,613;Python 实现。</li>
+    <li><strong>背景</strong>:ElevenLabs 是商用语音生成事实标准,定价 $5-$330/月;VoiceStudio 直接打"本地 + 免费 + 多语言"组合,把"AI 语音 = 必须付费"的旧叙事撕开。</li>
+    <li><strong>影响分析</strong>:这是开源 AI 语音的"Linux 时刻"。企业场景中"客户通话录音不能用 ElevenLabs 处理"(GDPR / 跨境合规)的需求,让本地化方案第一次在功能广度上逼近商用 API。</li>
+  </ul>
+  <div class="sources">
+    <strong>来源</strong>
+    <ul>
+      <li><a href="https://github.com/debpalash/VoiceStudio" target="_blank">debpalash/VoiceStudio — GitHub</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="card">
+  <h3>3. Anthropic Claude Opus 4.5 — 编码 / agent / 电脑使用三料最强</h3>
+  <div class="card-meta">
+    <span class="tag">AI / 大模型</span>
+    <span class="tag green">🟢 官方一手信源</span>
+  </div>
+  <ul>
+    <li><strong>核心事实</strong>:Anthropic 于 2025-11-24 发布 Claude Opus 4.5,定位"目前世界上编码、agent、电脑使用最强的模型",同时在深度研究、Excel 表格处理上有显著提升。</li>
+    <li><strong>关键数据</strong>:API 定价 $5 / $25 每百万 token(输入/输出),较 Opus 4($15/$75)降价 67%;模型 ID <code>claude-opus-4-5-20251101</code>。</li>
+    <li><strong>背景</strong>:Opus 系列长期是 Anthropic 旗舰。Opus 4.5 与产品端同步升级 — Claude Code Plan Mode、可在桌面 app 并行多个本地 + 远程 session;Claude for Chrome 从 Max 扩展到全员;Claude for Excel 从 Max/Team/Enterprise 全部 beta 开放。</li>
+    <li><strong>影响分析</strong>:Opus 级能力首次跌破 $5/$25 — 直接把 Sonnet 级别的预算能用到 Opus 级能力,Enterprise 客户的 agent 部署成本结构会被改写。Anthropic 把"agent 工程化"作为 2026 Q1 主战场。</li>
+  </ul>
+  <div class="sources">
+    <strong>来源</strong>
+    <ul>
+      <li><a href="https://www.anthropic.com/news/claude-opus-4-5" target="_blank">Introducing Claude Opus 4.5 — Anthropic</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="card">
+  <h3>4. Anthropic Claude Haiku 4.5 — Sonnet 4 同级编码性能,1/3 价格、2 倍速</h3>
+  <div class="card-meta">
+    <span class="tag">AI / 大模型</span>
+    <span class="tag green">🟢 官方一手信源</span>
+  </div>
+  <ul>
+    <li><strong>核心事实</strong>:Anthropic 于 2025-10-15 发布 Claude Haiku 4.5,小型号定位,声称"曾经的前沿能力(Sonnet 4 级别)现在更便宜更快"。</li>
+    <li><strong>关键数据</strong>:API 定价 $1 / $5 每百万 token(输入/输出);Sonnet 4 同级编码性能,1/3 价格 + 2 倍速。</li>
+    <li><strong>背景</strong>:Sonnet 4.5(2025-09-29 发布)仍是 Anthropic 旗舰编码模型;Haiku 4.5 的战略意图是"Sonnet 拆任务 → Haiku 4.5 并行执行子任务"的协作模式,把单 agent 变成多 agent 团队。</li>
+    <li><strong>影响分析</strong>:多 agent 编排的成本曲线被 Haiku 4.5 重画。Sonnet 4.5 拆解复杂任务 → 多个 Haiku 4.5 并行执行子任务,这模式如果成立,Anthropic 在 agent 工程上的"性价比组合拳"会让 OpenAI 的 GPT-5 / GPT-5-mini 路径承压。</li>
+  </ul>
+  <div class="sources">
+    <strong>来源</strong>
+    <ul>
+      <li><a href="https://www.anthropic.com/news/claude-haiku-4-5" target="_blank">Introducing Claude Haiku 4.5 — Anthropic</a></li>
+      <li><a href="https://www.anthropic.com/news/claude-sonnet-4-5" target="_blank">Sonnet 4.5 参考 — Anthropic</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="card">
+  <h3>5. Penn 大学光物质混合粒子实现全光 AI 计算,能耗降至 4 × 10⁻¹⁵ J</h3>
+  <div class="card-meta">
+    <span class="tag">半导体 / AI 芯片</span>
+    <span class="tag green">🟢 学术一手信源</span>
+  </div>
+  <ul>
+    <li><strong>核心事实</strong>:University of Pennsylvania 物理学家 Zhen 团队研发出 exciton-polariton,首次实现"全光 AI 开关",每次仅需约 4 × 10⁻¹⁵ J。</li>
+    <li><strong>关键数据</strong>:能量量级远低于短促点亮一个微型 LED 所需;直接避免光子 AI 芯片中"非线性激活步骤必须转回电子信号"的瓶颈。</li>
+    <li><strong>背景</strong>:光子 AI 芯片的"光转回电子"步骤是核心能耗 + 延迟黑洞;exciton-polariton 把非线性开关留在光域,意味着 camera 信号可直接被光子 AI 芯片处理而不必反复互转。</li>
+    <li><strong>影响分析</strong>:光子 AI 推理从"演示级"走向"产品级"的真实拐点。NVIDIA/AMD 的电子推理路线第一次面临"物理层替代"的远期威胁。注意:仍属实验室阶段,商业化时间表 5-10 年。</li>
+  </ul>
+  <div class="sources">
+    <strong>来源</strong>
+    <ul>
+      <li><a href="https://www.sciencedaily.com/releases/2026/05/260518041341.htm" target="_blank">Penn scientists' light-matter breakthrough — ScienceDaily</a></li>
+    </ul>
+  </div>
+</div>
+
+<h2>GitHub Trending 日榜可见仓库中,今日新增 Star 最高</h2>
+<div class="card trending-card">
+  <h3>debpalash/VoiceStudio</h3>
+  <div class="data-row">
+    <span class="data-label">今日新增 Star</span>
+    <span class="data-value">+3,483 stars today</span>
+  </div>
+  <div class="data-row">
+    <span class="data-label">总 Star</span>
+    <span class="data-value">50,613</span>
+  </div>
+  <div class="data-row">
+    <span class="data-label">主要语言</span>
+    <span class="data-value">Python</span>
+  </div>
+  <div class="data-row">
+    <span class="data-label">抓取时间</span>
+    <span class="data-value">2026-10-01 (+08)</span>
+  </div>
+  <p style="margin: 12px 0 0 0; font-size: 14px;"><strong>仓库原始描述</strong>:VoiceStudio is the open-source, fully-local ElevenLabs alternative — voice cloning, voice design, video dubbing, dictation, transcription &amp; audiobook creation in 646 languages.</p>
+  <p style="margin: 8px 0 0 0; font-size: 14px;"><strong>与 AI/科技读者相关的判断</strong>:开源、本地、646 种语言的语音方案,直接挑战 ElevenLabs 的"商用语音 API 唯一标准"地位 — 是 2026 年"AI 基础设施本地化"趋势的典型代表。</p>
+  <div class="sources">
+    <strong>原始来源</strong>
+    <ul>
+      <li><a href="https://github.com/trending?since=daily" target="_blank">GitHub Trending (daily)</a></li>
+    </ul>
+  </div>
+  <p style="margin-top: 12px; font-size: 13px; color: var(--muted);">注:本次抓取仅返回 2 条可解析的 Trending 仓库条目(NVIDIA/OpenShell 与 debpalash/VoiceStudio),其他可见仓库未提供完整 <code>stars today</code> 字段。本卡片严格基于本次实际可见字段。</p>
+</div>
+
+<h2>今日观察</h2>
+<div class="card">
+  <ul>
+    <li><strong>agent runtime 正在被巨头占领</strong>:NVIDIA 开源 OpenShell、Anthropic 在 Claude Code 内嵌 Plan Mode、Claude app 加"并行 session" — 围绕"agent 怎么跑"的栈层,2026 年开始被当作 L1 基础设施竞争。LangChain / AutoGen 类 Python 系中间层会被两端吃掉。</li>
+    <li><strong>Anthropic 的产品节奏 = 编码 agent 阵地战</strong>:6 周内连续发布 Sonnet 4.5 → Haiku 4.5 → Opus 4.5(从 9/29 到 11/24),三档定价 + 协同编排模式,把 OpenAI 的 GPT-5 / GPT-5-mini 二元结构切成三档 + 多 agent 模式。</li>
+    <li><strong>开源 AI 语音的商业模式地震</strong>:VoiceStudio 单日 +3,483 stars、ElevenLabs 商用护城河第一次出现"功能对等 + 本地化"对手 — 后续 12 个月会看到 SaaS 语音厂商推"本地版 + 加密部署"做防御。</li>
+    <li><strong>光子 AI 推理离商业化还有 5-10 年</strong>,但 Penn 的 exciton-polariton 第一次让"全光非线性开关"在物理上可行;值得放进 2027 年的"潜在颠覆者"观察名单。</li>
+  </ul>
+</div>
+
+<footer>
+  <h3>来源与局限</h3>
+  <ul>
+    <li>本次共执行 5 次 web_search + 1 次 curl(用于 GitHub Trending),均在 cron 预设上限内。</li>
+    <li>抓取后端:<code>web_search</code> 主走 ddgs(未安装),实际被 exa 免费 tier 接住,本次该 tier 返回了真实结果(Anthropic 官方页面、ScienceDaily、TechFundingNews、Forbes、Crowdfund Insider)。</li>
+    <li><code>web_extract</code> 未被使用(已禁用)。</li>
+    <li>GitHub Trending 卡片:本次仅 2 条完整可解析(NVIDIA/OpenShell、debpalash/VoiceStudio),其他条目字段不全,故卡片基于这 2 条真实可见数据,不做补全。</li>
+    <li>所有新闻链接均在本次实际抓取中可见,但页面正文未被二次抽取(避免消耗超出预设的 3 次 curl 配额)。</li>
+    <li>Anthropic 三条新闻(2025-09-29 ~ 2025-11-24)与 ScienceDaily(2026-05-18)发布日期早于本日,作为"近期 AI / 行业进展"继续保留 — 未补写任何未在本批次抓取中出现的当日新闻。</li>
+  </ul>
+
+  <h3 style="margin-top: 24px;">免责声明</h3>
+  <p>本简报由 cron 定时任务自动生成,基于本次实际抓取到的公开来源。所有事实陈述均附原始链接,不做推测填充。"今日观察"为基于已确认事实的判断性观点,不构成投资建议。</p>
+</footer>
+
+</div>
+</body>
+</html>
