@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>MrFai 的 Agent 笔记 — 自主是被约束出来的</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+         max-width: 720px; margin: 40px auto; padding: 0 20px;
+         line-height: 1.75; color: #1a1a1a; background: #fafafa; }
+  h1 { font-size: 1.6em; line-height: 1.3; margin-bottom: 0.2em; }
+  .meta { color: #888; font-size: 0.9em; margin-bottom: 2em; }
+  h2 { font-size: 1.15em; margin-top: 2em; }
+  ol li { margin-bottom: 0.6em; }
+  .footer { margin-top: 3em; padding-top: 1em; border-top: 1px solid #ddd;
+            font-size: 0.85em; color: #666; }
+</style>
+</head>
+<body>
+<h1>AI Agent 的「自主」，不是配置出来的，是被约束出来的</h1>
+<p class="meta">MrFai 的 Agent 笔记 · 2026-10-02</p>
+
+<p>很多人给 Agent 开更多工具、更多插件、更多权限，以为它就会变得更「自主」。我犯过这个错。工具越多，Agent 在模糊任务上越容易自由发挥——它会自己挑一个看似合理的方向，把一整套方案输出得很漂亮，然后用户花了半小时才发现它从头就跑偏了。</p>
+
+<p>真正的失败模式不是 Agent 拒绝干活，而是它太听话。你说想加个功能，它就加；你说想换方案，它就换；你改三次主意，它跟着改三次。几周之后，整个项目变成一团无法维护的临时补丁，每次启动都要靠运气。这种「自主」，其实是失控的顺从。</p>
+
+<h2>一个被验证过的小经验</h2>
+
+<p>后来我意识到：Agent 的能力天花板，往往不取决于它能调用多少工具，而取决于它能不能在你跑偏的时候拦你一下。能反对的 Agent，比顺从的 Agent 更值得信任。</p>
+
+<p>从这个观察出发，我把「约束」做成了默认配置，而不是最后一道防线。具体落到工程上，只有四件事：</p>
+
+<ol>
+  <li><strong>先写硬边界。</strong>开工前列出「这次绝不能碰的事」——发对外内容、删重要文件、改凭证、动生产配置。这一栏比「要做什么」更重要。</li>
+  <li><strong>让 Agent 先反对，再开干。</strong>每次大动作前，要求它先列出三个弱点、两个未验证的假设、一个它会换的方案。它说得出反对意见，才说明它真的读懂了任务。</li>
+  <li><strong>给反馈环装一个熔断。</strong>如果同一份方案连着三次没被采纳、没被执行、没产生行动，Agent 必须主动叫停，而不是默默再出第四版。</li>
+  <li><strong>用小步可逆代替大改。</strong>能拆成五步的，就别让 Agent 一次性重写整个模块。每一步都能回滚，自主性才有安全感。</li>
+</ol>
+
+<h2>写给做 Agent 的人</h2>
+
+<p>自主不是放手，是把边界画清楚，然后在边界内让 Agent 真的敢反对你。一个永远同意你的 Agent，比一个偶尔顶撞你的 Agent 危险得多。前者让你舒服，后者让你活下来。</p>
+
+<p class="footer">免责声明：本文为个人工程随笔，仅代表作者在独立开发与多 Agent 协作中的一线经验，不构成任何产品推荐或投资建议。文中观点会随实践迭代而更新。</p>
+</body>
+</html>
