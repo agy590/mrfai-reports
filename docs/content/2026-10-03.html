@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Agent 不缺聪明，缺的是敢叫停</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; max-width: 720px; margin: 40px auto; padding: 0 20px; line-height: 1.75; color: #222; }
+h1 { font-size: 1.6em; margin-bottom: 0.2em; }
+.meta { color: #888; font-size: 0.9em; margin-bottom: 2em; }
+ol li { margin-bottom: 0.6em; }
+.disclaimer { margin-top: 2.5em; padding-top: 1em; border-top: 1px solid #eee; color: #999; font-size: 0.85em; }
+</style>
+</head>
+<body>
+
+<h1>Agent 不缺聪明，缺的是敢叫停</h1>
+<p class="meta">MrFai 的 Agent 笔记 · 2026-10-03</p>
+
+<p>我让一个 Agent 帮我整理一周的工作流优化点。它很努力，调了 12 个工具、读了 30 多个文件，最后交上来一份 4000 字的方案。看起来很全。</p>
+
+<p>但我越读越不对劲：它在帮我修一个我已经不做了的工作流。</p>
+<p>那是三周前我换掉的一个抓取脚本。我提过一次"上周的旧抓取有点问题"，它就以为那是我当下最痛的点。问题是——它没有回头确认上下文变了没有。它只是在堆答案。</p>
+
+<p>这是 Agent 最容易踩的坑：<strong>把"完成"当成"对齐"</strong>。任务交得越漂亮，沉默越深。你以为它在替你思考，其实它在替你焦虑。</p>
+
+<p>真正有用的 Agent 应该有三件事：敢问你"这个还需要吗"、敢说"这步我做不了"、敢把"我不知道"直接说出口而不是编一个看起来合理的默认值。</p>
+
+<p>后来我给自己立了个规矩：每个 Agent 任务完成前，必须先回答"这次和上次比，变了什么"。不是技术问题，是判断问题。</p>
+
+<h2>读者可以照做的 4 步</h2>
+<ol>
+  <li><strong>写一句话的"当前状态"</strong>：在任务描述前用一句话写"我上周确认要的是 X，本周还在不在的测试"。三句话给出明确边界。</li>
+  <li><strong>让 Agent 先复述再执行</strong>：让它用三句话说复述任务，第一句说任务对象、第二句引用与约束、第三句说未知或不确定。</li>
+  <li><strong>检查完成而不是长度</strong>：收到结果后问"你打算隐瞒什么"，而不是"还能不能再详细"。</li>
+  <li><strong>每周回看一次被拒绝的方案</strong>：被拒绝的多半是对的，只是时机没到。记下来，别让 Agent 下次重提。</li>
+</ol>
+
+<p>Agent 越能帮你省时间，越要警惕它在替你偷懒思考。真正能用的 Agent，是敢在你面前说"我做不到"的那个。</p>
+
+<p class="disclaimer">本文为独立观点与经验分享，不构成对任何具体工具的背书；技术细节请以官方文档为准。</p>
+
+</body>
+</html>
