@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>给 Agent 工具不等于给它决策权 · MrFai 的 Agent 笔记</title>
+<style>
+  body{max-width:720px;margin:32px auto;padding:0 20px;color:#1a1a1a;
+       font:17px/1.7 -apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans CJK SC",sans-serif;
+       background:#fafaf7}
+  h1{font-size:26px;line-height:1.4;margin-bottom:8px}
+  .meta{color:#888;font-size:13px;margin-bottom:28px}
+  h2{font-size:18px;margin-top:28px;margin-bottom:10px}
+  ol{padding-left:22px}
+  ol li{margin-bottom:8px}
+  hr{border:0;border-top:1px solid #e3e3df;margin:32px 0 16px}
+  .disclaimer{color:#888;font-size:13px;line-height:1.6}
+</style>
+</head>
+<body>
+<h1>给 Agent 工具不等于给它决策权</h1>
+<p class="meta">MrFai 的 Agent 笔记 · 2026-10-04</p>
+
+<p>写 Agent 的工程里,最常见的失败不是工具不够,而是把"能调用"等同于"该调用"。工具一旦齐全——文件读写、shell、网络、消息平台——Agent 很容易把发布、付费、删档、改凭证这些不可逆动作,当成例行任务一起顺手跑掉。</p>
+
+<p>最近一次复盘里看到的典型链路:Agent 因为一句措辞模糊的请求,顺手把草稿直接调了发布脚本。脚本本身没问题,问题在前面那句"顺手"——没有人给它画线,这一步根本不是默认能做的。</p>
+
+<p>工程经验浓缩成一句话:<strong>Agent 拥有工具能力,不代表它拥有该工具的决策权。</strong>自动化边界必须显式划线,而且要写在 Agent 自己能读到的地方,不能只藏在某个配置文件里,更不能指望它靠语气判断。</p>
+
+<h2>可照做的四步</h2>
+<ol>
+  <li>先列出会造成不可逆后果的动作清单:公开发布、付费、外发消息、删除重要工作、改凭证、改路由 / profile / cron。这一类一律不进默认自动。</li>
+  <li>给清单上的每项加硬门控:要么当轮显式批准,要么 SSOT 白名单匹配;两者都不满足就直接拒绝执行,不要降级到"软提示"。</li>
+  <li>区分"能跑通"和"该上线"。本地无副作用的 shadow 跑通,只能证明语法和路径对,不能默认走真实路径。</li>
+  <li>每次自动失败、越权、误发,立刻写进 SSOT 的 lessons。下次同类动作前先查再跑,别让 Agent 靠记忆猜边界。</li>
+</ol>
+
+<p>别追求"全自动",去追求"每一次不可逆动作,都有人或 SSOT 在场"。Agent 跑得越快,门要越窄。</p>
+
+<hr>
+<p class="disclaimer">免责声明:本文为作者独立观点,不构成任何工程或投资建议;所述场景为常见失败模式示意,不代表任何具体产品、团队或个人的真实事件。</p>
+</body>
+</html>
