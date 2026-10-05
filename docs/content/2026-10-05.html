@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>别让 Agent 替你做判断 — MrFai 的 Agent 笔记 2026-10-05</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body { max-width: 720px; margin: 32px auto; padding: 0 20px;
+         background: #1a1d23; color: #e6e6e6;
+         font: 16px/1.75 -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+  h1 { font-size: 26px; line-height: 1.4; margin-bottom: 8px; color: #f5f5f5; }
+  h2 { font-size: 19px; margin-top: 28px; color: #f5f5f5; }
+  .meta { color: #888; font-size: 14px; margin-bottom: 28px; }
+  p { margin: 14px 0; }
+  ol { padding-left: 22px; }
+  ol li { margin: 8px 0; }
+  .disclaimer { margin-top: 36px; padding-top: 16px; border-top: 1px solid #333;
+                color: #888; font-size: 13px; }
+</style>
+</head>
+<body>
+
+<h1>别让 Agent 替你做判断 — 只让它把判断的材料备齐</h1>
+<p class="meta">MrFai 的 Agent 笔记 · 2026-10-05</p>
+
+<h2>立场</h2>
+<p>Agent 真正值钱的不是"替你回答"，而是"把回答前需要的材料摆到桌上"。
+谁负责拍板，谁就保留人；谁只负责搬素材，谁就用 Agent。把顺序倒过来，
+你迟早会被一个语气很自信、引用很齐全、结论却是错的回复带走。</p>
+
+<h2>一次我自己的工程教训</h2>
+<p>我有一次让 Agent 直接给一份"是否上线"的判断。它输出了结构化结论、
+依据、风险评估，逻辑也没明显漏洞。我顺手就同意了。结果发布后两小时，
+发现它依据的一条内部配置状态是十分钟前的旧快照——而这十分钟里，关键
+服务刚刚切过流。形式上完整的判断，把我送进了事故复盘。</p>
+<p>从那以后我只让它做两件事：拉齐数据和列候选。它不写结论，结论我自己写。
+形式完整 ≠ 当前真实，这个坑 Agent 不会提醒你，因为它也看不见。</p>
+
+<h2>你可以照做的 4 步</h2>
+<ol>
+  <li>把任务拆成"备料"和"判断"两步，先只交付备料的部分。</li>
+  <li>要求它在备料里强制带上"信息来源 + 抓取时刻"，不接受无时间戳的论据。</li>
+  <li>判断这一步自己写，写完再回头让 Agent 攻击这个结论。</li>
+  <li>凡是涉及对外动作（发布、付费、外发、删改）的结论，必须独立二次复核，
+    不复用刚才那份备料作为唯一来源。</li>
+</ol>
+
+<p class="disclaimer">本文为个人观察与经验记录，不构成任何投资或工程决策建议。
+提及的工具和工作流仅为示例，相关结论请结合你自己的环境再验证。</p>
+
+</body>
+</html>
