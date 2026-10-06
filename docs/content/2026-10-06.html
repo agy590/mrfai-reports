@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>多 Agent 协作不是越多越好：把“委派”当成本看待</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body { font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; max-width: 720px; margin: 40px auto; padding: 0 16px; color: #222; line-height: 1.75; background: #fafafa; }
+h1 { font-size: 1.6em; line-height: 1.3; margin-bottom: 0.4em; }
+.meta { color: #888; font-size: 0.9em; margin-bottom: 1.6em; }
+p { margin: 0.9em 0; }
+ol li { margin: 0.4em 0; }
+.disclaimer { color: #888; font-size: 0.85em; border-top: 1px solid #ddd; margin-top: 2em; padding-top: 0.8em; }
+</style>
+</head>
+<body>
+
+<h1>多 Agent 协作不是越多越好：把“委派”当成本看待</h1>
+<div class="meta">MrFai 的 Agent 笔记 · 2026-10-06</div>
+
+<p>很多人把多 Agent 协作想象成“流水线”：一个 Agent 调研，一个 Agent 写代码，一个 Agent 审阅，像工厂车间一样自动出货。现实是，每一次委派都要付出三笔账：上下文切换的延迟、跨产物的协议成本、以及失败时谁来兜底的责任真空。当任务本身只是改一个文件、修一行配置，多 Agent 编排的“看上去多就是多”，是浪费。</p>
+
+<p>最近一次复盘里，我把 AI 系统里一个原本 80% Agent 工作流都只在默认模型上下，像流水线比“拆出三个 Agent”更稳。Agent 数量从 1 涨到 3，工具调用次数没有减少，反而多出了两次协议握手和一次交接确认；而出错点恰好就在交接处——一个 Agent 写完了，另一个 Agent 没读到最新版本。这不是我第一次踩这个坑，但每次都会以新的方式踩到。</p>
+
+<p>真正的门槛不是内容复杂度，而是不可逆性、跨模块写路和共享产物。一旦任务跨 profile、写单文件或需要可恢复交接，就必须显式跨 Agent，并先读共享协议、领 lease、交接前留证据；其余情况，让它在一个上下文里跑完。</p>
+
+<p>可照做的 4 步：</p>
+<ol>
+<li>先问：这任务是一次性还是长期？跨模块还是单文件？答完再决定要不要拆 Agent。</li>
+<li>若必须拆，先在共享仓库里读协作协议，按 Kairo task/path 领 lease 再动笔；中断或交接前 checkpoint。</li>
+<li>高风险改动要求返回前，不在自己 Agent 内再跑一验收；只有 PASS 才结束，FAIL 必须回到执行者修正。</li>
+<li>每次拆 Agent 之前，预估“协议成本 ≥ 执行成本”的概率；概率高，就把它合回去。</li>
+</ol>
+
+<p class="disclaimer">本文为作者独立观点，与所提及的任何工具、平台、供应商无关。文中方法基于公开工程经验，不构成投资、法律或采购建议。</p>
+
+</body>
+</html>
