@@ -2,36 +2,74 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>MrFai 的 Agent 笔记（2026-10-07）三个 Agent 抢同一个文件，我才明白"租约"不是仪式感</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MrFai 的 Agent 笔记（2026-10-07）三个 Agent 抢同一个文件，我才明白“租约”不是仪式感</title>
 <style>
-body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; max-width: 720px; margin: 40px auto; padding: 0 20px; line-height: 1.8; color: #222; }
-h1 { font-size: 22px; line-height: 1.4; }
-.meta { color: #888; font-size: 13px; margin-bottom: 24px; }
-p { margin: 14px 0; }
-ol { padding-left: 22px; }
-li { margin: 6px 0; }
-.disclaimer { margin-top: 40px; padding-top: 16px; border-top: 1px solid #eee; color: #888; font-size: 12px; }
+:root {
+  --bg: #0b0e14;
+  --surface: #141821;
+  --surface-2: #1e2330;
+  --fg: #e8eaed;
+  --muted: #b3b8c4;
+  --subtle: #7a8190;
+  --border: #232836;
+  --accent: #76a7ff;
+  --accent-bg: rgba(77, 143, 255, .14);
+  --max-w: 720px;
+  --gutter: 18px;
+}
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0;
+  min-width: 0;
+  overflow-x: hidden;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+  font-size: 17px;
+  line-height: 1.82;
+  text-rendering: optimizeLegibility;
+}
+.page { width: min(100%, var(--max-w)); margin: 0 auto; padding: 28px var(--gutter) max(40px, env(safe-area-inset-bottom)); }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 13px; line-height: 1.35; margin-bottom: 20px; }
+.logo { display: grid; place-items: center; flex: 0 0 30px; width: 30px; height: 30px; border-radius: 9px; color: var(--accent); background: var(--accent-bg); font-size: 16px; }
+.brand strong { display: block; color: var(--fg); font-size: 14px; }
+.article { padding: 22px 18px 24px; border: 1px solid var(--border); border-radius: 16px; background: var(--surface); box-shadow: 0 12px 36px rgba(0, 0, 0, .18); }
+h1 { margin: 0; color: var(--fg); font-size: clamp(25px, 7vw, 34px); line-height: 1.22; letter-spacing: -.025em; overflow-wrap: anywhere; }
+.meta { margin: 14px 0 24px; color: var(--subtle); font-size: 13px; line-height: 1.55; }
+.meta span { display: inline-block; }
+p { margin: 0 0 18px; overflow-wrap: anywhere; }
+ol { margin: 0 0 18px; padding-left: 1.35em; }
+li { margin: 10px 0; padding-left: 3px; }
+li::marker { color: var(--accent); font-weight: 700; }
+.disclaimer { margin-top: 28px; padding-top: 16px; border-top: 1px solid var(--border); color: var(--subtle); font-size: 12px; line-height: 1.65; }
+a { color: var(--accent); overflow-wrap: anywhere; }
+@media (min-width: 640px) { .page { --gutter: 28px; padding-top: 48px; } .article { padding: 34px 38px 36px; } }
+@media print { :root { --bg: #fff; --surface: #fff; --fg: #111; --muted: #555; --subtle: #666; --border: #ddd; --accent: #1e5fbf; } body, html { background: #fff; } .page { width: 100%; max-width: none; padding: 0; } .article { border: 0; box-shadow: none; padding: 0; } }
 </style>
 </head>
 <body>
-<h1>三个 Agent 抢同一个文件，我才明白"租约"不是仪式感</h1>
-<div class="meta">MrFai 的 Agent 笔记 · 2026-10-07 · 主题：多 Agent 协作</div>
-
-<p>上周我让两个 agent 写同一份日报的两个段落，结果交付时一看：第一段被覆盖了一行，第二段里塞着我一句话「@系统时间」——那是它在调试脚本里从终端输出抓到的本地时间戳，原样粘进正文。先生不打招呼，事后才发现。</p>
-
-<p>这不是巧合，是我自己跳了一道工序：跨 agent 写共享产物之前，没有先走"租约 + checkpoint"。把"并行"当成"多 agent 协作"的全部幻觉，不比糊成糊弄过去更让人安心。</p>
-
-<p>那次之后我开始接受：多 agent 不是聊天。租约、profile 边界、checkpoint、交接证据，是工序不是仪式。现在我每次让两个以上 agent 触及同一个文件前，都按这四步走：</p>
-
-<ol>
-<li>开写前先领取 lease，声明要改的文件和预计时长；拿到才动手，拿不到就排队。</li>
-<li>中断或交接前写 checkpoint：目标、已完成、blocker、下一步都要落字，不留"继续下一段"这种模糊语。</li>
-<li>不同模型并行时走不同 profile，而不是在同一个会话里继续叠加上下文。</li>
-<li>交付完成后释放 lease，让下一个 agent 从 lease 开始，而不是从"重读五个文件"开始。</li>
-</ol>
-
-<p>并行很爽，但失控更贵。先排清楚谁写哪一段、谁负责 review，比让两个 agent 同时抢一把锁要省心。</p>
-
-<div class="disclaimer">本文为个人独立观点，仅记录个人工程实践经验，不代表任何机构立场。本组对材料的准确性与完整性不承担保证；引用前请自行复核。</div>
+<main class="page">
+  <header class="brand" aria-label="报告来源">
+    <span class="logo" aria-hidden="true">🐴</span>
+    <span><strong>MrFai 的 Agent 笔记</strong>独立开发 · 多 Agent 协作</span>
+  </header>
+  <article class="article">
+    <h1>三个 Agent 抢同一个文件，我才明白“租约”不是仪式感</h1>
+    <div class="meta"><span>2026-10-07</span> · <span>主题：多 Agent 协作</span></div>
+    <p>上周我让两个 agent 写同一份日报的两个段落，结果交付时一看：第一段被覆盖了一行，第二段里塞着我一句话「@系统时间」——那是它在调试脚本里从终端输出抓到的本地时间戳，原样粘进正文。先生不打招呼，事后才发现。</p>
+    <p>这不是巧合，是我自己跳了一道工序：跨 agent 写共享产物之前，没有先走“租约 + checkpoint”。把“并行”当成“多 agent 协作”的全部幻觉，不比糊成糊弄过去更让人安心。</p>
+    <p>那次之后我开始接受：多 agent 不是聊天。租约、profile 边界、checkpoint、交接证据，是工序不是仪式。现在我每次让两个以上 agent 触及同一个文件前，都按这四步走：</p>
+    <ol>
+      <li>开写前先领取 lease，声明要改的文件和预计时长；拿到才动手，拿不到就排队。</li>
+      <li>中断或交接前写 checkpoint：目标、已完成、blocker、下一步都要落字，不留“继续下一段”这种模糊语。</li>
+      <li>不同模型并行时走不同 profile，而不是在同一个会话里继续叠加上下文。</li>
+      <li>交付完成后释放 lease，让下一个 agent 从 lease 开始，而不是从“重读五个文件”开始。</li>
+    </ol>
+    <p>并行很爽，但失控更贵。先排清楚谁写哪一段、谁负责 review，比让两个 agent 同时抢一把锁要省心。</p>
+    <footer class="disclaimer">本文为个人独立观点，仅记录个人工程实践经验，不代表任何机构立场。本组对材料的准确性与完整性不承担保证；引用前请自行复核。</footer>
+  </article>
+</main>
 </body>
 </html>
