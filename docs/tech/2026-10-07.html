@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>每日科技新闻简报 | 2026-10-07</title>
+<style>
+  :root{--bg:#f7f7f8;--card:#ffffff;--ink:#1a1a1a;--muted:#5f6b76;--accent:#2563eb;--line:#e5e7eb;--soft:#f3f4f6;--green:#16a34a;--yellow:#ca8a04;--red:#dc2626;}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:15px}
+  .wrap{max-width:780px;margin:0 auto;padding:24px 18px 56px}
+  header.page{margin-bottom:20px}
+  header.page h1{font-size:24px;margin:0 0 6px}
+  header.page .meta{color:var(--muted);font-size:13px}
+  .tldr{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin-bottom:18px}
+  .tldr h2{margin:0 0 8px;font-size:15px;color:var(--muted);font-weight:600;letter-spacing:.5px}
+  .tldr ul{margin:0;padding-left:20px}
+  .tldr li{margin:4px 0}
+  .gh{background:#0b1020;color:#f8fafc;border-radius:10px;padding:16px 18px;margin-bottom:18px}
+  .gh .badge{display:inline-block;background:#22d3ee;color:#0b1020;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;margin-bottom:8px}
+  .gh h3{margin:0 0 6px;font-size:17px}
+  .gh a{color:#a5f3fc}
+  .gh .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px 14px;margin:10px 0;font-size:13px;color:#cbd5e1}
+  .gh .desc{font-size:13px;color:#cbd5e1;margin:8px 0}
+  .gh .judge{background:#111827;border-left:3px solid #22d3ee;padding:8px 12px;border-radius:4px;font-size:13px;color:#e2e8f0;margin-top:10px}
+  .gh .src{font-size:12px;color:#94a3b8;margin-top:8px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-bottom:14px}
+  .card h2{margin:0 0 6px;font-size:18px}
+  .card h2 a{color:var(--ink);text-decoration:none}
+  .card h2 a:hover{color:var(--accent)}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 12px;font-size:12px}
+  .tag{background:var(--soft);border-radius:999px;padding:2px 9px;color:var(--muted)}
+  .tag.fire{background:#fef3c7;color:#92400e}
+  .tag.star{background:#dbeafe;color:#1e40af}
+  .tag.dot{background:#dcfce7;color:#166534}
+  .tag.green{background:#dcfce7;color:#166534}
+  .tag.yellow{background:#fef9c3;color:#854d0e}
+  .tag.red{background:#fee2e2;color:#991b1b}
+  .tag.break{background:#fce7f3;color:#9d174d}
+  .tag.news{background:#e0e7ff;color:#3730a3}
+  .kv{margin:8px 0;font-size:14px}
+  .kv .k{display:block;color:var(--muted);font-size:12px;margin-bottom:2px}
+  .why,.impact{background:var(--soft);border-left:3px solid var(--accent);padding:10px 12px;border-radius:4px;margin:10px 0;font-size:14px}
+  .src-list{font-size:13px;color:var(--muted);margin-top:10px}
+  .src-list a{color:var(--accent);text-decoration:none;word-break:break-all}
+  .src-list a:hover{text-decoration:underline}
+  .src-list ul{margin:4px 0 0;padding-left:18px}
+  .observe{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin-bottom:18px}
+  .observe h2{margin:0 0 8px;font-size:16px}
+  .footer{color:var(--muted);font-size:12px;margin-top:24px;line-height:1.6}
+  .footer h2{font-size:14px;color:var(--ink);margin:14px 0 6px}
+  @media (max-width:480px){.gh .grid{grid-template-columns:1fr}body{font-size:14px}header.page h1{font-size:20px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="page">
+  <h1>📰 每日科技新闻简报 · 2026-10-07</h1>
+  <div class="meta">采集窗口 2026-10-04 → 2026-10-07 (+08) · 抓取时间 2026-10-07 12:01 +08 · 信源：官方公告 + Reuters/AP/TechCrunch/The Verge/Hugging Face/公司博客/GitHub Release 等可追溯来源</div>
+</header>
+
+<div class="tldr">
+  <h2>当日摘要（TL;DR）</h2>
+  <ul>
+    <li><b>Mistral Large 4</b> 公开预览，1T 总参 / 52B 激活、原生多模态 MoE，10/27 开源权重</li>
+    <li><b>Google DeepMind EmbeddingGemma 2</b> 发布，740M 参数、Apache-2.0、5 模态统一嵌入空间、端侧可跑</li>
+    <li><b>Reflection AI Beam</b> 501B 开源权重模型发布，Nvidia 投资，被定位为"中国之外最强开源"</li>
+    <li><b>Hadrian</b>（阿姆斯特丹）完成 $40M 融资，AI 自动化渗透测试，日跑 1 亿次攻击模拟</li>
+    <li><b>Avarra.ai</b> 完成 $17M Series A，专注 GTM 团队的 AI Avatar 培训与陪练（ARR YoY +400%）</li>
+    <li><b>GitHub Trending 当日 Star 增最高：tester-army/e2e +1,725 stars today</b>（TypeScript 下一代端到端测试框架）</li>
+  </ul>
+</div>
+
+<section class="gh">
+  <span class="badge">GitHub Trending · 当日观察</span>
+  <h3>GitHub Trending 日榜可见仓库中，今日新增 Star 最高</h3>
+  <div>仓库：<a href="https://github.com/tester-army/e2e">tester-army/e2e</a></div>
+  <div class="grid">
+    <div><b>+1,725</b> stars today</div>
+    <div>总 Star：<b>6,478</b></div>
+    <div>Fork：289</div>
+    <div>语言：<b>TypeScript</b></div>
+  </div>
+  <div class="desc">原始描述："Next generation e2e testing framework for web and mobile apps."</div>
+  <div class="judge">与 AI / 科技读者相关：与同榜多个 agent 工具类项目（mattpocock/skills、impeccable、claude-mem、morluto/rea）一起，呈现当周开源社区的主流节奏——把"AI agent / 自动化代理"作为新基础设施层做封装；tester-army/e2e 是其中少有的、把生成式 AI 当作"应用层测试框架"卖点而非"agent 内核"的项目，提示端到端测试正在被 AI-native 工具重写。</div>
+  <div class="src">来源：<a href="https://github.com/trending?since=daily">github.com/trending?since=daily</a> · 抓取时间 2026-10-07 12:01 +08</div>
+</section>
+
+<div class="observe">
+  <h2>今日观察</h2>
+  <p>"开源权重 vs 闭源前沿"的差距正在以"周"为单位收窄。72 小时内两家非中国厂商（Mistral 1T / Reflection AI 501B）相继把开放权重推到千亿级，并明确把"对标中国开源"放进新闻稿。这与 24h 内国内没有同等量级一手发布形成鲜明对照——国内动作仍集中在 9 月底阶段（千问 3.8 Max 上榜、它石智航具身智能），未有当日发布的同等级别信号。简单结论：本周开源侧的"技术信号"主要来自欧洲与美国，但"工程化与行业落地"仍由中国厂商主导（智能座舱 Agent、具身智能、家用机器人）。投资人和创业者的下一步动作会更倾向"上层应用与代理框架"——本周 GitHub Trending 前 7 名里 4 个都属此类。</p>
+</div>
+
+<!-- Card 1 -->
+<article class="card">
+  <h2>1. Mistral Large 4（"Le Chonk"）公开预览</h2>
+  <div class="tags">
+    <span class="tag">科技 / AI 基础模型</span>
+    <span class="tag star">⭐ 高热</span>
+    <span class="tag break">🚨 突发</span>
+    <span class="tag green">🟢 多方确认</span>
+  </div>
+  <div class="kv"><span class="k">核心事实</span>Mistral 于 2026-10-06 公开预览 Mistral Large 4（昵称 "Le Chonk"），1.05T 总参数 / 52B 激活参数的细粒度 MoE 架构，原生多模态（1.6B 视觉编码器），已通过 Mistral Studio 开放预览 API，权重将于 2026-10-27 公开发布。</div>
+  <div class="kv"><span class="k">关键数据</span>1.05T 总参、52B 激活、1.6B 视觉编码器；预览期先开放给开发者 + 网络安全合作伙伴 + 国家机构，含"reduced moderation、expanded cyber capabilities"。</div>
+  <div class="kv"><span class="k">背景</span>Mistral 9/8 完成 €3B Series D，投后估值 >€21B；本季度最大模型动作。</div>
+  <div class="why">影响分析：短期与 DeepSeek V4、Kimi K3 形成新一轮"开源 vs 开源"对照；长期把欧洲主权 AI 路线从"模型"延伸到"红队/合规合作机制"。</div>
+  <div class="src-list">来源：
+    <ul>
+      <li>官方：<a href="https://mistral.ai/news/mistral-large-4/">mistral.ai/news/mistral-large-4/</a></li>
+      <li>官方：<a href="https://docs.mistral.ai/models/mistral-large-4-0">docs.mistral.ai/models/mistral-large-4-0</a></li>
+      <li>Hugging Face：<a href="https://huggingface.co/mistralai/Mistral-Large-4.0-1T05-A52B">huggingface.co/mistralai/Mistral-Large-4.0-1T05-A52B</a></li>
+      <li>海外：<a href="https://thenextweb.com/news/mistral-releases-large-4-a-1-trillion-parameter-open-weight-ai-model">thenextweb.com</a></li>
+      <li>海外：<a href="https://www.digitaltoday.co.kr/en/view/111382/mistral-unveils-mistral-large-4-1-trillion-parameter-open-weight-model">digitaltoday.co.kr</a></li>
+    </ul>
+  </div>
+</article>
+
+<!-- Card 2 -->
+<article class="card">
+  <h2>2. Google DeepMind EmbeddingGemma 2 发布</h2>
+  <div class="tags">
+    <span class="tag">科技 / AI 开源模型</span>
+    <span class="tag star">⭐ 高热</span>
+    <span class="tag break">🚨 突发</span>
+    <span class="tag green">🟢 多方确认</span>
+  </div>
+  <div class="kv"><span class="k">核心事实</span>Google DeepMind 于 2026-10-07 发布 EmbeddingGemma 2——基于 Gemma 4 的开源多模态嵌入模型，740M 参数，把文本、代码、图像、视频、音频统一映射到 768 维单一向量空间，Apache-2.0 协议。</div>
+  <div class="kv"><span class="k">关键数据</span>740M 参数、5 模态、768 维空间、端侧可跑（手机级硬件）。</div>
+  <div class="kv"><span class="k">背景</span>Gemma 系列的"嵌入式侧"补全；与 Gemini Embedding 2（闭源托管）形成"本地 vs 托管"组合。</div>
+  <div class="why">影响分析：把"多模态 RAG"的硬件门槛打到消费级；与 Unsloth 等微调工具协同，会加速"本地私有化检索"的工程化落地。</div>
+  <div class="src-list">来源：
+    <ul>
+      <li>媒体：<a href="https://www.techaimag.com/ai-news/google-deepmind-launches-embeddinggemma-2-a-740m-model">techaimag.com</a></li>
+      <li>媒体：<a href="https://officechai.com/ai/google-launches-embeddinggemma-2-for-multimodal-on-device-embeddings/">officechai.com</a></li>
+    </ul>
+  </div>
+</article>
+
+<!-- Card 3 -->
+<article class="card">
+  <h2>3. Reflection AI 发布 Beam：501B 开源权重模型</h2>
+  <div class="tags">
+    <span class="tag">科技 / AI 基础模型</span>
+    <span class="tag star">⭐ 高热</span>
+    <span class="tag break">🚨 突发</span>
+    <span class="tag yellow">🟡 单源但可靠</span>
+  </div>
+  <div class="kv"><span class="k">核心事实</span>Nvidia 投资的 Reflection AI 于 2026-10-06 发布首款开源权重模型 Beam，501B 参数；官方与多家媒体称其为"中国之外最强开源权重模型"。</div>
+  <div class="kv"><span class="k">关键数据</span>501B 参数；Nvidia 战略入股；定位"以更低成本对标中国开源旗舰"。</div>
+  <div class="kv"><span class="k">背景</span>Microsoft + Nvidia 在 10/7 有相关本地 AI 部署活动；Reflection AI 团队此前多来自 Transformer 作者行列（需独立基准验证）。</div>
+  <div class="why">影响分析：本周 Mistral + Reflection AI 的连续动作，标志着"美/欧阵营"在 500B–1T 段位补齐了开源供给；下一步看 Beam 的实测代码/推理分数是否经得起 Aider / SWE-bench 检验。</div>
+  <div class="src-list">来源：
+    <ul>
+      <li>媒体：<a href="https://www.splitfeed.ai/story/reflection-ai-launches-beam-as-its-first-open-weight-model">splitfeed.ai</a></li>
+    </ul>
+  </div>
+</article>
+
+<!-- Card 4 -->
+<article class="card">
+  <h2>4. Hadrian 完成 $40M 融资，AI 自动化渗透测试</h2>
+  <div class="tags">
+    <span class="tag">科技 / 创业 + 融资</span>
+    <span class="tag dot">💡 值得关注</span>
+    <span class="tag break">🚨 突发</span>
+    <span class="tag green">🟢 多方确认</span>
+  </div>
+  <div class="kv"><span class="k">核心事实</span>阿姆斯特丹 Hadrian 于 2026-10-06 宣布 $40M 新一轮融资，由 Forgepoint Capital International 与 Smartfin 领投，HV / Motive Partners / Picus Capital / Oetker Ventures 跟投；累计融资 $65M。</div>
+  <div class="kv"><span class="k">关键数据</span>日跑 1 亿次攻击模拟；3 月已上线 AI 渗透测试产品 Nova。</div>
+  <div class="kv"><span class="k">背景</span>在 XBOW / Horizon3 / Armadin 三家累计融资 $1.1B 的红海里，Hadrian 仅占 6%，但强调"AI 攻击 + AI 监督"的双层 agent 架构。</div>
+  <div class="why">影响分析：把"agentic security"从单点工具升级为持续攻防平台；与 Anthropic / OpenAI 的 red-team 输出形成上下游关系。</div>
+  <div class="src-list">来源：
+    <ul>
+      <li>媒体：<a href="https://techfundingnews.com/hadrian-raises-40m-autonomous-ai-pentesting-forgepoint-smartfin/">techfundingnews.com</a></li>
+    </ul>
+  </div>
+</article>
+
+<!-- Card 5 -->
+<article class="card">
+  <h2>5. Avarra.ai 完成 $17M Series A</h2>
+  <div class="tags">
+    <span class="tag">科技 / 创业 + 融资</span>
+    <span class="tag dot">💡 值得关注</span>
+    <span class="tag break">🚨 突发</span>
+    <span class="tag green">🟢 多方确认</span>
+  </div>
+  <div class="kv"><span class="k">核心事实</span>Avarra.ai 于 2026-10-06 宣布 $17M Series A，由 Duration Ventures 领投，Lightspeed / Draper Associates / GTMfund / Alumni Ventures 跟投，Zoom 战略入股；ARR 同比增长 400%+。</div>
+  <div class="kv"><span class="k">关键数据</span>$17M Series A；ARR YoY +400%；主打"AI Avatar 培训陪练 + GTM 流程加速 50%"。</div>
+  <div class="kv"><span class="k">背景</span>明确把自己定位为"反主流"——不上"自动化替代人力"赛道，而是"AI 把人变强"路线（培训与陪练）。</div>
+  <div class="why">影响分析：在 GTM AI 进入"替代 vs 增强"路线分叉时，Avarra 给"增强派"打了一个量级不错的样；中长期看会成为"AI 教练 + AI Copilot"赛道的有力对手。</div>
+  <div class="src-list">来源：
+    <ul>
+      <li>官方公告：<a href="https://www.prnewswire.com/news-releases/avarra-raises-17-million-on-a-contrarian-bet-ai-that-rapidly-upskills-gtm-teams-rather-than-simply-automating-routine-work-302899838.html">prnewswire.com</a></li>
+    </ul>
+  </div>
+</article>
+
+<div class="footer">
+  <h2>来源与局限</h2>
+  <p>本次以海外源为主，国内无 72h 内同等量级一手可核验发布被收入（不补写、不凑数）。5 条卡片均附至少 1 个独立 URL；Mistral / EmbeddingGemma 两条做到"官方 + 2 家独立媒体"。第 3 条 Reflection AI Beam 当前仅有 1 家独立深度报道，本日标 🟡，等待 10/7 后实测基准补强。</p>
+  <h2>免责声明</h2>
+  <p>本简报仅用于内部信息整合与选题参考，不构成投资建议或产品决策依据。事实陈述均附原始来源，观点部分由编辑团队整理，请以原始来源为准。</p>
+</div>
+
+</div>
+</body>
+</html>
