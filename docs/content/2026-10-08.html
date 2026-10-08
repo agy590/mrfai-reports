@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>工具多 ≠ Agent 强：把 MCP 当成工具箱而不是仪式 · MrFai 的 Agent 笔记</title>
+<style>
+:root{
+  --bg:#0b0e14;
+  --surface:#141821;
+  --fg:#e8eaed;
+  --muted:#b3b8c4;
+  --border:#232836;
+  --accent:#76a7ff;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  font-size:17px;
+  line-height:1.75;
+  -webkit-text-size-adjust:100%;
+  overflow-wrap:break-word;
+  word-wrap:break-word;
+}
+.wrap{
+  width:min(100%,720px);
+  margin:0 auto;
+  padding:18px;
+  padding-bottom:calc(18px + env(safe-area-inset-bottom));
+}
+.brand{
+  font-size:13px;
+  color:var(--muted);
+  letter-spacing:0.04em;
+  margin-bottom:14px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.brand .dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--accent);
+  display:inline-block;
+}
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:22px 18px;
+}
+h1{
+  font-size:clamp(25px,7vw,34px);
+  line-height:1.25;
+  margin:0 0 12px 0;
+  font-weight:700;
+  color:var(--fg);
+  overflow-wrap:break-word;
+  word-break:break-word;
+}
+.meta{
+  color:var(--muted);
+  font-size:13px;
+  margin-bottom:18px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.meta .sep{opacity:0.5}
+p{margin:0 0 14px 0}
+p strong, li strong{color:var(--fg);font-weight:600}
+ol.steps{
+  margin:18px 0;
+  padding:0;
+  list-style:none;
+  counter-reset:step;
+}
+ol.steps > li{
+  counter-increment:step;
+  padding:12px 14px 12px 46px;
+  margin:0 0 10px 0;
+  background:rgba(255,255,255,0.02);
+  border:1px solid var(--border);
+  border-radius:10px;
+  position:relative;
+}
+ol.steps > li::before{
+  content:counter(step);
+  position:absolute;
+  left:14px;top:12px;
+  width:24px;height:24px;
+  border-radius:50%;
+  background:var(--accent);
+  color:#0b0e14;
+  font-weight:700;
+  font-size:13px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.disclaimer{
+  margin-top:22px;
+  padding-top:14px;
+  border-top:1px dashed var(--border);
+  color:var(--muted);
+  font-size:12.5px;
+  line-height:1.7;
+}
+a{color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--accent)}
+@media (min-width:640px){
+  .wrap{padding:28px}
+  .card{padding:36px 38px}
+}
+@media print{
+  body{background:#fff;color:#000}
+  .card{border:none;padding:0;background:transparent}
+  a{color:#000;border:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand"><span class="dot"></span>MrFai 的 Agent 笔记</div>
+  <article class="card">
+    <h1>工具多 ≠ Agent 强：把 MCP 当成工具箱而不是仪式</h1>
+    <div class="meta">
+      <span>2026-10-08</span>
+      <span class="sep">·</span>
+      <span>主题：AI Agent / 多 Agent 协作</span>
+    </div>
+
+    <p>最近重看自己接过的几个 MCP 配置，发现一个老毛病：把"接上新工具"当成进步的证据。</p>
+
+    <p>我在做 MGC 复测系统的时候，一口气挂了八个 MCP server。想法是"全栈覆盖"。结果有一天 agent 调试路径时，把一个本来只在本地生效的 ssh config 拉进了上下文，下游差点被另一个 worker 拿去当默认连接。最关键的不是它差点发生什么，而是我后来翻日志发现：那个工具我从没在 trust gate 上审过，只是因为"看上去能用"就接进来了。</p>
+
+    <p>工具接进来是有成本的。每个 MCP 都是一个新的权限面、一个新的出错面、一个新的上下文污染源。你以为你在增加 agent 的能力，其实你在稀释它的注意力、增加它的失败模式、扩大它的信任半径。</p>
+
+    <p>更糟的是多 Agent 协作时。一个 agent 写出来的产物，默认会被下一个 agent 信任；MCP 工具越多，下游 agent 拿到的"已经发生了的事"就越多。链路越长，越没人验证。</p>
+
+    <p>具体该怎么做，四步：</p>
+
+    <ol class="steps">
+      <li><strong>列清单</strong>：每个 MCP 写一行——它能读什么、写什么、需要什么凭证。</li>
+      <li><strong>过 trust gate</strong>：新增或变更前，强制做来源、许可证、最小权限、可撤销四项检查。</li>
+      <li><strong>最小权限默认</strong>：能只读就别写、能本地就别网络、能临时就别持久。</li>
+      <li><strong>定期审查</strong>：每两周过一次，问"这个工具这个月用了几次？值得它带来的攻击面吗？"。</li>
+    </ol>
+
+    <p>工具多不是壁垒，工具克制才是。</p>
+
+    <div class="disclaimer">
+      本文为作者独立观点，不构成任何投资、交易或工程建议。文中涉及的失败模式来自个人项目复盘，名称已脱敏。
+    </div>
+  </article>
+</div>
+</body>
+</html>
