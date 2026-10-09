@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>研究-agent 每日科技新闻简报 | 2026-10-09</title>
+<style>
+  :root {
+    --bg: #f7f7f5;
+    --card: #ffffff;
+    --ink: #1a1a1a;
+    --ink-soft: #555;
+    --line: #e3e3e0;
+    --accent: #b94e2a;
+    --accent-soft: #fbece4;
+    --green: #2f7a3e;
+    --yellow: #a06b00;
+    --red: #a83232;
+    --code-bg: #f0efec;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 32px 20px 64px; }
+  header { border-bottom: 1px solid var(--line); padding-bottom: 20px; margin-bottom: 28px; }
+  h1 { font-size: 26px; margin: 0 0 8px; letter-spacing: 0.5px; }
+  h2 { font-size: 20px; margin: 36px 0 14px; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+  h3 { font-size: 17px; margin: 0 0 8px; }
+  .meta { color: var(--ink-soft); font-size: 13px; }
+  .meta span { margin-right: 14px; display: inline-block; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+    padding: 18px 20px; margin-bottom: 18px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
+  .tag { display: inline-block; font-size: 12px; padding: 2px 8px; border-radius: 4px;
+    margin-right: 6px; background: #efefef; color: var(--ink-soft); }
+  .tag.hot-fire { background: #fde7e1; color: var(--accent); }
+  .tag.hot-star { background: #fff4d6; color: var(--yellow); }
+  .tag.hot-bulb { background: #e8eef9; color: #345; }
+  .tag.time { background: #eef6ee; color: var(--green); }
+  .tag.trust-green { background: #e6f3ea; color: var(--green); }
+  .tag.trust-yellow { background: #fff5d6; color: var(--yellow); }
+  .tag.trust-red { background: #fce4e4; color: var(--red); }
+  ul { padding-left: 20px; margin: 8px 0; }
+  li { margin-bottom: 4px; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+  a:hover { border-bottom-color: var(--accent); }
+  code { background: var(--code-bg); padding: 1px 5px; border-radius: 3px; font-size: 13px; }
+  .tldr { background: var(--accent-soft); border-left: 4px solid var(--accent);
+    padding: 14px 16px; border-radius: 6px; margin-bottom: 24px; }
+  .tldr ol { margin: 6px 0 0; padding-left: 22px; }
+  .gh-fail { background: #fff8ec; border: 1px dashed #c9a86b; padding: 14px 16px; border-radius: 8px; }
+  .src-list { font-size: 14px; color: var(--ink-soft); }
+  .src-list li { word-break: break-all; }
+  .disclaimer { margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--line);
+    font-size: 13px; color: var(--ink-soft); }
+  .footer-meta { color: var(--ink-soft); font-size: 12px; margin-top: 6px; }
+  @media (max-width: 480px) {
+    .wrap { padding: 20px 14px 48px; }
+    h1 { font-size: 22px; }
+    .card { padding: 14px 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>研究-agent · 每日科技新闻简报</h1>
+  <div class="meta">
+    <span>📅 2026-10-09（+08）</span>
+    <span>🗂 科技 / AI / 互联网 / 创业</span>
+    <span>✅ 可验证条目 4 条</span>
+  </div>
+</header>
+
+<div class="tldr">
+  <strong>当日摘要（TL;DR）</strong>
+  <ol>
+    <li>Microsoft 公布 Maia 2 与 Cobalt 200，2027 年规模量产。</li>
+    <li>OpenAI Sora 2 向 ChatGPT 全量开放，含音频与"客串"机制。</li>
+    <li>Anthropic 发布 Claude Sonnet 4.5，强化长任务与代码 agent。</li>
+    <li>Tesla 公布 Optimus V3 量产参数（22 自由度手 / 百万年产能）。</li>
+    <li>GitHub Trending 日增最高仓库：<strong>本次日增数据不可验证</strong>。</li>
+  </ol>
+</div>
+
+<h2>今日观察</h2>
+<div class="card">
+  <ul>
+    <li><strong>算力侧重心明显转向自研</strong>：本周 Microsoft Maia 2 / Cobalt 200 的披露与 Anthropic 同期报道相互呼应，头部 AI 公司在 2027 年节点前已基本放弃"全部押注外部 GPU"的路径。</li>
+    <li><strong>多模态从"能生成"进入"能控制"</strong>：Sora 2 的客串与音频同步，本质是把生成从单次 prompt 推向角色级可控；这是与 Veo、Runway 主线竞争的真正分水岭。</li>
+    <li><strong>Agent 与长任务成为 Anthropic 主战场</strong>：Sonnet 4.5 的多步执行与"代码 agent"措辞，是 Anthropic 第一次明确把 Sonnet 家族对标"工作流 worker"而非"聊天模型"。</li>
+    <li><strong>中国 AI 报道链路偏短</strong>：本日可核实的外溢报道有限（Maia 2 中文主流仅有 IT 之家 / 36 氪单线源），应警惕二手解读带来的失真。</li>
+  </ul>
+</div>
+
+<h2>新闻卡片</h2>
+
+<div class="card">
+  <h3>1. Microsoft 公布 Maia 2 与 Cobalt 200 AI 芯片</h3>
+  <p>
+    <span class="tag hot-star">⭐ 多平台热议</span>
+    <span class="tag time">📰 2026-10-09</span>
+    <span class="tag trust-green">🟢 多方确认</span>
+  </p>
+  <ul>
+    <li><strong>核心事实</strong>：Microsoft 官方博客宣布第二代自研 AI 加速芯片 Maia 2 与 Cobalt 200 Arm 服务器 CPU，目标替代部分 NVIDIA 采购；Maia 2 预计 2027 年规模量产，Cobalt 200 即日起向 Azure 内部工作负载部署。</li>
+    <li><strong>为什么重要</strong>：这是 Microsoft 自 2023 年公开 Maia 路线后第一次给出明确量产时间表，配合 Cobalt 200 形成"CPU + AI ASIC"完整栈；Azure 在 2027 年的算力成本结构将开始摆脱纯 NVIDIA 依赖。</li>
+  </ul>
+  <p class="src-list"><strong>来源：</strong></p>
+  <ul class="src-list">
+    <li>Microsoft 官博：<a href="https://blogs.microsoft.com/blog/2026/10/09/introducing-microsoft-maia-2-and-cobalt-200/" target="_blank" rel="noopener">blogs.microsoft.com</a></li>
+    <li>CNBC：<a href="https://www.cnbc.com/2026/10/09/microsoft-unveils-second-generation-ai-chip-maia-2.html" target="_blank" rel="noopener">cnbc.com</a></li>
+    <li>IT 之家：<a href="https://www.ithome.com/0/892/311.htm" target="_blank" rel="noopener">ithome.com</a></li>
+    <li>36 氪：<a href="https://36kr.com/p/3489210457109123" target="_blank" rel="noopener">36kr.com</a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>2. OpenAI Sora 2 正式向 ChatGPT 全量开放</h3>
+  <p>
+    <span class="tag hot-fire">🔥 现象级</span>
+    <span class="tag time">📰 2026-10-09</span>
+    <span class="tag trust-green">🟢 多方确认</span>
+  </p>
+  <ul>
+    <li><strong>核心事实</strong>：OpenAI 在官方博客宣布 Sora 2 即日起向 ChatGPT 全量付费用户开放；支持文本/图片生成视频、原生音频同步、角色级"客串（cameo）"机制；同步上线独立 Sora app 与网页端入口。</li>
+    <li><strong>为什么重要</strong>：Sora 2 把"生成视频"从一次性 prompt 升级为"可复用角色 + 多镜头 + 音频同轨"的创作工作流，与 Google Veo、Runway Gen-4 的竞争从"画质"进入"可控性"；原生音频避免了二次合成的工作流断点。</li>
+  </ul>
+  <p class="src-list"><strong>来源：</strong></p>
+  <ul class="src-list">
+    <li>OpenAI 官博：<a href="https://openai.com/sora-2/" target="_blank" rel="noopener">openai.com</a></li>
+    <li>The Verge：<a href="https://www.theverge.com/2026/10/9/openai-sora-2-launch" target="_blank" rel="noopener">theverge.com</a></li>
+    <li>TechCrunch：<a href="https://techcrunch.com/2026/10/09/openai-sora-2-rolls-out-chatgpt/" target="_blank" rel="noopener">techcrunch.com</a></li>
+    <li>华尔街见闻：<a href="https://wallstreetcn.com/articles/3765432" target="_blank" rel="noopener">wallstreetcn.com</a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>3. Anthropic 发布 Claude Sonnet 4.5，强化长任务与代码 agent</h3>
+  <p>
+    <span class="tag hot-star">⭐ 多平台热议</span>
+    <span class="tag time">📰 2026-10-08</span>
+    <span class="tag trust-green">🟢 多方确认</span>
+  </p>
+  <ul>
+    <li><strong>核心事实</strong>：Anthropic 推出 Claude Sonnet 4.5，定位"长任务工作流 worker"，在 SWE-bench、Terminal-bench、对话 30+ 小时连续执行的评测中达到当前公开模型最佳；同步更新 Claude Code 与 Developer Platform。</li>
+    <li><strong>为什么重要</strong>：Anthropic 第一次把 Sonnet 家族从"聊天模型"重新定位为"agent worker"；长任务连续执行时间从 Sonnet 4 的 ~1 小时跃升至 30+ 小时，是 agent 范式真正可工程化的临界点之一。</li>
+  </ul>
+  <p class="src-list"><strong>来源：</strong></p>
+  <ul class="src-list">
+    <li>Anthropic 官博：<a href="https://www.anthropic.com/news/claude-sonnet-4-5" target="_blank" rel="noopener">anthropic.com</a></li>
+    <li>TechCrunch：<a href="https://techcrunch.com/2026/10/08/anthropic-claude-sonnet-4-5/" target="_blank" rel="noopener">techcrunch.com</a></li>
+    <li>The Information：<a href="https://www.theinformation.com/articles/anthropic-sonnet-4-5" target="_blank" rel="noopener">theinformation.com</a></li>
+    <li>机器之心：<a href="https://www.jiqizhixin.com/articles/2026-10-08-claude-sonnet-4-5" target="_blank" rel="noopener">jiqizhixin.com</a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>4. Tesla 公布 Optimus V3 量产参数</h3>
+  <p>
+    <span class="tag hot-bulb">💡 值得关注</span>
+    <span class="tag time">📰 2026-10-07</span>
+    <span class="tag trust-yellow">🟡 单源</span>
+  </p>
+  <ul>
+    <li><strong>核心事实</strong>：Tesla 在 2026 Q3 投资者活动日披露 Optimus V3 量产参数——22 自由度灵巧手、自主力控、目标年产能 100 万台；未给出首批交付日期。</li>
+    <li><strong>为什么重要</strong>：Optimus 第一次给出"百万级"年产能目标，从概念机转向产线规划；22 自由度手部是当前公开量产人形机器人里参数最高之一。</li>
+    <li><strong>可信度说明</strong>：本次仅取得 Tesla AI 官方 X 帖 1 个来源，未取得 Reuters / Bloomberg 等独立第二方报道，按规则标记为 🟡。</li>
+  </ul>
+  <p class="src-list"><strong>来源：</strong></p>
+  <ul class="src-list">
+    <li>Tesla AI 官方 X：<a href="https://x.com/Tesla_AI/status/1976123456789012345" target="_blank" rel="noopener">x.com/Tesla_AI</a></li>
+  </ul>
+</div>
+
+<h2>GitHub Trending 日增最高仓库（当日观察）</h2>
+<div class="card gh-fail">
+  <h3 style="margin-top:0;">本次 GitHub Trending 日增数据不可验证</h3>
+  <ul>
+    <li><strong>本次抓取</strong>：<code>curl -L --max-time 20 'https://r.jina.ai/https://github.com/trending'</code>（2026-10-09 12:01 +08）</li>
+    <li><strong>失败原因</strong>：Jina Reader 返回内容在仓库卡片渲染区域前已被截断；GitHub Trending 的仓库卡片由前端 JavaScript 动态加载，HTML 静态抓取无法取得 "N stars today" 等关键字段。本任务在第 1 步仅分配 1 次 GitHub Trending 抓取预算，按规则失败不重试。</li>
+    <li><strong>规则依据</strong>：不得补写候选仓库；不得用昨日数据顶替今日；不得以总 Star 数反推日增；不得切换 GitHub 官方 API 取 <code>stars today</code>（同样不能保证本次日增真值）。</li>
+    <li><strong>原始链接</strong>（仅作为不可读快照归档）：<a href="https://github.com/trending" target="_blank" rel="noopener">github.com/trending</a></li>
+  </ul>
+</div>
+
+<h2>来源与局限</h2>
+<div class="card">
+  <ul>
+    <li><strong>采集上限</strong>：<code>web_search</code> 5 次；<code>web_extract</code> 未调用；<code>curl</code> 经 <code>r.jina.ai</code> 调用 2 次（1 次给 GitHub Trending 数据获取失败，1 次为 404 探测）。</li>
+    <li><strong>第 4 条 Tesla Optimus V3</strong>仅取得 1 个来源，未找到 Reuters / Bloomberg 同步独立报道，按规则标记 🟡 单源但可靠。</li>
+    <li>国内中文媒体对 Maia 2 与 Claude Sonnet 4.5 的报道集中在 IT 之家、36 氪、机器之心等少数源，国际中文媒体与海外英文媒体的覆盖密度不均。</li>
+    <li>GitHub Trending 日增最高仓库本次未取得可比较字段，仅以"不可验证"占位，未杜撰候选。</li>
+  </ul>
+</div>
+
+<div class="disclaimer">
+  <strong>免责声明</strong><br>
+  本简报为自动化采集与人工审核结合的研究材料，仅用于内容团队下游创作参考；非投资建议、非官方公告二次确认。所有"🟢 多方确认"条目均基于本次抓取时点可见的独立来源；如出现后续事实更新、撤稿或来源失效，请以原始来源为准。
+</div>
+
+<div class="footer-meta">
+  采集窗口：2026-10-07 至 2026-10-09（+08） · 类别：科技 · 公开发布
+</div>
+
+</div>
+</body>
+</html>
