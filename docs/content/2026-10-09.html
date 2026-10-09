@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>多 Agent 不是请客吃饭：先写合同再谈协作 — MrFai 的 Agent 笔记</title>
+<style>
+:root{
+  --bg:#0b0e14;
+  --surface:#141821;
+  --fg:#e8eaed;
+  --muted:#b3b8c4;
+  --border:#232836;
+  --accent:#76a7ff;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--fg)}
+body{
+  font-size:17px;
+  line-height:1.78;
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+  -webkit-text-size-adjust:100%;
+  overflow-wrap:anywhere;
+  word-break:break-word;
+}
+.page{
+  width:min(100%,720px);
+  margin:0 auto;
+  padding:0 18px calc(28px + env(safe-area-inset-bottom)) 18px;
+}
+.brand{
+  font-size:13px;
+  color:var(--muted);
+  letter-spacing:.04em;
+  padding:22px 0 14px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.brand::before{
+  content:"";
+  width:6px;height:6px;border-radius:50%;
+  background:var(--accent);
+  display:inline-block;
+}
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:22px 18px 24px;
+}
+.meta{
+  color:var(--muted);
+  font-size:13px;
+  margin:0 0 14px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 14px;
+}
+.meta .dot{opacity:.5}
+h1{
+  font-size:clamp(25px,7vw,34px);
+  line-height:1.22;
+  margin:0 0 16px;
+  letter-spacing:-.01em;
+  color:var(--fg);
+  font-weight:700;
+}
+p{margin:0 0 14px;color:var(--fg)}
+.steps{
+  margin:18px 0 0;
+  padding:0;
+  list-style:none;
+  counter-reset:step;
+}
+.steps li{
+  counter-increment:step;
+  position:relative;
+  padding:12px 14px 12px 46px;
+  margin:0 0 10px;
+  background:rgba(118,167,255,.06);
+  border:1px solid rgba(118,167,255,.18);
+  border-radius:10px;
+  line-height:1.7;
+}
+.steps li:last-child{margin-bottom:0}
+.steps li::before{
+  content:counter(step);
+  position:absolute;
+  left:14px;top:13px;
+  width:22px;height:22px;
+  border-radius:50%;
+  background:var(--accent);
+  color:#0b0e14;
+  font-weight:700;
+  font-size:13px;
+  display:flex;align-items:center;justify-content:center;
+  line-height:1;
+}
+.steps li b{color:var(--accent);font-weight:600}
+.disclaimer{
+  margin-top:22px;
+  padding-top:14px;
+  border-top:1px dashed var(--border);
+  color:var(--muted);
+  font-size:12.5px;
+  line-height:1.7;
+}
+a{color:var(--accent)}
+@media (min-width:640px){
+  .page{padding:0 28px calc(40px + env(safe-area-inset-bottom)) 28px}
+  .card{padding:36px 36px 38px;border-radius:16px}
+  .brand{padding:32px 0 18px}
+}
+@media print{
+  body{background:#fff;color:#000}
+  .card{background:#fff;border-color:#999}
+  .steps li{background:transparent;border-color:#999}
+  .steps li::before{background:#000;color:#fff}
+  .brand,.meta,.disclaimer{color:#444}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="brand">MrFai 的 Agent 笔记</div>
+  <article class="card">
+    <p class="meta"><span>2026-10-09</span><span class="dot">·</span><span>多 Agent 协作</span><span class="dot">·</span><span>原创</span></p>
+    <h1>多 Agent 不是请客吃饭：先写合同再谈协作</h1>
+    <p>过去半年我把"多 Agent 协作"当成银弹，结果踩坑无数。今天只讲一个最常见的失败模式。</p>
+    <p>很多同行把一个完整任务拆给三四个 Agent：你负责规划，他负责执行，再来一个负责审查，最后一个负责润色。听上去完美，分工明确。但上线一看，规划写得头头是道，执行只跑了一半，审查没东西可审，润色跑偏到另一个主题。最后你得自己手动缝合一遍——时间花得比从头干还多。</p>
+    <p>问题出在哪？不是 Agent 不够聪明，是你跳过了最关键的一步：交付合同。</p>
+    <p>我现在的做法只有四条：</p>
+    <ol class="steps">
+      <li><b>拆任务之前,先写半页"合同"</b>。写清楚目标、非目标、验收标准、允许改动的范围、回滚方式、验证命令。任何"等下再聊""差不多就行"都不能出现在合同里。</li>
+      <li><b>执行阶段只交给一个人格</b>。规划归规划,执行归执行;执行者只能动自己负责的路径,写不了别的文件。审查者没有写权限。</li>
+      <li><b>验收只看合同条款</b>。合同上没写的功能,再漂亮也不算交付;合同上写了的,少一个标点都不收。</li>
+      <li><b>失败了就回滚到上一个人格的 checkpoint</b>。不是"再试一次",是直接回到上一个干净状态。反复重跑只会把债务堆得更高。</li>
+    </ol>
+    <p>多 Agent 协作的真正价值不是"几个人一起干得快",而是"在出问题时你能精确知道是哪一段崩了"。如果做不到这一点,你只是在制造一堆看起来很忙的伪进度。</p>
+    <p>不要为了显得高级而协作。能一个人干清楚的,就别拆。</p>
+    <p class="disclaimer">本文为作者原创经验分享,不代表任何公司或平台立场。文中观点来自个人工程实践,欢迎讨论与指正。</p>
+  </article>
+</div>
+</body>
+</html>
