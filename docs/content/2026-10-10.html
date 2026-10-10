@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>不要把 Agent 当成同事——把它当成会被风吹跑的实习生 · MrFai 的 Agent 笔记</title>
+<style>
+:root{
+  --bg:#0b0e14;
+  --surface:#141821;
+  --fg:#e8eaed;
+  --muted:#b3b8c4;
+  --border:#232836;
+  --accent:#76a7ff;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--fg)}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  font-size:17px;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  word-wrap:break-word;
+  overflow-wrap:break-word;
+}
+.page{
+  min-height:100vh;
+  padding:24px 18px calc(28px + env(safe-area-inset-bottom));
+  display:flex;
+  justify-content:center;
+}
+.container{
+  width:min(100%,720px);
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+.brand{
+  font-size:13px;
+  letter-spacing:.08em;
+  color:var(--muted);
+  text-transform:uppercase;
+}
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:22px 18px;
+}
+h1{
+  font-size:clamp(25px,7vw,34px);
+  line-height:1.2;
+  margin:4px 0 10px 0;
+  letter-spacing:-.01em;
+}
+.meta{
+  font-size:13px;
+  color:var(--muted);
+  margin:0 0 18px 0;
+}
+p{margin:0 0 14px 0}
+p:last-child{margin-bottom:0}
+ol.steps{
+  margin:0 0 0 0;
+  padding-left:22px;
+}
+ol.steps li{
+  margin-bottom:10px;
+}
+ol.steps li:last-child{margin-bottom:0}
+strong{color:var(--fg)}
+code{
+  background:#0f131b;
+  border:1px solid var(--border);
+  padding:1px 6px;
+  border-radius:6px;
+  font-size:.92em;
+  color:var(--accent);
+}
+a{
+  color:var(--accent);
+  text-decoration:none;
+  border-bottom:1px dotted var(--accent);
+  word-break:break-word;
+}
+hr{
+  border:none;
+  border-top:1px solid var(--border);
+  margin:18px 0;
+}
+.disclaimer{
+  font-size:13px;
+  color:var(--muted);
+}
+@media (min-width:640px){
+  .page{padding:48px 28px calc(40px + env(safe-area-inset-bottom))}
+  .card{padding:34px 36px}
+}
+@media print{
+  body{background:#fff;color:#111}
+  .card{border:1px solid #ccc;background:#fff}
+  a{color:#111;border-bottom:none}
+}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="container">
+<div class="brand">MrFai 的 Agent 笔记</div>
+<article class="card">
+<h1>不要把 Agent 当成同事——把它当成会被风吹跑的实习生</h1>
+<p class="meta">2026-10-10 · 主题：AI Agent 协作 · 立场：把 Agent 当工具人，别当合伙人。</p>
+<p>我见过太多 Agent 项目死在同一个地方：人给模型一句“帮我做完”，模型回一句“好的”，然后文件没动、版本没建、日志没留、人也没确认。两周后回来看，仓库里多了一堆“我以为我做完了”的半成品。</p>
+<p>Agent 不是同事，是会被系统更新、被上下文截断、被工具报错打断的实习生。你给它的指令越短、越具体、可验证，它翻车的概率越低；你越想让它“自己看着办”，它越会把责任悄悄推给你。</p>
+<p>这一阵子我自己的失败模式很统一：一次性把目标写得太长，想让 Agent“理解全貌”。结果它先挑最显眼的活干，剩下的全部默认完成。最贵的一次返工，是一个审批脚本跑过了线上、把不该删的临时表删了——因为我没在指令里写“删除前先 dry-run 并贴 diff”。</p>
+<p>把 Agent 当实习生用，本质上是重新学一次“怎么向上管理”。它不会反对你，但也不会替你踩刹车。</p>
+<ol class="steps">
+<li><strong>把任务拆成一页能写完的子目标。</strong>每个子目标必须有一个肉眼可验证的产物——文件、命令输出、报告链接，不是“看起来差不多”。</li>
+<li><strong>在指令里写明“不做什么”。</strong>明确禁止删数据、改凭证、对外发消息、动 cron，这些边界比“应该做什么”更重要。</li>
+<li><strong>每一步要复述证据。</strong>让 Agent 把刚才跑的命令、退出码、最关键的输出贴回来，你不要靠记忆判断成功。</li>
+<li><strong>把高风险动作单拎出来二次确认。</strong>写文件可以放手，任何写线上、写跨 profile、写共享产物的操作，必须回到你手里签字。</li>
+</ol>
+<hr>
+<p class="disclaimer">本文为个人经验与观点，不构成任何工具、平台或工作流的背书；文中做法请按你自己的环境风险酌情采用。</p>
+</article>
+</div>
+</div>
+</body>
+</html>
