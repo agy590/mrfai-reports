@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>别再让你的 Agent 永远在写计划｜MrFai 的 Agent 笔记</title>
+<style>
+  :root{
+    --bg:#0b0e14;
+    --surface:#141821;
+    --fg:#e8eaed;
+    --muted:#b3b8c4;
+    --border:#232836;
+    --accent:#76a7ff;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--fg);
+    font-size:17px;
+    line-height:1.75;
+    -webkit-text-size-adjust:100%;
+    overflow-wrap:break-word;
+    word-break:break-word;
+    padding-bottom:env(safe-area-inset-bottom);
+  }
+  a{color:var(--accent);text-decoration:none;}
+  a:hover,a:focus{text-decoration:underline;}
+  .wrap{
+    width:min(100%,720px);
+    margin:0 auto;
+    padding:18px;
+  }
+  .brand{
+    color:var(--muted);
+    font-size:13px;
+    letter-spacing:0.02em;
+    margin:8px 0 18px;
+  }
+  .card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:22px 20px 24px;
+  }
+  h1{
+    margin:0 0 8px;
+    font-size:clamp(25px,7vw,34px);
+    line-height:1.25;
+    font-weight:700;
+    word-break:break-word;
+  }
+  .meta{
+    color:var(--muted);
+    font-size:13px;
+    margin:0 0 22px;
+  }
+  p{margin:0 0 14px;}
+  ol.steps{
+    margin:6px 0 18px;
+    padding-left:22px;
+  }
+  ol.steps li{
+    margin-bottom:10px;
+    word-break:break-word;
+  }
+  .disclaimer{
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.7;
+    border-top:1px dashed var(--border);
+    padding-top:14px;
+    margin-top:18px;
+  }
+  @media (min-width:640px){
+    .wrap{padding:28px;}
+    .card{padding:36px 38px;}
+  }
+  @media print{
+    body{background:#fff;color:#000;}
+    .card{background:#fff;border:1px solid #ccc;}
+    .brand,.meta,.disclaimer{color:#555;}
+  }
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="brand">MrFai 的 Agent 笔记</div>
+    <article class="card">
+      <h1>别再让你的 Agent 永远在写计划</h1>
+      <p class="meta">2026-10-11 · 主题：多 Agent 协作 · 工程经验</p>
+
+      <p>做 Agent 协作一段时间后，最常见的失败不是写错了代码，而是 Agent 在「分析 → 计划 → 回顾 → 再分析」里打转，明明只要跑一行命令就能确认的事，最后变成了一份 800 字的报告交付。</p>
+
+      <p>我曾犯过这个错误:让分析 Agent 出了一份三段的「上线方案」，又让审查 Agent 提了四条反对意见,最后执行 Agent 才拿到的任务,是「按已经审核过的方案跑命令」。这时候域外的真实问题一个也没出现,问题全卡在自己的工作流里。</p>
+
+      <p>立场:Agent 的产出必须能在当天落到磁盘、终端或一条对外的消息。停止用「为了稳健」当作不出活的理由。</p>
+
+      <p>四步可抄:</p>
+      <ol class="steps">
+        <li>计划阶段为一段不超过 120 字的目标,而不是多段论证。</li>
+        <li>每个计划文末列一条最便宜的「验证它有效」的命令。</li>
+        <li>给执行 Agent 的输入必须包含「允许修改路径」与「回滚方式」。</li>
+        <li>一天结束前 checkpoint:今天那条命令跑了,结果是什么,写到 SSOT。</li>
+      </ol>
+
+      <p>如果一份建议连一条命令都没让你跑,那它现在还只是草稿。</p>
+
+      <p class="disclaimer">本文为个人工程经验,不构成产品建议或投资意见;引用的工具与第三方项目名称属于通用描述,不构成推荐。</p>
+    </article>
+  </main>
+</body>
+</html>
