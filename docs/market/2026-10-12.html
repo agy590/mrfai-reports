@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日市场简报 · 2026-10-12</title>
+<style>
+  :root {
+    --bg: #0f1419;
+    --card: #1a1f29;
+    --border: #2a313c;
+    --text: #e6edf3;
+    --muted: #7d8590;
+    --up: #3fb950;
+    --down: #f85149;
+    --neutral: #d29922;
+    --accent: #58a6ff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .header {
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+  .header h1 { font-size: 28px; color: var(--accent); margin-bottom: 4px; }
+  .header .meta { color: var(--muted); font-size: 13px; }
+  .section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .section h2 {
+    color: var(--accent);
+    font-size: 20px;
+    margin-bottom: 16px;
+    border-left: 4px solid var(--accent);
+    padding-left: 12px;
+  }
+  .section h3 {
+    color: var(--text);
+    font-size: 16px;
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+  th {
+    background: var(--border);
+    color: var(--muted);
+    text-align: left;
+    padding: 8px 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  tr:hover td { background: rgba(88, 166, 255, 0.05); }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .neutral { color: var(--neutral); }
+  .muted { color: var(--muted); }
+  .kpi {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin: 12px 0;
+  }
+  .kpi-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 16px;
+  }
+  .kpi-label {
+    color: var(--muted);
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .kpi-value {
+    font-size: 22px;
+    font-weight: 600;
+  }
+  ul { padding-left: 20px; margin: 8px 0; }
+  li { margin-bottom: 6px; }
+  .footer {
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+  .source {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+</style>
+</head>
+<body>
+  <div class="header">
+    <h1>📊 每日市场简报 · 2026-10-12</h1>
+    <div class="meta">📅 2026-10-12 · 采集 09:16 MYT · 数据源: Yahoo Finance、Federal Reserve、BLS 官方发布日程</div>
+  </div>
+
+  <div class="section">
+    <h2>🇲🇾 马来西亚股市</h2>
+    <div class="kpi">
+      <div class="kpi-card">
+        <div class="kpi-label">KLCI 水平</div>
+        <div class="kpi-value down">1612.75 <span class="muted" style="font-size:14px">(-1.26%)</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">USD/MYR</div>
+        <div class="kpi-value neutral">4.0810 <span class="muted" style="font-size:14px">(-0.09%)</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">马股快照时间</div>
+        <div class="kpi-value" style="font-size:16px">09:00:07 — 09:00:47 MYT</div>
+      </div>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>代码</th><th>公司</th><th>价格 (RM)</th><th>Δ (RM)</th><th>Δ%</th><th>时间 (MYT)</th><th>备注</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1155.KL</td><td>MAYBANK 马银行</td><td>9.83</td><td class="down">-0.14</td><td class="down">-1.40%</td><td>09:00:12</td><td>跟随板块走低</td></tr>
+        <tr><td>1023.KL</td><td>CIMB 联昌银行</td><td>7.27</td><td class="down">-0.43</td><td class="down">-5.58%</td><td>09:00:30</td><td>跌幅最大</td></tr>
+        <tr><td>1295.KL</td><td>PBBANK 公众银行</td><td>4.60</td><td class="down">-0.07</td><td class="down">-1.50%</td><td>09:00:07</td><td>银行板块弱势</td></tr>
+        <tr><td>5347.KL</td><td>TENAGA 国家能源</td><td>12.96</td><td class="up">+0.06</td><td class="up">+0.47%</td><td>09:00:32</td><td>唯一收涨</td></tr>
+        <tr><td>5225.KL</td><td>IHH 医疗集团</td><td>7.87</td><td class="down">-0.04</td><td class="down">-0.51%</td><td>09:00:11</td><td>防御性略稳</td></tr>
+        <tr><td>7113.KL</td><td>TOPGLOV 顶级手套</td><td>0.865</td><td class="down">-0.01</td><td class="down">-1.14%</td><td>09:00:47</td><td>延续弱势</td></tr>
+      </tbody>
+    </table>
+    <p class="source">表注：数据来自 Yahoo Finance 对应代码本次快照（captured_at_myt = 2026-10-12 09:16 MYT），各行 market_time_myt 为该品种自己的最近成交/报价时间。</p>
+
+    <h3>板块动态</h3>
+    <ul>
+      <li><strong>银行：</strong>CIMB -5.58%、MAYBANK -1.40%、PBBANK -1.50%，今日开盘银行板块领跌大盘。</li>
+      <li><strong>公用事业：</strong>TENAGA +0.47% 一枝独秀，与防御性配置相关。</li>
+      <li><strong>医疗与手套：</strong>IHH 微跌、TOPGLOV 跟跌大市，板块缺乏独立催化。</li>
+    </ul>
+
+    <h3>关键新闻</h3>
+    <ul>
+      <li>FOMC 9/15–16 会议纪要已于 10/7 14:00 ET 释放（federalreserve.gov），显示委员全票通过加息 25bp 至 3.75–4.00%，下次会议 10/27–28。</li>
+      <li>BLS 官方发布日程：9 月 CPI 将于 10/14（周三）08:30 ET 公布（bls.gov/schedule/2026），市场预期 CPI YoY 3.6%、核心 CPI m/m 0.2%。</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🇺🇸 美国期货 + 美股</h2>
+    <div class="kpi">
+      <div class="kpi-card">
+        <div class="kpi-label">ES=F (S&P 500 Dec26)</div>
+        <div class="kpi-value up">7,882.00 <span class="muted" style="font-size:14px">(+0.10%)</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">NQ=F (Nasdaq 100 Dec26)</div>
+        <div class="kpi-value down">31,235.00 <span class="muted" style="font-size:14px">(-0.79%)</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">YM=F (Mini Dow Dec26)</div>
+        <div class="kpi-value up">52,098.00 <span class="muted" style="font-size:14px">(+0.54%)</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">DXY</div>
+        <div class="kpi-value up">102.109 <span class="muted" style="font-size:14px">(+0.27%)</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">10Y ^TNX</div>
+        <div class="kpi-value down">5.244% <span class="muted" style="font-size:14px">(-6.7 bp)</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">^VIX</div>
+        <div class="kpi-value down">14.84 <span class="muted" style="font-size:14px">(-4.38%)</span></div>
+      </div>
+    </div>
+
+    <h3>Magnificent 7（时间戳 = 上交易日 10/9 收盘快照）</h3>
+    <table>
+      <thead>
+        <tr><th>代码</th><th>公司</th><th>10/9 收盘</th><th>Δ%</th><th>说明</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>NVDA</td><td>英伟达</td><td>229.28</td><td class="down">-2.00%</td><td>上交易日收盘</td></tr>
+        <tr><td>AAPL</td><td>苹果</td><td>336.64</td><td class="up">+0.88%</td><td>上交易日收盘</td></tr>
+        <tr><td>MSFT</td><td>微软</td><td>535.07</td><td class="up">+3.39%</td><td>上交易日表现最强</td></tr>
+        <tr><td>GOOGL</td><td>谷歌</td><td>351.66</td><td class="up">+2.38%</td><td>上交易日收盘</td></tr>
+        <tr><td>META</td><td>Meta</td><td>718.67</td><td class="down">-1.29%</td><td>上交易日收盘</td></tr>
+        <tr><td>TSLA</td><td>特斯拉</td><td>382.70</td><td class="up">+3.27%</td><td>上交易日反弹</td></tr>
+        <tr><td>AMZN</td><td>亚马逊</td><td>262.43</td><td class="up">+4.34%</td><td>上交易日领涨</td></tr>
+      </tbody>
+    </table>
+    <p class="source">说明：Yahoo 返回时间戳 2026-10-10 04:00 ET，对应美股 10/9 收盘数据；不可解读为 10/12 周日盘前成交。</p>
+
+    <h3>今日关注事件</h3>
+    <ul>
+      <li>10/14（周三）08:30 ET：BLS 9 月 CPI；预期 CPI YoY 3.6%、m/m 0.6%，核心 CPI m/m 预期 0.2%。</li>
+      <li>10/14 18:00 ET：Beige Book。</li>
+      <li>10/15 08:30 ET：PPI 9 月。</li>
+      <li>10/16 08:30 ET：9 月进口/出口价格。</li>
+      <li>10/27–28：FOMC 议息会议。</li>
+    </ul>
+
+    <h3>核心驱动因素</h3>
+    <ul>
+      <li>10/9 三大指数全周收涨（Dow +0.83%、S&P +1.15%、Nasdaq +0.64%，按 FXEmpire 整理），市场进入财报与 CPI 超级周。</li>
+      <li>10Y 收益率从 5.311% 回落到 5.244%，与周初风险偏好改善同步。</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🥇 贵金属</h2>
+    <div class="kpi">
+      <div class="kpi-card">
+        <div class="kpi-label">COMEX 黄金主力 GC=F</div>
+        <div class="kpi-value up">4,242.30 <span class="muted" style="font-size:14px">USD/oz (+1.32%)</span></div>
+      </div>
+    </div>
+    <h3>驱动因素</h3>
+    <ul>
+      <li>美元指数 102.109（+0.27%），金价仍上行；与利率回落、避险需求叠加。</li>
+      <li>10Y 5.244%（-6.7 bp），实际利率小幅回落支撑黄金。</li>
+      <li>关键事件：CPI 10/14、FOMC 纪要 10/7 已释放、地缘溢价（美伊冲突）支撑避险。</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🛢 原油</h2>
+    <div class="kpi">
+      <div class="kpi-card">
+        <div class="kpi-label">WTI CL=F</div>
+        <div class="kpi-value up">89.80 <span class="muted" style="font-size:14px">USD/桶 (+0.40%)</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Brent BZ=F</div>
+        <div class="kpi-value up">102.52 <span class="muted" style="font-size:14px">USD/桶 (+1.93%)</span></div>
+      </div>
+    </div>
+    <h3>驱动因素</h3>
+    <ul>
+      <li>周末无新 OPEC+ 增产声明，本次未抓到 10/12 公开通讯社表态。</li>
+      <li>9 月 CPI 中能源分项依旧是市场关注重点（MUFG 预期）。</li>
+      <li>地缘政治：周末对伊制裁/红海风险相关报道未在公开渠道核实在新发布。</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>💡 总结与观察</h2>
+    <p><strong>市场情绪：</strong>周一日内 light risk-on（ES / Dow 小幅高、NQ 转弱），9 月 CPI 与 FOMC 前仓位相对克制（VIX 14.84）。</p>
+
+    <h3>今日三大关注点</h3>
+    <ul>
+      <li>周一电子盘 ES/Dow 小幅高、NQ 转弱：科技 vs 周期风格切换。</li>
+      <li>9/15–16 FOMC 纪要已被市场充分消化（10/7 已释放），关注点转向 10/27–28 会议是否前置。</li>
+      <li>周三 CPI 是本周最大单一风险事件（10/14 08:30 ET），核心 CPI m/m 为关键变量。</li>
+    </ul>
+
+    <h3>马来西亚视角观察</h3>
+    <ul>
+      <li>周一日内银行板块领跌 KLCI，CIMB -5.58% 跌幅显著，需进一步核对是否与单一公司层面公告相关（本次未抓到马股本地公告）。</li>
+      <li>TENAGA +0.47% 的逆势上行，市场防御性配置再次转向公用事业，关注回吐幅度。</li>
+    </ul>
+
+    <h3>美股视角观察</h3>
+    <ul>
+      <li>10/9 Mag-7 收盘分化（NVDA/META 弱、MSFT/AMZN/TSLA 强），周一日内 NQ 期货 -0.79%、ES +0.10%。</li>
+      <li>当前快照不构成实时美股盘前成交，仅可视为 10/9 收盘快照。</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    由 Hermes Agent 自动生成 · 数据来源：Yahoo Finance、Federal Reserve 官方日历 (federalreserve.gov)、BLS 官方发布日程 (bls.gov)<br>
+    本报告仅为跨市场状态观察，不构成投资建议、买卖/入场/止损/目标价、仓位/杠杆或任何可执行交易指令。
+  </div>
+</body>
+</html>
