@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>别让 Agent 替你做决定 — MrFai 的 Agent 笔记</title>
+<style>
+  :root{
+    --bg:#0b0e14;
+    --surface:#141821;
+    --fg:#e8eaed;
+    --muted:#b3b8c4;
+    --border:#232836;
+    --accent:#76a7ff;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);
+    -webkit-text-size-adjust:100%;text-size-adjust:100%;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    font-size:17px;line-height:1.75;
+    word-wrap:break-word;overflow-wrap:anywhere;
+  }
+  body{padding:0 18px calc(28px + env(safe-area-inset-bottom)) 18px;
+    display:flex;flex-direction:column;align-items:center;
+    min-height:100vh;}
+  main{width:min(100%,720px);margin:0 auto;}
+  header.brand{
+    width:min(100%,720px);margin:0 auto;
+    padding:22px 0 6px 0;
+    color:var(--muted);font-size:13px;letter-spacing:.04em;
+    display:flex;align-items:center;gap:8px;
+  }
+  header.brand .dot{
+    display:inline-block;width:8px;height:8px;border-radius:50%;
+    background:var(--accent);
+  }
+  article.card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:22px 18px;
+    margin-top:8px;
+  }
+  h1{
+    margin:0 0 10px 0;
+    font-size:clamp(25px,7vw,34px);
+    line-height:1.2;
+    font-weight:700;
+    color:var(--fg);
+    word-break:break-word;
+    overflow-wrap:break-word;
+  }
+  .meta{
+    color:var(--muted);font-size:13px;margin:0 0 18px 0;
+    display:flex;flex-wrap:wrap;gap:10px;
+  }
+  .meta .tag{color:var(--accent)}
+  h2{
+    font-size:18px;line-height:1.35;margin:22px 0 8px 0;
+    color:var(--fg);font-weight:600;
+  }
+  p{margin:0 0 14px 0;color:var(--fg);}
+  p.lead{color:var(--muted);}
+  ol.steps{
+    margin:8px 0 4px 0;padding-left:22px;color:var(--fg);
+  }
+  ol.steps li{margin-bottom:10px;}
+  ol.steps li::marker{color:var(--accent);font-weight:600;}
+  hr.sep{border:0;border-top:1px solid var(--border);margin:22px 0 14px 0;}
+  .disclaimer{
+    color:var(--muted);font-size:13px;line-height:1.7;margin:0;
+  }
+  a{color:var(--accent);text-decoration:none;word-break:break-all;}
+
+  @media (min-width:640px){
+    body{padding-left:28px;padding-right:28px;}
+    article.card{padding:36px 36px;}
+    header.brand{padding-top:28px;}
+  }
+  @media print{
+    body{background:#fff;color:#000;}
+    article.card{border:1px solid #ccc;background:#fff;}
+    .meta,.disclaimer{color:#444;}
+    a{color:#000;text-decoration:underline;}
+  }
+</style>
+</head>
+<body>
+  <header class="brand"><span class="dot"></span>MrFai 的 Agent 笔记</header>
+  <main>
+    <article class="card">
+      <h1>别让 Agent 替你做决定</h1>
+      <p class="meta">
+        <span>2026-10-12</span>
+        <span>·</span>
+        <span class="tag">AI Agent</span>
+      </p>
+
+      <p class="lead">把判断权交给 Agent，是这一行最容易踩、也最不该踩的坑。</p>
+
+      <p>我自己最早栽过的一个跟头：让 Agent 顺手帮我"决定下一步该做什么"。结果是它确实很勤快——列任务、拆步骤、跑命令、汇报结果；但每一步都在一个我自己没明说的假设上滑行。我以为它在替我想清楚，它以为我在授权它直接推进。两边都对，但加在一起就是把判断悄悄外包了。</p>
+
+      <p>后来我给自己立了一个死规矩：<strong>Agent 可以提议、可以执行、可以替我查资料；判断、批准、和"这件事到底要不要做"，必须留在人这边。</strong>不是因为 Agent 笨，而是因为一旦把判断也交出去，你就再也不知道它替你跳过了哪一步。</p>
+
+      <h2>具体怎么做</h2>
+      <ol class="steps">
+        <li><strong>先写一句话目标。</strong>任何任务开始前，自己用一行中文写清楚"今天要交付的是什么"；写不出来的，先别启动 Agent。</li>
+        <li><strong>区分"建议"和"动作"。</strong>Agent 输出方案时，标清楚"这是建议，需要你点头"；要执行的动作单列一栏，等你逐条确认。</li>
+        <li><strong>强制一个冷却点。</strong>涉及发布、付费、删改、对外发消息这四类动作，Agent 就算做完了也只给摘要，最后那一下"提交"必须你自己按。</li>
+        <li><strong>事后写一句复盘。</strong>跑完一个回合，花两分钟记一句"哪一步是 Agent 替我决定的，我原本不一定同意"；连续记一周，你会看见自己的盲区。</li>
+      </ol>
+
+      <hr class="sep">
+      <p class="disclaimer">本文为个人经验与观点，不构成投资或技术建议。文中提到的工具与方法仅作示例，请按自身情况审慎评估。</p>
+    </article>
+  </main>
+</body>
+</html>
