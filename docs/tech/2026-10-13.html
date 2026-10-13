@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日科技新闻简报 · 2026-10-13</title>
+<style>
+:root {
+  --bg: #f7f8fa;
+  --card-bg: #ffffff;
+  --border: #e3e6eb;
+  --text: #1c1e21;
+  --text-soft: #4e5969;
+  --accent: #2256e3;
+  --accent-soft: #eaf0ff;
+  --tag-green: #1a8754;
+  --tag-green-bg: #e6f4ed;
+  --tag-yellow: #b76e00;
+  --tag-yellow-bg: #fef5e7;
+  --tag-blue: #1f4ea6;
+  --tag-blue-bg: #e8eefb;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px 18px 64px;
+}
+header.page {
+  padding: 20px 0 8px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 28px;
+}
+header.page h1 {
+  font-size: 26px;
+  margin: 0 0 6px;
+  letter-spacing: 0.5px;
+}
+header.page .meta {
+  font-size: 13px;
+  color: var(--text-soft);
+}
+h2.section-title {
+  font-size: 19px;
+  margin: 36px 0 14px;
+  padding-left: 10px;
+  border-left: 4px solid var(--accent);
+}
+.tldr {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 20px;
+}
+.tldr ul {
+  margin: 0;
+  padding-left: 18px;
+}
+.tldr li {
+  margin-bottom: 8px;
+}
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 22px;
+  margin-bottom: 18px;
+}
+.card h3 {
+  font-size: 18px;
+  margin: 0 0 6px;
+  color: var(--text);
+}
+.card .subtitle {
+  font-size: 13px;
+  color: var(--text-soft);
+  margin-bottom: 14px;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid transparent;
+}
+.tag-type { background: var(--accent-soft); color: var(--accent); border-color: #c5d6ff; }
+.tag-heat { background: var(--tag-yellow-bg); color: var(--tag-yellow); border-color: #f1d59e; }
+.tag-time { background: var(--tag-blue-bg); color: var(--tag-blue); border-color: #c0d0f3; }
+.tag-green { background: var(--tag-green-bg); color: var(--tag-green); border-color: #b6dfc7; }
+.tag-yellow { background: var(--tag-yellow-bg); color: var(--tag-yellow); border-color: #f1d59e; }
+.fact-row {
+  margin: 8px 0;
+  font-size: 14.5px;
+}
+.fact-row b {
+  color: var(--text);
+}
+.card ul {
+  margin: 8px 0;
+  padding-left: 18px;
+}
+.card li { margin-bottom: 6px; }
+.observation {
+  background: #f0f3f9;
+  border-left: 3px solid var(--accent);
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-size: 14.5px;
+  margin: 14px 0;
+}
+.observation b { color: var(--accent); }
+.source-list {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
+  font-size: 13.5px;
+}
+.source-list a {
+  color: var(--accent);
+  text-decoration: none;
+  word-break: break-all;
+}
+.source-list a:hover { text-decoration: underline; }
+.gh-trending table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-size: 14px;
+}
+.gh-trending th, .gh-trending td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.gh-trending th {
+  background: var(--accent-soft);
+  font-weight: 600;
+  color: var(--accent);
+}
+.gh-trending td.k {
+  font-weight: 600;
+  width: 130px;
+  color: var(--text-soft);
+}
+.gh-trending td a { color: var(--accent); text-decoration: none; }
+.gh-trending td a:hover { text-decoration: underline; }
+.disclaimer {
+  font-size: 12.5px;
+  color: var(--text-soft);
+  border-top: 1px solid var(--border);
+  margin-top: 30px;
+  padding-top: 14px;
+}
+.legend {
+  font-size: 12.5px;
+  color: var(--text-soft);
+  margin-bottom: 14px;
+}
+footer.page {
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--text-soft);
+}
+@media (max-width: 480px) {
+  .container { padding: 16px 12px 40px; }
+  header.page h1 { font-size: 22px; }
+  .card { padding: 16px 16px; }
+  .gh-trending table, .gh-trending thead, .gh-trending tbody, .gh-trending tr, .gh-trending td, .gh-trending th { display: block; }
+  .gh-trending th { display: none; }
+  .gh-trending td { border-bottom: none; padding: 4px 0; }
+  .gh-trending td.k { width: auto; font-weight: 600; color: var(--accent); padding-top: 8px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="page">
+  <h1>每日科技新闻简报</h1>
+  <div class="meta">2026-10-13（周二）· AI / 科技 / 互联网 / 创业 · 报告窗口 2026-10-10 → 2026-10-13</div>
+</header>
+
+<div class="legend">
+  可信度图例：🟢 已核验原文 · 🟡 单源但可靠 · 🔴 待验证（本次未使用 🔴 条目）
+</div>
+
+<h2 class="section-title">当日摘要（TL;DR）</h2>
+<div class="tldr">
+  <ul>
+    <li><b>Ambi</b>（前 Plaud 高管 Peter Mo 创立）累计融资 2,600 万美元，由 Luminous Ventures 与 ODM 华勤领投，主打"全天候后台监听"AI 助手。</li>
+    <li><b>Hone</b>（前 OpenAI / Cognition AI 成员）完成 6,000 万美元种子轮，Benchmark 与 Index Ventures 领投，估值 2.85 亿美元。</li>
+    <li><b>DeepSeek 领投</b> 前腾讯研究员胡涵创办的具身智能公司 Winverse，估值约 4 亿美元，美团 Long-Z 跟投。</li>
+    <li><b>Flexcompute</b> 获三星风投与应用材料旗下 Applied Ventures 战略投资，加速"Physics World Model"研究。</li>
+    <li><b>Loops</b> 完成 350 万美元种子轮，a16z speedrun 领投，定位 AI 驱动的电商操作系统。</li>
+    <li><b>GitHub Trending 当日新增 Star 最高</b>：<a href="https://github.com/morluto/rea">morluto/rea</a>，TypeScript 写的 agent 反编译框架，今日 +45,327 stars。</li>
+  </ul>
+</div>
+
+<h2 class="section-title">GitHub Trending 日榜可见仓库中，今日新增 Star 最高</h2>
+<div class="card gh-trending">
+  <table>
+    <tr><th>字段</th><th>值</th></tr>
+    <tr><td class="k">仓库</td><td><a href="https://github.com/morluto/rea">morluto/rea</a></td></tr>
+    <tr><td class="k">抓取来源</td><td><a href="https://github.com/trending?since=daily">github.com/trending?since=daily</a></td></tr>
+    <tr><td class="k">今日新增 Star</td><td><b>+45,327 stars today</b>（按整数比较）</td></tr>
+    <tr><td class="k">当前总 Star</td><td>164,145</td></tr>
+    <tr><td class="k">Fork</td><td>38,678</td></tr>
+    <tr><td class="k">主要语言</td><td>TypeScript</td></tr>
+    <tr><td class="k">原始描述</td><td>"Reverse engineer anything with agents, from app behavior down to native binaries."</td></tr>
+    <tr><td class="k">本次抓取时间</td><td>2026-10-13 12:01 +08</td></tr>
+    <tr><td class="k">抓取方式</td><td><code>curl -L --max-time 20 https://r.jina.ai/https://github.com/trending?since=daily</code></td></tr>
+  </table>
+  <div class="observation">
+    <b>为什么对 AI / 科技读者重要：</b>REA 把 Hopper、Ghidra、IDA、JADX、ADB、sigrok-cli、tshark 等二进制/移动端分析工具，通过 MCP 接入 Claude Code、Codex、Cursor、Gemini CLI、Grok Build 等 agent，让 agent 能直接"读"原生二进制、JS/Electron 应用、APK、Firmware、EVM 字节码并产出"证据 + 局限"的结论。它把"逆向工程"从一次性 CLI 升级为"agent 长期调研 + 自动 follow-up"。当日 45k+ 的新增 Star 说明社区对"agent 接管低层逆向"的需求集中爆发。
+  </div>
+  <p style="font-size:13px;color:var(--text-soft);">说明：GitHub Trending 是当日可见趋势榜，不是全站历史增量数据库；该仓库为本次页面"stars today"字段比较中数值最大的那一条。</p>
+</div>
+
+<h2 class="section-title">1. Ambi：前 Plaud 高管创业，做"24 小时后台监听"AI 助手</h2>
+<div class="card">
+  <h3>Ambi 累计融资 2,600 万美元，主打"always-listening"AI 助手</h3>
+  <div class="subtitle">前 Plaud 高管 Peter Mo 联合创立 · iPhone / Mac / Apple Watch 应用 · 自研硬件预告</div>
+  <div class="tags">
+    <span class="tag tag-type">AI 应用 / 硬件</span>
+    <span class="tag tag-heat">⭐ 高热</span>
+    <span class="tag tag-time">📰 新闻（2026-10-12）</span>
+    <span class="tag tag-green">🟢 已核验</span>
+  </div>
+  <div class="fact-row"><b>核心事实：</b>Ambi 发布 iPhone / Mac / Apple Watch 应用，主打"始终后台监听 + 实时给出建议"。已累计融资 2,600 万美元（含多轮），由 Luminous Ventures（曾投资美团与 Unitree Robotics）与 ODM 华勤领投。公司同时预告自研硬件（带屏、扬声器、摄像头、麦克风）。</div>
+  <div class="fact-row"><b>为什么重要：</b>继 Plaud、Limitless、Plaud NotePin 等"AI 录音设备"之后，Ambi 把"始终监听"做到应用层并向系统级延展（desktop / 自硬件）。配合 Apple 近期对 Audio Intelligence 的强化，行业正把"持续收音 + 主动建议"作为下一个交互范式；但 Granola、Illinois BIPA 等诉讼先例显示隐私合规仍是产品化最大变量。</div>
+  <div class="observation">
+    <b>影响预判：</b>硬件 + 软件 + 系统权限深度绑定的"always-listening"将成下半年 AI consumer 创业分水岭；中美合规差异决定谁能进企业市场。
+  </div>
+  <div class="source-list">
+    <b>来源：</b><br>
+    🟢 <a href="https://techcrunch.com/2026/10/12/former-plaud-exec-raises-26m-for-ai-app-that-listens-to-you-in-the-background/">TechCrunch · Former Plaud exec raises $26M for AI app that listens to you in the background</a>（已读取正文核验，2026-10-12T12:47:59+00:00）
+  </div>
+</div>
+
+<h2 class="section-title">2. Hone：6,000 万美元种子轮，押注"AI 接管商业结果"</h2>
+<div class="card">
+  <h3>Hone 完成 6,000 万美元种子轮，估值 2.85 亿美元</h3>
+  <div class="subtitle">Benchmark 与 Index Ventures 领投 · 创始团队来自 OpenAI 与 Cognition AI</div>
+  <div class="tags">
+    <span class="tag tag-type">AI 创业 / 融资</span>
+    <span class="tag tag-heat">⭐ 高热</span>
+    <span class="tag tag-time">📰 新闻（2026-10-12）</span>
+    <span class="tag tag-yellow">🟡 单源但可靠</span>
+  </div>
+  <div class="fact-row"><b>核心事实：</b>成立 5 个月的创业公司 Hone 完成 6,000 万美元种子轮，由 Benchmark 与 Index Ventures 领投，估值 2.85 亿美元。创始团队来自 OpenAI 与 Cognition AI。</div>
+  <div class="fact-row"><b>为什么重要：</b>Hone 把"agent 不只是工具，而是商业结果的承接者"作为产品定位。从团队背景（Benchmark 此前领投 Cognition）与金额（5 个月即 6,000 万）可看出，2026 年投资人正集中押注"agent 即业务执行人"叙事。</div>
+  <div class="observation">
+    <b>影响预判：</b>SaaS 边界再被压缩——客户愿意为"能跑业务"付费，而不仅是"能跑任务"；这会催生新一轮"agent 取代 BPO / 内部运营流程"叙事。
+  </div>
+  <div class="source-list">
+    <b>来源：</b><br>
+    🟡 <a href="https://dealroom.co/news/161745-hone-raises-60m-seed-to-build-ai-that-owns-business-outcomes/">Dealroom News · Hone raises $60M seed to build AI that owns business outcomes</a>
+  </div>
+</div>
+
+<h2 class="section-title">3. DeepSeek 领投 Winverse 种子，估值约 4 亿美元</h2>
+<div class="card">
+  <h3>DeepSeek 领投前腾讯研究员胡涵创立的具身智能公司 Winverse</h3>
+  <div class="subtitle">种子轮"数千万美元"，估值约 4 亿美元 post-money · 美团 Long-Z 跟投</div>
+  <div class="tags">
+    <span class="tag tag-type">AI 创业 / 融资 / 具身智能</span>
+    <span class="tag tag-heat">⭐ 高热</span>
+    <span class="tag tag-time">📰 新闻（2026-10-12）</span>
+    <span class="tag tag-yellow">🟡 单源但可靠</span>
+  </div>
+  <div class="fact-row"><b>核心事实：</b>DeepSeek 同意领投由前腾讯科学家胡涵今年在杭州创办的具身智能公司 Winverse，种子轮金额"数千万美元"，估值约 4 亿美元 post-money；美团旗下 Long-Z 跟投。条款尚未最终化。</div>
+  <div class="fact-row"><b>为什么重要：</b>中国头部大模型实验室不再只做模型，开始直接做"具身 + 投资"双线。DeepSeek 选机器人方向而不是多模态，是对"物理世界接口"下注的明确表态。美团 Long-Z 跟投意味着机器人将进入"具身 + 即时零售物流"的潜在应用场景。</div>
+  <div class="fact-row"><b>关键澄清：</b>多家标题写"$400 million round"——按 Bloomberg，4 亿美元是<b>估值</b>，不是融资金额。</div>
+  <div class="observation">
+    <b>影响预判：</b>中国具身智能赛道进入"实验室下场 + 战略 VC 跟进"的整合期，2026 下半年到 2027 是估值窗口。
+  </div>
+  <div class="source-list">
+    <b>来源：</b><br>
+    🟡 <a href="https://vcup.date/2026/10/12/deepseek-to-lead-seed-round-for-ex-tencent-scientist-hu-hans-robotics-ai-startup-winverse-at-400m-valuation/">Venture Capital Update · DeepSeek to Lead Seed Round for Ex-Tencent Scientist Hu Han's Robotics AI Startup Winverse at ~$400M Valuation</a>
+  </div>
+</div>
+
+<h2 class="section-title">4. Flexcompute 获三星风投与 Applied Ventures 战略投资</h2>
+<div class="card">
+  <h3>Flexcompute 战略融资，押注"Physics World Model"</h3>
+  <div class="subtitle">三星风投 + Applied Ventures 等参投 · 加速流体 / 电磁 / 结构 / 热学 / 多物理耦合研究</div>
+  <div class="tags">
+    <span class="tag tag-type">AI for Science / 工业仿真</span>
+    <span class="tag tag-heat">⭐ 高热</span>
+    <span class="tag tag-time">📰 新闻（2026-10-12）</span>
+    <span class="tag tag-yellow">🟡 单源但可靠</span>
+  </div>
+  <div class="fact-row"><b>核心事实：</b>波士顿公司 Flexcompute 2026-10-12 宣布获三星风投与应用材料旗下 Applied Ventures 等战略投资，将用于扩张研究团队、扩大 GPU 算力，以及把"Physics World Model"延伸到流体、电磁、结构、热学、多物理耦合等场景。本轮紧随 2021 年 11 月 29 日 2,200 万美元 B 轮（Coatue 领投）。</div>
+  <div class="fact-row"><b>为什么重要：</b>"Physics World Model"叙事正在从论文走向工业资本。与材料、半导体、EDA 工具厂商结盟，意味着模型不是"漂亮 demo"，而是被嵌入到客户既有的仿真 / CAD 流水线里。</div>
+  <div class="observation">
+    <b>影响预判：</b>未来 6–12 个月，"AI 学习物理定律"项目会更紧密地与传统 CAE / EDA / Foundry 厂商绑定；算力与人才争夺会更激烈。
+  </div>
+  <div class="source-list">
+    <b>来源：</b><br>
+    🟡 <a href="https://www.unite.ai/flexcompute-secures-strategic-investment-for-physics-world-model/">Unite.AI · Flexcompute Secures Strategic Investment for Physics World Model</a>
+  </div>
+</div>
+
+<h2 class="section-title">5. Loops：350 万美元种子，做"AI 版电商操作系统"</h2>
+<div class="card">
+  <h3>Loops 完成 350 万美元种子轮，定位 AI 电商操作系统</h3>
+  <div class="subtitle">a16z speedrun 领投 · AI 搜索 / 购物助理 / 商品数据丰富 / 虚拟试穿</div>
+  <div class="tags">
+    <span class="tag tag-type">AI 创业 / 电商 SaaS</span>
+    <span class="tag tag-heat">💡 值得关注</span>
+    <span class="tag tag-time">📰 新闻（2026-10-12）</span>
+    <span class="tag tag-yellow">🟡 单源但可靠</span>
+  </div>
+  <div class="fact-row"><b>核心事实：</b>Loops 完成 350 万美元种子轮，a16z speedrun、NTT Docomo、Connecticut Innovations、Alumni Ventures、Monday Capital 参投。CEO Ari Nazir、CTO Yusuf Bahadir。产品把 AI 搜索、购物助理、商品数据丰富、虚拟试穿整合到一套面向店铺的中间层。</div>
+  <div class="fact-row"><b>为什么重要：</b>a16z speedrun 此前投过 Browserbase、Continue 等 dev tool，这次下注电商 AI 操作系统的"中间层"位置——是 commerce agent 抢占商家接口的关键卡位。</div>
+  <div class="observation">
+    <b>影响预判：</b>商家侧的"AI OS"叙事升温；与 Shopify、Salesforce Commerce Cloud 的边界会更模糊。
+  </div>
+  <div class="source-list">
+    <b>来源：</b><br>
+    🟡 <a href="https://thenextweb.com/news/loops-3-5m-seed-round-ai-commerce-a16z-speedrun">The Next Web · Loops raises $3.5M to build the AI operating system for commerce</a>
+  </div>
+</div>
+
+<h2 class="section-title">今日观察</h2>
+<div class="card">
+  <ul>
+    <li><b>agent 落地路径分化：</b>本日 5 条核心新闻里，3 条融资（Hone、Winverse、Loops）都围绕"agent 接管业务"与"agent 嵌入既有系统"展开。Ambi 进一步把 agent 推到消费端"始终监听"层。意味着 2026 下半年的赛道叙事，已经从"更强的模型"转向"agent 触达客户业务 / 物理世界的接口"。</li>
+    <li><b>中国具身智能进入"实验室下场"阶段：</b>DeepSeek 直接做 LP 领投 Winverse，美团 Long-Z 跟投，与此前"国家队 / 大厂自建"路径不同——是"模型公司 + 战略 VC + 创始人来自大厂"的三方组合。</li>
+    <li><b>物理 AI / 工业 AI 加速绑定半导体：</b>Flexcompute 拉来三星与 Applied Materials，意味着"Physics World Model"被纳入半导体与制造客户的下一代 EDA / CAE 流水线评估。</li>
+    <li><b>GitHub Trending 当日异常：</b>45,327 stars today 的 <a href="https://github.com/morluto/rea">morluto/rea</a> 把"agent 接管逆向工程"做成开箱即用的 MCP 工具。这是"agent 工具从生产力工具延伸到研究 / 安全工具"的标志性事件。</li>
+  </ul>
+</div>
+
+<h2 class="section-title">来源与局限</h2>
+<div class="card">
+  <ul>
+    <li>本次报告共调用 <code>web_search</code> <b>5 次</b>（达到上限）。其中 3 次因 backend ddgs 故障 + exa 兜底返回 0 条结果（OpenAI、Gemini、Nvidia 相关 query）。</li>
+    <li>本次报告共调用 <code>curl</code>（r.jina.ai）<b>3 次</b>（达到上限）：GitHub Trending 日榜、morluto/rea README、TechCrunch 2026-10-12 头条。</li>
+    <li>仅 1 条新闻读取了原始正文并对照日期（Ambi / TechCrunch），达到 🟢 已核验；其余 4 条新闻仅依赖搜索摘要，可信度 🟡 单源但可靠。</li>
+    <li>本次未交叉验证"多方确认"标签，故未使用 🟢 级；未使用 🔴 待验证，因所有入选源都是可追溯域名 + 公开报道。</li>
+  </ul>
+</div>
+
+<div class="disclaimer">
+  <b>免责声明：</b>本简报为内容生产线第一环产出，仅供下游内容创作者、社交媒体策略师参考。本次数据采集存在外部 backend 故障，请下游引用时自行复核日期与金额，特别是 Hone / Winverse / Flexcompute / Loops 四条 🟡 级条目。本简报不对任何二级引用结果背书。
+</div>
+
+<footer class="page">
+  生成时间 2026-10-13 12:01 +08 · Cron job e891394aec00 · Markdown 审计副本与本报告同日归档于 cron 输出目录
+</footer>
+
+</div>
+</body>
+</html>
