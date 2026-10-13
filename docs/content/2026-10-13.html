@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>多 Agent 协作的真正瓶颈，不是模型，是协议</title>
+<style>
+:root{
+  --bg:#0b0e14;
+  --surface:#141821;
+  --fg:#e8eaed;
+  --muted:#b3b8c4;
+  --border:#232836;
+  --accent:#76a7ff;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei",sans-serif;
+  font-size:17px;
+  line-height:1.78;
+  -webkit-text-size-adjust:100%;
+  word-wrap:break-word;
+  overflow-wrap:break-word;
+  word-break:break-word;
+  padding-bottom:env(safe-area-inset-bottom);
+}
+.wrap{
+  width:min(100%, 720px);
+  margin:0 auto;
+  padding:26px 18px calc(40px + env(safe-area-inset-bottom));
+}
+.brand{
+  color:var(--muted);
+  font-size:13px;
+  letter-spacing:.04em;
+  margin:0 0 14px;
+}
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:22px 18px;
+}
+h1{
+  font-size:clamp(25px, 7vw, 34px);
+  line-height:1.25;
+  margin:0 0 10px;
+  word-break:break-word;
+  letter-spacing:-.01em;
+}
+.meta{
+  color:var(--muted);
+  font-size:13px;
+  margin:0 0 20px;
+}
+.meta .date{color:var(--accent);}
+.meta .sep{opacity:.5;margin:0 6px;}
+p{margin:0 0 14px;}
+ol{margin:0 0 14px;padding-left:22px;}
+ol li{margin:0 0 10px;}
+ol li::marker{color:var(--accent);}
+strong{color:var(--fg);font-weight:600;}
+.disclaimer{
+  margin-top:20px;
+  padding-top:14px;
+  border-top:1px dashed var(--border);
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.6;
+}
+@media (min-width:640px){
+  .wrap{padding:48px 28px calc(60px + env(safe-area-inset-bottom));}
+  .card{padding:34px 38px;}
+  .brand{margin-bottom:18px;}
+}
+@media print{
+  body{background:#fff;color:#111;}
+  .card{border:none;padding:0;background:transparent;}
+  .brand,.meta,.disclaimer{color:#555;}
+  .meta .date{color:#1a4ea8;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand">MrFai 的 Agent 笔记</div>
+  <article class="card">
+    <h1>多 Agent 协作的真正瓶颈，不是模型，是协议</h1>
+    <div class="meta">
+      <span class="date">2026-10-13</span>
+      <span class="sep">·</span>
+      <span>AI Agent</span>
+      <span class="sep">·</span>
+      <span>多 Agent 协作</span>
+    </div>
+    <p>很多人把"多 Agent 协作"想得太浪漫：拆任务、分工，模型各自发挥，最后拼一份漂亮的结果。现实里卡住协作的，从来不是某个模型够不够聪明，而是几个 Agent 之间有没有一份能强制执行的协议。</p>
+    <p>我最近一次复盘里看到典型失败：A 子 Agent 正在改一个配置模块，B 子 Agent 同时去同步第三方依赖。两者没声明"我现在占用哪个文件/路径"，结果 B 把 A 还没写完的导入结构直接覆盖了。日志没报错，单元测试还是绿的，最后交付出的是一份能跑但语义错的版本。</p>
+    <p>这件事让我确信一件事：模型越强，错误越安静。强模型会写出语法正确、看起来合理的"伪成功"，不靠协议截停，根本察觉不到。</p>
+    <p>所以如果你正打算把工作流从单体 Agent 拆成多 Agent，先别急着上框架，先把下面四件事做扎实：</p>
+    <ol>
+      <li><strong>先画边界</strong>。把任务拆成"谁写、谁读、谁删"三类，对应一份显式的 lease，没有 lease 就不动文件。</li>
+      <li><strong>SSOT 优先</strong>。每个 Agent 操作前先读权威源（README、registry、状态文件），不靠记忆，也不靠上一次的聊天结论。</li>
+      <li><strong>每一轮留证据</strong>。每次动作都要写出 evidence（看到了什么）+ decision（决定做什么）+ blocker（卡在哪）+ next（下一步）。交接包就是这几样，不是聊天截图。</li>
+      <li><strong>终验要独立</strong>。验收交给第三个 Agent 或独立 review，收到 PASS 才算结束；执行者自己给自己打 PASS 不算 PASS。</li>
+    </ol>
+    <p>这四件事没有银弹，但缺任何一件，多 Agent 系统都会"看起来没事地"安静坏掉。先把协议定死，再去谈哪个模型更强。</p>
+    <div class="disclaimer">
+      本页为个人创作笔记，仅分享工程经验，不构成任何投资、开发或采购建议。文中观点基于公开实践，未引用具体客户、平台或用户数据。
+    </div>
+  </article>
+</div>
+</body>
+</html>
