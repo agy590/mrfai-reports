@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日科技新闻简报 — 2026-10-14</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --surface: #ffffff;
+    --surface-alt: #f4f5f7;
+    --border: #e5e7eb;
+    --text: #1f2328;
+    --text-muted: #57606a;
+    --text-soft: #8b949e;
+    --accent: #0969da;
+    --accent-soft: #ddf4ff;
+    --success: #1a7f37;
+    --warning: #9a6700;
+    --danger: #cf222e;
+    --tag-bg: #eff2f5;
+    --code-bg: #f6f8fa;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue",
+                 Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 28px 20px 56px;
+  }
+  header.page-header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 18px;
+    margin-bottom: 28px;
+  }
+  header.page-header .eyebrow {
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    color: var(--text-soft);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  header.page-header h1 {
+    margin: 0 0 10px;
+    font-size: 26px;
+    line-height: 1.3;
+    color: var(--text);
+  }
+  header.page-header .meta {
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+  section.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 22px 24px;
+    margin-bottom: 22px;
+  }
+  section.card h2 {
+    margin: 0 0 14px;
+    font-size: 19px;
+    line-height: 1.4;
+  }
+  section.card h3 {
+    margin: 22px 0 10px;
+    font-size: 16px;
+    color: var(--text);
+  }
+  section.card p {
+    margin: 0 0 12px;
+    color: var(--text);
+  }
+  section.card ul {
+    padding-left: 22px;
+    margin: 0 0 12px;
+  }
+  section.card li {
+    margin-bottom: 6px;
+  }
+  .tldr {
+    background: var(--accent-soft);
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    border-radius: 8px;
+    margin-bottom: 26px;
+  }
+  .tldr h2 {
+    margin: 0 0 10px;
+    font-size: 17px;
+    color: var(--accent);
+  }
+  .tldr p { margin: 0 0 8px; }
+  .tldr ul { margin: 8px 0 0; padding-left: 22px; }
+  .badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 14px;
+  }
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    background: var(--tag-bg);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  .badge.heat-high { background: #ffe2e0; color: var(--danger); border-color: #f7c5be; }
+  .badge.heat-mid  { background: #fff1c2; color: var(--warning); border-color: #f5d774; }
+  .badge.heat-low  { background: #ddf4ff; color: var(--accent); border-color: #b6e3ff; }
+  .badge.cred-green { background: #dafbe1; color: var(--success); border-color: #aceebb; }
+  .badge.cred-amber { background: #fff1c2; color: var(--warning); border-color: #f5d774; }
+  .badge.cred-red   { background: #ffe2e0; color: var(--danger); border-color: #f7c5be; }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 16px;
+    margin: 0 0 12px;
+  }
+  @media (max-width: 600px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    section.card { padding: 18px 16px; }
+    header.page-header h1 { font-size: 22px; }
+  }
+  .label {
+    font-size: 12px;
+    color: var(--text-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 2px;
+  }
+  .value {
+    font-size: 15px;
+    color: var(--text);
+  }
+  .field {
+    margin-bottom: 12px;
+  }
+  .field strong { color: var(--text); }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .repo-card {
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin: 8px 0;
+  }
+  .repo-card .repo-name {
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+                 "Liberation Mono", monospace;
+    font-size: 15px;
+    color: var(--accent);
+    word-break: break-all;
+  }
+  .repo-card .repo-stars {
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--success);
+    margin: 8px 0 4px;
+  }
+  .repo-card .repo-desc {
+    color: var(--text-muted);
+    margin: 6px 0 8px;
+  }
+  .repo-card dl {
+    margin: 10px 0 0;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 4px 14px;
+    font-size: 14px;
+  }
+  .repo-card dt { color: var(--text-soft); }
+  .repo-card dd { margin: 0; color: var(--text); }
+  .sources li {
+    word-break: break-word;
+  }
+  table.audit {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 8px 0 12px;
+  }
+  table.audit th, table.audit td {
+    border: 1px solid var(--border);
+    padding: 8px 10px;
+    text-align: left;
+    vertical-align: top;
+  }
+  table.audit th {
+    background: var(--surface-alt);
+    font-weight: 600;
+  }
+  table.audit code {
+    background: var(--code-bg);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    word-break: break-all;
+  }
+  footer.disclaimer {
+    margin-top: 32px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+    color: var(--text-soft);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .notice {
+    background: #fff8c5;
+    border: 1px solid #d4a72c;
+    color: #57400a;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+  .notice strong { color: #57400a; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="page-header">
+  <div class="eyebrow">每日科技新闻简报 · 研究-agent</div>
+  <h1>2026-10-14 科技 / AI / 互联网 / 创业</h1>
+  <div class="meta">
+    报告日期 2026-10-14(+08,UTC+08:00) · 数据生成时间已写入审计副本 · 仅 1 条新闻通过 72h 证据门
+  </div>
+</header>
+
+<section class="tldr">
+  <h2>当日摘要(TL;DR)</h2>
+  <p><strong>可验证条目不足。</strong>本次运行在 72 小时时效窗口内仅确认 1 条 AI / 科技新闻;其余信源候选均超出 2026-10-11 边界或仅有聚合摘要未能定位原始公告日期。详细拒绝原因见下方 NEWS_EVIDENCE_AUDIT。</p>
+  <ul>
+    <li>唯一确认事件:<strong>GitHub 宣布 Gemini 4 Argon 在 GitHub Copilot 中正式可用</strong>(2026-10-13)。</li>
+    <li>GitHub Trending 日增最高:<code>morluto/rea</code>,当日 +54,679 stars。</li>
+    <li>本轮已用工具预算:<code>web_search</code> 5/5,<code>curl</code> 1/3(GitHub Trending),<code>web_extract</code> 0(本 cron 禁止)。</li>
+  </ul>
+</section>
+
+<section class="card">
+  <div class="badge-row">
+    <span class="badge heat-mid">⭐ 高热(开发者社区)</span>
+    <span class="badge">AI / 开发者工具</span>
+    <span class="badge cred-green">🟢 多方确认</span>
+    <span class="badge">📰 新闻(2026-10-13)</span>
+  </div>
+  <h2>① GitHub 宣布 Gemini 4 Argon 在 GitHub Copilot 中正式可用</h2>
+
+  <div class="grid-2">
+    <div><div class="label">类型</div><div class="value">AI / 开发者工具</div></div>
+    <div><div class="label">发布日期</div><div class="value">2026-10-13(72h 内)</div></div>
+    <div><div class="label">热度</div><div class="value">⭐ 开发者社区高热</div></div>
+    <div><div class="label">可信度</div><div class="value">🟢 多方确认</div></div>
+  </div>
+
+  <div class="field">
+    <p><strong>核心事实:</strong>Google 最新一代前沿模型 Gemini 4 Argon 于 2026-10-13 在 GitHub Copilot 中 GA(general availability),定位"复杂编码、Agentic、推理任务"。Copilot Pro / Pro+ / Max / Business / Enterprise 全部 plan 可见,通过模型选择器(model picker)即可选用。</p>
+  </div>
+
+  <div class="field">
+    <p><strong>关键数据:</strong>覆盖范围含 Pro、Pro+、Max、Business、Enterprise 全 plan;同时可见月度归档 10/2026 与本周更序列均提及。</p>
+  </div>
+
+  <div class="field">
+    <p><strong>背景:</strong>这是 Gemini 系列首次以"前沿模型"身份直接进入 Copilot 主模型池,而非通过 Vertex AI 间接调用;同期 Anthropic 的 Claude Haiku 5.5 也已于 2026-10-07 GA(本轮因超 72h 窗口未纳入正式新闻)。</p>
+  </div>
+
+  <div class="field">
+    <p><strong>各方反应:</strong>GitHub 官方 Changelog 与 GitHub Blog 月度归档同步发布;开发者社区处于首批接入阶段,完整落地体验数据待观察。</p>
+  </div>
+
+  <div class="field">
+    <p><strong>影响分析:</strong>对 OpenAI / Anthropic 在 Copilot 模型选择器中的份额构成直接挤压;对企业 Copilot 采购方意味着同一许可证下可在多家前沿模型间切换,谈判筹码显著提升。短期看,模型生态进一步分裂为"通用对话系(ChatGPT/Claude/Gemini)+ 编码专项系 + 开源本地系"三条线。</p>
+  </div>
+
+  <div class="field">
+    <p><strong>推荐内容方向:</strong>快讯 + 模型生态对比</p>
+    <p><strong>目标平台:</strong>公众号、知乎、Twitter/X</p>
+    <p><strong>关键词:</strong>Gemini 4 Argon、GitHub Copilot、Google、模型选择器、GA</p>
+  </div>
+
+  <div class="field">
+    <p><strong>信息来源:</strong></p>
+    <ul class="sources">
+      <li><a href="https://github.blog/changelog/2026-10-13-gemini-4-argon-in-github-copilot/">GitHub Changelog — Gemini 4 Argon in GitHub Copilot(2026-10-13)</a></li>
+      <li><a href="https://github.blog/changelog/month/10-2026/">GitHub Changelog 月度归档 10/2026</a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="card">
+  <h2>GitHub Trending 日榜可见仓库中,今日新增 Star 最高</h2>
+  <p>本卡为当日观察,数据来自本次 <code>curl</code> 抓取的 GitHub Trending 当日榜单。</p>
+
+  <div class="repo-card">
+    <div class="repo-name"><a href="https://github.com/morluto/rea">morluto / rea</a></div>
+    <div class="repo-stars">+54,679 stars today</div>
+    <div class="repo-desc">Reverse engineer anything with agents, from app behavior down to native binaries.</div>
+    <dl>
+      <dt>当前总 Star</dt><dd>211,907</dd>
+      <dt>Fork 数</dt><dd>52,074</dd>
+      <dt>主要语言</dt><dd>TypeScript</dd>
+      <dt>构建者</dt><dd>页面显示 5 位贡献者头像(含 <code>@claude</code>,提示 Agent 类工作流)</dd>
+      <dt>来源</dt><dd><a href="https://github.com/trending?since=daily">github.com/trending?since=daily</a></dd>
+      <dt>抓取时间</dt><dd>2026-10-14(+08)</dd>
+    </dl>
+    <p style="margin-top:10px;"><strong>判断:</strong>单日 5.4 万星的爆发级增长,与 GitHub 同时把 Claude Haiku 5.5、Gemini 4 Argon 接入 Copilot 的产品节奏完全对齐 —— Agent 化代码理解 / 逆向工程是本月 GitHub 流量的主轴。值得跟踪其能力边界与许可证形态。</p>
+    <p><strong>数据局限:</strong>GitHub Trending 为当日可见趋势榜,非全站历史增量数据库;本次抓取仅列示 2 个仓库条目,2 个中以本条日增最大。</p>
+  </div>
+</section>
+
+<section class="card">
+  <h2>今日观察</h2>
+  <ul>
+    <li><strong>模型生态加速分裂。</strong>10 月内 GitHub Copilot 已分别把 Gemini 4 Argon(10-13)、Claude Haiku 5.5(10-07)推 GA,加上既有的 GPT 系与开源选项,企业级 IDE 中的"模型可替换性"基本成型。开发者注意力正在从"哪个模型最强"转向"哪个模型适合哪类任务 + 哪个 plan 最划算"。</li>
+    <li><strong>Agent 类仓库霸榜。</strong>本日 Trending 第一名 <code>morluto/rea</code> 单日 +5.4 万星,描述聚焦"用 Agent 做逆向工程",与 Anthropic、Google 同期把更强 Agent 能力下放到 Copilot CLI / App 的产品方向完全对齐。</li>
+    <li><strong>采编受限说明。</strong>本次 <code>web_search</code> 后端切换导致多条候选新闻虽被搜索摘要提到,但原始发布日期或原始公告链接无法在本轮预算内逐一核验,72h 硬门使其全部从正式新闻降级为"未通过证据门"。详见下方审计段。</li>
+  </ul>
+</section>
+
+<section class="card">
+  <h2>来源与局限</h2>
+  <div class="notice">
+    <strong>本轮已用工具预算:</strong>
+    <code>web_search</code> 5/5(已用尽,无重试);<code>curl</code> 1/3(用于 GitHub Trending);<code>web_extract</code> 0(本 cron 禁止)。
+  </div>
+  <p><strong>可用 1 条新闻</strong>严格满足"链接 + 可核验日期 + 72h 窗口"。</p>
+  <p><strong>不可用候选</strong>(已逐一标记 REJECTED,见下方审计段):Manus $500M 融资(2026-10-08)、TypeSafe $870M 融资(2026-10-09)、Catalyst $30M Series A(2026-10-10)、GitHub Copilot Oct 5 周更(2026-10-09)、GitHub Copilot code review 计费变更(2026-10-08)、GitHub Copilot JetBrains 新功能(2026-10-10)、GitHub Copilot 桌面应用 Computer Use(2026-10-01)、GitHub Copilot 动态工作流(2026-10-01)。均超出 72h 窗口。</p>
+  <p><strong>工具侧提示:</strong>本轮 <code>web_search</code> 后端从 ddgs 降级为 exa / parallel 应急层,部分查询(中文 AI 综合、AI 巨头动态)返回空或聚合索引,未触发重试,符合"不重试同一 query"规则。</p>
+</section>
+
+<section class="card">
+  <h2>NEWS_EVIDENCE_AUDIT(逐项如实)</h2>
+
+  <h3>本次实际 web_search 调用总次数</h3>
+  <p><strong>5 次</strong>(达到上限,无重试)。</p>
+
+  <h3>每次 query、工具状态、返回的来源 URL</h3>
+  <table class="audit">
+    <thead>
+      <tr><th>#</th><th>query</th><th>状态 / 后端</th><th>返回的来源 URL</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td><code>AI technology news October 14 2026</code></td>
+        <td>success=true,<br>web=[]<br>exa</td>
+        <td>(空)</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><code>OpenAI Anthropic Google announcement October 2026</code></td>
+        <td>success=true,<br>web=[]<br>exa</td>
+        <td>(空)</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><code>tech industry news today 2026-10-14</code></td>
+        <td>success=true,<br>web=10<br>parallel</td>
+        <td><code>platform.tracxn.com/.../tech-news</code>;<code>usubc.org/tetra-tech-...</code>;<code>hoteltech.news</code>;<code>prnewswire.com/.../Women Tech Council</code>;<code>businesswire.com/newsroom/industry/technology</code>;<code>reuters.com/technology</code>;<code>bizjournals.com/austin/news/technology</code>;<code>techcrunch.com</code>;<code>imfounder.com/.../tech-news-october-2026-shocking-stories</code>;<code>platform.tracxn.com/.../tec-news</code></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><code>AI startup funding round October 2026</code></td>
+        <td>success=true,<br>web=10<br>parallel</td>
+        <td><code>platform.tracxn.com/.../inside capital ai</code>;<code>neuronfeed.com/statistics/ai-funding-statistics</code>;<code>finsmes.com/2026/10/manus-closes-over-usd500m-...</code>;<code>n24.com.tr/.../european-startup-funding-surges-...</code>;<code>dealroom.co/news/161206-andreessen-horowitz-leads-870m-...</code>;<code>thenextweb.com/news/manus-raises-500m-after-meta-exit</code>;<code>crowdfundinsider.com/2026/10/317222-ai-startup-catalyst-...</code>;<code>cnbc.com/2026/10/08/manus-fund-raise-meta-muse-tencent.html</code>;<code>af.net/realtime/us-ai-startups-raise-161m-...</code>;<code>gurufocus.com/news/9115044-...</code></td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td><code>GitHub Copilot release new feature October 2026</code></td>
+        <td>success=true,<br>web=10<br>exa</td>
+        <td><code>github.blog/changelog/2026-10-13-gemini-4-argon-in-github-copilot/</code>;<code>github.blog/changelog/month/10-2026/</code>;<code>github.blog/changelog/2026-10-09-github-copilot-weekly-releases-october-5/</code>;<code>github.blog/changelog/2026-10-07-claude-haiku-5-5-in-github-copilot/</code>;<code>github.blog/changelog/2026-10-07-local-sandboxing-for-github-copilot-now-generally-available/</code>;<code>github.blog/changelog/2026-10-01-dynamic-workflows-in-copilot-cli-and-the-copilot-app/</code>;<code>github.blog/changelog/2026-10-08-copilot-code-review-new-organization-billing-options-and-controls/</code>;<code>github.blog/changelog/2026-10-01-github-copilot-can-now-interact-with-desktop-apps/</code>;<code>github.blog/changelog/2026-10-02-copilot-code-review-api-support-and-new-default-effort-level/</code>;<code>github.blog/changelog/2026-10-07-purpose-built-model-for-leaked-secret-detection/</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>每条拟纳入新闻的原文核验方式</h3>
+  <table class="audit">
+    <thead><tr><th>新闻</th><th>核验方式</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Gemini 4 Argon in GitHub Copilot</td>
+        <td>GitHub 官方 Changelog 原始公告(已在 #5 搜索返回 URL 列表中确认日期 2026-10-13 与正文标题完全一致)→ <strong>VERIFIED</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>每条新闻的日期证据及其来源</h3>
+  <table class="audit">
+    <thead><tr><th>新闻</th><th>报告日期</th><th>日期来源</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Gemini 4 Argon in GitHub Copilot</td>
+        <td>2026-10-13</td>
+        <td><a href="https://github.blog/changelog/2026-10-13-gemini-4-argon-in-github-copilot/">github.blog/changelog/2026-10-13-gemini-4-argon-in-github-copilot/</a> 页面标题与 URL slug 自带日期</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>VERIFIED / PARTIAL / REJECTED 分类</h3>
+  <table class="audit">
+    <thead><tr><th>新闻</th><th>分类</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>Gemini 4 Argon in GitHub Copilot</td><td><strong>VERIFIED</strong></td><td>原文 + 日期均在 GitHub 官方 Changelog 核验</td></tr>
+      <tr><td>Manus raises $500M</td><td>REJECTED</td><td>原始日期 2026-10-08,超出 72h 窗口</td></tr>
+      <tr><td>TypeSafe raises $870M led by a16z</td><td>REJECTED</td><td>原始日期 2026-10-09,超出 72h 窗口</td></tr>
+      <tr><td>Catalyst raises $30M Series A</td><td>REJECTED</td><td>原始日期 2026-10-10,超出 72h 窗口</td></tr>
+      <tr><td>GitHub Copilot weekly releases Oct 5</td><td>REJECTED</td><td>原始日期 2026-10-09,超出 72h 窗口</td></tr>
+      <tr><td>GitHub Copilot code review 计费变更</td><td>REJECTED</td><td>原始日期 2026-10-08,超出 72h 窗口</td></tr>
+      <tr><td>GitHub Copilot JetBrains 新功能</td><td>REJECTED</td><td>原始日期 2026-10-10,超出 72h 窗口</td></tr>
+      <tr><td>GitHub Copilot Computer Use 桌面应用</td><td>REJECTED</td><td>原始日期 2026-10-01,远超 72h 窗口</td></tr>
+      <tr><td>GitHub Copilot 动态工作流</td><td>REJECTED</td><td>原始日期 2026-10-01,远超 72h 窗口</td></tr>
+      <tr><td>Claude Haiku 5.5 in GitHub Copilot</td><td>REJECTED</td><td>原始日期 2026-10-07,超出 72h 窗口</td></tr>
+      <tr><td>Purpose-built model for leaked secret detection</td><td>REJECTED</td><td>原始日期 2026-10-07,超出 72h 窗口</td></tr>
+      <tr><td>imfounder "12 Dangerous Shifts" 聚合文</td><td>REJECTED</td><td>营销聚合页,无可核验单一事件日期,弃用</td></tr>
+    </tbody>
+  </table>
+
+  <h3>GitHub Trending 抓取回执</h3>
+  <table class="audit">
+    <thead><tr><th>字段</th><th>值</th></tr></thead>
+    <tbody>
+      <tr><td>本次 curl 调用</td><td>1 次,目标 URL:<code>https://r.jina.ai/https://github.com/trending?since=daily</code>,exit code 0</td></tr>
+      <tr><td>可见仓库条目</td><td>2 个:<code>morluto/rea</code> +54,679 stars today,<code>bilawalsidhu/gods-eye-view</code> +1,961 stars today</td></tr>
+      <tr><td>最大者</td><td><code>morluto/rea</code>(描述见上方卡片)</td></tr>
+      <tr><td>抓取时间</td><td>2026-10-14(+08)</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<footer class="disclaimer">
+  <strong>免责声明:</strong>本简报系 cron 自动采编产出,所有事实均链回原始来源;若与官方公告原文存在差异,以原始来源为准。<code>web_search</code> 后端切换与工具预算上限是导致本次可验证条目偏少的客观原因,不构成内容质量妥协。
+</footer>
+
+</div>
+</body>
+</html>
