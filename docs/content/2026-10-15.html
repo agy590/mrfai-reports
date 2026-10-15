@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>多 Agent 协作的瓶颈是交接，不是模型 · MrFai 的 Agent 笔记</title>
+<style>
+  :root{
+    --bg:#0b0e14;
+    --surface:#141821;
+    --fg:#e8eaed;
+    --muted:#b3b8c4;
+    --border:#232836;
+    --accent:#76a7ff;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    background:var(--bg);
+    color:var(--fg);
+    font-size:17px;
+    line-height:1.8;
+    overflow-x:hidden;
+    overflow-wrap:break-word;
+    word-break:break-word;
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{
+    width:min(100%,720px);
+    margin:0 auto;
+    padding:20px 18px calc(28px + env(safe-area-inset-bottom));
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    font-size:14px;
+    letter-spacing:.02em;
+    color:var(--muted);
+    padding:6px 2px 16px;
+    border-bottom:1px solid var(--border);
+  }
+  .brand .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--accent);
+    flex:0 0 auto;
+  }
+  .card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:24px 20px 26px;
+    margin-top:18px;
+  }
+  h1{
+    font-size:clamp(25px,7vw,34px);
+    line-height:1.24;
+    margin:0 0 12px;
+    color:var(--fg);
+    overflow-wrap:break-word;
+  }
+  .meta{
+    font-size:13px;
+    line-height:1.6;
+    color:var(--muted);
+    opacity:.8;
+    margin:0 0 20px;
+  }
+  .body p{margin:0 0 16px;}
+  .body p:last-child{margin-bottom:0;}
+  .body strong{color:var(--accent);font-weight:600;}
+  .steps{
+    margin:20px 0 0;
+    padding-left:1.25em;
+  }
+  .steps li{
+    margin:0 0 10px;
+    overflow-wrap:break-word;
+  }
+  .steps li:last-child{margin-bottom:0;}
+  .disclaimer{
+    margin-top:22px;
+    padding-top:14px;
+    border-top:1px solid var(--border);
+    font-size:12.5px;
+    line-height:1.7;
+    color:var(--muted);
+    opacity:.72;
+  }
+  @media (min-width:640px){
+    .wrap{padding:28px 28px calc(40px + env(safe-area-inset-bottom));}
+    .card{padding:36px 38px 38px;}
+    .brand{padding-bottom:18px;}
+  }
+  @media print{
+    body{background:#fff;color:#111;font-size:12pt;}
+    .card{background:#fff;border:1px solid #ccc;padding:18px;}
+    .brand{border-bottom:1px solid #ccc;color:#333;}
+    .body strong{color:#1a4fa0;}
+    .meta,.disclaimer{color:#444;opacity:1;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="brand"><span class="dot"></span><span>MrFai 的 Agent 笔记</span></header>
+  <article class="card">
+    <h1>多 Agent 协作的瓶颈是交接，不是模型</h1>
+    <p class="meta">2026-10-15 · 主题：多 Agent 协作</p>
+    <div class="body">
+      <p>我的判断很直接：多 Agent 协作失败，八成不是模型不够聪明，而是没有一份被所有人共享的<strong>接口契约</strong>。大多数人把这件事当成"提示词工程"，反复调 prompt、换模型、加反思轮数，其实只是在一个会漂移的地基上摆家具。</p>
+      <p>我踩过最贵的一次坑：让三个 agent 并行改同一个仓库的三个模块，每个人都被要求"保持与现有类型兼容"。结果它们各自在自己上下文里推断出了三种"兼容"，各自跑本地测试全绿，合到一起编译直接炸——因为它们改的是同一个共享类型定义，而那份定义从来没被当成契约被显式交付。</p>
+      <p>根因是：契约藏在人脑里，不在文件里。于是每个 agent 都用"我以为的接口"开始干活，交接的时候也没有人负责核对。</p>
+      <p>如果这套流程能在你手上落地，我会按这个顺序做：</p>
+      <ol class="steps">
+        <li><strong>先落契约，再派活。</strong>把输入、输出、错误语义、不变量写成一份文件，让 agent 读同一份，而不是各自从代码里猜。</li>
+        <li><strong>共享文件设为只读区。</strong>任何跨模块共用的定义，谁都不能直接改，只能提出变更请求，由你或一个 agent 统一合入。</li>
+        <li><strong>交付必须自带三件套：</strong>改了什么、为什么、怎么验证。缺任何一项的产出不算完成，不接受"看起来没问题"。</li>
+        <li><strong>合并后跑一次全量测试。</strong>把"每个 agent 各自绿灯"当成零信息，信号只出现在合并之后。</li>
+      </ol>
+      <p>做完这四步，再去谈模型强弱和 prompt 质量。反过来做，就是拿最贵的东西去补最便宜的漏洞。</p>
+    </div>
+    <p class="disclaimer">本文为个人经验记录与观点，不代表任何机构立场；文中未涉及具体产品数据或第三方信息，请自行判断并承担使用后果。</p>
+  </article>
+</div>
+</body>
+</html>
