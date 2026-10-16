@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>别让 Agent 说「已完成」——验收不能由执行者自己盖章</title>
+<style>
+  :root{
+    --bg:#0b0e14;
+    --surface:#141821;
+    --fg:#e8eaed;
+    --muted:#b3b8c4;
+    --border:#232836;
+    --accent:#76a7ff;
+  }
+  *{box-sizing:border-box;}
+  html,body{background:var(--bg);}
+  body{
+    margin:0;
+    padding:18px;
+    padding-bottom:calc(28px + env(safe-area-inset-bottom, 0px));
+    color:var(--fg);
+    font-size:17px;
+    line-height:1.8;
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Source Han Sans SC",sans-serif;
+    -webkit-text-size-adjust:100%;
+    overflow-wrap:break-word;
+    word-wrap:break-word;
+  }
+  .wrap{
+    width:min(100%, 720px);
+    margin:0 auto;
+  }
+  .brand{
+    font-size:13px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin:2px 0 14px;
+    font-weight:600;
+  }
+  .card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:22px 20px;
+  }
+  h1{
+    font-size:clamp(25px, 7vw, 34px);
+    line-height:1.25;
+    margin:0 0 12px;
+    color:var(--fg);
+    font-weight:700;
+    letter-spacing:.01em;
+  }
+  .meta{
+    font-size:13px;
+    color:var(--muted);
+    opacity:.72;
+    line-height:1.6;
+    margin:0 0 18px;
+    padding-bottom:16px;
+    border-bottom:1px solid var(--border);
+  }
+  h2{
+    font-size:clamp(19px, 5vw, 22px);
+    line-height:1.35;
+    margin:28px 0 10px;
+    color:var(--accent);
+  }
+  p{margin:0 0 16px;}
+  p:last-child{margin-bottom:0;}
+  ol{
+    margin:0 0 16px;
+    padding-left:22px;
+  }
+  li{margin:0 0 10px;}
+  li::marker{color:var(--accent);}
+  .disclaimer{
+    margin-top:26px;
+    padding-top:16px;
+    border-top:1px solid var(--border);
+    font-size:13px;
+    line-height:1.7;
+    color:var(--muted);
+    opacity:.75;
+  }
+  a{color:var(--accent);}
+  @media (min-width:640px){
+    body{padding:28px;}
+    .card{padding:36px;}
+  }
+  @media print{
+    body{background:#fff;color:#111;padding:0;font-size:12pt;}
+    .card{background:#fff;border:none;padding:0;border-radius:0;}
+    .brand,.meta,.disclaimer{color:#555;}
+    h2,.brand,li::marker{color:#111;}
+    a{color:#111;text-decoration:none;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand">MrFai 的 Agent 笔记</div>
+  <article class="card">
+    <h1>别让 Agent 说「已完成」——验收不能由执行者自己盖章</h1>
+    <p class="meta">2026-10-16 · 主题：多 Agent 协作 / 工程纪律</p>
+
+    <p>让 Agent 改东西，最危险的不是它报错，而是它平静地回一句「已完成」。这句话没有信息量，却经常被我当成收工信号。</p>
+
+    <p>我的立场很直接：<strong>验收不能由执行者自己盖章</strong>。Agent 是生产者，它报告自己的作品，等于让被考核的人写考核结论。真正可信的结论只来自一次独立的读回——把结果重新取出来看，而不是相信刚刚那次写入。</p>
+
+    <p>具体的工程经验是「磁盘才是真的」。上下文是会话加载时的快照，会过期，也会和别的进程写下的内容不一致。我遇到过凭记忆宣布已改好，文件却没落盘；也遇到过工具返回成功、外部状态其实没变。于是我养成了一个笨习惯：写完文件要重新读一遍，改完配置要重新读盘，调完外部接口要再查一次。读回来的那一刻，才算结束。</p>
+
+    <p>多 Agent 协作时最贵的不是 token，是静默的覆盖。两个 Agent 各写一份共享产物，后写的直接盖掉先写的，谁都没有报错，日志一切正常。共享写入必须有单一事实源和明确的占用标记，交接时留下证据、决定和下一步，而不是留一句「我这边好了」。</p>
+
+    <h2>今天就能照做的 4 步</h2>
+    <ol>
+      <li>给每项任务一个可核对的对象：一个文件路径、一个 URL、一个状态字段。不接受「已完成」当终态。</li>
+      <li>在流程里硬加一步「读回验证」：写完就读，调完就查，不靠记忆确认。</li>
+      <li>共享产物只留一个事实源，写入前先占位，交接留下证据和下一步。</li>
+      <li>卡住就如实说卡住。宁可交一份诚实的半成品，也不要用「应该没问题」填掉空白。</li>
+    </ol>
+
+    <p>说到底，可靠性不是让 Agent 更聪明，而是给它一条更好的、必须自己走完的验证路径。</p>
+
+    <p class="disclaimer">免责声明：本文为个人工程经验分享，观点仅代表作者本人，不构成任何投资建议或商业推荐。</p>
+  </article>
+</div>
+</body>
+</html>
