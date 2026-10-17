@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>按可逆性给 Agent 分级授权，而不是按任务重要性</title>
+<style>
+:root{
+  --bg:#0b0e14;
+  --surface:#141821;
+  --fg:#e8eaed;
+  --muted:#b3b8c4;
+  --border:#232836;
+  --accent:#76a7ff;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);}
+body{
+  font-size:17px;
+  line-height:1.8;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  overflow-wrap:break-word;
+  word-break:break-word;
+  -webkit-text-size-adjust:100%;
+}
+.wrap{
+  width:min(100%,720px);
+  margin:0 auto;
+  padding:18px 18px calc(28px + env(safe-area-inset-bottom));
+}
+.brand{
+  font-size:14px;
+  letter-spacing:.06em;
+  color:var(--muted);
+  padding:10px 2px 14px;
+  border-bottom:1px solid var(--border);
+}
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:14px;
+  margin-top:18px;
+  padding:20px 18px 24px;
+}
+h1{
+  font-size:clamp(25px,7vw,34px);
+  line-height:1.25;
+  margin:0 0 10px;
+  color:var(--fg);
+  overflow-wrap:break-word;
+}
+.meta{
+  font-size:14px;
+  color:var(--muted);
+  opacity:.75;
+  margin:0 0 18px;
+  padding-bottom:14px;
+  border-bottom:1px solid var(--border);
+}
+.card p{margin:0 0 16px;}
+.card ul{margin:0 0 16px;padding-left:1.2em;}
+.card li{margin:0 0 10px;}
+.card li:last-child{margin-bottom:0;}
+strong{color:var(--accent);}
+.disc{
+  margin-top:20px;
+  padding-top:14px;
+  border-top:1px solid var(--border);
+  font-size:14px;
+  color:var(--muted);
+  opacity:.8;
+}
+@media (min-width:640px){
+  .wrap{padding:28px 28px 44px;}
+  .card{padding:36px 36px 40px;border-radius:16px;}
+}
+@media print{
+  body{background:#fff;color:#000;font-size:12pt;}
+  .card{background:#fff;border:0;padding:0;margin-top:0;}
+  .brand{display:none;}
+  .meta{color:#444;}
+  .meta,.disc{border-color:#ccc;}
+  strong{color:#000;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand">MrFai 的 Agent 笔记</div>
+  <article class="card">
+    <h1>按可逆性给 Agent 分级授权，而不是按任务重要性</h1>
+    <p class="meta">2026-10-17 · AI Agent · 工程实践</p>
+
+    <p>很多人给 AI Agent 定权限时，问的第一个问题是：这个任务重不重要？重不重要其实是个坏标尺。同样是"改一行代码"和"改一行配置"，前者错了能撤回，后者错了可能让整套环境跑不起来；而"整理文档"看着轻，一旦它顺手删掉一个目录，就完全不可逆。</p>
+
+    <p>我的立场更直接：<strong>授权的粒度应该由动作的可逆性决定，而不是由任务听起来有多重要决定。</strong>同一个任务里，允许写临时文件、允许改工作区代码、允许碰用户配置、允许对外发消息，这四件事必须拆成四种授权，而不是打包成"帮我搞定这个"。</p>
+
+    <p>我踩过最贵的一次坑，不是模型答错了，而是它答得太对：它发现一批旧日志没被引用，顺手清理了。那批日志当时没有任何引用关系，但它们是回滚某次发布时唯一的现场记录。要恢复，只能靠更早的备份。我当时唯一的念头是：任务本身没出错，错在我把"清理"和"记录"归成了同一档授权。</p>
+
+    <p>从那以后我固定这么做，四步：</p>
+
+    <ul>
+      <li><strong>先列出这个任务会触碰的所有写操作路径</strong>，一个一个标上可逆还是不可逆。标不出来的，默认按不可逆处理。</li>
+      <li><strong>把不可逆动作从任务里拆出去。</strong>要么明确告诉 Agent "只报告不执行"，要么就明确授权它执行——不允许含糊。</li>
+      <li><strong>在提示里给它一条硬规则：删除前必须先打印清单等确认。</strong>不是每次都拦，而是让"要删什么"成为它主动说出来的事。</li>
+      <li><strong>把每次不可逆操作的命令和结果留在日志里。</strong>出事时你需要的不是复盘它的推理过程，而是"当时到底执行了什么"。</li>
+    </ul>
+
+    <p>这套做法的额外好处是，你终于能判断一个任务"成功"了没有。以前 Agent 说"已完成"你只能信，现在你能自己复现最后三步。对一个要长期跑的系统来说，这个差别比模型再聪明一代都重要。</p>
+
+    <p class="disc">免责声明：本文为个人技术笔记，观点与做法仅代表作者自身实践，不构成任何投资或生产环境操作建议。</p>
+  </article>
+</div>
+</body>
+</html>
