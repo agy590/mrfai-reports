@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>别信 Agent 的自述，去读文件｜MrFai 的 Agent 笔记</title>
+<style>
+  :root{
+    --bg:#0b0e14;
+    --surface:#141821;
+    --fg:#e8eaed;
+    --muted:#b3b8c4;
+    --border:#232836;
+    --accent:#76a7ff;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--fg);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size:17px;
+    line-height:1.78;
+    overflow-wrap:break-word;
+    word-break:break-word;
+    overflow-x:hidden;
+    padding:0 18px calc(28px + env(safe-area-inset-bottom));
+  }
+  .wrap{width:min(100%,720px);margin:0 auto;}
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:22px 2px 14px;
+    font-size:14px;
+    letter-spacing:.02em;
+    color:var(--muted);
+  }
+  .brand .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--accent);flex:0 0 auto;
+  }
+  .brand strong{color:var(--fg);font-weight:600;}
+  .card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:22px 18px 24px;
+  }
+  h1{
+    margin:0 0 10px;
+    font-size:clamp(25px,7vw,34px);
+    line-height:1.22;
+    letter-spacing:-0.01em;
+    font-weight:700;
+    overflow-wrap:break-word;
+  }
+  .meta{
+    margin:0 0 20px;
+    padding-bottom:16px;
+    border-bottom:1px solid var(--border);
+    font-size:13px;
+    line-height:1.6;
+    color:var(--muted);
+    letter-spacing:.02em;
+  }
+  article p{margin:0 0 1.05em;}
+  article strong{color:var(--fg);font-weight:600;}
+  .accent{color:var(--accent);}
+  h2{
+    margin:1.5em 0 .6em;
+    font-size:17px;
+    font-weight:650;
+    color:var(--fg);
+  }
+  ol{
+    margin:0 0 1.05em;
+    padding-left:1.35em;
+  }
+  ol li{margin:0 0 .6em;}
+  ol li::marker{color:var(--accent);}
+  code{
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+    font-size:.9em;
+    background:#0f131c;
+    border:1px solid var(--border);
+    border-radius:5px;
+    padding:.1em .35em;
+    overflow-wrap:break-word;
+    word-break:break-all;
+  }
+  a{
+    color:var(--accent);
+    text-decoration:none;
+    border-bottom:1px solid rgba(118,167,255,.4);
+    overflow-wrap:break-word;
+  }
+  .note{
+    margin:20px 0 0;
+    padding:14px 14px 12px;
+    border:1px solid var(--border);
+    border-radius:12px;
+    background:#10141d;
+    font-size:13px;
+    line-height:1.7;
+    color:var(--muted);
+  }
+  footer{
+    padding:18px 2px 0;
+    font-size:12px;
+    line-height:1.6;
+    color:var(--muted);
+    opacity:.8;
+  }
+  @media (min-width:640px){
+    body{
+      font-size:18px;
+      padding:0 28px calc(44px + env(safe-area-inset-bottom));
+    }
+    .brand{padding:34px 2px 16px;font-size:15px;}
+    .card{padding:36px 34px 38px;border-radius:20px;}
+    h1{font-size:clamp(28px,4.4vw,34px);}
+  }
+  @media print{
+    body{background:#fff;color:#111;padding:0;font-size:12pt;}
+    .card{background:#fff;border:1px solid #ccc;padding:0;}
+    .brand,.note,footer{border-color:#ccc;color:#333;}
+    h1{font-size:20pt;}
+    a{color:#111;border-bottom:none;}
+    code{background:#f2f2f2;border:1px solid #ddd;color:#111;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand"><span class="dot" aria-hidden="true"></span><strong>MrFai 的 Agent 笔记</strong></div>
+
+  <main class="card">
+    <h1>别信 Agent 的自述，去读文件</h1>
+    <p class="meta">2026-10-18 · 主题：多 Agent 协作中的上下文失真</p>
+
+    <article>
+      <p>我给 Agent 立过一条硬规矩：<strong>动手前必须重新读盘，不要凭记忆改文件。</strong>理由不复杂——上下文是会话启动那一刻的快照，而磁盘上的文件在你上一次工具调用之后就已经变了。</p>
+
+      <p>真正的翻车场景是这样的：会话开始时我读了某个配置文件，于是整个上下文里都记着“阈值是 0.7”。半小时后，同一个仓库的另一个 Agent 为了配合上游接口，把它改成了 0.9。这时我让 Agent “把阈值改成 0.75 以适配现状”——它读的是记忆，不是文件，于是把改动写进了一个看起来完全合理的补丁里，覆盖掉了别人的修改，而叙述里还写着一句“已按当前配置调整为 0.75”。</p>
+
+      <p>更麻烦的是第三层：多 Agent 同时改一份共享文档时，谁都不知道谁已经动过。冲突不会报错，只会静默合并成一份谁都认不出来的产物。这比崩溃可怕得多。</p>
+
+      <p>我的结论很直白：<span class="accent">Agent 的自述是意图，不是事实。</span>事实只存在于文件系统里。凡是要写的地方，先读；写完再读一次；让验证结果而不是叙述来充当证据。</p>
+
+      <h2>可以直接照做的四步</h2>
+      <ol>
+        <li><strong>写之前 re-read。</strong>把目标文件当作唯一真相来源。哪怕三十秒前刚读过，也再读一次——多花一次工具调用，比回滚一次别人的改动便宜得多。</li>
+        <li><strong>把规则放进文件，而不是留在对话里。</strong>项目约定写成仓库里的文档（约定、协议、命名），让每一个新会话、每一个 Agent 都能读到同一份，而不是靠某个人“记得”。</li>
+        <li><strong>写完立刻读回验证。</strong>修改共享文件后重新读取目标段落，确认落地的就是你打算写的。工具说成功，和你看到它写进去，是两件事。</li>
+        <li><strong>共享产物先领再写。</strong>多个 Agent 会碰同一份文件时，用一个简单的占用标记（谁、哪个路径、什么时候）避免交叉覆盖。写不动比写坏便宜。</li>
+      </ol>
+
+      <div class="note">
+        免责声明：本文是个人工程实践的记录与分享，不代表任何平台的官方立场，也不构成投资、购买或安全建议。文中未涉及真实账号、内部配置或他人信息。
+      </div>
+    </article>
+  </main>
+
+  <footer>MrFai 的 Agent 笔记 · 每天一篇，写 AI Agent、独立开发与多 Agent 协作里的真实经验。</footer>
+</div>
+</body>
+</html>
