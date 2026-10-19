@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>研究-agent 每日科技新闻简报 | 2026-10-19</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f5f6f8; color: #1c2024; line-height: 1.75;
+    -webkit-text-size-adjust: 100%;
+  }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 20px 16px 56px; }
+  header {
+    background: #ffffff; border: 1px solid #e3e6ea; border-radius: 12px;
+    padding: 24px 22px; margin-bottom: 18px;
+  }
+  h1 { font-size: 22px; margin: 0 0 8px; letter-spacing: -0.2px; }
+  .meta { font-size: 13px; color: #6b7280; line-height: 1.7; }
+  h2 {
+    font-size: 17px; margin: 30px 0 12px; padding-bottom: 8px;
+    border-bottom: 2px solid #e3e6ea;
+  }
+  .card {
+    background: #ffffff; border: 1px solid #e3e6ea; border-radius: 12px;
+    padding: 20px 20px; margin-bottom: 14px;
+  }
+  .card h3 { font-size: 17px; margin: 0 0 12px; line-height: 1.5; }
+  .tag {
+    display: inline-block; font-size: 11px; padding: 3px 9px; border-radius: 20px;
+    margin-right: 6px; margin-bottom: 6px; font-weight: 600; vertical-align: middle;
+  }
+  .tag-type { background: #eef2ff; color: #3730a3; }
+  .tag-time { background: #ecfdf5; color: #047857; }
+  .tag-cred { background: #fffbeb; color: #92400e; }
+  p { margin: 0 0 12px; font-size: 15px; }
+  p:last-child { margin-bottom: 0; }
+  .label { font-weight: 700; color: #111827; }
+  .why { background: #f9fafb; border-left: 3px solid #9ca3af; padding: 10px 14px; border-radius: 0 6px 6px 0; margin: 12px 0; }
+  .why p { font-size: 14.5px; color: #374151; }
+  .cred-note { font-size: 13.5px; color: #92400e; background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; padding: 10px 13px; margin: 12px 0; }
+  a { color: #1d4ed8; text-decoration: none; word-break: break-all; }
+  a:hover { text-decoration: underline; }
+  .srclist { list-style: none; padding: 0; margin: 8px 0 0; }
+  .srclist li { font-size: 13.5px; margin-bottom: 7px; padding-left: 14px; position: relative; }
+  .srclist li:before { content: "›"; position: absolute; left: 2px; color: #9ca3af; }
+  .tldr { counter-reset: t; list-style: none; padding: 0; margin: 0; }
+  .tldr li { counter-increment: t; margin-bottom: 14px; font-size: 15px; padding-left: 34px; position: relative; }
+  .tldr li:before {
+    content: counter(t); position: absolute; left: 0; top: 1px;
+    width: 23px; height: 23px; border-radius: 50%; background: #1c2024; color: #fff;
+    font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center;
+  }
+  .tldr b { font-weight: 700; }
+  .warn { background: #fff7ed; border: 1px solid #fdba74; border-radius: 10px; padding: 16px 18px; }
+  .warn h3 { font-size: 15.5px; margin: 0 0 10px; color: #9a3412; }
+  .warn p, .warn li { font-size: 14px; color: #7c2d12; }
+  .obs p { font-size: 15.5px; }
+  .verdict {
+    background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px;
+    padding: 14px 16px; margin: 14px 0; font-size: 15.5px; color: #1e3a8a;
+  }
+  .caveat { font-size: 14px; color: #6b7280; background: #f9fafb; border: 1px dashed #d1d5db; border-radius: 8px; padding: 13px 15px; margin-top: 14px; }
+  .caveat p { font-size: 14px; color: #6b7280; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+  th, td { border: 1px solid #e3e6ea; padding: 8px 10px; text-align: left; vertical-align: top; }
+  th { background: #f9fafb; font-weight: 700; }
+  footer { margin-top: 30px; padding-top: 18px; border-top: 1px solid #e3e6ea; font-size: 12.5px; color: #9ca3af; line-height: 1.8; }
+  .audit { font-size: 13.5px; color: #4b5563; }
+  .audit li { margin-bottom: 8px; }
+  .audit code { background: #f3f4f6; padding: 2px 6px; border-radius: 4px; font-size: 12.5px; word-break: break-all; }
+  @media (max-width: 560px) {
+    .wrap { padding: 14px 12px 40px; }
+    header, .card { padding: 18px 16px; }
+    h1 { font-size: 19px; }
+    h3 { font-size: 16px; }
+    table { font-size: 12px; }
+    th, td { padding: 6px 7px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>研究-agent 每日科技新闻简报</h1>
+  <div class="meta">
+    日期：2026-10-19（+08）｜生成时间：12:01<br>
+    时效硬门：仅采纳 2026-10-16 至 2026-10-19 有可核验日期的材料<br>
+    本次可验证条目：<strong>5 条</strong>，全部为 PARTIAL 级别（链接与日期已核验，正文未读）
+  </div>
+</header>
+
+<h2>当日摘要（TL;DR）</h2>
+<div class="card">
+  <ol class="tldr">
+    <li><b>内存供应链成为 AI 算力主战场</b> — 三星与台积电将同时为 Nvidia 生产定制 HBM；芯片股已连续八个交易日下跌，由内存板块领跌。</li>
+    <li><b>AI 盈利增速预期大幅下调</b> — Jefferies 预计 AI 相关盈利增速将从 100% 降至 22%。</li>
+    <li><b>电力成为 AI 扩张的硬约束</b> — 微软签署印第安纳州 20 年、1,100 兆瓦购电协议；Anthropic 租下其首个加拿大数据中心。</li>
+    <li><b>旧金山暂停新数据中心 45 天</b>（The San Francisco Standard，2026-10-16）— 因日期贴近 72 小时边界，仅作背景提及，不计为独立新闻卡片。</li>
+  </ol>
+</div>
+
+<h2>GitHub Trending 日榜可见仓库中，今日新增 Star 最高</h2>
+<div class="card warn">
+  <h3>⚠ 本次 GitHub Trending 日增数据不可验证</h3>
+  <p><span class="label">原始链接：</span><a href="https://github.com/trending?since=daily" target="_blank" rel="noopener">https://github.com/trending?since=daily</a></p>
+  <p><span class="label">本次抓取方式：</span><code>curl -L --max-time 20 'https://r.jina.ai/https://github.com/trending?since=daily'</code>（本次运行第 1 次 curl 调用）</p>
+  <p><span class="label">本次可验证事实：</span>请求成功返回了页面，但返回内容在导航与语言筛选菜单处结束，未包含任何仓库条目，因此本次读取到的响应中<strong>不存在任何 <code>N stars today</code> 字段</strong>，也不存在可比较的仓库列表。</p>
+  <p><span class="label">失败原因：</span>抓取截断于页面导航区，仓库条目未进入本次返回内容。</p>
+  <p><span class="label">本次未做、也不会做的事：</span>未重试该 URL（已计入本次 curl 总上限 3 次）；未使用缓存的前一日数据；未用总 Star 反推日增；未改用其他数据路径获取日增。</p>
+  <p>因此本卡片<strong>不列出任何仓库名、日增数或排名</strong>。</p>
+</div>
+
+<h2>新闻卡片</h2>
+
+<div class="card">
+  <h3>1. 三星与台积电将同时为 Nvidia 生产定制 HBM</h3>
+  <span class="tag tag-type">科技 / 半导体供应链</span>
+  <span class="tag tag-time">2026-10-18</span>
+  <span class="tag tag-cred">🟡 PARTIAL</span>
+  <div class="cred-note"><strong>可信度说明：</strong>来源索引页已实际抓取，标题与日期可见；<strong>未读取正文，未取得第二独立来源</strong>。因此不构成「官方确认」或「多方确认」。</div>
+  <p><span class="label">核心事实：</span>据 Seoul Economic Daily 报道，三星与台积电将同时承担 Nvidia 定制 HBM 的生产。</p>
+  <div class="why"><p><span class="label">为什么重要：</span>HBM 是当前 AI 加速器产能的实际瓶颈。引入双供应商意味着 Nvidia 在 HBM 上不再依赖单一代工伙伴，供应弹性与议价结构都发生变化。</p></div>
+  <p><span class="label">时效依据：</span>原始页面标注「SEOUL ECONOMIC DAILY, 18 OCTOBER 2026」，站点归档条目日期 2026-10-18，在 72 小时窗口内。</p>
+  <ul class="srclist">
+    <li>Seoul Economic Daily（经 ai-blogs.org 归档索引）→ <a href="https://ai-blogs.org/news/2026-10-18-samsung-and-tsmc-will-both-build-nvidias-custom-hbm-pm.html" target="_blank" rel="noopener">ai-blogs.org/…/2026-10-18-samsung-and-tsmc-will-both-build-nvidias-custom-hbm-pm.html</a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>2. 芯片股连续八个交易日下跌，内存板块领跌</h3>
+  <span class="tag tag-type">财经 / 半导体</span>
+  <span class="tag tag-time">2026-10-17</span>
+  <span class="tag tag-cred">🟡 PARTIAL</span>
+  <div class="cred-note"><strong>可信度说明：</strong>同上 — 索引页已核验链接与日期，未读原文正文。</div>
+  <p><span class="label">核心事实：</span>BigGo Finance 报道，芯片股已连续八个交易日走低，内存相关个股领跌。</p>
+  <div class="why"><p><span class="label">为什么重要：</span>与上一条形成对照 —— HBM 扩产预期升温的同时，内存股在跌，说明市场担心的不是产能不足，而是扩产带来的价格与周期位置问题。这是一个分歧信号，不是共识。</p></div>
+  <p><span class="label">时效依据：</span>原始页面标注「BIGGO FINANCE, 17 OCTOBER 2026」，归档条目日期 2026-10-18，在窗口内。</p>
+  <ul class="srclist">
+    <li>BigGo Finance（经 ai-blogs.org 归档索引）→ <a href="https://ai-blogs.org/news/2026-10-18-chip-stocks-fall-for-eight-straight-sessions-led-by-memory-pm.html" target="_blank" rel="noopener">ai-blogs.org/…/2026-10-18-chip-stocks-fall-for-eight-straight-sessions-led-by-memory-pm.html</a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>3. Jefferies 预计 AI 盈利增速将从 100% 降至 22%</h3>
+  <span class="tag tag-type">财经 / 卖方研究</span>
+  <span class="tag tag-time">2026-10-17</span>
+  <span class="tag tag-cred">🟡 PARTIAL</span>
+  <div class="cred-note"><strong>可信度说明：</strong>同上 — 索引页已核验链接与日期，未读原文正文。</div>
+  <p><span class="label">核心事实：</span>IANS 报道 Jefferies 预计 AI 相关企业盈利增速将从 100% 大幅降至 22%。</p>
+  <div class="why"><p><span class="label">为什么重要：</span>100% → 22% 不是小幅下修，是增速量级的改变。它把「AI 是否值得高估值」的讨论从叙事层拉到盈利兑现层。需留意这是单家机构的预测，不是既成事实。</p></div>
+  <p><span class="label">时效依据：</span>原始页面标注「IANS, 17 OCTOBER 2026」，归档条目日期 2026-10-18，在窗口内。</p>
+  <ul class="srclist">
+    <li>IANS（经 ai-blogs.org 归档索引）→ <a href="https://ai-blogs.org/news/2026-10-18-jefferies-expects-ai-earnings-growth-to-fall-from-100-percent-to-22-am.html" target="_blank" rel="noopener">ai-blogs.org/…/2026-10-18-jefferies-expects-ai-earnings-growth-to-fall-from-100-percent-to-22-am.html</a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>4. 微软签署印第安纳州 20 年、1,100 兆瓦购电协议</h3>
+  <span class="tag tag-type">科技 / 能源基础设施</span>
+  <span class="tag tag-time">2026-10-16</span>
+  <span class="tag tag-cred">🟡 PARTIAL</span>
+  <div class="cred-note"><strong>可信度说明：</strong>同上 — 索引页已核验链接与日期，未读原文正文。</div>
+  <p><span class="label">核心事实：</span>据 NiSource 经 Business Wire 发布的信息，微软签署一份 20 年期、1,100 兆瓦的电力协议，位于印第安纳州。</p>
+  <div class="why"><p><span class="label">为什么重要：</span>1,100 兆瓦是超大型用电量级。20 年期意味着这不是临时采购，而是把 AI 算力扩张绑定到一条长期电力走廊上。对自建算力的一方，这是比买芯片更硬的约束。</p></div>
+  <p><span class="label">时效依据：</span>原始页面标注「NISOURCE VIA BUSINESS WIRE, 16 OCTOBER 2026」，归档条目日期 2026-10-17，在窗口内。</p>
+  <ul class="srclist">
+    <li>NiSource via Business Wire（经 ai-blogs.org 归档索引）→ <a href="https://ai-blogs.org/news/2026-10-17-microsoft-signs-a-20-year-1100-megawatt-power-deal-in-indiana-am.html" target="_blank" rel="noopener">ai-blogs.org/…/2026-10-17-microsoft-signs-a-20-year-1100-megawatt-power-deal-in-indiana-am.html</a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>5. Anthropic 租下其首个加拿大数据中心（新斯科舍省）</h3>
+  <span class="tag tag-type">科技 / 算力基础设施</span>
+  <span class="tag tag-time">2026-10-17</span>
+  <span class="tag tag-cred">🟡 PARTIAL</span>
+  <div class="cred-note"><strong>可信度说明：</strong>同上 — 索引页已核验链接与日期，未读原文正文。</div>
+  <p><span class="label">核心事实：</span>The Star 报道，Anthropic 在加拿大新斯科舍省租赁其首个加拿大数据中心。</p>
+  <div class="why"><p><span class="label">为什么重要：</span>与上一条同属一条主线 —— AI 公司正在从「买卡」转向「锁电锁址」。新斯科舍省同时也是北美数据中心土地与电力审批争议较集中的地区之一，值得跟踪后续本地层面的反馈。</p></div>
+  <p><span class="label">时效依据：</span>原始页面标注「THE STAR, 17 OCTOBER 2026」，归档条目日期 2026-10-17，在窗口内。</p>
+  <ul class="srclist">
+    <li>The Star（经 ai-blogs.org 归档索引）→ <a href="https://ai-blogs.org/news/2026-10-17-anthropic-leases-its-first-canadian-data-centre-in-nova-scotia-pm.html" target="_blank" rel="noopener">ai-blogs.org/…/2026-10-17-anthropic-leases-its-first-canadian-data-centre-in-nova-scotia-pm.html</a></li>
+  </ul>
+</div>
+
+<h2>今日观察</h2>
+<div class="card obs">
+  <p>今天窗口内可核验的材料，全部指向同一个瓶颈：<strong>AI 扩张的限制条件正在从芯片供应转向内存与电力。</strong></p>
+  <ul>
+    <li>三星与台积电同时为 Nvidia 做定制 HBM —— 这是对内存瓶颈的直接回应。</li>
+    <li>芯片股连续八天下跌、内存领跌 —— 市场在同一时间对内存周期的定价却转向了悲观。这不是矛盾，是分歧：产能扩张在解决短缺，同时也在压低价格。判断哪一边对，取决于 HBM 的实际需求曲线，而不是新闻标题。</li>
+    <li>微软 1,100 兆瓦、20 年期购电，Anthropic 租下新斯科舍的数据中心 —— 这是同一约束在下游的体现。电力是一块地、一次审批、一条线路，交付周期以年计，比 GPU 采购慢得多。</li>
+    <li>Jefferies 把 AI 盈利增速预期从 100% 下调到 22% —— 这是资本市场对上述成本开始计入价格。</li>
+  </ul>
+  <div class="verdict"><strong>判断：</strong>这轮扩张的下一阶段，卡的不是芯片，是电和内存的产能节奏。短期内值得跟踪的不是又发布了什么模型，而是内存股的价格信号和电力协议的规模 —— 它们比发布会更早反映真实约束。</div>
+  <div class="caveat">
+    <p><strong>一个诚实的提醒：</strong>本次五条材料全部来自同一个归档索引页，我没有读到任何一篇正文，全部是 PARTIAL 级别。上述判断因此建立在标题层面的信息之上，数字细节可能存在偏差。若要用于对外内容生产，应逐条点开原文核实。</p>
+  </div>
+</div>
+
+<h2>来源与局限</h2>
+<div class="card">
+  <p><span class="label">本次实际使用的来源类型</span></p>
+  <ul class="audit">
+    <li>ai-blogs.org 计算/芯片归档索引页 → <a href="https://ai-blogs.org/archive/compute.html" target="_blank" rel="noopener">https://ai-blogs.org/archive/compute.html</a>（本次实际抓取，提供条目链接、原始出处名称与日期）</li>
+    <li>web_search 返回的 SiliconANGLE、DCD、Tom's Hardware、Futurum、Dealroom 等结果（均因超窗或不可读取未采用）</li>
+  </ul>
+  <p style="margin-top:14px"><span class="label">明确的数据限制</span></p>
+  <ol class="audit">
+    <li>五条新闻均为 PARTIAL：有真实链接与可核验日期，但未读取正文，未取得第二独立来源，因此一律不标注「多方确认」，也不标注「官方确认」。</li>
+    <li>5 次 <code>web_search</code> 调用中有 3 次返回零结果（后端 <code>ddgs</code> 包未安装，回退到无密钥免费层仍返回空数组），本次搜索广度明显不足。</li>
+    <li>GitHub Trending 日增数据本次不可验证（见上方卡片）。</li>
+    <li>dealroom.co 页面返回 403（Cloudflare 拦截），该条候选已放弃。</li>
+    <li>本次 curl 总上限 3 次已用尽（GitHub Trending、ai-blogs.org 归档、dealroom.co）。</li>
+  </ol>
+  <p style="margin-top:14px"><span class="label">被排除的材料（超窗或日期不合格）</span></p>
+  <table>
+    <tr><th>材料</th><th>拒绝原因</th></tr>
+    <tr><td>Mistral AI 30 亿欧元融资（三星领投）</td><td>2026-09-08，超窗</td></tr>
+    <tr><td>Verda 1.89 亿美元 B 轮</td><td>2026-10-05，超窗</td></tr>
+    <tr><td>Modal 7.5 亿美元 D 轮</td><td>2026-10-14/15，超窗</td></tr>
+    <tr><td>CoreWeave 债券收益率近 15%</td><td>2026-10-14/15，超窗</td></tr>
+    <tr><td>Nvidia Vera Rubin 机架设计提交 OCP</td><td>2026-10-12/13，超窗</td></tr>
+    <tr><td>Microsoft Maia 300 芯片</td><td>2026-10-12，超窗</td></tr>
+    <tr><td>台积电单季 NT$7,630 亿创纪录</td><td>2026-10-15，超窗</td></tr>
+    <tr><td>Microsoft AI 2.8 万亿参数模型预训练完成</td><td>页面仅标「OCTOBER 2026」，无具体日期，含混</td></tr>
+    <tr><td>DeepX 5nm 边缘 AI 芯片量产</td><td>同上，日期含混</td></tr>
+    <tr><td>两项 arXiv 推测解码 / KV 缓存论文</td><td>原始日期 2026-10-14，超窗</td></tr>
+    <tr><td>旧金山暂停新数据中心 45 天</td><td>2026-10-16，贴近边界，未列为独立卡片</td></tr>
+    <tr><td>TrustedRouter 600 万美元种子轮</td><td>原始页面返回 403，无法读取正文</td></tr>
+  </table>
+</div>
+
+<footer>
+  <p><strong>免责声明：</strong>本简报由自动化流程生成。所有条目的日期均来自本次实际抓取的页面可见信息，但多数条目未读取原文正文，属于 PARTIAL 级别证据。内容仅供内部参考，不构成投资建议或事实定论。用于对外发布前请逐条核验原始出处。</p>
+</footer>
+
+</div>
+</body>
+</html>
