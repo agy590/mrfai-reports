@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日市场简报 — 2026-10-19</title>
+<style>
+  :root {
+    --bg: #0f1419;
+    --card: #1a1f29;
+    --border: #2a313c;
+    --text: #e6edf3;
+    --muted: #7d8590;
+    --up: #3fb950;
+    --down: #f85149;
+    --neutral: #d29922;
+    --accent: #58a6ff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .header {
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+  .header h1 {
+    font-size: 28px;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .header .meta {
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .section h2 {
+    color: var(--accent);
+    font-size: 20px;
+    margin-bottom: 16px;
+    border-left: 4px solid var(--accent);
+    padding-left: 12px;
+  }
+  .section h3 {
+    color: var(--text);
+    font-size: 16px;
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+  th {
+    background: var(--border);
+    color: var(--muted);
+    text-align: left;
+    padding: 8px 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  tr:hover td {
+    background: rgba(88, 166, 255, 0.05);
+  }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .neutral { color: var(--neutral); }
+  .muted { color: var(--muted); }
+  .kpi {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin: 12px 0;
+  }
+  .kpi-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 16px;
+  }
+  .kpi-label {
+    color: var(--muted);
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .kpi-value {
+    font-size: 22px;
+    font-weight: 600;
+  }
+  ul { padding-left: 20px; margin: 8px 0; }
+  li { margin-bottom: 6px; }
+  .footer {
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+  .source {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+  .note {
+    background: rgba(210, 153, 34, 0.08);
+    border-left: 3px solid var(--neutral);
+    padding: 10px 14px;
+    border-radius: 4px;
+    font-size: 13px;
+    color: var(--muted);
+    margin: 10px 0;
+  }
+</style>
+</head>
+<body>
+  <div class="header">
+    <h1>📊 每日市场简报 — 2026-10-19</h1>
+    <div class="meta">📅 2026-10-19 · 采集时刻 captured_at_myt 09:16 MYT · 数据源: Yahoo Finance (chart/v8, 只读快照) / DOSM / BNM / Reuters / AP / Zacks / The Star / Bernama / Business Today</div>
+  </div>
+
+  <div class="section">
+    <h2>⚠️ 时点说明</h2>
+    <div class="note">
+      本次采集时刻为 2026-10-19 09:16 (MYT)。各市场交易时段不一致：<strong>马股</strong>为今日开盘时段报价；<strong>美股个股、美债 10Y、VIX</strong>时间戳仍为上个交易日（2026-10-16 周五）收盘；<strong>美股期货与商品</strong>为 Globex 周日夜盘重开后的报价。下文不跨时点归因。本报告仅作宏观、事件与跨市场状态观察，不含任何操作建议或可执行交易指令。
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>🇲🇾 马来西亚股市</h2>
+
+    <div class="kpi">
+      <div class="kpi-card">
+        <div class="kpi-label">FBM KLCI (^KLSE)</div>
+        <div class="kpi-value down">1603.17</div>
+        <div class="muted"><span class="down">−4.59 / −0.29%</span> · 09:01 MYT</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">USD/MYR (MYR=X)</div>
+        <div class="kpi-value up">4.078</div>
+        <div class="muted"><span class="up">−0.002 / −0.05%</span> · 09:13 MYT</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">3Q26 初步 GDP</div>
+        <div class="kpi-value up">+5.3%</div>
+        <div class="muted">YoY（前季 +6.0%）· DOSM 10-16</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">BNM OPR</div>
+        <div class="kpi-value neutral">2.75%</div>
+        <div class="muted">自 2026-09-03 维持不变</div>
+      </div>
+    </div>
+
+    <h3>KLCI 5 日走势</h3>
+    <p>高位回落。10-12 至 10-16 收盘依次为 1618.01 → 1623.35 → 1627.72（周内高点）→ 1623.70 → 1607.76；上周全周累计 <span class="down">−0.63%</span>。今日开盘续跌至 1603.17，贴近上周五盘中低点 1602.98 一线。本轮区间约 1602.98–1627.72。</p>
+
+    <h3>马币 USD/MYR</h3>
+    <p>4.078（<span class="up">−0.002 / −0.05%</span>），行情时刻 2026-10-19 09:13 MYT。5 日收盘：4.0831 → 4.0817 → 4.0828 → 4.0815 → 4.0800，连续小幅走强（美元兑林吉特下移）。交叉核对：BNM 2026-10-16 KL USD/MYR 参考汇率 4.0837；Bernama 报道上周五收 4.0795/0835，方向一致。</p>
+
+    <h3>主要成分股</h3>
+    <table>
+      <thead>
+        <tr><th>代码</th><th>公司</th><th>价格 (RM)</th><th>Δ (RM)</th><th>Δ%</th><th>行情时间 (MYT)</th><th>备注</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1155.KL</td><td>MAYBANK 马银行</td><td>9.98</td><td class="down">-0.01</td><td class="down">-0.10%</td><td class="muted">09:00:54</td><td>银行股分化；上周五曾涨 1 仙至 10.08</td></tr>
+        <tr><td>1023.KL</td><td>CIMB 联昌银行</td><td>7.23</td><td class="up">+0.03</td><td class="up">+0.42%</td><td class="muted">09:01:04</td><td>六只中唯一上涨</td></tr>
+        <tr><td>1295.KL</td><td>PBBANK 公众银行</td><td>4.78</td><td class="down">-0.05</td><td class="down">-1.04%</td><td class="muted">09:01:05</td><td>跌幅居前；上周五曾创 4.83 阶段高位</td></tr>
+        <tr><td>5347.KL</td><td>TENAGA 国家能源</td><td>12.96</td><td class="down">-0.04</td><td class="down">-0.31%</td><td class="muted">09:00:45</td><td>—</td></tr>
+        <tr><td>5225.KL</td><td>IHH 医疗集团</td><td>7.99</td><td class="down">-0.01</td><td class="down">-0.12%</td><td class="muted">09:00:21</td><td>防御性板块相对抗跌</td></tr>
+        <tr><td>7113.KL</td><td>TOPGLOV 顶级手套</td><td>0.89</td><td class="down">-0.01</td><td class="down">-1.11%</td><td class="muted">09:00:45</td><td>跌幅最大；上周自 0.815 反弹后回吐</td></tr>
+      </tbody>
+    </table>
+    <div class="source">表注：价格、涨跌、涨跌幅与行情时间均逐行抄自同一次 Yahoo Finance 快照（captured_at_myt 2026-10-19 09:16）。六只标的本次全部返回有效数据，无 error 项。</div>
+
+    <h3>板块动态</h3>
+    <ul>
+      <li><strong>银行：</strong>今日呈现分化而非齐跌，CIMB 涨 0.42% 与 PBBANK 跌 1.04% 并存。本地卖方对银行板块看法偏谨慎——RHB 于 10-02 将银行评级下调至 Neutral，理由是融资成本上升、债券收益率走高与拨备缓冲变薄（source: sme.com.my, 2026-10-02）。</li>
+      <li><strong>科技/半导体：</strong>上周经历外部冲击后本周趋于平稳。CXMT 于 10-13 宣布年底前推出更密集的服务器内存模组，引发韩股科技重挫（Kospi 10-13 跌 5.46%、10-15 前后约 −7%），马股科技指数 10-13 盘中一度 −4.46%，但 KLCI 当日仍收涨（The Star, 2026-10-19）。马来西亚本地测试设备商 QES 管理层称订单"照常"，未见下单回撤。</li>
+      <li><strong>建筑/产业：</strong>上周五成交转向小型科技、电信与 REITs 等选择性标的；本轮回落中大盘股获利回吐为主要压力（Business Today, 2026-10-18）。</li>
+    </ul>
+
+    <h3>关键新闻</h3>
+    <ul>
+      <li><strong>3Q26 初步 GDP +5.3% YoY：</strong>马来西亚统计局（DOSM）10-16 发布，低于前季 6.0%，但高于市场预测区间 4.5–5.4% 上沿；9M26 累计 5.5%（2025 同期 4.8%）。制造业 +7.5%（电气电子与光学产品、石油化工塑料拉动）、服务业 +5.4%、建筑 +6.0%、农业由 −3.7% 转为 +1.3%、采矿业 −4.9%（原油与凝析油产量下降）。初步 GDP 上限由 DOSM 定于 2026-11-18 发布。数据公布当日 KLCI 仍收跌 15.94 点，市场关注点转向美债收益率。</li>
+      <li><strong>BNM 政策口径：</strong>OPR 自 2026-09-03 起维持 2.75% 不变（bnm.gov.my OPR Decisions）。总裁 Rasheed 于 10-15 表示若通胀压力上升仍有调整空间，称上月删除 "appropriate" 措辞即为留出空间；利率掉期一度计入未来六个月内约 76% 的加息概率（Bloomberg via The Star, 2026-10-15）。</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🇺🇸 美国期货 + 美股</h2>
+
+    <div class="kpi">
+      <div class="kpi-card">
+        <div class="kpi-label">VIX 恐慌指数 (^VIX)</div>
+        <div class="kpi-value down">19.99</div>
+        <div class="muted"><span class="down">+3.53 / +21.45%</span> · 10-16 收盘</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">美债 10Y (^TNX)</div>
+        <div class="kpi-value down">5.098%</div>
+        <div class="muted"><span class="down">+0.9 bp</span> · 10-16 收盘</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">美元指数 DXY</div>
+        <div class="kpi-value neutral">101.824</div>
+        <div class="muted"><span class="down">−0.02%</span> · 09:06 MYT</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">ES=F 期货</div>
+        <div class="kpi-value up">7740.75</div>
+        <div class="muted"><span class="up">+0.47%</span> · Globex 周日夜盘</div>
+      </div>
+    </div>
+
+    <h3>三大指数期货</h3>
+    <p class="muted" style="font-size:13px;margin-bottom:8px;">Globex 周日 21:06 ET 重开后报价，参考 10-16 收盘</p>
+    <table>
+      <thead>
+        <tr><th>期货</th><th>水平</th><th>Δ</th><th>Δ%</th><th>备注</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>ES=F (S&amp;P 500 Dec 26)</td><td>7740.75</td><td class="up">+36.50</td><td class="up">+0.47%</td><td class="muted">参考 10-16 收 7704.25</td></tr>
+        <tr><td>NQ=F (Nasdaq 100 Dec 26)</td><td>29663.50</td><td class="up">+272.00</td><td class="up">+0.93%</td><td class="muted">反弹幅度最大，对应上周重挫</td></tr>
+        <tr><td>YM=F (Dow Dec 26)</td><td>52278</td><td class="up">+64</td><td class="up">+0.12%</td><td class="muted">防御属性较强</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Magnificent 7</h3>
+    <p class="muted" style="font-size:13px;margin-bottom:8px;">时间戳均为 2026-10-17 04:00 MYT，即 10-16 周五收盘；本次快照未提供今日盘前成交，故不称盘前</p>
+    <table>
+      <thead>
+        <tr><th>代码</th><th>公司</th><th>最新价 (10-16 收盘, USD)</th><th>Δ</th><th>Δ%</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>NVDA</td><td>英伟达</td><td>214.13</td><td class="down">-3.10</td><td class="down">-1.43%</td></tr>
+        <tr><td>AAPL</td><td>苹果</td><td>343.46</td><td class="up">+1.46</td><td class="up">+0.43%</td></tr>
+        <tr><td>MSFT</td><td>微软</td><td>529.05</td><td class="down">-10.39</td><td class="down">-1.93%</td></tr>
+        <tr><td>GOOGL</td><td>谷歌</td><td>340.59</td><td class="down">-8.63</td><td class="down">-2.47%</td></tr>
+        <tr><td>META</td><td>Meta</td><td>709.325</td><td class="down">-27.39</td><td class="down">-3.72%</td></tr>
+        <tr><td>TSLA</td><td>特斯拉</td><td>354.72</td><td class="down">-7.72</td><td class="down">-2.13%</td></tr>
+        <tr><td>AMZN</td><td>亚马逊</td><td>250.00</td><td class="down">-4.76</td><td class="down">-1.87%</td></tr>
+      </tbody>
+    </table>
+
+    <h3>今日及本周关注事件（公开日历）</h3>
+    <ul>
+      <li><strong>10-19（一）10:00 ET：NAHB 房地产市场指数（10 月）</strong> — 市场预期 31，前值 32（9 月为一年低点）。</li>
+      <li><strong>10-20（二）08:30 ET：美国 9 月新屋开工与建筑许可</strong> — 预期开工年化约 131 万套（前值 127.5 万）。</li>
+      <li><strong>10-20（二）10:00 ET：9 月待售房屋销售</strong> — 预期与 8 月大致持平。</li>
+      <li><strong>10-21（三）盘后：META、TSLA 财报</strong>（同日 IBM、LRCX、TMO、TXN、ABT 等）；10:30 ET EIA 原油库存。</li>
+      <li><strong>10-22（四）08:30 ET：初请/续请失业金</strong>；同日 PulteGroup 财报、Freddie Mac 30 年期按揭（上次 7.40%）。</li>
+      <li><strong>10-23（五）10:00 ET：密歇根大学消费者信心（10 月）</strong>。</li>
+      <li><strong>10-27~28：FOMC 会议</strong>（federalreserve.gov 会议日历）。</li>
+    </ul>
+
+    <h3>核心驱动因素</h3>
+    <ul>
+      <li>上周五（10-16）美股全线下跌：S&amp;P 500 −1.09% 至 7,659.44，Nasdaq Composite −2.14% 至 26,140.03，VIX 单日 +21.46% 至 19.99（AP/Zacks, 2026-10-16，与本次快照 VIX 数值一致）。驱动来自 10-14 公布的美国 CPI 3.7% YoY（高于预期，前值 3.4%）后，市场对 10-27~28 会议加息的定价升至接近五五开（The Star, 2026-10-19）。</li>
+      <li>周日夜盘美股期货出现反弹（ES +0.47%、NQ +0.93%），与油价因俄罗斯供应预期回落而缓解通胀担忧同向。</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🥇 贵金属</h2>
+    <div class="kpi">
+      <div class="kpi-card">
+        <div class="kpi-label">COMEX 黄金 GC=F (Dec 26)</div>
+        <div class="kpi-value up">4191.6</div>
+        <div class="muted"><span class="up">+10.4999 / +0.25%</span> · 09:06 MYT</div>
+      </div>
+    </div>
+    <h3>驱动因素</h3>
+    <ul>
+      <li>美元指数 101.824，日内微降 0.02%，对金价构成轻微支撑。</li>
+      <li>美债 10Y 5.098%（+0.9 bp），仍处高位，无息资产的机会成本压力未解除。</li>
+      <li>10 月金价整体在 4107.25–4194.61 区间震荡（XAUTicker 日度收盘，10 月最高收盘 10-09 的 4194.61，最低 10-07 的 4107.25）。</li>
+      <li>关键事件：10-27~28 FOMC 为下一主要定价节点；金价与美元、实际利率的负相关性在本周期表现不典型，需留意两者同涨情形。</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🛢 原油</h2>
+    <div class="kpi">
+      <div class="kpi-card">
+        <div class="kpi-label">WTI CL=F (Dec 26)</div>
+        <div class="kpi-value down">97.70</div>
+        <div class="muted"><span class="down">−3.71 / −3.66%</span> · 09:06 MYT</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Brent BZ=F</div>
+        <div class="kpi-value down">108.16</div>
+        <div class="muted"><span class="down">−1.70 / −1.55%</span> · 09:06 MYT</div>
+      </div>
+    </div>
+    <h3>驱动因素</h3>
+    <ul>
+      <li><strong>供应端：</strong>美国总统特朗普于上周五依据 Graham Russia-Iran Act 豁免对俄罗斯的制裁、限制与关税，市场据此预期俄油供应回升，亚洲早盘油价转跌（Reuters via Iran International / Okaz, 2026-10-19）。</li>
+      <li>背景参照：上周五 Brent 结算于 109.86，为 5 月 19 日以来最高，本轮回吐幅度有限，绝对水平仍处数月高位。</li>
+      <li><strong>地缘：</strong>中东局势（沙特机场遇袭、霍尔木兹附近油轮事件）与俄乌能源停火表态相互抵消，构成双向不确定性（GMT EIGHT, 2026-10-19）。</li>
+      <li><strong>需求/库存：</strong>10-21 10:30 ET EIA 原油库存为本周首要数据点；10-20 16:30 ET 有 API 周度库存。</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>💡 总结与观察</h2>
+
+    <h3>事实与来源</h3>
+    <ul>
+      <li>马股今日开盘延续上周回落，KLCI 1603.17（<span class="down">−0.29%</span>），林吉特连续五日小幅走强至 4.078；马股内部银行分化、科技板块在外部冲击后趋稳。</li>
+      <li>美股上个交易日（10-16）大幅下挫，VIX 升至 19.99（<span class="down">+21.45%</span>），CPI 3.7% 后 10 月加息定价接近五五开；周日夜盘期指反弹。</li>
+      <li>商品端出现方向相反的两股力量：黄金续持 4191.6 附近高位，原油因俄罗斯供应预期大幅回落（WTI <span class="down">−3.66%</span>）。</li>
+    </ul>
+
+    <h3>条件性解读（非操作建议）</h3>
+    <ul>
+      <li>若 10-20~21 的美国住房数据与 META/TSLA 财报未进一步推高收益率或盈利预期，期指的周日夜盘反弹可能延续；反之若再度强化加息路径，NQ 的高 beta 属性意味着其回撤幅度可能大于 ES。</li>
+      <li>原油回落若持续，将缓解输入型通胀压力，这对马币（净能源出口国构成）与马股下游成本端构成方向性影响；但在油价绝对水平仍处数月高位的情形下，1Q27 输入型通胀抬升的观察条件并未消除。</li>
+      <li>林吉特连续五日温和走强与 BNM 口径转向（删除 "appropriate"）并存，掉期市场对加息的定价与外资流入方向的一致性，是后续判断的关键分歧点。</li>
+    </ul>
+
+    <h3>后续观察条件与风险</h3>
+    <ul>
+      <li><strong>利率路径：</strong>10-27~28 FOMC 前，CPI/PPI 后的加息定价是否继续上修，是全球风险资产与林吉特的主要共同变量。</li>
+      <li><strong>本周数据：</strong>NAHB（10-19）、新屋开工与待售房屋（10-20）、初请与领先指标（10-22）、密歇根信心（10-23）；密集的住房数据用于检验 7% 以上按揭利率对需求与建造的传导。</li>
+      <li><strong>能源与地缘：</strong>EIA 库存（10-21 10:30 ET）、俄罗斯豁免后实际出口流向、中东与霍尔木兹事件；油价方向将同时影响通胀路径与马币。</li>
+      <li><strong>马股特有风险：</strong>GDP 高增长（+5.3%）未能提振指数，显示当前定价主导因素在外部利率端而非本地基本面；BNM 若按掉期定价调整 OPR，金融板块成本端将成为新的观察点。</li>
+      <li><strong>AI 融资叙事：</strong>上周自 10-08 OpenAI 收入口径争议引发的全球科技抛售，10-13 CXMT 存储芯片消息为第二波冲击；IMF（10-13）已将 AI 相关借贷列为风险来源之一，需观察其是否扩散至区域半导体供应链。</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    由 Hermes Agent 自动生成 · 采集时刻 2026-10-19 09:16 MYT · 数据来源: Yahoo Finance chart/v8 (只读快照) · DOSM · BNM / bnm.gov.my · federalreserve.gov 会议日历 · Census Bureau / NAR / NAHB · Reuters · AP · Zacks · The Star · Bernama · Business Today · sme.com.my<br>
+    本报告仅作宏观、事件与跨市场状态观察，不构成投资建议、交易指令或收益承诺。所有数据以各来源原始披露为准；Yahoo Finance 报价可能存在延迟。<br>
+    本报告不覆盖 A 股 / 港股 / 国内商品交易所。
+  </div>
+</body>
+</html>
