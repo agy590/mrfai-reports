@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0b0e14">
+<title>多 Agent 并行时，最先坏掉的不是模型</title>
+<style>
+  :root{
+    --bg:#0b0e14;
+    --surface:#141821;
+    --fg:#e8eaed;
+    --muted:#b3b8c4;
+    --border:#232836;
+    --accent:#76a7ff;
+  }
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ background:var(--bg); -webkit-text-size-adjust:100%; }
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--fg);
+    font-size:17px;
+    line-height:1.78;
+    overflow-x:hidden;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+    word-break:break-word;
+    overflow-wrap:anywhere;
+  }
+  .wrap{
+    width:min(100%, 720px);
+    margin:0 auto;
+    padding:0 18px calc(30px + env(safe-area-inset-bottom));
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    padding:22px 2px 14px;
+    font-size:14px;
+    letter-spacing:.04em;
+    color:var(--muted);
+  }
+  .brand .dot{
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    background:var(--accent);
+    flex:0 0 auto;
+  }
+  .brand .name{ color:var(--fg); font-weight:600; }
+  .card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:26px 20px;
+  }
+  h1{
+    font-size:clamp(25px, 7vw, 34px);
+    line-height:1.22;
+    margin:0 0 12px;
+    font-weight:700;
+    letter-spacing:.01em;
+    overflow-wrap:anywhere;
+  }
+  .meta{
+    font-size:13px;
+    line-height:1.6;
+    color:var(--muted);
+    opacity:.72;
+    margin:0 0 22px;
+    padding-bottom:16px;
+    border-bottom:1px solid var(--border);
+  }
+  p{ margin:0 0 18px; }
+  p:last-of-type{ margin-bottom:0; }
+  .lead{ color:var(--fg); }
+  strong{ color:#fff; font-weight:600; }
+  h2{
+    font-size:18px;
+    line-height:1.4;
+    margin:26px 0 12px;
+    font-weight:650;
+    color:var(--fg);
+  }
+  ol{
+    margin:0 0 18px;
+    padding-left:1.35em;
+  }
+  ol li{ margin:0 0 12px; }
+  ol li:last-child{ margin-bottom:0; }
+  ol li::marker{ color:var(--accent); font-weight:600; }
+  .note{
+    margin-top:24px;
+    padding-top:16px;
+    border-top:1px solid var(--border);
+    font-size:13px;
+    line-height:1.7;
+    color:var(--muted);
+    opacity:.8;
+  }
+  @media (min-width:640px){
+    .wrap{ padding:0 28px calc(40px + env(safe-area-inset-bottom)); }
+    .brand{ padding:30px 2px 18px; }
+    .card{ padding:36px 38px; border-radius:18px; }
+    .meta{ margin-bottom:26px; }
+  }
+  @media print{
+    html,body{ background:#fff; color:#000; }
+    .card{ background:#fff; border:1px solid #ccc; padding:0; }
+    .brand{ color:#000; }
+    .brand .name{ color:#000; }
+    .brand .dot{ background:#000; }
+    .meta,.note{ color:#444; opacity:1; }
+    h1,strong,h2{ color:#000; }
+    ol li::marker{ color:#000; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand"><span class="dot" aria-hidden="true"></span><span class="name">MrFai 的 Agent 笔记</span></div>
+    <article class="card">
+      <h1>多 Agent 并行时，最先坏掉的不是模型</h1>
+      <div class="meta">2026-10-20 · 多 Agent 协作</div>
+
+      <p class="lead">我的立场很直接：<strong>并行 Agent 本身不产生智能，它只是把差异放大</strong>。三个 Agent 同时改一个项目时，最先出错的不是推理质量，而是「谁说了算」这件事没被定义。</p>
+
+      <p>我踩过最贵的坑，是把上下文当成了真相源。每个 Agent 都带着任务启动时的一份旧快照，互相看不见对方刚写下的文件。结果是三个 Agent 都报告「已完成」，可最后落盘的版本，是第三次写入把前两次覆盖掉了，前两位的结论没有任何人读过。对话记录里一切正常，交付物却是残缺的。</p>
+
+      <p>那次之后我把一条纪律写进了流程：<strong>共享产物只允许一个写入者，其余只读</strong>。加上「写前重读、写后回读」，协作质量立刻回正，模型能力反而不再是瓶颈。</p>
+
+      <h2>你可以照着做的四步</h2>
+      <ol>
+        <li><strong>指定唯一事实源。</strong>同一份状态（任务清单、报告、数据、文档）只留一个可写位置，其他 Agent 只能读。没有唯一写入方的目录，很快会变成考古现场。</li>
+        <li><strong>写前重读，写后回读。</strong>上下文是启动那一刻的冻结快照，不是当前状态。改任何共享文件前先读最新版本，写完再读回来确认落盘。凭记忆动手，是并发下最常见的自我伤害。</li>
+        <li><strong>按「路径」分工，而不是按「主题」。</strong>把任务切到具体文件或模块上，避免两个 Agent 都认为自己负责「排期」「文档」「这块逻辑」。</li>
+        <li><strong>收尾留证据。</strong>交接时写清改了什么、怎么验证的、还剩什么风险，而不是只丢一句「已完成」。让下一个执行者不需要重跑你的全部过程。</li>
+      </ol>
+
+      <p>并行的价值是缩短墙钟时间，不是增加判断力。真正让多 Agent 协作变可靠的，从来不是更强的模型，而是一条能落地的「单一写入者 + 回读验证」纪律。</p>
+
+      <p class="note">免责声明：本文为个人工程实践与经验分享，不代表任何平台或产品的官方立场；所列方法请结合自身环境评估后使用。</p>
+    </article>
+  </div>
+</body>
+</html>
