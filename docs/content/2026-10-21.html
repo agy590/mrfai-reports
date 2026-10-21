@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>多 Agent 协作里，最贵的不是模型，是没人知道谁在改这个文件 — MrFai 的 Agent 笔记</title>
+<style>
+:root{
+  --bg:#0b0e14;
+  --surface:#141821;
+  --fg:#e8eaed;
+  --muted:#b3b8c4;
+  --border:#232836;
+  --accent:#76a7ff;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--bg);
+  color:var(--fg);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  font-size:17px;
+  line-height:1.8;
+  overflow-x:hidden;
+  -webkit-text-size-adjust:100%;
+  word-break:break-word;
+}
+.wrap{
+  width:min(100%,720px);
+  margin:0 auto;
+  padding:18px 18px calc(30px + env(safe-area-inset-bottom,0px));
+}
+.brand{
+  color:var(--muted);
+  font-size:13px;
+  letter-spacing:.14em;
+  line-height:1.6;
+  padding:6px 2px 14px;
+}
+.brand span{color:var(--accent);}
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:24px 18px 22px;
+}
+h1{
+  font-size:clamp(25px,7vw,34px);
+  line-height:1.25;
+  font-weight:700;
+  margin:0 0 12px;
+  overflow-wrap:anywhere;
+  word-break:break-word;
+}
+.meta{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.7;
+  margin:0 0 22px;
+  padding-bottom:18px;
+  border-bottom:1px solid var(--border);
+  overflow-wrap:anywhere;
+}
+p{
+  margin:0 0 1.05em;
+  overflow-wrap:anywhere;
+}
+h2{
+  font-size:19px;
+  line-height:1.4;
+  margin:26px 0 12px;
+  color:var(--accent);
+  overflow-wrap:anywhere;
+}
+ol{
+  margin:0 0 1.05em;
+  padding-left:1.35em;
+}
+li{
+  margin:0 0 .6em;
+  overflow-wrap:anywhere;
+}
+li::marker{color:var(--muted);}
+.foot{
+  margin:26px 0 0;
+  padding-top:16px;
+  border-top:1px solid var(--border);
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.7;
+  overflow-wrap:anywhere;
+}
+@media (min-width:640px){
+  .wrap{padding:28px 28px calc(40px + env(safe-area-inset-bottom,0px));}
+  .card{padding:36px 38px 34px;border-radius:18px;}
+  .brand{padding-bottom:16px;}
+}
+@media print{
+  body{background:#fff;color:#111;font-size:12pt;}
+  .card{background:#fff;border:1px solid #ccc;border-radius:0;padding:0;}
+  .wrap{width:100%;padding:0;}
+  .brand,.meta,.foot{color:#555;}
+  h2{color:#111;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand"><span>MrFai</span> 的 Agent 笔记</div>
+  <article class="card">
+    <h1>多 Agent 协作里，最贵的不是模型，是没人知道谁在改这个文件</h1>
+    <div class="meta">2026-10-21 · 主题：多 Agent 协作</div>
+
+    <p>多 Agent 协作真正的瓶颈不是模型能力，而是共享状态的可见性。模型再强，如果没人知道谁正在改哪个文件、谁已经改完、谁把结论只留在了对话里，协作速度反而会被协调成本吃掉。</p>
+
+    <p>我踩过的坑很具体：两个 Agent 同时改一份调度配置，一个改了字段结构，一个改了执行参数，各自本地测试都通过，合起来直接跑挂；第三个 Agent 接手时，先花了半小时考古“到底哪个版本是对的”，最后靠翻聊天记录才拼出真相。真正的错误不是写错代码，而是没人声明意图——双方都默认对方在管那一块。</p>
+
+    <p>还有一种更隐蔽的失败：把“我改完了”当成状态。Agent 的完成报告是叙述，不是事实。文件、运行中的进程、提交记录，三者可能对不上。文件即真相：先读盘，再相信叙述。</p>
+
+    <h2>今天就能照做的四步</h2>
+    <ol>
+      <li>先划边界再动手：写共享产物前，先声明一个任务或路径范围，并让它对其他人可见；有人占用就绕开或等待。</li>
+      <li>把状态落盘：结论、决定、待解决项、下一步写进版本化的文件，不要只留在聊天记录里。</li>
+      <li>交接即交付：中断或换人前，留一份五分钟内能接手的检查点——做了什么、证据在哪、还剩什么没解决。</li>
+      <li>用命令定义完成：给每个任务配一条能跑出结果的验收命令；输出对不上，就是还没做完。</li>
+    </ol>
+
+    <p>一句话总结我的立场：先定边界，再落状态，最后用证据收口。这三步比换一个更强的模型更值钱。</p>
+
+    <p class="foot">免责声明：本文是个人工程实践中的经验记录，仅代表作者本人视角，不代表任何机构或产品立场，也不构成技术选型建议。</p>
+  </article>
+</div>
+</body>
+</html>
