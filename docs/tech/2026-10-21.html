@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日科技新闻简报 | 2026-10-21</title>
+<style>
+  :root {
+    --bg: #f7f8fa;
+    --card: #ffffff;
+    --ink: #1b1f24;
+    --ink-2: #444c56;
+    --muted: #6b7580;
+    --line: #e3e6ea;
+    --accent: #0b5fd0;
+    --accent-soft: #eaf2fd;
+    --warn: #a8620a;
+    --warn-soft: #fdf4e6;
+    --ok: #0d7a4f;
+    --ok-soft: #e9f7f0;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    padding: 0 0 56px;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+    font-size: 16px;
+    line-height: 1.72;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 16px; }
+  header.site {
+    background: linear-gradient(160deg, #ffffff 0%, #f0f4f9 100%);
+    border-bottom: 1px solid var(--line);
+    padding: 30px 0 24px;
+    margin-bottom: 22px;
+  }
+  .kicker {
+    font-size: 12px; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--accent); font-weight: 700; margin: 0 0 8px;
+  }
+  h1 { font-size: 27px; line-height: 1.3; margin: 0 0 12px; letter-spacing: -.01em; }
+  .meta { color: var(--muted); font-size: 13.5px; margin: 0; }
+  .meta b { color: var(--ink-2); font-weight: 600; }
+  h2 {
+    font-size: 19px; margin: 34px 0 14px; padding-bottom: 8px;
+    border-bottom: 2px solid var(--line); letter-spacing: -.01em;
+  }
+  h3 { font-size: 16.5px; margin: 0 0 10px; line-height: 1.45; }
+  p { margin: 0 0 12px; }
+  ul, ol { margin: 0 0 12px; padding-left: 22px; }
+  li { margin-bottom: 6px; }
+  a { color: var(--accent); text-decoration: none; overflow-wrap: anywhere; }
+  a:hover { text-decoration: underline; }
+  code { font-family: var(--mono); font-size: .9em; background: #eef1f5; padding: 1px 5px; border-radius: 4px; }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    padding: 20px 20px 16px; margin-bottom: 16px;
+    box-shadow: 0 1px 2px rgba(16,24,40,.05);
+  }
+  .card > h3 { font-size: 17.5px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; }
+  .tag {
+    font-size: 12px; font-weight: 600; padding: 3px 9px; border-radius: 999px;
+    background: #eef1f5; color: var(--ink-2); white-space: nowrap;
+  }
+  .tag.date { background: var(--accent-soft); color: var(--accent); }
+  .tag.ok { background: var(--ok-soft); color: var(--ok); }
+  .tag.warn { background: var(--warn-soft); color: var(--warn); }
+  .label {
+    font-size: 12px; font-weight: 700; color: var(--muted);
+    text-transform: uppercase; letter-spacing: .08em; margin: 14px 0 4px;
+  }
+  .label:first-of-type { margin-top: 0; }
+  .src-list { font-size: 14px; }
+  .src-list li { margin-bottom: 5px; }
+  .src-tag {
+    display: inline-block; font-size: 11px; font-weight: 700; color: #fff;
+    background: var(--muted); border-radius: 4px; padding: 1px 6px; margin-right: 6px;
+    vertical-align: 1px;
+  }
+  .src-tag.official { background: var(--ok); }
+  .callout {
+    background: var(--warn-soft); border: 1px solid #f0d9b0; border-left: 4px solid var(--warn);
+    border-radius: 10px; padding: 16px 18px; margin-bottom: 16px;
+  }
+  .callout h3 { color: var(--warn); margin-bottom: 8px; }
+  .callout code { background: #fff; border: 1px solid #f0d9b0; }
+  .tldr ol { padding-left: 20px; }
+  .tldr li { margin-bottom: 9px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 14px; }
+  th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { background: #f0f3f7; font-weight: 700; color: var(--ink-2); white-space: nowrap; }
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .obs { border-left: 3px solid var(--accent); padding-left: 14px; margin-bottom: 16px; }
+  .obs h3 { font-size: 15.5px; }
+  details { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px; margin-bottom: 12px; }
+  summary { cursor: pointer; font-weight: 600; font-size: 14.5px; color: var(--ink-2); }
+  summary:hover { color: var(--accent); }
+  details[open] summary { margin-bottom: 10px; }
+  footer {
+    margin-top: 34px; padding-top: 18px; border-top: 1px solid var(--line);
+    color: var(--muted); font-size: 13.5px;
+  }
+  .stamp { font-family: var(--mono); font-size: 12.5px; }
+  @media (max-width: 640px) {
+    body { font-size: 15.5px; }
+    h1 { font-size: 23px; }
+    h2 { font-size: 17.5px; }
+    .card { padding: 16px 15px 13px; border-radius: 10px; }
+    table { font-size: 13px; }
+    th, td { padding: 7px 8px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <p class="kicker">Research Agent · Daily Tech Briefing</p>
+    <h1>每日科技新闻简报 | 2026-10-21</h1>
+    <p class="meta">
+      生成时间 <b>2026-10-21 12:00 (+08)</b> ·
+      时效窗口 <b>2026-10-18 12:00 → 2026-10-21 12:00 (+08)</b> ·
+      采集 <b>web_search × 5 + curl × 3</b>（均达上限，失败项未重试）
+    </p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <h2>当日摘要（TL;DR）</h2>
+  <div class="card tldr">
+    <ol>
+      <li><b>ChatGPT 上线「Locked Chats」</b>：敏感对话可移出常规历史、置顶与搜索，用 4 位 PIN 或 Face ID / Touch ID 解锁。官方明确写了——这不是端到端加密，也不改变保留期与训练设置。</li>
+      <li><b>DeepSeek 全面开源内部推理框架 DeepInfer</b>（Apache 2.0，基于 vLLM，服务 V4.1-Flash），并同步开源 <code>deepseek-recipe</code>。推理成本这一侧继续往下压。</li>
+      <li><b>Anthropic、Google、OpenAI 的下一批模型同时被提前曝光</b>：The Information 报道称 Anthropic 在做"读懂真实意图"的模型、Google 在做 Gemini 4 Carbon、OpenAI 在做更便宜的 GPT-6.1 Terra——<b>三家都还没官宣</b>。</li>
+      <li><b>Anthropic IPO 前夜</b>：据《华尔街日报》援引招股书草稿，十年算力承诺支出逾 5180 亿美元、总算力承诺超 6000 亿美元；OpenAI 据路透报道正抢在其上市前融资约 300 亿美元、估值超 1.4 万亿美元。</li>
+      <li><b>本期 GitHub Trending 日增数据不可验证</b>：本次抓取被上游限流拦截，未做任何推断补写。</li>
+    </ol>
+  </div>
+
+  <h2>新闻卡片</h2>
+
+  <div class="card">
+    <h3>1 · ChatGPT 推出 Locked Chats，敏感对话可用 PIN / 生物识别上锁</h3>
+    <div class="tags">
+      <span class="tag date">2026-10-20</span>
+      <span class="tag">科技 / AI 产品</span>
+      <span class="tag ok">🟢 多方确认</span>
+      <span class="tag ok">VERIFIED</span>
+    </div>
+    <p class="label">核心事实</p>
+    <p>OpenAI 开始向 ChatGPT 推送 <b>Locked Chats（锁定对话）</b>。被锁定的对话会从常规聊天历史、置顶对话和对话搜索中移出，进入侧边栏 <code>Projects &gt; Locked chats</code>；Web 与桌面端需输入 4 位账号 PIN 解锁，移动端还可用 Face ID / Touch ID 或设备解锁。</p>
+    <p>官方帮助中心同时写明了几条边界：锁定<b>不构成</b>端到端加密或独立加密保险库，<b>不改变</b>数据保留时长，<b>不改变</b>"Improve the model for everyone"设置；启用 Memory 时 Locked Chats 拥有独立记忆区，锁定后新增消息只更新该区记忆、不回流到普通 Memory。重置 PIN 将<b>永久删除</b>全部被锁对话与文件，且不可恢复。功能不适用于临时对话、群聊、共享链接会话、Codex 对话与 ChatGPT for Healthcare；覆盖 Free、Go、Plus、Pro、Business、Enterprise、Edu 计划，逐步推送。</p>
+    <p class="label">为什么重要</p>
+    <p>这是消费级 AI 产品的隐私设计第一次正面回应"设备被人拿到 / 屏幕被人看到"这个高频场景，形态上明显对标 WhatsApp 的 Chat Lock。但必须把话说准：它解决的是<b>社交场合的窥屏</b>，不是<b>数据存储安全</b>。OpenAI 自己把"不是端到端加密""重置即删除"写进文档，说明这是访问控制层方案，不是密码学方案。对企业采购者而言，Locked Chats 不改变数据驻留、合规审计与保留策略，不能当作合规结论使用。</p>
+    <p class="label">来源</p>
+    <ul class="src-list">
+      <li><span class="src-tag official">官方</span><a href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes" target="_blank" rel="noopener">ChatGPT release notes</a></li>
+      <li><span class="src-tag official">官方</span><a href="https://help.openai.com/en/articles/20001411-using-locked-chats-in-chatgpt" target="_blank" rel="noopener">Using locked chats in ChatGPT</a></li>
+      <li><span class="src-tag official">官方</span><a href="https://help.openai.com/en/articles/10128477-chatgpt-enterprise-and-edu-release-notes" target="_blank" rel="noopener">ChatGPT Enterprise and Edu release notes</a></li>
+      <li><span class="src-tag">媒体</span><a href="https://techcrunch.com/2026/10/20/chatgpt-now-lets-you-lock-your-chats/" target="_blank" rel="noopener">TechCrunch · 2026-10-20 11:36 PDT</a></li>
+      <li><span class="src-tag">媒体</span><a href="https://www.engadget.com/2292365/chatgpt-now-lets-you-lock-sensitive-chats-behind-a-pin/" target="_blank" rel="noopener">Engadget · 2026-10-20 17:05 EST</a></li>
+      <li><span class="src-tag">媒体</span><a href="https://www.androidauthority.com/chatgpt-rolls-out-locked-chats-3725766/" target="_blank" rel="noopener">Android Authority · 2026-10-20 16:29 ET</a></li>
+      <li><span class="src-tag">媒体</span><a href="https://uk.pcmag.com/ai/168022/chatgpt-gets-locked-chats-to-protect-sensitive-conversations" target="_blank" rel="noopener">PCMag</a></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>2 · DeepSeek 全面开源内部推理框架 DeepInfer（Apache 2.0）</h3>
+    <div class="tags">
+      <span class="tag date">2026-10-20 ~ 10-21</span>
+      <span class="tag">科技 / 开源</span>
+      <span class="tag warn">🟡 多家一致报道，未取原始仓库</span>
+      <span class="tag warn">PARTIAL</span>
+    </div>
+    <p class="label">核心事实</p>
+    <p>DeepSeek 宣布将内部推理框架 <b>DeepInfer</b> 全面开源，协议为 Apache 2.0。该框架基于 vLLM，为 V4.1-Flash 模型提供快速、可扩展的推理服务；同步开源 <code>deepseek-recipe</code>，用于复现官方 API 的 token 处理流程。公司给出的动机是降低算力成本与能耗，多篇报道同时提到其对外称该栈可支撑极高的吞吐与毛利水平。</p>
+    <p class="label">为什么重要</p>
+    <p>开源推理栈和发布新模型是两条不同的曲线：后者拼能力上限，前者拼单位 token 成本。DeepSeek 把自家生产环境的推理栈整个放出来（而非只放权重），等于把"别人能抄的成本结构"变成行业基线——对下游开发者是直接降本，对美欧厂商是价格战压力。注意：本次未取到 DeepSeek 官方仓库或博客原文，协议与"基于 vLLM"等细节来自多家转述，以官方仓库为准。</p>
+    <p class="label">来源</p>
+    <ul class="src-list">
+      <li><span class="src-tag">媒体</span><a href="https://www.yicai.com/brief/103401233.html" target="_blank" rel="noopener">第一财经 · AI 进化速递</a></li>
+      <li><span class="src-tag">媒体</span><a href="https://www.readaitime.com/digests/2026-10-21" target="_blank" rel="noopener">每日聚合 · 2026-10-21</a></li>
+      <li><span class="src-tag">媒体</span><a href="https://readcopilot.ionichina.com/digest/369" target="_blank" rel="noopener">AI HOT 晚报 · 2026-10-20</a></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>3 · Anthropic / Google / OpenAI 三家新模型同时进入"被提前曝光"阶段（均未官宣）</h3>
+    <div class="tags">
+      <span class="tag date">2026-10-19 ~ 10-20</span>
+      <span class="tag">科技 / 模型</span>
+      <span class="tag warn">🟡 转述 The Information，厂商未确认</span>
+      <span class="tag warn">PARTIAL</span>
+    </div>
+    <p class="label">核心事实</p>
+    <p>The Information 于 10 月 19 日报道了三条尚未发布的后续模型线索，多家媒体在 10 月 19–20 日跟进转述：</p>
+    <ul>
+      <li><b>Anthropic</b>：在训一个更擅长"推断用户真实意图"的模型——早期测试者称其能从模糊指令里反推根因（例如修 bug 时会追问是否要一并修复相关问题）并给出非常规解法；尚不确定归属 Fable 线还是 Opus 线。</li>
+      <li><b>Google</b>：在 Gemini 4 Argon 之上继续做 <b>Gemini 4 Carbon</b>，定位在视觉 / 视频理解与网站可用性检查。</li>
+      <li><b>OpenAI</b>：可能在数周内放出中端 <b>GPT-6.1 Terra</b>，目标是性能高于 GPT-6.1 Sol 而价格更低，业内解读为正面迎战 Anthropic 的定价。</li>
+    </ul>
+    <p>报道方同时提示，部分时间表可能滑到 11 月；<b>三家均未正式发布</b>。</p>
+    <p class="label">为什么重要</p>
+    <p>三家的方向已经一致：竞争焦点从"通用智能分数"转向<b>单位成本、意图理解与视觉任务</b>。但这条信息目前属于"路线图泄露"而非"发布"，节奏上很容易被误读为已发布——这正是它值得单独成条的原因：内容侧如果引用，必须标注"报道 / 未官宣"，否则等于替厂商官宣。</p>
+    <p class="label">来源</p>
+    <ul class="src-list">
+      <li><span class="src-tag">媒体</span><a href="https://www.digitaltoday.co.kr/en/view/116605/anthropic-readies-new-ai-model-to-better-grasp-user-intent" target="_blank" rel="noopener">Digital Today · 2026-10-20</a></li>
+      <li><span class="src-tag">媒体</span><a href="https://www.androidheadlines.com/2026/10/openai-anthropic-google-new-ai-models.html" target="_blank" rel="noopener">Android Headlines · 2026-10-20</a></li>
+      <li><span class="src-tag">媒体</span><a href="https://vibehacker.com/news/report-anthropic-google-gemini-4-carbon-and-openai-a-cheaper-terra-model-all-hav" target="_blank" rel="noopener">Vibehacker · 2026-10-20 01:21</a></li>
+      <li><span class="src-tag">媒体</span><a href="https://www.investing.com/news/stock-market-news/anthropic-google-and-openai-prepare-new-ai-models-the-information-reports-4957891" target="_blank" rel="noopener">Investing.com</a></li>
+      <li><span class="src-tag">媒体</span><a href="https://www.zeitgraphs.com/stories/anthropic-google-and-openai-prepare-new-model-releases-this-month-6c07369501f44c3f9419b55a5abe9efd" target="_blank" rel="noopener">Zeitgraphs · 2026-10-19</a></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>4 · Anthropic IPO 前夜：十年算力承诺超 6000 亿美元；OpenAI 据报抢跑融资 300 亿美元</h3>
+    <div class="tags">
+      <span class="tag date">2026-10-20 ~ 10-21</span>
+      <span class="tag">财经 / 算力</span>
+      <span class="tag warn">🟡 转述 WSJ / 路透，未取原文</span>
+      <span class="tag warn">PARTIAL</span>
+    </div>
+    <p class="label">核心事实</p>
+    <p>据《华尔街日报》援引 Anthropic IPO 招股书草稿：该公司<b>未来十年算力相关承诺支出合计逾 5180 亿美元</b>，<b>总算力承诺支出将超过 6000 亿美元</b>，计划总开支最高或达 7500 亿美元。同期披露口径为 2026 上半年营收 163 亿美元、算力支出约 90 亿美元、净亏损超 807 亿美元（其中 720 亿美元为可转换票据等融资工具估值变动带来的会计计提）。公司寻求以 1.5 万亿–2 万亿美元估值于 11 月上市，部分投资者对营收表现失望，预期估值可能落到 1.5 万亿美元以下。</p>
+    <p>另据路透报道，<b>OpenAI 正赶在 Anthropic 上市前洽谈约 300 亿美元融资，估值超 1.4 万亿美元</b>。</p>
+    <p class="label">为什么重要</p>
+    <p>这两条是同一件事的两面：把算力从"自建数据中心"变成"长约承诺"之后，头部 AI 公司的财务报表第一次出现<b>十年量级的刚性支出</b>。这会同时改变两件事——一是下游推理服务的价格底部被压得更低（长约锁量换来更低的单位成本），二是 AI 资本开支的信用风险开始进入公开市场定价视野（见速览中的 CDS 交易量）。此外，"上市窗口"本身成了竞争变量：OpenAI 选择在 Anthropic 上市前抢先完成融资，说明资本市场对 AI 叙事的窗口期在收窄。</p>
+    <p class="label">来源</p>
+    <ul class="src-list">
+      <li><span class="src-tag">媒体</span><a href="https://www.readaitime.com/digests/2026-10-21" target="_blank" rel="noopener">每日聚合 · 2026-10-21（援引 WSJ / 招股书草稿）</a></li>
+      <li><span class="src-tag">媒体</span><a href="https://www.ailxg.com/aihot/" target="_blank" rel="noopener">AI HOT 日报 · 2026-10-21（援引路透）</a></li>
+      <li><span class="src-tag">媒体</span><a href="https://radar.suversal.com/monthly/2026-10" target="_blank" rel="noopener">AI 月报 2026-10（融资与估值口径对照）</a></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>5 · Anthropic 将部分股份划入"公共利益基金"，持股比例随公司成长自动扩大</h3>
+    <div class="tags">
+      <span class="tag date">2026-10-18</span>
+      <span class="tag">公司治理 / 资本</span>
+      <span class="tag ok">🟢 官方原文已直接读取</span>
+      <span class="tag ok">VERIFIED</span>
+    </div>
+    <p class="label">核心事实</p>
+    <p>Anthropic 在官方 Newsroom 发布公告，标题为 <b>"Investing in the public benefit"</b>，说明将把公司<b>一部分股份</b>投入一个新实体——<b>Anthropic Public Benefit Fund</b>，其结构设计为<b>随着公司成长，该基金持有的份额比例自动上升</b>。该条在 <code>anthropic.com/news</code> 与 <code>anthropic.com/news/announcements</code> 两个官方页面中标题、摘要、日期完全一致（Oct 18, 2026）。</p>
+    <p class="label">为什么重要</p>
+    <p>这是一个<b>治理结构</b>创新，而不是产品动作：把"公司越值钱，公益持股越多"写进持股结构，等于把利润分配表在时间轴上向公共利益倾斜。对投资者来说，这会影响未来股转与稀释路径；对行业来说，这是头部实验室第一次把"公共利益"从 ESG 话术变成<b>合约化的自动机制</b>。但本次未检索到第二家独立媒体的跟进报道，规模、具体机制、是否附带投票权等关键细节尚未公开——细节待补。</p>
+    <p class="label">来源</p>
+    <ul class="src-list">
+      <li><span class="src-tag official">官方</span><a href="https://www.anthropic.com/news/public-benefit-fund" target="_blank" rel="noopener">Investing in the public benefit</a></li>
+      <li><span class="src-tag official">官方</span><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">Anthropic Newsroom</a></li>
+      <li><span class="src-tag official">官方</span><a href="https://www.anthropic.com/news/announcements" target="_blank" rel="noopener">Anthropic 公告列表</a></li>
+    </ul>
+  </div>
+
+  <h2>GitHub Trending 日榜可见仓库中，今日新增 Star 最高</h2>
+
+  <div class="callout">
+    <h3>本次 GitHub Trending 日增数据不可验证</h3>
+    <ul>
+      <li><b>原始链接</b>：<a href="https://github.com/trending?since=daily" target="_blank" rel="noopener">https://github.com/trending?since=daily</a></li>
+      <li><b>本次抓取时间</b>：<span class="stamp">2026-10-21 12:0x (+08)</span></li>
+      <li><b>抓取方式</b>：<span class="stamp">curl -L --max-time 20 'https://r.jina.ai/https://github.com/trending?since=daily'</span></li>
+      <li><b>失败原因</b>：上游代理返回 <code>403 AbuseAlleviationError</code>，提示 <em>"Anonymous access to domain github.com blocked until Wed Oct 21 2026 04:53:34 GMT ... due to previous abuse found ... DDoS attack suspected: Too many requests"</em>，即该域名在本代理的匿名访问通道被临时封禁至 2026-10-21 12:53 (+08)。</li>
+    </ul>
+    <p style="margin-bottom:0"><b>处理</b>：按规则<b>未重试</b>同一请求，未使用任何缓存数据，未以仓库总 Star 反推日增，也未改用其他接口路径"取得"日增——上述路径都无法提供本次日增真值。因此本卡片不列出任何仓库名、日增数或排名。</p>
+  </div>
+
+  <h2>批量速览</h2>
+  <div class="card">
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>#</th><th>标题</th><th>日期</th><th>可信度</th><th>一句话概括</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>OpenAI 收购生命科学 AI 公司 Orchestra Bio</td><td>2026-10-20</td><td>🟡</td><td>团队与技术并入 Rosalind / Rosalind Workbench，交易金额未披露</td></tr>
+          <tr><td>2</td><td>超微电脑 FY27 Q1 初步营收 185–195 亿美元</td><td>2026-10-21</td><td>🟡</td><td>远超原指引 140–155 亿美元，区间中值高于分析师预期约 27%，盘后涨 11%</td></tr>
+          <tr><td>3</td><td>9 月 AI 相关 CDS 周均交易量突破 90 亿美元</td><td>2026-10-20~21</td><td>🟡</td><td>较 7 月不足 20 亿美元放大逾 4.5 倍，被类比 2008 年信用衍生品热潮</td></tr>
+          <tr><td>4</td><td>OpenAI 重启机器人业务：租 20.2 万平方英尺仓库、放出 27 个硬件岗位</td><td>2026-10-20~21</td><td>🟡</td><td>加州里士满仓库电力容量超 14,000 安培，岗位年薪最高 50 万美元</td></tr>
+          <tr><td>5</td><td>Inception Labs 发布扩散式 LLM Mercury 3</td><td>2026-10-20~21</td><td>🟡</td><td>生成速度超 1,000 tok/s、上下文 1M，称在 IFBench / GPQA / SWE-Bench Atlas 上超过 GPT-6 Luna 与 Claude Haiku 5.5</td></tr>
+          <tr><td>6</td><td>Google 与 Meta 开源 TorchTPU（PyTorch 原生 TPU 后端）</td><td>2026-10-21</td><td>🟡</td><td>同期推出基于 TorchTPU 的 vLLM 与 SGLang 原生推理引擎</td></tr>
+          <tr><td>7</td><td>Mistral AI 发布 Voxtral 3 实时语音智能体全栈</td><td>2026-10-20~21</td><td>🟡</td><td>以欧盟数据托管切入企业级语音交互部署</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="label">速览来源</p>
+    <ul class="src-list">
+      <li><a href="https://www.readaitime.com/digests/2026-10-21" target="_blank" rel="noopener">每日聚合 · 2026-10-21</a></li>
+      <li><a href="https://www.ailxg.com/aihot/" target="_blank" rel="noopener">AI HOT 日报 · 2026-10-21</a></li>
+      <li><a href="https://readcopilot.ionichina.com/digest/369" target="_blank" rel="noopener">AI HOT 晚报 · 2026-10-20</a></li>
+    </ul>
+  </div>
+
+  <h2>今日观察</h2>
+
+  <div class="card">
+    <div class="obs">
+      <h3>1 · 今天的新闻密度不在"发布了什么"，而在"成本曲线分成两条"</h3>
+      <p>一边是 DeepSeek 把生产级推理栈开源（单位成本往下），一边是 Anthropic 签下超 6000 亿美元的十年算力承诺（总量往上）。这两件事同时发生并不矛盾：长约锁量能换来更低的单位成本，于是头部厂商有动机签更大的长约，同时把效率工具开源以维持开发者生态的黏性。判断 AI 应用层机会时，看的应该是"单位 token 价格曲线"，而不是模型榜单。</p>
+    </div>
+    <div class="obs">
+      <h3>2 · 报道时间与发布时间正在分离，这是一个新的内容风险点</h3>
+      <p>The Information 提前放出三家路线图、厂商却还没官宣，意味着"AI 圈今天发布了什么"这个命题本身开始不稳定。内容侧最常见的错误会从"传谣"变成"抢发未发布"。可执行的做法很简单：把每条 AI 新闻标注为三档——<b>已发布 / 官方预热 / 媒体爆料</b>，并把日期写成"报道日"而不是"发布日"。</p>
+    </div>
+    <div class="obs">
+      <h3>3 · 隐私功能是访问控制，不是加密</h3>
+      <p>Locked Chats 解决了真实的痛点（掏手机给别人看、地铁上被瞥见），但官方文档白纸黑字写着不是端到端加密、不改变保留期、不改变训练设置，且重置 PIN 会连内容一起永久删除。传播时把它写成"ChatGPT 加密了"，是这条新闻最可能被消费错的方式。</p>
+    </div>
+    <div class="obs">
+      <h3>4 · 值得留意的资金结构信号</h3>
+      <p>AI 名字的信用违约互换（CDS）9 月周均交易量放大 4.5 倍以上。这不是危机信号，但它说明市场第一次开始为"AI 资本开支能不能兑现"定价——也就是说，AI 基础设施从科技叙事进入金融风险管理叙事的阶段了。</p>
+    </div>
+  </div>
+
+  <h2>来源与局限</h2>
+  <div class="card">
+    <ul>
+      <li><b>检索执行情况</b>：本轮共调用 <code>web_search</code> 5 次（达上限），其中 <b>2 次返回空结果</b>（未重试）；<code>curl</code> 原文读取 3 次（达上限），其中 1 次被限流拦截（未重试）。全程未调用 <code>web_extract</code>。</li>
+      <li><b>原文核验强度不均</b>：本篇<b>只有卡片 5</b>（Anthropic Public Benefit Fund）读取了官方原文页（<code>anthropic.com/news</code> 与 <code>/news/announcements</code>），并在两个官方页面间交叉一致。<b>卡片 1</b> 的原始出处（OpenAI 官方帮助中心发布说明）经搜索工具返回的官方条目正文与 4 家独立媒体相互印证，但<b>未单独抓取该页原文</b>。<b>卡片 2 / 3 / 4 及全部速览</b>均为二手转述，未取原始公告、仓库页或路透 / WSJ 原文，细节（协议、模型名、数字、时点）以原始来源为准。</li>
+      <li><b>GitHub Trending</b>：本次不可验证，卡片内已注明失败原因，未做任何推断填补。</li>
+      <li><b>信源集中度</b>：速览 7 条中多数来自同一批每日聚合页面，<b>来源集中度偏高</b>，独立信源数量不足，不宜作为深度选题的唯一依据。</li>
+      <li><b>未覆盖</b>：因检索预算与时效窗口限制，本次未覆盖体育、娱乐、社会类新闻，也未覆盖国内市场（除第一财经一条简讯外）与其他语种信源。</li>
+      <li><b>时间基准</b>：所有日期均以 +08 呈现；海外报道的"当日"为发布方所在地时区，可能与本窗口存在小时级偏差。</li>
+    </ul>
+  </div>
+
+  <h2>证据审计（NEWS_EVIDENCE_AUDIT）</h2>
+
+  <div class="card">
+    <details open>
+      <summary>A. web_search 调用总次数：5 次（达上限，每个 query 仅调用一次，无重试）</summary>
+      <ol>
+        <li><code>AI tech news announcement October 2026</code> — 调用成功但<b>结果为空</b>（<code>web: []</code>，后端提示 ddgs 未安装、由 keyless 免费层兜底），无 URL 返回。</li>
+        <li><code>OpenAI Google Anthropic model release announcement this week</code> — 成功，10 条。</li>
+        <li><code>科技新闻 AI 大模型 发布 2026年10月</code> — 成功，10 条。</li>
+        <li><code>startup funding round tech company October 2026 TechCrunch</code> — 调用成功但<b>结果为空</b>，无 URL 返回。</li>
+        <li><code>"Locked Chats" ChatGPT OpenAI official blog DeepSeek DeepInfer GitHub open source inference framework</code> — 成功，10 条。</li>
+      </ol>
+      <p style="margin-bottom:0">全部 30 条返回 URL 已逐条记录于同日生成的 Markdown 审计副本（本地留存，未公开）。</p>
+    </details>
+
+    <details>
+      <summary>B. curl 原文读取（共 3 次，达上限）</summary>
+      <ol>
+        <li><code>r.jina.ai/https://github.com/trending?since=daily</code> — <b>失败</b>：403 AbuseAlleviationError（github.com 匿名访问封禁至 2026-10-21 04:53:34 GMT），未重试。</li>
+        <li><code>r.jina.ai/https://www.anthropic.com/news</code> — 成功，返回官方 Newsroom 全文。</li>
+        <li><code>r.jina.ai/https://www.anthropic.com/news/announcements</code> — 成功，返回官方公告列表全文，与 #2 交叉确认卡片 5。</li>
+      </ol>
+    </details>
+
+    <details>
+      <summary>C. 逐条核验方式、日期证据与分类</summary>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>卡片</th><th>原文核验方式</th><th>日期证据</th><th>分类</th></tr></thead>
+          <tbody>
+            <tr><td>1 Locked Chats</td><td>官方帮助中心发布说明正文（搜索工具返回）+ 4 家独立媒体；未单独 curl 原页</td><td>官方条目 "October 20, 2026"；TechCrunch 10-20 11:36 PDT；Engadget 10-20 17:05 EST；Android Authority 10-20 16:29 ET</td><td>VERIFIED</td></tr>
+            <tr><td>2 DeepInfer</td><td>仅搜索摘要（第一财经 + 两个聚合页）</td><td>2026-10-20（晚报）至 2026-10-21（日报 / 聚合）</td><td>PARTIAL</td></tr>
+            <tr><td>3 三家模型曝光</td><td>仅搜索摘要（4 家转述 The Information），厂商无发布</td><td>报道日 2026-10-19；转述 10-19 ~ 10-20</td><td>PARTIAL</td></tr>
+            <tr><td>4 算力承诺 / 融资</td><td>仅搜索摘要（转述 WSJ 草稿与路透）</td><td>2026-10-21 页面口径 + 2026-10 月报对照</td><td>PARTIAL</td></tr>
+            <tr><td>5 公共利益基金</td><td><b>读取原始公告</b>：两个官方页正文一致</td><td>官方列表页 "Oct 18, 2026"（两处一致）</td><td>VERIFIED</td></tr>
+            <tr><td>速览 1–7</td><td>仅搜索摘要（聚合转述，底层含 TechCrunch / HPCwire）</td><td>2026-10-20 ~ 2026-10-21</td><td>PARTIAL</td></tr>
+            <tr><td>GitHub Trending</td><td>抓取失败，无内容可核</td><td>无</td><td>REJECTED</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <details>
+      <summary>D. REJECTED 材料及原因（8 类）</summary>
+      <ol>
+        <li>Claude Opus 5.5 / Sonnet 5.5 / Haiku 5.5、GPT-6 Astra、Gemini 4 Argon、Muse Spark / Muse Wonder、Mistral Large 4、Step 5 Preview、FLUX 3 Image Klein、Nemotron 3.5、DeepSeek V4.1-Flash-1017 等 — 发布日为 9 月至 10 月中旬，<b>超 72 小时窗口</b>。</li>
+        <li>Character.AI 申请 Chapter 11 破产、拟 2000 万美元向 Disney 出售资产 — 2026-10-13，<b>超窗</b>。</li>
+        <li>OpenAI DevDay 2026（Dots、GPT-6.1 Sol、Decisions API、Codex Ultrafast）— <b>无可核验发布日落入窗口</b>。</li>
+        <li>GPT-6 全量推送（10-08）、Gemini 4 Argon 登陆 Gemini 应用（10-14）、Kimi K3.1 窗口、DeepSeek 千亿融资、Kling 4.0 全量开放、StepX Neo 发布等 — 10-08 至 10-16，<b>超窗</b>。</li>
+        <li>"SpaceX 第三季度监管文件显示营收 146 亿美元、净利润 44 亿美元、AI 业务占收入 52%" — 仅两份聚合日报相互转述，<b>无独立来源或原始文件佐证</b>，表述与已知事实存在张力，<b>拒绝</b>。</li>
+        <li>GitHub Trending 日增最高仓库 — 抓取被 403 拦截，<b>无本次快照可核</b>；不重试、不用缓存、不反推、不改接口，故标记不可验证并不列任何仓库名与数字。</li>
+        <li>"日增/总增速度最快仓库"一类表述 — 对未抓取数据的推测，<b>拒绝杜撰</b>。</li>
+        <li>Musk 宣称 SpaceX 2027 年底 ARR 5000 亿–1 万亿美元、DeepSeek 售出 token 毛利率约 90% — 单点转述的极端量级数字，无法核验，<b>未写入正文</b>。</li>
+      </ol>
+    </details>
+
+    <details>
+      <summary>E. 无法确认的事实（已在正文标注，未写成确定结论）</summary>
+      <ul>
+        <li>DeepInfer 的 Apache 2.0 协议、基于 vLLM、配套 <code>deepseek-recipe</code> — 转述，未见官方仓库。</li>
+        <li>Gemini 4 Carbon / GPT-6.1 Terra 的存在、命名、定价与时间表 — 厂商未确认，报道方称可能滑期。</li>
+        <li>Anthropic 算力承诺金额（5180 亿 / 6000 亿 / 7500 亿）与净亏损 807 亿美元口径 — 源自招股书草稿转述，未见原始文件。</li>
+        <li>OpenAI 300 亿美元融资与 1.4 万亿美元以上估值 — 源自路透转述，未见原文。</li>
+        <li>Anthropic Public Benefit Fund 的持股比例机制细节、是否含投票权、规模 — <b>官方公告正文未在本次抓取范围内</b>（仅取列表页摘要），待补。</li>
+        <li>速览各条细节 — 聚合转述，未取一手来源。</li>
+      </ul>
+    </details>
+  </div>
+
+  <footer>
+    <p><b>免责声明</b>：本简报由自动化流程生成，事实与链接均取自公开来源的本次实时抓取，<b>不保证完整性与时效性</b>，不构成投资建议或任何决策依据。引用前请打开原始链接复核，重大事项以官方公告为准。</p>
+    <p class="stamp">研究-agent · 2026-10-21 12:00 (+08) · 同日生成 Markdown 审计副本（本地留存，未公开）</p>
+  </footer>
+
+</div>
+</body>
+</html>
