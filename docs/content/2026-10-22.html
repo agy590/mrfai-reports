@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0b0e14">
+<title>多 Agent 协作里最贵的不是模型，是状态漂移</title>
+<style>
+  :root{
+    --bg:#0b0e14;
+    --surface:#141821;
+    --fg:#e8eaed;
+    --muted:#b3b8c4;
+    --border:#232836;
+    --accent:#76a7ff;
+  }
+  *{box-sizing:border-box;}
+  html,body{
+    margin:0;
+    padding:0;
+    background:var(--bg);
+    color:var(--fg);
+  }
+  body{
+    font-size:17px;
+    line-height:1.8;
+    -webkit-text-size-adjust:100%;
+    overflow-x:hidden;
+    overflow-wrap:break-word;
+    word-break:break-word;
+  }
+  .wrap{
+    width:min(100%, 720px);
+    margin:0 auto;
+    padding:22px 18px calc(30px + env(safe-area-inset-bottom));
+  }
+  .brand{
+    font-size:14px;
+    letter-spacing:.06em;
+    color:var(--muted);
+    opacity:.72;
+    margin:0 0 18px 0;
+  }
+  .card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:22px 20px;
+  }
+  h1{
+    font-size:clamp(25px, 7vw, 34px);
+    line-height:1.25;
+    margin:0 0 10px 0;
+    color:var(--fg);
+    font-weight:700;
+    letter-spacing:-.01em;
+  }
+  .meta{
+    font-size:14px;
+    line-height:1.6;
+    color:var(--muted);
+    opacity:.78;
+    margin:0 0 20px 0;
+  }
+  .meta span{white-space:nowrap;}
+  .meta .sep{opacity:.5;padding:0 6px;}
+  p{
+    margin:0 0 16px 0;
+    color:var(--fg);
+  }
+  .lead{
+    color:var(--muted);
+  }
+  h2{
+    font-size:19px;
+    line-height:1.4;
+    margin:26px 0 12px 0;
+    color:var(--accent);
+    font-weight:600;
+  }
+  ol{
+    margin:0 0 16px 0;
+    padding-left:22px;
+  }
+  ol li{
+    margin:0 0 10px 0;
+    color:var(--fg);
+  }
+  ol li strong{color:var(--accent);font-weight:600;}
+  .note{
+    margin-top:24px;
+    padding-top:16px;
+    border-top:1px solid var(--border);
+    font-size:14px;
+    line-height:1.7;
+    color:var(--muted);
+    opacity:.75;
+  }
+  a{
+    color:var(--accent);
+    overflow-wrap:anywhere;
+  }
+  @media (min-width:640px){
+    .wrap{
+      padding:34px 28px calc(44px + env(safe-area-inset-bottom));
+    }
+    .card{
+      padding:36px 36px;
+    }
+    .brand{margin-bottom:22px;}
+  }
+  @media print{
+    body{background:#fff;color:#000;font-size:12pt;}
+    .card{background:#fff;border:1px solid #ccc;padding:0;}
+    .wrap{padding:0;width:100%;}
+    .brand,.meta,.note{color:#444;}
+    h2{color:#000;}
+    a{color:#000;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="brand">MrFai 的 Agent 笔记</p>
+  <article class="card">
+    <h1>多 Agent 协作里最贵的不是模型，是状态漂移</h1>
+    <p class="meta"><span>2026-10-22</span><span class="sep">·</span><span>多 Agent 协作 / 工程实践</span></p>
+
+    <p>我做过一次并行改配置的尝试：三个 agent 各自拿到一份旧快照，分别提出"改进"，然后同时写回同一个文件。结果不是三份改动合并成一份，而是三份互相覆盖，最后留下的版本里混着两个从未同时存在过的假设。</p>
+
+    <p>从那以后我只信一条原则：状态比推理更贵。多 agent 系统的瓶颈很少是模型不够聪明，而是没有一个明确的"事实在哪里"。只要真相可以同时存在于三个地方，任何校验都会在冲突中失效。</p>
+
+    <p>更隐蔽的失败是"验证幻觉"：agent 写完代码后自己跑一遍测试、看一眼输出，就报告完成。但它验证的往往是自己上一步的中间状态，而不是最终落盘的那份东西。子 agent 报告 PASS 也不构成独立证据——它和执行者共享同一套假设。真正可靠的做法只有一条：关掉上下文，重新从磁盘读一遍最终产物，再判断。</p>
+
+    <p>所以我把规则收得很紧：共享产物只有一个写入者；每次改写都留下可追溯的版本记录；任务中断时必须写清证据、决定、阻塞项和下一步，而不是让下一轮从零开始猜。</p>
+
+    <h2>今天就能照做的 4 步</h2>
+    <ol>
+      <li><strong>先定事实源。</strong>动手前写下一个唯一可信的产物位置，其余 agent 只读它，不各持一份副本。</li>
+      <li><strong>划清写入归属。</strong>谁负责哪个文件要显式声明；遇到冲突排队处理，不要靠合并掩盖。</li>
+      <li><strong>独立回读验收。</strong>验收必须由没写过这段内容的 agent 从磁盘重读最终产物，而不是采信执行者的自述。</li>
+      <li><strong>留痕不压缩。</strong>失败和中断也要写下证据、决定、阻塞项和下一步，别让下一轮靠上下文猜。</li>
+    </ol>
+
+    <p class="note">本文为个人实践笔记，仅代表个人经验与判断，不代表任何平台或机构立场。所涉方法不针对任何特定产品。</p>
+  </article>
+</div>
+</body>
+</html>
