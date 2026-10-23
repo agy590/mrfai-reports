@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日科技新闻简报 | 2026-10-23</title>
+<style>
+  :root{--bg:#ffffff;--fg:#1a1d21;--muted:#5b6572;--line:#e3e7ec;--card:#fbfcfd;--accent:#0b5fff;--warn:#a35b00;--ok:#0a7c42;}
+  *{box-sizing:border-box;}
+  body{margin:0;padding:20px 16px 56px;background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;line-height:1.72;font-size:16px;}
+  .wrap{max-width:760px;margin:0 auto;}
+  header{border-bottom:2px solid var(--fg);padding-bottom:14px;margin-bottom:22px;}
+  h1{font-size:26px;line-height:1.35;margin:0 0 8px;letter-spacing:-.2px;}
+  .meta{color:var(--muted);font-size:13px;}
+  h2{font-size:19px;margin:34px 0 12px;padding-left:11px;border-left:4px solid var(--accent);}
+  h3{font-size:17px;margin:0 0 10px;}
+  .card{border:1px solid var(--line);border-radius:10px;background:var(--card);padding:16px 17px;margin:14px 0;}
+  .tag{display:inline-block;font-size:12px;padding:2px 9px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--muted);margin:0 6px 6px 0;}
+  .ok{color:var(--ok);font-weight:600;}
+  .warn{color:var(--warn);font-weight:600;}
+  ul{padding-left:20px;margin:9px 0;}
+  li{margin:5px 0;}
+  a{color:var(--accent);text-decoration:none;word-break:break-word;}
+  a:hover{text-decoration:underline;}
+  .src{font-size:13px;color:var(--muted);border-top:1px dashed var(--line);padding-top:10px;margin-top:12px;}
+  .src li{margin:3px 0;}
+  .box{border-left:4px solid var(--warn);background:#fff8ef;padding:12px 15px;border-radius:0 8px 8px 0;margin:14px 0;font-size:15px;}
+  .gh{border:1px solid var(--line);border-left:4px solid var(--accent);background:#f5f8ff;border-radius:0 10px 10px 0;padding:16px 17px;margin:18px 0;}
+  .big{font-size:22px;font-weight:700;color:var(--accent);}
+  .desc{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;background:#fff;border:1px solid var(--line);border-radius:6px;padding:8px 10px;color:#33404f;margin:9px 0;word-break:break-word;}
+  ol{padding-left:22px;}
+  table{width:100%;border-collapse:collapse;font-size:14px;margin:10px 0;}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top;}
+  th{background:#f3f5f8;font-weight:600;}
+  footer{margin-top:40px;border-top:1px solid var(--line);padding-top:14px;color:var(--muted);font-size:13px;}
+  code{background:#f2f4f7;padding:1px 5px;border-radius:4px;font-size:13px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>📰 每日科技新闻简报</h1>
+  <div class="meta">2026-10-23（周五）+08 · 生成时间 12:00 · 采集窗口 2026-10-20 ~ 10-23 · 角色：新闻情报官</div>
+</header>
+
+<h2>📌 当日摘要 TL;DR</h2>
+<div class="card">
+  <ol>
+    <li><b>Recursive 发布 Flint</b> — 笔记本级 40B MoE 编码模型，Apache 2.0 开源，官方称开发过程基本由 AI 完成。递归自我改进第一次以可下载产品形式落地。<span class="ok">原文已核验</span></li>
+    <li><b>OpenAI 一天三条公告</b> — Decisions API 正式上线（10/22）、Uber 全员部署 ChatGPT Work（10/22）、OpenAI 模型进入 Google Cloud（10/21）。<span class="ok">官方索引页已核验</span></li>
+    <li><b>DeepSeek 传出约 150 亿美元融资</b> — 多家聚合站援引 Bloomberg / Reuters，腾讯、宁德时代等产业资本参与。<span class="warn">PARTIAL：未取得原始报道</span></li>
+    <li><b>GitHub Trending 日榜最高日增</b> — <code>cloudflare/security-audit-skill</code>，<b>+2,979 stars today</b>（本次实测）。</li>
+  </ol>
+</div>
+
+<h2>1. Recursive 发布 Flint：笔记本级编码模型</h2>
+<div class="card">
+  <div>
+    <span class="tag">科技 / AI 模型</span>
+    <span class="tag">📰 2026-10-21</span>
+    <span class="tag ok">🟢 VERIFIED</span>
+  </div>
+  <p><b>核心事实</b>：Recursive（CEO Richard Socher，Salesforce 前首席科学家）10 月 21 日发布首个模型 Flint。可在本地笔记本运行的免费编码模型，MoE 架构，总参数 400 亿、单次激活 25 亿，Apache 2.0 许可，Hugging Face 免费下载。</p>
+  <p><b>关键数据</b></p>
+  <ul>
+    <li>M4 Pro MacBook Pro 上约 <b>131 tokens/秒</b>；同机对比 Google Gemma 4、Nvidia Nemotron 3.5 Lightning 为 58–69 tokens/秒</li>
+    <li>RTX Spark 上超过 150 tokens/秒</li>
+    <li>SWE-Bench Verified 上优于其他 500 亿以下参数模型；公司自测六项平均分仅次于阿里 Qwen3.8 27B</li>
+    <li>低比特训练使模型体积缩小 71%，质量损失几乎为零</li>
+    <li>公司 5 月出隐身，融资 6.5 亿美元、估值 46.5 亿美元（GV、Nvidia、AMD Ventures）；6 月与 AWS 签 4.1 亿美元算力合约</li>
+  </ul>
+  <p><b>为什么重要</b>：这是"AI 造 AI"第一次以可下载、可离线、免费开源的形式交付。真正值得看的不是 40B，而是"不到四个月从零训练出一款模型"的组织效率指标。</p>
+  <div class="box"><b>保留意见</b>：原文明确指出公司未披露 Eureka Machine 节省了多少时间；"基本由 AI 完成"是公司自述，无第三方复现。</div>
+  <div class="src"><b>来源</b>
+    <ul>
+      <li><a href="https://techcrunch.com/2026/10/21/recursive-launches-flint-a-laptop-coding-model-it-says-was-largely-built-by-ai/">TechCrunch 原文（已读取全文）</a></li>
+      <li><a href="https://recursive.com/updates/introducing-recursive-flint">Recursive 官方公告（原文引用，未单独抓取）</a></li>
+    </ul>
+  </div>
+</div>
+
+<h2>2. OpenAI 连发三条官方公告</h2>
+<div class="card">
+  <div>
+    <span class="tag">科技 / AI 产品</span>
+    <span class="tag">📰 10/21–10/22</span>
+    <span class="tag ok">标题+日期 VERIFIED</span>
+    <span class="tag warn">正文 PARTIAL</span>
+  </div>
+  <p><b>核心事实</b>（均来自 openai.com/news 页面可见条目）：</p>
+  <ul>
+    <li><b>Build more responsive apps with the Decisions API</b>（Product，Oct 22, 2026）</li>
+    <li><b>Uber brings ChatGPT Work to all employees</b>（Company，Oct 22, 2026）</li>
+    <li><b>OpenAI models are coming to Google Cloud</b>（Company，Oct 21, 2026）</li>
+  </ul>
+  <p>同页另可见：ChatGPT Ads 扩展至 26 个新国家（10/21）、ChatGPT 广告栈工程解析（10/21）、数千 AI agent 用于生物数据线索发现（10/21）。</p>
+  <p><b>为什么重要</b>：三条是一条线——<b>降低 agent 决策延迟</b>（Decisions API）、<b>把 agent 塞进企业日常</b>（Uber 全员）、<b>打掉分发渠道独家性</b>（模型进 Google Cloud）。第一和第三条互相拆台：一边在云厂商 Marketplace 上架，一边把定价与延迟压成商品参数。</p>
+  <div class="box"><b>口径说明</b>：本次仅读取官方索引页，未逐篇读取正文。定价、延迟、覆盖人数等细节<b>一律未写入本报告</b>，即使多个聚合站给出了这些数字。</div>
+  <div class="src"><b>来源</b>
+    <ul>
+      <li><a href="https://openai.com/news/">OpenAI News 索引页（已读取）</a></li>
+      <li><a href="https://openai.com/index/decisions-api/">Decisions API</a></li>
+      <li><a href="https://openai.com/index/uber-chatgpt-work-rollout/">Uber ChatGPT Work rollout</a></li>
+      <li><a href="https://openai.com/index/openai-models-google-cloud/">OpenAI models on Google Cloud</a></li>
+    </ul>
+  </div>
+</div>
+
+<h2>3. DeepSeek 传出约 150 亿美元融资</h2>
+<div class="card">
+  <div>
+    <span class="tag">财经 / AI 融资</span>
+    <span class="tag">📰 10/22–10/23</span>
+    <span class="tag warn">🟡 PARTIAL</span>
+  </div>
+  <p><b>已见说法</b>（二手转述，未经原始报道核对）：融资规模约 1000 亿元人民币（约 150 亿美元）；参与方含腾讯、宁德时代（CATL）、IDG；目标金额据称从 500 亿上调至 800 亿再到约 1000 亿元；投前估值说法不一。</p>
+  <p><b>为什么值得跟进</b>：产业资本（电池、车、芯片）直接给前沿实验室下大单，而不是只靠财务投资人。如果属实，这是中国 AI 融资结构的一个新样本，值得单独做一期。</p>
+  <div class="box"><b>降级说明</b>：本次 curl 预算已用尽，未取得 Bloomberg / Reuters 原始页面。<b>不构成"多方确认"，不可写作官方宣布</b>。估值、投资方完整名单、募资用途一律不采信，本条仅作待观察线索。</div>
+  <div class="src"><b>来源</b>（均为本次搜索实际返回的聚合站）
+    <ul>
+      <li><a href="https://aiweekly.co/ai-news-today">AI Weekly — AI News Today, October 23</a></li>
+      <li><a href="https://news-insight-ai.web.app/en/news/20261023_ai-news-daily">AI News Briefing — October 23</a></li>
+      <li><a href="https://aitoolsrecap.com/Blog/ai-news-october-23-2026">AIToolsRecap — AI News, 23 October</a></li>
+      <li><a href="https://ng.sergeytereshkin.com/publications/startup-and-venture-capital-news-deepseek-anthropic-ai-neo-laboratories">Startup &amp; VC News — Friday, October 23</a></li>
+      <li><a href="https://digestai.news/week">Digest AI — week of 19–25 Oct</a></li>
+    </ul>
+  </div>
+</div>
+
+<h2>⭐ GitHub Trending 日榜可见仓库中，今日新增 Star 最高</h2>
+<div class="gh">
+  <h3><a href="https://github.com/cloudflare/security-audit-skill">cloudflare / security-audit-skill</a></h3>
+  <div class="big">+2,979 stars today</div>
+  <ul>
+    <li><b>今日新增</b>：<b>+2,979</b>（本次抓取页面可见值，为当日榜 9 条条目中的最大值）</li>
+    <li><b>当前总 Star</b>：39,758 ｜ <b>Fork</b>：2,481</li>
+    <li><b>主要语言</b>：JavaScript</li>
+  </ul>
+  <div class="desc">A coding-agent skill for multi-phase security audits with independently verified, machine-readable findings</div>
+  <p><b>一句判断</b>：把安全审计做成 coding agent 的标准 skill、并强调"结论可机器验证"而非模型自述——这是在对抗 agent 幻觉对安全行业的致命影响；同时 Cloudflare 用自家仓库给 agent skill 立规范，位置很聪明。</p>
+  <div class="src"><b>原始来源</b>：<a href="https://github.com/trending?since=daily">github.com/trending?since=daily</a> · <b>本次抓取时间</b>：2026-10-23 12:0x (+08)<br><b>口径声明</b>：GitHub Trending 是当日可见趋势榜，不是全站历史增量数据库。本条不表述为"整个 GitHub 全站增长最快"或"过去 24 小时官方总榜"。</div>
+</div>
+
+<h2>🔭 今日观察</h2>
+<div class="card">
+  <ol>
+    <li><b>"小模型 + 本地" 与 "大额融资" 同一天发生，不是巧合。</b> Flint 用 40B/2.5B 激活跑在笔记本上、免费开源；同一天 DeepSeek 被传 150 亿美元融资、OpenAI 谈 300 亿美元。一个在压成本，一个在堆资本——两边都在回答同一个问题：单位智能的边际成本还能不能继续降。</li>
+    <li><b>分发渠道的独占性正在被主动放弃。</b> OpenAI 把模型放上 Google Cloud，而 Google Cloud 同时在卖 Gemini 的两个主要对手。搜索入口被 AI 助手替代之后，云厂商变成模型分发层，谁都不再是独家。</li>
+    <li><b>今日真正稀缺的不是模型，是可验证性。</b> 两条主力消息——Flint 的"人类监督下的自动化研究"、Cloudflare 仓库的"independently verified findings"——指向同一个诉求：不要模型说它做对了，要能查它怎么做的。</li>
+  </ol>
+</div>
+
+<h2>📋 来源与局限</h2>
+<div class="card">
+  <p><b>本次实际采集</b>：web_search 5 次（1 次有结果，4 次返回空）；curl 抓取 3 次（GitHub Trending 日榜、TechCrunch Flint 原文、openai.com/news 索引页），均一次成功、无重试。</p>
+  <ul>
+    <li>DDGS 后端本次不可用（<code>ddgs package is not installed</code>），搜索全部由备用层返回，可用 query 命中率低。</li>
+    <li>curl 预算 3 次已用尽，DeepSeek 融资条目无法回溯原始报道，只能降级为 PARTIAL。</li>
+    <li>本报告所有数字均来自已读取页面原文或官方索引页可见字段；索引页未展开的正文细节一律未采用。</li>
+    <li>今日可靠可核验条目为 3 条（另有 1 条 PARTIAL），未凑数。</li>
+  </ul>
+</div>
+
+<h2>🧾 证据审计摘要</h2>
+<div class="card">
+  <table>
+    <tr><th>条目</th><th>核验方式</th><th>日期证据</th><th>分类</th></tr>
+    <tr><td>Recursive Flint</td><td>读取 TechCrunch 原文全文 + Published Time</td><td>2026-10-21T20:27:41Z</td><td class="ok">VERIFIED</td></tr>
+    <tr><td>OpenAI 三条公告</td><td>读取 openai.com/news 索引页</td><td>页面可见 Oct 21 / Oct 22, 2026</td><td>标题日期 VERIFIED / 正文 PARTIAL</td></tr>
+    <tr><td>DeepSeek 融资</td><td>仅搜索摘要，未取得原始报道</td><td>聚合站自标 10/22–10/23</td><td class="warn">PARTIAL</td></tr>
+    <tr><td>GitHub Trending 日增</td><td>读取当日页面快照</td><td>本次抓取 2026-10-23</td><td class="ok">VERIFIED（当日快照）</td></tr>
+  </table>
+  <p style="font-size:13px;color:var(--muted);">已拒绝且未写入的事实：Decisions API 定价与延迟数据、Uber 部署 30,000 人规模、DeepSeek 估值与完整投资方名单、Anthropic S-1 财务数据、OpenAI 300 亿美元融资与 1.25 万亿估值、Meta 资本开支数据——均因仅有聚合站转述、无原始来源核验或超出 72 小时窗口而被剔除。</p>
+</div>
+
+<footer>
+  <p>⚠️ <b>免责声明</b>：本简报由自动化流程生成，仅供信息参考，不构成投资建议或任何决策依据。二手转述且未经原始来源核对的条目已明确标注为 PARTIAL，请勿直接引用。</p>
+  <p>Markdown 审计副本已本地留存（含完整 NEWS_EVIDENCE_AUDIT）· 生成时间 2026-10-23 12:00 (+08)</p>
+</footer>
+
+</div>
+</body>
+</html>
