@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>多 Agent 协作：别让 Agent 自己给自己打分</title>
+<style>
+  :root{
+    --bg:#0b0e14;
+    --surface:#141821;
+    --fg:#e8eaed;
+    --muted:#b3b8c4;
+    --border:#232836;
+    --accent:#76a7ff;
+  }
+  *{box-sizing:border-box;}
+  html,body{max-width:100%;overflow-x:hidden;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--fg);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+    font-size:17px;
+    line-height:1.8;
+    -webkit-text-size-adjust:100%;
+    text-rendering:optimizeLegibility;
+    padding:0 18px calc(28px + env(safe-area-inset-bottom));
+  }
+  .wrap{
+    width:min(100%, 720px);
+    margin:0 auto;
+    padding-top:22px;
+  }
+  .brand{
+    font-size:13px;
+    letter-spacing:.08em;
+    color:var(--muted);
+    opacity:.72;
+    padding-bottom:10px;
+    border-bottom:1px solid var(--border);
+  }
+  .brand b{color:var(--accent);font-weight:600;}
+  .card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:26px 20px 24px;
+    margin-top:16px;
+  }
+  h1{
+    margin:0 0 12px;
+    font-size:clamp(25px, 7vw, 34px);
+    line-height:1.25;
+    font-weight:700;
+    letter-spacing:.01em;
+    overflow-wrap:anywhere;
+    word-break:normal;
+    hyphens:auto;
+  }
+  .meta{
+    font-size:13px;
+    color:var(--muted);
+    opacity:.72;
+    letter-spacing:.04em;
+    margin:0 0 4px;
+  }
+  .meta .sep{opacity:.5;margin:0 7px;}
+  h2{
+    font-size:1.06em;
+    line-height:1.5;
+    margin:26px 0 8px;
+    color:var(--fg);
+    font-weight:650;
+  }
+  p{
+    margin:0 0 16px;
+    overflow-wrap:anywhere;
+    word-break:normal;
+  }
+  ol,ul{
+    margin:0 0 16px;
+    padding-left:1.35em;
+  }
+  li{
+    margin-bottom:12px;
+    overflow-wrap:anywhere;
+    word-break:normal;
+  }
+  li strong{color:var(--accent);font-weight:600;}
+  code{
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+    font-size:.92em;
+    background:rgba(118,167,255,.10);
+    border:1px solid var(--border);
+    border-radius:6px;
+    padding:1px 5px;
+    overflow-wrap:anywhere;
+    word-break:break-word;
+  }
+  .note{
+    margin-top:24px;
+    padding-top:16px;
+    border-top:1px solid var(--border);
+    font-size:13px;
+    line-height:1.75;
+    color:var(--muted);
+    opacity:.8;
+    overflow-wrap:anywhere;
+  }
+  .note b{font-weight:600;color:var(--muted);}
+  @media (min-width:640px){
+    body{padding-left:28px;padding-right:28px;font-size:17px;}
+    .wrap{padding-top:34px;}
+    .card{padding:36px 36px 34px;border-radius:18px;}
+    h1{margin-bottom:14px;}
+    .brand{font-size:14px;}
+  }
+  @media print{
+    body{background:#fff;color:#111;padding:0;font-size:12pt;}
+    .wrap{width:100%;padding-top:0;}
+    .card{background:#fff;border:1px solid #ddd;border-radius:0;padding:0;margin-top:0;}
+    .brand{color:#333;border-bottom:1px solid #ccc;padding-bottom:6px;}
+    .meta,.note{color:#444;opacity:1;}
+    li strong,code{color:#111;}
+    code{background:#f4f4f4;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand"><b>MrFai</b> 的 Agent 笔记</div>
+  <article class="card">
+    <h1>多 Agent 协作：别让 Agent 自己给自己打分</h1>
+    <p class="meta">2026-10-23<span class="sep">·</span>多 Agent 协作 / 工程方法</p>
+
+    <p>多 Agent 协作里，最贵的一课不是换更强的模型，而是别让 Agent 自己给自己打分。</p>
+
+    <p>我现在判断一个子任务是否完成，只看一件事：有没有一条可执行的命令能证明它成立。Agent 说「改好了、测试通过」几乎不算证据——不是它故意撒谎，而是它的自述和磁盘上的真实状态之间天然有缝隙：文件只改了一半、写进了另一个路径、测试跑的是旧版本、边界情况根本没被触发。我见过一次协作任务，三个 Agent 依次汇报「全部完成」，最后仍因一处路径前缀写错而整体失败，而真正的证据只需要一条 <code>ls</code> 就能拿到。</p>
+
+    <p>所以我把规则改成：<strong>完成 = 外部命令的退出码，而不是自然语言的自我确认</strong>。</p>
+
+    <h2>具体四步</h2>
+
+    <ol>
+      <li><strong>先定义验收命令，再动手。</strong> 任务描述里写清用什么命令判定成功（跑测试、<code>grep</code> 关键改动、构建一次、<code>curl</code> 一个接口），退出码为 0 才算数。说不清用什么命令验收的需求，通常说明需求本身还没想清楚。</li>
+      <li><strong>交接只传三样东西。</strong> 改了哪些文件、命令原文与真实输出（包括失败的输出）、以及明确还没做的部分。省略「输出」就等于省略证据。</li>
+      <li><strong>接手方先复述验收标准。</strong> 动手前用两句话说明「做到什么算完成」。这一步专治目标漂移——多 Agent 系统里最贵的 bug 往往不是代码写错，而是做的不是你以为的那件事。</li>
+      <li><strong>失败就中止，不要降级。</strong> 某个环节验证不通过时，流程停在失败态，而不是让下游带着半成品继续跑。半成品的传播速度，通常比错误本身快得多。</li>
+    </ol>
+
+    <p>一句话总结：可靠性来自可验证的交接，而不是更长的提示词。</p>
+
+    <p class="note"><b>免责声明：</b>本文为个人工程笔记，记录的是自建 Agent 工作流中的实践方法，不代表任何产品、服务或第三方机构的官方结论。文中不含任何内部配置、路径或真实业务数据。</p>
+  </article>
+</div>
+</body>
+</html>
