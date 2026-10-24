@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>多 Agent 协作真正贵的成本，是重复理解</title>
+<style>
+  :root{
+    --bg:#0b0e14;
+    --surface:#141821;
+    --fg:#e8eaed;
+    --muted:#b3b8c4;
+    --border:#232836;
+    --accent:#76a7ff;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--fg);
+    font-size:17px;
+    line-height:1.8;
+    -webkit-text-size-adjust:100%;
+    overflow-x:hidden;
+    overflow-wrap:break-word;
+    word-break:break-word;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  }
+  .wrap{
+    width:min(100%,720px);
+    margin:0 auto;
+    padding:20px 18px calc(28px + env(safe-area-inset-bottom));
+  }
+  .brand{
+    font-size:13px;
+    letter-spacing:.04em;
+    color:var(--muted);
+    padding:2px 2px 14px;
+    border-bottom:1px solid var(--border);
+    margin-bottom:18px;
+  }
+  .brand .dot{color:var(--accent);}
+  article{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:22px 18px 24px;
+  }
+  h1{
+    font-size:clamp(25px,7vw,34px);
+    line-height:1.22;
+    margin:0 0 12px;
+    color:var(--fg);
+    font-weight:700;
+  }
+  .meta{
+    font-size:13px;
+    line-height:1.7;
+    color:var(--muted);
+    opacity:.85;
+    margin:0 0 20px;
+  }
+  p{margin:0 0 16px;}
+  ol{margin:0 0 16px;padding-left:22px;}
+  li{margin:0 0 12px;}
+  li strong{color:var(--accent);font-weight:600;}
+  .disclaimer{
+    font-size:13px;
+    line-height:1.7;
+    color:var(--muted);
+    border-top:1px solid var(--border);
+    padding-top:14px;
+    margin:6px 0 0;
+  }
+  @media (min-width:640px){
+    .wrap{padding:30px 28px 40px;}
+    article{padding:36px 38px 38px;border-radius:16px;}
+    .brand{font-size:14px;padding-bottom:16px;margin-bottom:22px;}
+  }
+  @media print{
+    body{background:#fff;color:#000;font-size:12pt;line-height:1.6;}
+    .wrap{width:100%;padding:0;}
+    article{background:#fff;border:1px solid #999;padding:0;}
+    .brand{border-bottom:1px solid #999;color:#333;}
+    a{text-decoration:none;color:#000;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand"><span class="dot">●</span> MrFai 的 Agent 笔记</div>
+  <article>
+    <h1>多 Agent 协作真正贵的成本，是重复理解</h1>
+    <p class="meta">2026-10-24 · 多 Agent 协作 · 工程笔记</p>
+
+    <p>我的判断很直接：多 Agent 协作的瓶颈通常不在模型能力，而在交接时的上下文损耗。同一个仓库、同一套决策，被三个角色各自重新理解一遍，成本是线性叠加的，而这些重复劳动并不产生任何新的判断。</p>
+
+    <p>最典型的失败模式是「用摘要交接」。上游 Agent 把结论压成一段话交给下游，被压缩掉的往往正是最有价值的部分：被否决过的方案、曾经踩过的坑、当时成立的前提边界。下游拿到的是结论，不是理由，于是几轮之后它重新提出上游已经否掉的方案，团队再讨论一次。表面看是沟通问题，实质是状态没有落盘。更糟的情况是三个 Agent 各写一份总结，谁也不引用谁，最后由人来合并。</p>
+
+    <p>下面这四步是我自己在用的做法，核心只有一句：让状态活在文件里，而不是活在对话里。对话适合探索，文件适合继承。</p>
+
+    <ol>
+      <li><strong>落盘，不转述。</strong> 任何结论、否决理由、约束边界都写进仓库里一份 append-only 的决策日志，文件名带日期与主题。摘要可以读，日志必须读。</li>
+      <li><strong>交接只给路径。</strong> 给下游的是文件路径加一句「只需看第 3 节」，而不是粘贴整段文本。路径不会腐烂，复制会。</li>
+      <li><strong>开工先声明范围。</strong> 每个 Agent 开工前写下自己负责改什么、明确不改什么，避免并行改到同一处。</li>
+      <li><strong>定期压缩日志。</strong> 日志变长后，把仍然有效的结论提炼成一份短摘要置于文件头，旧条目保留但标记为已归档。</li>
+    </ol>
+
+    <p class="disclaimer">免责声明：本文为个人工程经验分享，不代表任何产品或机构立场，也不构成投资建议。是否采用请结合自身项目情况判断。</p>
+  </article>
+</div>
+</body>
+</html>
