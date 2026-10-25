@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Agent 编排里，最贵的不是模型，是没写清验收标准</title>
+<style>
+  :root{
+    --bg:#0b0e14;
+    --surface:#141821;
+    --fg:#e8eaed;
+    --muted:#b3b8c4;
+    --border:#232836;
+    --accent:#76a7ff;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);}
+  body{
+    font-size:17px;
+    line-height:1.78;
+    -webkit-text-size-adjust:100%;
+    overflow-x:hidden;
+    overflow-wrap:break-word;
+    word-break:normal;
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+  }
+  .wrap{
+    width:min(100%,720px);
+    margin:0 auto;
+    padding:18px 18px calc(28px + env(safe-area-inset-bottom,0px));
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    padding:10px 2px 14px;
+    color:var(--muted);
+    font-size:13px;
+    letter-spacing:.06em;
+    border-bottom:1px solid var(--border);
+    margin-bottom:18px;
+  }
+  .brand .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--accent);
+    flex:0 0 auto;
+  }
+  .card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:22px 18px 24px;
+  }
+  h1{
+    margin:0 0 12px;
+    font-size:clamp(25px,7vw,34px);
+    line-height:1.24;
+    font-weight:700;
+    letter-spacing:.01em;
+    color:var(--fg);
+    overflow-wrap:break-word;
+  }
+  .meta{
+    margin:0 0 20px;
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.7;
+    opacity:.8;
+  }
+  .meta .sep{opacity:.5;margin:0 8px;}
+  p{margin:0 0 16px;}
+  p:last-of-type{margin-bottom:6px;}
+  strong{color:var(--fg);font-weight:600;}
+  ol,ul{margin:0 0 16px;padding-left:1.35em;}
+  li{margin:0 0 10px;}
+  li:last-child{margin-bottom:0;}
+  li strong{color:var(--accent);font-weight:600;}
+  .note{
+    margin-top:22px;
+    padding-top:16px;
+    border-top:1px solid var(--border);
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.75;
+    opacity:.75;
+  }
+  a{color:var(--accent);overflow-wrap:anywhere;}
+  @media (min-width:640px){
+    .wrap{padding:28px 28px 40px;}
+    .card{padding:34px 36px 36px;}
+    .brand{padding:12px 2px 16px;}
+  }
+  @media print{
+    body{background:#fff;color:#000;font-size:12pt;line-height:1.6;}
+    .wrap{width:100%;padding:0;}
+    .card{background:#fff;border:1px solid #ccc;border-radius:0;padding:0;}
+    .brand,.note{color:#444;}
+    h1{color:#000;}
+    a{color:#000;text-decoration:none;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="brand"><span class="dot"></span><span>MrFai 的 Agent 笔记</span></header>
+  <main class="card">
+    <h1>Agent 编排里，最贵的不是模型，是没写清验收标准</h1>
+    <p class="meta">2026-10-25<span class="sep">·</span>AI Agent · 工程实践</p>
+
+    <p>做多 Agent 协作的这段时间，我踩过最贵的一个坑：不是模型笨，而是<strong>任务交接没有验收标准</strong>。</p>
+
+    <p>一个典型的失败长这样：我把「整理这个项目的部署流程」交给子 Agent，它十分钟后交回一份结构完整、措辞专业的 Markdown。看起来是成了。但正文里大半是「此处需补充具体命令」「根据实际情况配置」，而我真正需要的只有一条能直接跑的命令——它并不在那份文档里。后来我照着这份文档去操作，白花了半小时，还一度以为是环境出了问题。</p>
+
+    <p>这类失败最危险的地方在于它是<strong>静默的</strong>：文档在，格式规整，结论看着也合理，只是内容是空的。下游 Agent 读到它，会以为上游已经做完了判断，于是在错误前提上继续往下推，偏差一层层叠上去，最后爆在我自己身上。</p>
+
+    <p>现在我的做法有点笨，但有效。给每个子任务写一句<strong>能判真假的验收句</strong>：不要写「整理好部署流程」，要写「输出可执行的一条启动命令，并说明它失败时第一个报错的含义」。</p>
+
+    <ol>
+      <li><strong>先写验收句，再派活。</strong> 验收句必须含具体数量、字段或来源，能一眼判断真假；写不出来的验收句，说明任务本身还没想清楚。</li>
+      <li><strong>交付物末尾固定三行：</strong>结论、依据来源、未验证的部分。少一行就退回，不进入下一段流程。</li>
+      <li><strong>把缺失显式化。</strong> 拿不准的地方写「未验证」，不允许省略、不允许用模糊措辞带过；空缺必须被看见，而不是被静默填平。</li>
+      <li><strong>下游先读依据来源。</strong> 合并前只扫「依据来源」那一行，没有可查来源的产物直接打回重做。</li>
+    </ol>
+
+    <p>多 Agent 的价值不在于让更多模型同时说话，而在于让每一段交接都留下可检查的痕迹。人带新人尚且要交代清楚上下文，Agent 之间更不能靠默契。</p>
+
+    <p class="note">本文为个人工程实践记录，仅供技术交流参考；不代表任何机构立场，也不构成产品推荐或商业建议。</p>
+  </main>
+</div>
+</body>
+</html>
