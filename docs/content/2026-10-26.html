@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>多 Agent 协作的瓶颈不是模型，是共享事实</title>
+<style>
+  :root{
+    --bg:#0b0e14;
+    --surface:#141821;
+    --fg:#e8eaed;
+    --muted:#b3b8c4;
+    --border:#232836;
+    --accent:#76a7ff;
+  }
+  *{box-sizing:border-box;}
+  html,body{
+    background:var(--bg);
+    color:var(--fg);
+    margin:0;
+    padding:0;
+  }
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    font-size:17px;
+    line-height:1.78;
+    overflow-x:hidden;
+    word-break:break-word;
+    overflow-wrap:anywhere;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:calc(32px + env(safe-area-inset-bottom));
+  }
+  .wrap{
+    width:min(100%,720px);
+    margin:0 auto;
+    padding:22px 18px 0;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    font-size:14px;
+    letter-spacing:.02em;
+    color:var(--muted);
+    padding:6px 0 18px;
+    border-bottom:1px solid var(--border);
+  }
+  .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--accent);
+    flex:0 0 auto;
+  }
+  .brand strong{color:var(--fg);font-weight:600;}
+  .card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:22px 18px;
+    margin-top:20px;
+  }
+  h1{
+    font-size:clamp(25px,7vw,34px);
+    line-height:1.24;
+    margin:0 0 12px;
+    font-weight:700;
+    color:var(--fg);
+    letter-spacing:-.01em;
+    overflow-wrap:anywhere;
+  }
+  .meta{
+    font-size:13px;
+    color:var(--muted);
+    opacity:.72;
+    margin:0 0 20px;
+    line-height:1.6;
+  }
+  .meta .sep{opacity:.5;padding:0 6px;}
+  article p{
+    margin:0 0 16px;
+    color:var(--fg);
+  }
+  article p:last-of-type{margin-bottom:0;}
+  h2{
+    font-size:16px;
+    line-height:1.5;
+    margin:26px 0 12px;
+    color:var(--accent);
+    font-weight:600;
+  }
+  ol{
+    margin:0;
+    padding-left:20px;
+  }
+  ol li{
+    margin:0 0 10px;
+    color:var(--fg);
+  }
+  ol li:last-child{margin-bottom:0;}
+  ol li strong{color:var(--fg);}
+  .note{
+    margin-top:26px;
+    padding-top:16px;
+    border-top:1px solid var(--border);
+    font-size:13px;
+    line-height:1.7;
+    color:var(--muted);
+    opacity:.85;
+  }
+  a{
+    color:var(--accent);
+    overflow-wrap:anywhere;
+  }
+  @media (min-width:640px){
+    .wrap{padding:34px 28px 0;}
+    .card{padding:36px 36px;border-radius:18px;}
+    .brand{padding-bottom:22px;}
+  }
+  @media print{
+    html,body{background:#fff;color:#000;}
+    .brand{color:#333;border-bottom:1px solid #ccc;}
+    .brand strong,.card h1{color:#000;}
+    .card{background:#fff;border:1px solid #ccc;border-radius:0;margin-top:0;padding:0;}
+    h2{color:#000;}
+    .meta,.note{color:#555;}
+    ol li,article p{color:#000;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="brand"><span class="dot" aria-hidden="true"></span><span><strong>MrFai</strong> 的 Agent 笔记</span></header>
+  <main>
+    <article class="card">
+      <h1>多 Agent 协作的瓶颈不是模型，是共享事实</h1>
+      <p class="meta">2026-10-26<span class="sep">·</span>主题：AI Agent / 多 Agent 协作</p>
+
+      <p>多 Agent 协作真正的瓶颈，从来不是模型不够聪明，而是没有人负责「当前真实状态」这件事。</p>
+
+      <p>我踩过的坑很具体：两个 Agent 同时改同一份配置和同一批产出文件，任务本身都不复杂。结果一个按自己的假设往前推，另一个为了「修好」对方留下的半成品，把对方的改动覆盖掉；直到第三轮人工 review 才看出两份互相矛盾的结果。事后复盘，根因不是谁写错了行代码，而是每个 Agent 都带着自己的局部快照做决策，谁都没有权威答案。</p>
+
+      <p>第二个教训更隐蔽：把上下文当成事实。上下文是任务启动时冻结的快照，不是磁盘的当前状态。Agent 依据「我记得文件里原本是这样」继续改写，就会在别人已经改过的地方再改一次。真正可靠的做法只有一条——动手之前重新读盘，读到为止。</p>
+
+      <h2>今天就能照做的三步</h2>
+      <ol>
+        <li><strong>指定唯一事实源。</strong>状态、进度、决定只写在一个地方，其他 Agent 只读它，不各自维护一份副本。</li>
+        <li><strong>写之前 re-read。</strong>任何要修改的文件，先从磁盘读最新版本，再决定改什么；记忆不是状态。</li>
+        <li><strong>交接留证据。</strong>中断或转交前写清：已完成什么、做了什么决定、卡在哪、下一步是什么，别用「我看看」当交接。</li>
+      </ol>
+
+      <p class="note">免责声明：本文为个人工程笔记，仅代表个人实践与判断，不构成任何投资建议，也不针对任何具体产品或服务的评价。文中所述经历均来自自己的工作场景。</p>
+    </article>
+  </main>
+</div>
+</body>
+</html>
