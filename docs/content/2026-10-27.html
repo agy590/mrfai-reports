@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>别让 Agent 互相确认：把评审留给最贵的那一次</title>
+<style>
+  :root{
+    --bg:#0b0e14;
+    --surface:#141821;
+    --fg:#e8eaed;
+    --muted:#b3b8c4;
+    --border:#232836;
+    --accent:#76a7ff;
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--fg);
+    font-size:17px;
+    line-height:1.78;
+    overflow-x:hidden;
+    overflow-wrap:break-word;
+    word-break:break-word;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{
+    width:min(100%,720px);
+    margin:0 auto;
+    padding:22px 18px calc(34px + env(safe-area-inset-bottom, 0px));
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    font-size:13px;
+    line-height:1.5;
+    letter-spacing:.04em;
+    color:var(--muted);
+    padding:4px 2px 14px;
+    border-bottom:1px solid var(--border);
+  }
+  .brand .dot{
+    width:7px;height:7px;border-radius:50%;
+    background:var(--accent);
+    flex:0 0 auto;
+  }
+  .card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:20px 16px 24px;
+    margin-top:16px;
+  }
+  h1{
+    margin:0 0 12px;
+    font-size:clamp(25px,7vw,34px);
+    line-height:1.22;
+    font-weight:700;
+    letter-spacing:-.01em;
+  }
+  .meta{
+    margin:0;
+    font-size:13px;
+    line-height:1.6;
+    color:var(--muted);
+    opacity:.72;
+  }
+  hr{
+    border:0;
+    border-top:1px solid var(--border);
+    margin:18px 0 16px;
+  }
+  .card p{margin:0 0 1em;}
+  .card p:last-child{margin-bottom:0;}
+  .card ol{
+    margin:0 0 1em;
+    padding-left:1.25em;
+  }
+  .card li{
+    margin:0 0 .6em;
+  }
+  .card li:last-child{margin-bottom:0;}
+  .card li::marker{color:var(--accent);font-weight:600;}
+  strong{font-weight:600;}
+  a{color:var(--accent);overflow-wrap:anywhere;}
+  code{
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:.92em;
+    background:rgba(118,167,255,.10);
+    border:1px solid var(--border);
+    border-radius:5px;
+    padding:.05em .32em;
+    overflow-wrap:anywhere;
+  }
+  .disclaimer{
+    font-size:13px;
+    line-height:1.65;
+    color:var(--muted);
+    opacity:.78;
+  }
+  @media (min-width:640px){
+    .wrap{padding:30px 28px calc(46px + env(safe-area-inset-bottom, 0px));}
+    .card{padding:36px 38px 38px;border-radius:16px;}
+    .brand{font-size:14px;}
+  }
+  @media print{
+    body{background:#fff;color:#111;font-size:12pt;}
+    .wrap{width:100%;padding:0;}
+    .card{border:1px solid #ccc;background:#fff;padding:18px;}
+    .brand{border-bottom:1px solid #ddd;color:#333;}
+    .brand .dot{background:#333;}
+    .meta,.disclaimer{color:#555;opacity:1;}
+    .card li::marker{color:#111;}
+    code{background:none;border:0;}
+    a{color:#111;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand"><span class="dot" aria-hidden="true"></span><span>MrFai 的 Agent 笔记</span></div>
+  <main class="card">
+    <h1>别让 Agent 互相确认：把评审留给最贵的那一次</h1>
+    <p class="meta">2026-10-27 · 多 Agent 协作 / 工程实践</p>
+    <hr>
+    <p>做多 Agent 协作之后，我最贵的教训不是模型不够强，而是「互相确认」。</p>
+    <p>早期流程很顺：规划者写计划，执行者照做，审查者复核。后来我加了保险——执行前让规划者再确认一次计划，通过前让审查者再和执行者对一次口径。出问题时，三方都拿对方的结论当证据：规划者说执行者理解偏了，执行者说计划写清楚了，审查者说两边都确认过。没有人读过原始文件，错误却被三方背书，排查成本翻了好几倍。</p>
+    <p>真正的分界不是「谁来审」，而是「审什么」。交付物只有结论，评审就只是复读机；交付物带着证据（可复现的命令、真实输出、具体文件路径），评审才可能变成核对。</p>
+    <p>现在我的做法很简单：状态写进文件，动手前先重读盘，不靠记忆和上一轮的口头结论；同一路径同时只允许一个写入者；审查者只判定通过或不通过，修复回到执行者手里；收尾时逐条对照验收标准，缺证据的地方直接标成阻塞项，宁可留一个明确的「未验证」，也不让它混进已完成的部分。</p>
+    <p>共享一套状态，多 Agent 才不是多线程瞎跑；否则只是把一个人的混乱复制成三份。</p>
+    <hr>
+    <ol>
+      <li><strong>交付证据，不交付结论。</strong>每次产出都带可复现命令、真实输出片段和具体文件路径，审查者只核对这些，不接受转述。</li>
+      <li><strong>状态写进文件。</strong>决定、阻塞项、下一步落到磁盘，谁动手前先重读最新版本，不靠记忆。</li>
+      <li><strong>写入先领租约，评审只判定不修复。</strong>同一任务或路径同时只允许一个写入者；审查者给出「通过 / 不通过」，修复交回执行者。</li>
+      <li><strong>收尾逐条对照验收标准。</strong>缺证据就标成阻塞项，宁可留下一个显式的「未验证」，也别把它混进已完成。</li>
+    </ol>
+    <hr>
+    <p class="disclaimer">免责声明：本文为个人工程笔记，观点与做法仅代表作者当下的实践，不构成任何投资或使用建议。文中未包含真实项目名、客户信息或任何凭据。</p>
+  </main>
+</div>
+</body>
+</html>
