@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>每日科技新闻简报 | 2026-10-28</title>
+<style>
+  :root{
+    --bg:#0b0e14;
+    --panel:#11151d;
+    --panel-2:#0f131a;
+    --border:#1e2530;
+    --border-strong:#2a3340;
+    --text:#e6edf3;
+    --text-dim:#9aa7b4;
+    --text-mute:#6e7c8a;
+    --accent:#58a6ff;
+    --accent-2:#7ee787;
+    --warn:#e3b341;
+    --link:#79c0ff;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+    font-size:16px;
+    line-height:1.75;
+    -webkit-text-size-adjust:100%;
+  }
+  .wrap{max-width:860px;margin:0 auto;padding:28px 18px 64px;}
+  header.top{border-bottom:1px solid var(--border);padding-bottom:18px;margin-bottom:22px;}
+  h1{font-size:1.55rem;line-height:1.35;margin:0 0 10px;letter-spacing:.2px;}
+  .meta{color:var(--text-mute);font-size:.82rem;line-height:1.7;}
+  .tagrow{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px;}
+  .tag{display:inline-block;font-size:.72rem;padding:3px 9px;border:1px solid var(--border-strong);border-radius:999px;color:var(--text-dim);background:var(--panel-2);}
+  h2{font-size:1.16rem;margin:34px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--text);}
+  h3{font-size:1.04rem;margin:0 0 10px;line-height:1.5;color:var(--text);}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px 18px 14px;margin:14px 0;}
+  .card.accent{border-left:3px solid var(--accent);}
+  .card.green{border-left:3px solid var(--accent-2);}
+  .card.gold{border-left:3px solid var(--warn);}
+  .num{display:inline-block;font-size:.72rem;color:var(--accent);border:1px solid var(--border-strong);border-radius:6px;padding:1px 7px;margin-right:8px;vertical-align:2px;}
+  .kicker{font-size:.76rem;color:var(--text-mute);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;}
+  p{margin:10px 0;}
+  ul,ol{margin:10px 0;padding-left:20px;}
+  li{margin:5px 0;}
+  strong{color:#fff;font-weight:600;}
+  a{color:var(--link);text-decoration:none;border-bottom:1px solid rgba(121,192,255,.35);}
+  a:hover{color:#a5d6ff;border-bottom-color:#a5d6ff;}
+  .lbl{color:var(--text-dim);font-weight:600;}
+  .kpi{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 4px;}
+  .kpi div{flex:1 1 150px;background:var(--panel-2);border:1px solid var(--border);border-radius:10px;padding:10px 12px;}
+  .kpi .v{font-size:1.22rem;font-weight:700;color:var(--accent);}
+  .kpi .k{font-size:.74rem;color:var(--text-mute);text-transform:uppercase;letter-spacing:.06em;}
+  .cred{display:inline-block;font-size:.76rem;padding:2px 9px;border-radius:6px;font-weight:600;}
+  .c-green{background:rgba(46,160,67,.16);color:#56d364;border:1px solid rgba(46,160,67,.4);}
+  .c-yellow{background:rgba(227,179,65,.14);color:#e3b341;border:1px solid rgba(227,179,65,.38);}
+  .srclist{list-style:none;padding-left:0;margin:10px 0 0;}
+  .srclist li{margin:6px 0;padding-left:16px;position:relative;word-break:break-word;font-size:.9rem;}
+  .srclist li:before{content:"›";position:absolute;left:0;color:var(--text-mute);}
+  .obs{background:var(--panel-2);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin:12px 0;}
+  .obs h3{font-size:.95rem;margin-bottom:4px;}
+  .obs p{font-size:.93rem;margin:8px 0;}
+  .foot{margin-top:36px;border-top:1px solid var(--border);padding-top:18px;color:var(--text-mute);font-size:.82rem;line-height:1.85;}
+  .foot h3{color:var(--text-dim);font-size:.9rem;margin:16px 0 6px;}
+  .foot ul{padding-left:18px;}
+  .foot li{margin:4px 0;}
+  code{background:var(--panel-2);border:1px solid var(--border);border-radius:5px;padding:1px 6px;font-size:.85em;color:#ffa657;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;}
+  .boxed{border:1px solid var(--border-strong);border-radius:10px;padding:12px 14px;margin:12px 0;background:var(--panel-2);}
+  .boxed .h{font-size:.74rem;color:var(--text-mute);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px;}
+  @media (max-width:600px){
+    .wrap{padding:20px 14px 48px;}
+    h1{font-size:1.32rem;}
+    body{font-size:15px;}
+    .card{padding:15px 14px 12px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <div class="kicker">Tech Daily Briefing · 自动化采集 · 已核验分级</div>
+  <h1>每日科技新闻简报 | 2026-10-28</h1>
+  <div class="meta">
+    报告日 2026-10-28（UTC+08）· 采集起始 2026-10-28 04:01 UTC · 时效窗口 ≥ 2026-10-25（72 小时硬门）<br>
+    采集实况：<code>web_search</code> 5 次 · <code>curl (r.jina.ai)</code> 3 次 · <code>web_extract</code> 0 次
+  </div>
+  <div class="tagrow">
+    <span class="tag">AI / 科技 / 互联网 / 创业</span>
+    <span class="tag">国内外双源</span>
+    <span class="tag">原文级核验 1 条</span>
+    <span class="tag">可追溯未核原文 4 条</span>
+    <span class="tag">仅引用本次实际来源</span>
+  </div>
+</header>
+
+<h2>当日摘要（TL;DR）</h2>
+<div class="card accent">
+  <ol>
+    <li><strong>NVIDIA × Meta 走深一层</strong>：双方宣布扩大 Muse 及 Muse 系列模型合作（联合优化推理与训练），Meta 扩投 NVIDIA Vera Rubin / Vera CPU 与 Spectrum-X、BlueField-4，<strong>NVIDIA 将以 30 亿美元参与 Meta 股权融资</strong>；公告还提到会考虑在 NVIDIA OpenShell（Agent 安全部署）与 NVIDIA Sentry（Agent 行为监控）上的合作。本次唯一完成原文级核验的条目。</li>
+    <li><strong>Google DeepMind 发布 Genie 4 世界模型</strong>：原生多模态（同时生成音乐、环境音与可交互对白），由 Gemini 家族支撑，可用自然语言实时操控模拟；研究预览向受信任测试者与 Gemini API / AI Studio 早期伙伴开放。</li>
+    <li><strong>Oracle 与 OpenAI 扩大企业级合作</strong>：在 Oracle AI World 宣布把 OpenAI 模型、ChatGPT 与 Codex 嵌入 Oracle 应用、数据与云基础设施，直接进入企业系统运维与安全漏洞修复流程。</li>
+    <li><strong>国内：腾讯混元开源中英实时同传模型 Hy-SimulMT</strong>（10 月 26 日发布并开源，腾讯 Hy 翻译 App 首发），主打低延迟与说话人音色克隆，源码上架 HuggingFace / ModelScope / GitHub。</li>
+    <li><strong>创投同时押注"正反两条"算力路线</strong>：Disruptive 宣布募集 100 亿美元新基金；General Compute 用非 NVIDIA 芯片（SambaNova / Positron / Cerebras）+ 改造退役矿场机房，A 轮 1 亿美元、投后估值约 8 亿美元；印度 Simplismart 获 NVIDIA 参投的 1400 万美元 B 轮。</li>
+    <li><strong>GitHub Trending 日榜可见仓库中，今日新增 Star 最高</strong>：<code>Nutlope/hallmark</code>，<code>+2,830 stars today</code>（详见下节独立卡片）。</li>
+  </ol>
+</div>
+
+<h2>GitHub Trending 日榜可见仓库中，今日新增 Star 最高</h2>
+<div class="card green">
+  <h3><span class="num">GH</span><a href="https://github.com/Nutlope/hallmark">Nutlope / hallmark</a></h3>
+  <div class="kpi">
+    <div><div class="v">+2,830</div><div class="k">stars today</div></div>
+    <div><div class="v">39,197</div><div class="k">当前总 Star</div></div>
+    <div><div class="v">CSS</div><div class="k">主要语言</div></div>
+    <div><div class="v">2,045</div><div class="k">Fork</div></div>
+  </div>
+  <p><span class="lbl">仓库原始描述：</span><code>Anti-AI-slop design skill for Claude Code, Cursor, and Codex.</code></p>
+  <p><span class="lbl">与 AI / 科技读者相关的判断：</span>给编码 Agent 装"审美纪律"的 skill 类仓库正在集体霸榜——同日可见条目里 <code>pbakaus/impeccable</code>（+1,449）、<code>elayadesign/ai-design-skills</code>（+1,395）、<code>makecindy/cindy</code>（+1,465）、<code>obra/superpowers</code>（+617）同属 Agent 工具/技能层。开发者痛点正从"模型能不能把代码写出来"转向"写出来的东西像不像 AI 写的"。对做内容生产与代码生成的团队，这是个直接信号：可复用的风格 / 品味约束层正在成为一个独立生态位，值得直接读源码而不只是读榜单。</p>
+  <p><span class="lbl">口径说明：</span>该数值来自本次抓取的当日 Trending 页面可见条目（共解析 11 条），逗号分隔数字按整数比较后降序取最大值。GitHub Trending 是当日可见趋势榜，不是全站历史增量数据库，因此不表述为"全站增长最快"。</p>
+  <ul class="srclist">
+    <li>原始来源：<a href="https://github.com/trending?since=daily">https://github.com/trending?since=daily</a></li>
+    <li>本次抓取时间：2026-10-28 04:01 UTC（2026-10-28 12:01 UTC+08）</li>
+  </ul>
+</div>
+
+<h2>新闻卡片</h2>
+
+<div class="card">
+  <h3><span class="num">1</span>NVIDIA 与 Meta 扩大 Muse 合作，NVIDIA 以 30 亿美元投资 Meta 股权</h3>
+  <p><span class="lbl">类型：</span>科技 / 财经（算力基础设施与资本）</p>
+  <p><span class="lbl">核心事实：</span>NVIDIA 与 Meta 于 2026 年 10 月 27 日宣布扩大在 Muse 及 Muse 系列模型上的合作，重点是联合优化推理与训练性能、提升总拥有成本；Meta 将扩大 NVIDIA Vera Rubin 与 Vera CPU 的部署以提升每瓦性能，并采用 Spectrum-X 以太网与 BlueField-4 提升网络效率与吞吐。双方同时表示会考虑在 NVIDIA OpenShell 参考架构（Agent 安全部署）与 NVIDIA Sentry（Agent 行为监控、结构化/非结构化/图数据处理）上的进一步合作。</p>
+  <div class="kpi">
+    <div><div class="v">$3B</div><div class="k">NVIDIA 对 Meta 股权投资</div></div>
+    <div><div class="v">4</div><div class="k">涉及硬件平台</div></div>
+  </div>
+  <p><span class="lbl">为什么重要：</span>这是"模型厂 + 芯片厂"从采购关系升级为 <strong>Agent 运行时绑定</strong>的典型样本——合作范围已从买卡、部署，延伸到 Agent 的安全部署与行为监控层。同时，芯片厂用 30 亿美元股权投资头部模型与 Agent 公司，是第一次这么直接地为"生态位"定价。</p>
+  <p><span class="lbl">可信度：</span><span class="cred c-green">🟢 已核原文</span> 本次实际读取 NVIDIA 官方投资者新闻稿全文，原文日期句为 "SANTA CLARA, Calif., Oct. 27, 2026 (GLOBE NEWSWIRE)"。WSJ / The-Decoder 的跟进报道被当日聚合简报收录（未直接核原文）。</p>
+  <ul class="srclist">
+    <li><a href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-and-Meta-to-Expand-Collaboration-on-Muse-and-Muse-Family-of-Models-Amid-Robust-Growth/default.aspx">NVIDIA 官方新闻稿（本次已抓取原文）</a></li>
+    <li><a href="https://aidr.today/date/2026-10-27?lang=en">aidr.today 当日聚合简报（收录 WSJ / The-Decoder 条目）</a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3><span class="num">2</span>Google DeepMind 发布 Genie 4：原生音频 + 实时可操控的世界模型</h3>
+  <p><span class="lbl">类型：</span>科技（模型 / 世界模型）</p>
+  <p><span class="lbl">核心事实：</span>DeepMind 发布新世界模型 Genie 4，主打实时交互式仿真的真实度与原生多模态——可在生成世界的同时产出类音乐、环境音与可交互对白；模型基于 Gemini 家族能力构建，由 Gemini Omni 锚定真实世界的外观与行为，其他 Gemini 模型提供维持仿真连贯性所需的推理。用户可用自然语言实时操控模拟：移动镜头、改变天气、引入新角色。目前以研究预览形式向受信任测试者、Project Genie 中的 Google AI Ultra 订阅者，以及 Gemini API 与 Google AI Studio 早期合作伙伴逐步开放。</p>
+  <p><span class="lbl">为什么重要：</span>世界模型从"生成一段视频"转向"一个可以实时干预的环境"。这条路线对应三件事：机器人与 Agent 的合成训练场、互动内容与游戏、以及新闻 / 影视的预演工具。原生音频把仿真从视觉模型推进到视听仿真，也是首次把 Gemini Omni 与通用推理模型组合进同一个可交互产品形态。</p>
+  <p><span class="lbl">可信度：</span><span class="cred c-yellow">🟡 未核原文</span> 两处 Google 官方页面 + TechCrunch 报道均来自本次搜索返回的页面与摘要，原文未抓取，不作为"官方确认"的更强结论。</p>
+  <ul class="srclist">
+    <li><a href="https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/">DeepMind 官方博客（October 27, 2026）</a></li>
+    <li><a href="https://blog.google/innovation-and-ai/models-and-research/google-deepmind/introducing-genie-4/">Google 官方博客（Oct 27, 2026）</a></li>
+    <li><a href="https://aidr.today/18d6fa11?lang=en">当日聚合简报收录的 TechCrunch 条目</a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3><span class="num">3</span>Oracle 与 OpenAI 扩大合作：ChatGPT 与 Codex 进入 Oracle 应用栈</h3>
+  <p><span class="lbl">类型：</span>科技 / 财经（企业软件与云）</p>
+  <p><span class="lbl">核心事实：</span>Oracle 在 Oracle AI World 宣布与 OpenAI 的重大新合作，把 OpenAI 模型、ChatGPT 与 Codex 同 Oracle 的应用、数据与云基础设施结合，让 AI 直接进入客户用来运转业务与运维的系统与流程。新产品线覆盖三类场景：跨系统协作完成工作、构建与部署应用、发现并修复安全漏洞；同时为创业者提供一体化平台基础。当日 TechMeme 收录的条目还提到 OCI 产品线新增 Google TPU、OpenAI 的 "Jalapeño" 芯片与 Cerebras 硬件（此为转述，未核原文）。</p>
+  <p><span class="lbl">为什么重要：</span>企业 AI 的采购形态正在从"买 API 额度"转向"买嵌进业务系统的执行能力"。Oracle 把 ChatGPT 与 Codex 放进自家应用栈，本质是在与 Microsoft（Copilot）、Salesforce（Agentforce）争夺企业 Agent 的默认入口；"由 Agent 自动找并修安全漏洞"是这条路线里最先能算出 ROI 的场景。</p>
+  <p><span class="lbl">可信度：</span><span class="cred c-yellow">🟡 未核原文</span> Oracle 官方公告页 URL 与内容来自本次搜索返回；OCI 硬件细节为二手转述，不应单独引用。</p>
+  <ul class="srclist">
+    <li><a href="https://www.oracle.com/news/announcement/ai-world-oracle-reinvents-enterprise-computing-for-the-ai-era-with-openai-2026-10-27/">Oracle 官方公告（2026-10-27）</a></li>
+    <li><a href="https://aidr.today/date/2026-10-27?lang=en">aidr.today 当日聚合简报（收录 TechMeme / CNBC 条目）</a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3><span class="num">4</span>国内：腾讯混元开源中英实时同传模型 Hy-SimulMT</h3>
+  <p><span class="lbl">类型：</span>科技（开源模型 / 语音）</p>
+  <p><span class="lbl">核心事实：</span>腾讯混元发布并开源 Hy-SimulMT 中英同声传译大模型，支持语音到语音的实时同传——边听边翻译，同步输出文字与语音，并可克隆说话人声线、保留原本语气。官方在软件、医疗、能源、商务等十个领域邀请 6 位持 CATTI 一、二级证书的同传专家做对照测试；技术路线为"先输出、后修补"，即先快速给出译文再小幅修正，模仿真人译员边说边改的习惯。源码发布于 HuggingFace、ModelScope 与 GitHub，腾讯 Hy 翻译 App 提供免费体验入口，官方称该服务将用于 11 月深圳 APEC 会议。</p>
+  <div class="kpi">
+    <div><div class="v">~3.1s</div><div class="k">RealSI 长音频延迟（官方口径）</div></div>
+    <div><div class="v">~86</div><div class="k">GEMBA（官方口径）</div></div>
+    <div><div class="v">10 / 6</div><div class="k">对照领域 / 持证译员</div></div>
+  </div>
+  <p><span class="lbl">为什么重要：</span>实时同传是语音 Agent 落地链条里最难的一环——延迟、音色、术语、长音频稳定性四个约束必须同时成立。开源 + 可部署 + 带音色克隆，意味着会议字幕、跨境直播、跨国客服这三条线不必再从零做 ASR→翻译→TTS 拼装，是可以立即拿来测的工程件。国产开源阵营在非文本模态上开始正面竞争，这比单个分数更重要。</p>
+  <p><span class="lbl">可信度：</span><span class="cred c-yellow">🟡 未核原文</span> 两条独立中文来源当日页面相互印证，但模型仓库与评测数字未逐一核对官方原文。</p>
+  <ul class="srclist">
+    <li><a href="https://www.aiexpress.news/101739.html">腾讯研究院 AI 速递 20261027（含"10 月 26 日发布并开源"）</a></li>
+    <li><a href="https://opczhongguo.com/daily/2026-10-27/">OPC 中国 10 月 27 日 AI 日报（含"项目 10 月 26 日发布"）</a></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3><span class="num">5</span>创投：AI 基建的两条相反路线同一天拿到大额资金</h3>
+  <p><span class="lbl">类型：</span>财经 / 创业（AI 基础设施融资）</p>
+  <p><span class="lbl">核心事实：</span></p>
+  <ul>
+    <li><strong>Disruptive</strong>（达拉斯）宣布募集 <strong>100 亿美元</strong> 新基金，用于押注 AI、国防等资本密集方向，单笔最高 10 亿美元，结构从单项目 SPV 转向可自由配置的基金（Bloomberg / TechCrunch 口径）。</li>
+    <li><strong>General Compute</strong> 完成 <strong>1 亿美元 A 轮</strong>，Blackbird Ventures 与 Abstract Ventures 领投，投后估值约 <strong>8 亿美元</strong>（5 月种子轮后 6000 万）。刻意避开 GPU：首批以 4 亿美元采购 SambaNova 芯片（据称为首笔推理芯片债务融资），随后加入 Positron 与 Cerebras；机房策略是租用他人数据中心并改造退役比特币矿场，CEO 预计 2027 年部署 75MW、可接入 200MW 电力。</li>
+    <li><strong>Simplismart</strong>（印度班加罗尔）完成 <strong>1400 万美元 B 轮</strong>，NVIDIA 参投，与 Accel、Shastra VC、达拉斯创投共同领投，估值约 1 亿美元；其软件位于模型与算力基础设施之间，目标是让企业用更少 GPU 跑模型。</li>
+    <li>另据 TechCrunch，<strong>Re:Build</strong>（从 EV 创业公司 Slate Auto 分拆）融资 <strong>21 亿美元</strong>，由 General Catalyst 与摩根大通战投领投，用于扩大硬科技制造产能与孵化工业创业公司。</li>
+  </ul>
+  <p><span class="lbl">为什么重要：</span>同一天里，"堆 GPU"与"避开 GPU、改造既有电力资产"两种相反路线同时拿到大额资金，说明资本评估 AI 基建的口径正从"卡数"转向"每瓦产出与可获得性"。General Compute 拿到的是含硬件的债务融资，这类结构一旦成为惯例，AI 基建的资本结构会整体变化。</p>
+  <p><span class="lbl">可信度：</span><span class="cred c-yellow">🟡 未核原文</span> TechCrunch 当日稿件正文片段来自本次搜索返回；Disruptive 的 Bloomberg 原始报道未核；各融资额与估值均为报道口径，未经投资方公告核对。</p>
+  <ul class="srclist">
+    <li><a href="https://techcrunch.com/2026/10/27/disruptive-raises-10b-fund-to-make-big-bets-on-at-least-10-companies/">TechCrunch · Disruptive $10B（10-27 11:55 AM PDT）</a></li>
+    <li><a href="https://techcrunch.com/2026/10/27/general-compute-raises-100-million-series-a-countering-the-neocloud-disaster-narrative/">TechCrunch · General Compute $100M A 轮（10-27 6:00 AM PDT）</a></li>
+    <li><a href="https://techcrunch.com/2026/10/27/nvidia-backs-indian-startup-helping-companies-run-ai-models-with-fewer-gpus/">TechCrunch · Simplismart $14M B 轮（10-27 4:00 AM PDT）</a></li>
+    <li><a href="https://techcrunch.com/2026/10/27/rebuild-which-spun-out-slate-auto-raises-2-1b/">TechCrunch · Re:Build $2.1B（10-27 1:31 PM PDT）</a></li>
+  </ul>
+</div>
+
+<h2>今日观察</h2>
+
+<div class="obs">
+  <h3>微软把图像编辑模型排到第二梯队</h3>
+  <p>MAI-Image 2.7 预览版发布，官方称在 Artificial Analysis 图像编辑榜排第 2、竞技场编辑榜第 3，使 Microsoft AI 成为该榜第二梯队实验室；相对上一代 2.6，在 10 类用例与 7 类编辑动作上全面提升，"场景与风格"一项领先次优 24 Elo。<span class="cred c-yellow">🟡 未核原文</span> 来源：<a href="https://microsoft.ai/news/mai-image-2-7-debut/">microsoft.ai（October 27, 2026）</a></p>
+</div>
+
+<div class="obs">
+  <h3>机器人推理模型开始进企业生产环境</h3>
+  <p>Google 宣布 Gemini Robotics Embodied Reasoning 2 在 Google Cloud 上以公开预览提供，可跨不同机器人本体（固定机械臂到人形）配合空间 / 时序视频理解与长程规划执行数分钟、数百次决策的任务，多机器人协作与安全护栏由 Google Cloud 侧托管。<span class="cred c-yellow">🟡 未核原文</span> 来源：<a href="https://cloud.google.com/blog/products/ai-machine-learning/gemini-robotics-embodied-reasoning-2-is-now-available-on-google-cloud">Google Cloud 博客（October 27, 2026）</a></p>
+</div>
+
+<div class="obs">
+  <h3>字节跳动把"短剧"做成了流水线</h3>
+  <p>即梦 AI 上线短剧工作室，提供自研剧本模型 DreamScript、图片模型 Anycook、分镜模型 DreamShot，剧本到后期进入同一入口。<span class="cred c-yellow">🟡 未核原文</span> 来源：<a href="https://www.woshipm.com/news/6484722.html">人人都是产品经理（2026-10-27）</a> · <a href="https://opczhongguo.com/daily/2026-10-27/">OPC 中国日报</a></p>
+</div>
+
+<div class="obs">
+  <h3>Anthropic 上市文件引发广泛转载（数字请勿直接引用）</h3>
+  <p>多家当日二手来源称 Anthropic 已向 SEC 提交 S-1、拟以代码 "ANT" 上市，招股书中的营收与算力承诺数字在二手转述中差异明显。<strong>本次未核对 SEC 原文，因此不作为正式新闻卡片，任何财务数字请以 SEC 文件为准。</strong> <span class="cred c-yellow">🟡 未核原文</span> 来源：<a href="https://ai-news-online.com/briefing/2026-10-27/">ai-news-online</a> · <a href="https://aidr.today/date/2026-10-27?lang=en">aidr.today</a></p>
+</div>
+
+<div class="boxed">
+  <div class="h">判断</div>
+  <p>今天的两条主线其实是同一件事的两面。<strong>"Agent 运行时"在补基础设施</strong>——Muse 与 NVIDIA 的软硬件绑定、Hy-SimulMT 的实时语音链路、Gemini Robotics ER 2 的企业化部署；<strong>"输出质量约束层"在补品味</strong>——MAI-Image 的编辑榜争夺、GitHub 上的 anti-AI-slop skill 仓库、Runway / 即梦把创作流程封装成应用。前者决定 Agent 能不能真的跑起来、跑得稳；后者决定产出的东西能不能被直接用。判断一家 AI 公司或一个 AI 产品的真实水位，看它在这两层上的投入分布，比看模型榜单更准。</p>
+</div>
+
+<h2>来源与局限</h2>
+<div class="foot">
+  <h3>采集执行情况（如实记录）</h3>
+  <ul>
+    <li><code>web_search</code> 调用 <strong>5 次</strong>，每个 query 只调用一次，无重试、无改写重试；其中 2 个中文 query 返回<strong>空结果集</strong>，已如实记录并停止尝试。</li>
+    <li><code>curl</code>（<code>r.jina.ai</code>）调用 <strong>3 次</strong>：GitHub Trending 当日快照、aidr.today 当日聚合简报、NVIDIA 官方新闻稿全文，全部返回 exit 0。</li>
+    <li><code>web_extract</code> 调用 <strong>0 次</strong>（当前后端不支持正文抽取）。</li>
+    <li>搜索后端 <code>ddgs</code> 不可用，实际由 <code>exa</code> 兜底返回。</li>
+  </ul>
+  <h3>核验层级差异</h3>
+  <ul>
+    <li>仅 NVIDIA × Meta 一条完成<strong>原文级</strong>核验（实际读取官方新闻稿全文）。</li>
+    <li>其余 4 条新闻卡片为"本次搜索返回的官方页面 URL + 页面摘要 / 正文片段"，统一标 🟡，属<strong>可追溯但未核原文</strong>，不得写成"已核原文"或"全面确认"。</li>
+    <li>二手转述未独立核对：Genie 4 性能描述、Oracle OCI 新硬件清单、Hy-SimulMT 评测分数、四笔融资与估值口径。</li>
+  </ul>
+  <h3>明确排除的条目及原因</h3>
+  <ul>
+    <li>DeepSeek 新一轮约 1000 亿元人民币融资 — 事件日期不可核验（周报汇总来源）。</li>
+    <li>月之暗面 Kimi K3.1 Pro 开源 — 来源日期冲突（10/24 与 10/27 并存），部分落在 72 小时窗口外。</li>
+    <li>Anthropic 声称反驳指数时间假设、OpenAI 三项研究突破 — 未取得官方原始公告链接，仅二级聚合条目。</li>
+    <li>Reddit r/opensource 封禁 AI（10/24）、Roblox 爬虫下载 145.5GB（10/15—16）— 超出 72 小时窗口。</li>
+    <li>微软拟向约 6 万名员工提供自愿离职、Apple 新款 iPad mini、Amazon 重组 AI 部门 — 仅有二手汇总条目，无一手来源。</li>
+  </ul>
+  <h3>其他说明</h3>
+  <ul>
+    <li>全部 URL 均来自本次工具实际返回或本次实际读取页面中的链接，无自行拼接地址。</li>
+    <li>完整证据审计（逐条 query、URL、原文核验方式、日期证据、VERIFIED / PARTIAL / REJECTED 分类）见同目录 Markdown 审计副本 <code>2026-10-28.md</code> 的 <code>NEWS_EVIDENCE_AUDIT</code> 章节。</li>
+  </ul>
+</div>
+
+<h2>免责声明</h2>
+<div class="foot">
+  <p>本简报由自动化流程在限定预算内生成，仅供信息参考，不构成投资建议或事实终局认定。所有标注 🟡 的条目为"可追溯但未核原文"，其中转述的第三方数据未经独立审计；引用前请打开原始链接核对，以官方公告、监管文件与一手榜单为准。</p>
+</div>
+
+</div>
+</body>
+</html>
