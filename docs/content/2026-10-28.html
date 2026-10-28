@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>多 Agent 协作真正的成本在交接，不在推理 — MrFai 的 Agent 笔记</title>
+<style>
+  :root{
+    --bg:#0b0e14;
+    --surface:#141821;
+    --fg:#e8eaed;
+    --muted:#b3b8c4;
+    --border:#232836;
+    --accent:#76a7ff;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    background:var(--bg);
+    color:var(--fg);
+    font-size:17px;
+    line-height:1.8;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Noto Sans CJK SC","Microsoft YaHei",sans-serif;
+    overflow-x:hidden;
+    overflow-wrap:break-word;
+    word-break:break-word;
+  }
+  .page{
+    width:min(100%,720px);
+    margin:0 auto;
+    padding:18px 18px calc(28px + env(safe-area-inset-bottom));
+  }
+  .brand{
+    font-size:14px;
+    line-height:1.6;
+    letter-spacing:.04em;
+    color:var(--accent);
+    margin:0 0 14px;
+    font-weight:600;
+  }
+  .card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:20px 18px 22px;
+  }
+  h1{
+    font-size:clamp(25px,7vw,34px);
+    line-height:1.25;
+    font-weight:700;
+    margin:0 0 12px;
+    color:var(--fg);
+    letter-spacing:-.01em;
+  }
+  .meta{
+    font-size:13px;
+    line-height:1.6;
+    color:var(--muted);
+    opacity:.75;
+    margin:0 0 20px;
+    padding-bottom:16px;
+    border-bottom:1px solid var(--border);
+  }
+  article p{
+    margin:0 0 16px;
+  }
+  article p:last-of-type{margin-bottom:0;}
+  .steps{
+    margin:20px 0 0;
+    padding-left:22px;
+  }
+  .steps li{
+    margin:0 0 12px;
+  }
+  .steps li:last-child{margin-bottom:0;}
+  .steps strong{color:var(--accent);font-weight:600;}
+  .disclaimer{
+    margin:22px 0 0;
+    padding-top:16px;
+    border-top:1px solid var(--border);
+    font-size:13px;
+    line-height:1.7;
+    color:var(--muted);
+    opacity:.8;
+  }
+  a{
+    color:var(--accent);
+    overflow-wrap:anywhere;
+    word-break:break-all;
+  }
+  @media (min-width:640px){
+    .page{padding:28px 28px 40px;}
+    .card{padding:36px 38px 38px;}
+  }
+  @media print{
+    body{background:#fff;color:#111;}
+    .card{border:1px solid #ccc;background:#fff;box-shadow:none;}
+    .brand,.meta,.disclaimer{color:#555;opacity:1;}
+    a{color:#111;text-decoration:none;}
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <p class="brand">MrFai 的 Agent 笔记</p>
+    <main class="card">
+      <h1>多 Agent 协作真正的成本在交接，不在推理</h1>
+      <p class="meta">2026-10-28 · 主题：多 Agent 协作与工程实践</p>
+      <article>
+        <p>我手上跑着几条定时任务，都是多 Agent 结构：一个 Agent 负责分析和出计划，另一个按计划执行，最后交给第三个独立上下文做复核。跑下来的最大体会是——瓶颈从来不是模型思考得慢，而是交接信息在两次调用之间被压缩、丢失、误解。</p>
+        <p>最典型的一次翻车：分析 Agent 判定某项配置不合法，给出「不可恢复」的结论；执行 Agent 读到这句话后干脆放弃修复，把状态标成「阻塞」上报。整条链路看起来流程完整，每一步都有记录，但真实结果是原始约束里存在一条降级路径被完全忽略了，任务本来可以继续。</p>
+        <p>后来我加了一条硬规则：所有结论必须标注「证据 / 推断 / 未知」三分类，未知项一律进 blocker 清单，禁止用假设补齐。改完之后，阻塞类误报少了一大半。关键不是让 Agent 更聪明，而是让不确定性变得可见。一个不敢说「我不知道」的 Agent，会用一段听起来合理的推断把整条流程带偏；一个被允许说「这里没查到」的 Agent，才可能把问题交回给人。</p>
+        <p>如果你也在搭多 Agent 流水线，下面四步是我自己会先做的：</p>
+        <ol class="steps">
+          <li><strong>给每条结论标来源。</strong>证据、推断、未知，三选一。未知不补齐，直接写进 blocker 列表。</li>
+          <li><strong>共享状态只留一个写者。</strong>读可以并行，写必须排队，否则后写的会悄悄覆盖先写的。</li>
+          <li><strong>交接时给证据，不给结论。</strong>原始日志、报错原文、涉及文件路径带上，比一句「已完成」有用得多。</li>
+          <li><strong>让复核方独立看证据。</strong>如果复核方只看执行方的总结，两个 Agent 会一起错得很有信心。</li>
+        </ol>
+        <p>多 Agent 的价值确实存在，但它更像一套工程纪律，而不是模型能力的叠加。边界清楚、证据可查的流程才走得远；否则你只是把一个人的混乱复制成了三个人的混乱。</p>
+      </article>
+      <p class="disclaimer">免责声明：本文为个人工程实践记录，仅代表个人经验，不构成任何投资建议或产品推荐。文中未引用任何外部统计数据。</p>
+    </main>
+  </div>
+</body>
+</html>
