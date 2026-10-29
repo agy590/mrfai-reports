@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>多 Agent 协作的真正瓶颈：不是模型，是规则</title>
+<meta name="description" content="多 Agent 协作失败，多半不是模型不聪明，而是没人定义谁说了算和什么时候停。">
+<style>
+  :root{
+    --bg:#0b0e14;
+    --surface:#141821;
+    --fg:#e8eaed;
+    --muted:#b3b8c4;
+    --border:#232836;
+    --accent:#76a7ff;
+    --maxw:720px;
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html{
+    background:var(--bg);
+    -webkit-text-size-adjust:100%;
+  }
+  body{
+    margin:0;
+    padding:0;
+    background:var(--bg);
+    color:var(--fg);
+    font-size:17px;
+    line-height:1.8;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+    overflow-x:hidden;
+    overflow-wrap:break-word;
+    word-break:normal;
+  }
+  .wrap{
+    width:min(100%, var(--maxw));
+    margin:0 auto;
+    padding:22px 18px calc(40px + env(safe-area-inset-bottom, 0px));
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.6;
+    letter-spacing:.02em;
+    margin:0 0 14px;
+  }
+  .brand .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--accent);
+    flex:0 0 auto;
+  }
+  .brand strong{color:var(--fg);font-weight:600;}
+  .card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:22px 18px;
+  }
+  h1{
+    font-size:clamp(25px, 7vw, 34px);
+    line-height:1.24;
+    margin:0 0 12px;
+    color:var(--fg);
+    font-weight:700;
+    letter-spacing:.01em;
+    overflow-wrap:break-word;
+    word-break:normal;
+  }
+  .meta{
+    color:var(--muted);
+    font-size:13.5px;
+    line-height:1.6;
+    margin:0 0 20px;
+    padding-bottom:16px;
+    border-bottom:1px solid var(--border);
+    overflow-wrap:break-word;
+  }
+  .meta .sep{opacity:.55;padding:0 6px;}
+  .body p{
+    margin:0 0 16px;
+    overflow-wrap:break-word;
+  }
+  .body ul,
+  .body ol{
+    margin:0 0 16px;
+    padding-left:1.35em;
+  }
+  .body li{
+    margin:0 0 8px;
+    overflow-wrap:break-word;
+  }
+  .body li:last-child{margin-bottom:0;}
+  .body strong{color:var(--fg);font-weight:600;}
+  .accent{color:var(--accent);}
+  .closing{
+    color:var(--fg);
+    border-left:2px solid var(--accent);
+    padding-left:14px;
+    margin:22px 0 0;
+  }
+  .disclaimer{
+    margin:26px 0 0;
+    padding-top:16px;
+    border-top:1px solid var(--border);
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.7;
+  }
+  a{color:var(--accent);overflow-wrap:anywhere;}
+  @media (min-width:640px){
+    .wrap{padding:32px 28px calc(56px + env(safe-area-inset-bottom, 0px));}
+    .card{padding:36px 34px;border-radius:18px;}
+    .brand{margin-bottom:18px;}
+  }
+  @media print{
+    html,body{background:#fff;color:#111;font-size:12pt;}
+    .card{border:1px solid #ccc;background:#fff;padding:0;border-radius:0;}
+    .brand,.meta,.disclaimer{color:#444;}
+    .brand .dot{display:none;}
+    a{color:#111;text-decoration:underline;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="brand"><span class="dot" aria-hidden="true"></span><strong>MrFai 的 Agent 笔记</strong></p>
+  <article class="card">
+    <h1>多 Agent 协作的真正瓶颈：不是模型，是规则</h1>
+    <p class="meta">2026-10-29<span class="sep">·</span>主题：多 Agent 协作</p>
+
+    <div class="body">
+      <p><strong>先说结论：</strong>多 Agent 协作失败，多半不是模型不聪明，而是没人定义<span class="accent">「谁说了算」</span>和<span class="accent">「什么时候停」</span>。</p>
+
+      <p>我曾同时开三个 Agent：一个检索资料，一个改代码，一个复核。结果三份产出互相矛盾——检索那份引用的是上周的旧接口文档，改代码那位按新版写，复核那位看到的还是改之前的代码。三个人都在认真工作，产出却拼不成一个东西。</p>
+
+      <p>问题不在某个 Agent，而在缺了三样东西：</p>
+
+      <ul>
+        <li><strong>唯一事实源</strong>：三个 Agent 读到不同快照的文件，各自都以为自己是对的。</li>
+        <li><strong>证据链</strong>：没人记录「基于什么做出这个改动」，分歧出现时无法定位。</li>
+        <li><strong>终止条件</strong>：任务被默认理解成「做到满意为止」，于是没人愿意先说「我卡住了」。</li>
+      </ul>
+
+      <p>后来我改了三件事，基本不返工：</p>
+
+      <ol>
+        <li><strong>先定唯一事实源</strong>：协作开始前就指定一个文件或目录作为权威版本，其它 Agent 只读它、不留各自副本；任何结论都要能指回这个源。</li>
+        <li><strong>写前取证、写后留证</strong>：改动前记录当前状态与依据，改动后记录结论、证据、卡点、下一步，不靠对话历史当上下文。</li>
+        <li><strong>给每个任务写死完成判据与停止条件</strong>：明确「满足什么算完成」「什么情况必须停下升级」，并允许子任务以失败结束，而不是硬凑一个答案。</li>
+      </ol>
+
+      <p class="closing">一句话：多 Agent 的价值来自并行处理边界清楚的活儿，代价来自没人拍板。你加的不是更多模型，是更清楚的规则。</p>
+    </div>
+
+    <p class="disclaimer">免责声明：本文为个人实践记录与观点，不构成投资建议或任何专业建议。所提方法请结合自身环境实测验证。</p>
+  </article>
+</div>
+</body>
+</html>
