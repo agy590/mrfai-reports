@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>并行 Agent 真正的成本是上下文，不是 token</title>
+<style>
+  :root{
+    --bg:#0b0e14;
+    --surface:#141821;
+    --fg:#e8eaed;
+    --muted:#b3b8c4;
+    --border:#232836;
+    --accent:#76a7ff;
+  }
+  *{box-sizing:border-box;}
+  html{
+    -webkit-text-size-adjust:100%;
+    background:var(--bg);
+  }
+  body{
+    margin:0;
+    padding:0 18px calc(30px + env(safe-area-inset-bottom));
+    background:var(--bg);
+    color:var(--fg);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+    font-size:17px;
+    line-height:1.8;
+    overflow-wrap:break-word;
+    word-break:break-word;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{
+    width:min(100%,720px);
+    margin:0 auto;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    padding:22px 2px 14px;
+    font-size:14px;
+    letter-spacing:.02em;
+    color:var(--muted);
+  }
+  .brand .dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--accent);
+    flex:none;
+  }
+  .card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:24px 20px 26px;
+  }
+  h1{
+    font-size:clamp(25px,7vw,34px);
+    line-height:1.25;
+    margin:0 0 10px;
+    color:var(--fg);
+    letter-spacing:.01em;
+  }
+  .meta{
+    font-size:13px;
+    line-height:1.6;
+    color:var(--muted);
+    opacity:.72;
+    margin:0 0 20px;
+    padding-bottom:14px;
+    border-bottom:1px solid var(--border);
+  }
+  p{margin:0 0 18px;}
+  p:last-of-type{margin-bottom:0;}
+  strong{color:var(--fg);font-weight:600;}
+  ol{
+    margin:22px 0 18px;
+    padding-left:1.25em;
+  }
+  ol li{
+    margin:0 0 12px;
+    padding-left:.25em;
+  }
+  ol li::marker{color:var(--accent);}
+  .disclaimer{
+    margin-top:22px;
+    padding-top:14px;
+    border-top:1px solid var(--border);
+    font-size:13px;
+    line-height:1.7;
+    color:var(--muted);
+    opacity:.8;
+  }
+  a{color:var(--accent);}
+  @media (min-width:640px){
+    body{padding:0 28px calc(44px + env(safe-area-inset-bottom));}
+    .card{padding:36px 38px 38px;}
+    .brand{padding:28px 2px 16px;}
+  }
+  @media print{
+    body{background:#fff;color:#000;padding:0;font-size:12pt;line-height:1.6;}
+    .card{background:#fff;border:1px solid #ccc;padding:16px;border-radius:6px;}
+    h1{color:#000;}
+    .brand,.meta,.disclaimer{color:#444;opacity:1;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand"><span class="dot" aria-hidden="true"></span><span>MrFai 的 Agent 笔记</span></div>
+
+  <article class="card">
+    <h1>并行 Agent 真正的成本是上下文，不是 token</h1>
+    <p class="meta">2026-10-30 · 主题：多 Agent 协作</p>
+
+    <p>我不认为多 Agent 的价值在于「多」。一个 Agent 顺序做完，通常比三个 Agent 并行更快也更可控。真正的收益只在两种情况下出现：任务能切成互不重叠的边界，或者需要独立视角互相证伪。其余时候，多 Agent 只是把同一份上下文复制三份，让冲突成本翻倍。</p>
+
+    <p>最常见的翻车原因不是模型笨，是状态漂移。典型的场面是三个 Agent 同时跑，各自的会话里都留了一份「当前进度」：一个已经改完接口，另一个还在按旧接口写胶水层，第三个基于过期假设在补测试。谁都没错，三份描述却互相矛盾，合并时才发现整个假设都建在旧接口上。更隐蔽的一种是交接只留叙述、不留证据——「我做了什么」会漂移，diff 和测试结果不会。</p>
+
+    <p>要真的用好并行，可以照这四步走：</p>
+
+    <ol>
+      <li><strong>先切边界再开工。</strong>把任务切到文件或模块级所有权，每个 Agent 只写自己那块，跨边界的改动先合并再继续。</li>
+      <li><strong>只留一份事实源。</strong>状态、结论、证据写在一处，其他 Agent 只读不复制；多份副本就意味着多份真相。</li>
+      <li><strong>交接带证据不带叙述。</strong>写清楚改了什么、怎么验证、结果在哪，让接手的人能复现而不是相信。</li>
+      <li><strong>指定收敛责任人。</strong>合并和最终判断要有唯一出口，否则只是把冲突推迟到最后一刻。</li>
+    </ol>
+
+    <p>如果你的任务不满足前面两个收益条件，就别并行。能顺序做完的事，顺序做更省心。</p>
+
+    <p class="disclaimer">免责声明：本文为个人经验记录，仅代表个人实践中的判断，不构成任何投资建议或对第三方产品的评价；具体做法请结合自身环境验证后再采用。</p>
+  </article>
+</div>
+</body>
+</html>
