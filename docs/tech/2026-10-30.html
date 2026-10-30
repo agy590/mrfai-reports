@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>每日科技新闻简报 | 2026-10-30</title>
+<style>
+:root{
+  --bg:#0b0e14;
+  --panel:#111722;
+  --panel2:#151c29;
+  --fg:#d7dee9;
+  --muted:#8b97a8;
+  --line:#232c3b;
+  --acc:#6ea8fe;
+  --ok:#5ec98d;
+  --warn:#e6b455;
+  --hot:#ff7a7a;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--fg)}
+body{font:16px/1.75 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:860px;margin:0 auto;padding:30px 18px 70px}
+header{border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:24px}
+h1{font-size:1.62rem;line-height:1.32;margin:0 0 10px;letter-spacing:.01em}
+.meta{color:var(--muted);font-size:.86rem;line-height:1.6}
+.badge{display:inline-block;padding:2px 10px;border:1px solid var(--line);border-radius:999px;font-size:.75rem;color:var(--muted);margin:6px 6px 0 0;background:var(--panel2)}
+h2{font-size:1.2rem;margin:38px 0 14px;padding-left:11px;border-left:3px solid var(--acc)}
+h3{font-size:1.04rem;margin:0 0 10px;line-height:1.45}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:18px 18px 12px;margin:15px 0}
+.card.gh{border-color:#2e3d58;background:linear-gradient(180deg,#141c2b,#10161f)}
+.tldr{background:var(--panel2);border:1px solid var(--line);border-radius:13px;padding:16px 20px}
+.tldr ul{margin:10px 0 0;padding-left:20px}
+.tldr li{margin:7px 0}
+.kv{color:var(--muted)}
+.kv b{color:var(--fg);font-weight:600}
+.row{margin:9px 0}
+.row .lbl{color:var(--acc);font-weight:600;margin-right:6px}
+p{margin:9px 0}
+.tags{margin-top:12px}
+.tags span{display:inline-block;font-size:.74rem;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:2px 8px;margin:4px 6px 0 0}
+.hot{color:var(--hot);font-weight:600}
+.ok{color:var(--ok);font-weight:600}
+.warn{color:var(--warn);font-weight:600}
+.muted{color:var(--muted);font-size:.88rem}
+.src{font-size:.87rem;margin-top:12px;border-top:1px dashed var(--line);padding-top:10px;color:var(--muted)}
+.src a{display:inline-block;margin:4px 14px 0 0;word-break:break-all}
+a{color:var(--acc);text-decoration:none}
+a:hover{text-decoration:underline}
+.scroller{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:10px}
+table{width:100%;border-collapse:collapse;font-size:.88rem;min-width:560px}
+th,td{text-align:left;padding:10px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:600;font-size:.78rem;letter-spacing:.05em;text-transform:uppercase}
+ol.tight{margin:10px 0 0;padding-left:22px}
+ol.tight li{margin:11px 0}
+.note{background:var(--panel2);border-left:3px solid var(--warn);border-radius:0 10px 10px 0;padding:11px 14px;margin:12px 0;font-size:.9rem;color:#c3ccd9}
+ul.plain{margin:9px 0 0;padding-left:20px}
+ul.plain li{margin:7px 0}
+.foot{margin-top:38px;color:var(--muted);font-size:.83rem;border-top:1px solid var(--line);padding-top:18px}
+@media (max-width:640px){
+  .wrap{padding:20px 13px 50px}
+  h1{font-size:1.3rem}
+  h2{font-size:1.06rem;margin:30px 0 10px}
+  .card{padding:15px 13px 10px}
+  .tldr{padding:14px 15px}
+  table{font-size:.83rem;min-width:520px}
+  th,td{padding:8px 7px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>每日科技新闻简报 · 2026-10-30</h1>
+  <div class="meta">采集与核验时间：2026-10-30 约 12:01–12:20 (+08) ｜ 时效窗口：2026-10-27 ~ 2026-10-30 ｜ 每条事实均可回溯至下方来源链接</div>
+  <div>
+    <span class="badge">科技 / AI</span>
+    <span class="badge">互联网</span>
+    <span class="badge">创业</span>
+    <span class="badge">每日一版</span>
+  </div>
+</header>
+
+<h2>当日摘要（TL;DR）</h2>
+<div class="tldr">
+  <ul>
+    <li><b>Mistral 开放 Mistral Large 4（"Le Chonk"）权重</b>：1 万亿参数、激活 520 亿的原生多模态 MoE，权重登陆 Hugging Face，定价 $0.70 / $0.07 / $2.10 每百万 token；官方把卖点放在"自部署 + 网络安全防御"。</li>
+    <li><b>Amazon Q3：Jassy 把 AWS 天花板抬到万亿美元</b>：AWS 营收同比 +39%，年化 run-rate 1840 亿美元；2026 年现金 capex 约 2200 亿美元（多数给 AWS），2027 年"显著更多"；盘后股价跌约 6%。</li>
+    <li><b>Reddit 全面转向"以登录态为主"</b>：Q3 全球 DAU 1.303 亿持平，美国 DAU 5320 万→5070 万；10 月搜索导流每周平均少掉超过 100 万次；公司预警下季 DAU 可能"低两位数百分比"下滑。营收 8.95 亿美元（+53%）。</li>
+    <li><b>Nvidia 发布开放权重语音转写模型 Nemotron 3.5 Transcribe</b>：30B 参数、40 种语言、可跑单芯片（Jetson AGX Thor / DGX Spark / Blackwell），同时更新开源语音数据集 Granary v2。</li>
+    <li><b>DoorDash 同意以 170 亿美元收购 Instacart</b>：每股 65 美元，双方董事会已批准；把餐饮外卖与生鲜杂货配送装进同一主体。</li>
+    <li><b>国内</b>：华为制药军团总裁樊杰明确"华为不做药，也不做管线"，定位为 AI 制药产业的算力与工具链"技术底座"；已部署百卡规模集群用于模型训练与优化。</li>
+  </ul>
+</div>
+
+<h2>GitHub Trending 日榜可见仓库中，今日新增 Star 最高</h2>
+<div class="card gh">
+  <h3><a href="https://github.com/pbakaus/impeccable">pbakaus/impeccable</a></h3>
+  <div class="row kv"><span class="lbl">今日新增</span><b>+2,870 stars today</b></div>
+  <div class="row kv"><span class="lbl">总 Star</span><b>95,676</b></div>
+  <div class="row kv"><span class="lbl">主要语言</span><b>Rust</b></div>
+  <div class="row"><span class="lbl">原始描述</span>“The design vocabulary for your coding agent. Steer with polish and bolder, review with critique and audit, catch AI slop before it ships.”</div>
+  <div class="row"><span class="lbl">一句判断</span>日榜第一名的位置被"给 coding agent 定审美与审阅词汇表"的工具占据——它不训练模型，而是争夺"如何评判 agent 产出"的话语权。本次当日可见的 11 个条目里，有 8 个属于 agent 技能框架、agent 工作台、agent 上下文记忆或 agent 界面审查方向，生态注意力明显从"调用模型"转向"管理一群 agent"。</div>
+  <div class="src">原始来源：<a href="https://github.com/trending?since=daily">github.com/trending?since=daily</a> ｜ 本次抓取时间：2026-10-30 12:08 (+08)，页面快照时间戳 2026-10-30T04:08:04Z<br>口径说明：GitHub Trending 是"当日可见趋势榜"，不是 GitHub 全站历史增量数据库。+2,870 为本次抓取页面该仓库可见的 stars today 字段，未做任何推算或跨日拼接。</div>
+</div>
+
+<h2>新闻卡片</h2>
+
+<div class="card">
+  <h3>1. Mistral 开放 Mistral Large 4（"Le Chonk"）权重，主打网络安全防御</h3>
+  <div class="row kv"><span class="lbl">类型</span>科技 / AI 模型　<span class="lbl">热度</span><span class="hot">🔥 现象级</span>　<span class="lbl">时效</span>📰 2026-10-29　<span class="lbl">可信度</span><span class="ok">🟢 多方确认</span></div>
+  <div class="row"><span class="lbl">核心事实</span>Mistral 正式发布 Mistral Large 4（昵称 "Le Chonk"）的模型权重。该模型为 1 万亿参数、MoE 架构、单次任务激活 520 亿参数、原生多模态；本月初仅以公开预览形式提供，现在权重可通过 Hugging Face 下载自部署。</div>
+  <div class="row"><span class="lbl">关键数据</span>Artificial Analysis Cyber Index 51%（官方口径）；恶意 cyber 请求平均拒答率 96.6%（官方称开源模型中最高）；B3 Agent Security Benchmark 抗攻击 97.1%（预览期 93.3%）；Terminal-Bench 4.0 从 28% 升至 41%，略高于 GLM-5.3 的 40%；每任务 token 比 GLM-5.3 少用 47%；量化版可在 4 张 Nvidia B200/B300 上运行；定价 $0.70/M 输入、$0.07/M 缓存输入、$2.10/M 输出；许可为 Mistral Ecosystem Open-Weight license（修改版 MIT，提供 MaaS 需单独商业授权）。Hugging Face 模型页 mistralai/Mistral-Large-4-1T-A52B 约 1.23k 点赞，更新于抓取前约 11–13 小时。</div>
+  <div class="row"><span class="lbl">各方反应</span>Mistral 科学副总裁 Pierre Stock 称"我们不想制造恐慌，这是一个可解决的问题"；Booz Allen 出具内部源码安全分析测试评价并强调数据主权需求；企业设计伙伴 Orange Cyberdefense 获得面向渗透测试、漏洞评估与红队场景的专用变体预发布访问（需严格审核与合约约束）。</div>
+  <div class="row"><span class="lbl">影响</span>开放权重 + 高拒绝率的组合，把"安全过滤"从合规负担变成可被竞品直接对标的差异点，对闭源模型在安全场景的定价构成压力；同时把主权部署叙事推进到万亿参数级别，企业自建推理集群的门槛被同步抬高。</div>
+  <div class="row"><span class="lbl">内容方向</span>深度分析（开放权重 vs 闭源在安全能力上的路线分岔）+ 快讯　<span class="lbl">目标平台</span>公众号、知乎、B站</div>
+  <div class="tags"><span>Mistral Large 4</span><span>Le Chonk</span><span>开放权重</span><span>万亿参数</span><span>网络安全</span><span>MoE</span><span>主权 AI</span></div>
+  <div class="src">来源：
+    <a href="https://mistral.ai/news/mistral-large-4-oss/">mistral.ai 官方公告</a>
+    <a href="https://techcrunch.com/2026/10/29/mistral-releases-weights-for-its-trillion-parameter-ai-model-targeting-cybersecurity/">TechCrunch</a>
+    <a href="https://thenextweb.com/news/mistral-large-4-open-weights-release">TheNextWeb</a>
+    <a href="https://huggingface.co/mistralai">Hugging Face / mistralai</a>
+  </div>
+</div>
+
+<div class="card">
+  <h3>2. Amazon Q3：AWS 年化 1840 亿美元，Jassy 把目标指向万亿美元，capex 2200 亿美元</h3>
+  <div class="row kv"><span class="lbl">类型</span>财经 / 云计算　<span class="lbl">热度</span>⭐ 高热　<span class="lbl">时效</span>📰 2026-10-29 财报电话会　<span class="lbl">可信度</span><span class="ok">🟢 已核验原文</span></div>
+  <div class="row"><span class="lbl">核心事实</span>Jassy 在季度财报电话会上重申 AWS 可以成长为万亿美元营收业务，并预告在到达该规模前会大幅加码资本开支。分析师在电话会上反复追问这笔支出的回报路径与利润率。</div>
+  <div class="row"><span class="lbl">关键数据</span>AWS 营收同比 <b>+39%</b>（连续第六个季度增长）；年化营收 run-rate <b>1840 亿美元</b>；2026 年现金 capex 约 <b>2200 亿美元</b>（多数投向 AWS），2027 年预计"显著更多"；Jassy 预计 2027 与 2028 AWS 增速均可超 40%；盘后股价跌约 <b>6%</b>。</div>
+  <div class="row"><span class="lbl">各方反应</span>Jassy 称 AI 是"一生一次的机会"，"这会永远改变 Amazon 的规模"；投资者反应冷淡，核心疑问是钱花出去之后增长与利润何时兑现。</div>
+  <div class="row"><span class="lbl">影响</span>需求侧不弱、供给侧极贵——市场当日给出的 -6% 说明被质疑的已不是需求，而是回报周期。这会把云厂商军备竞赛的成本摆到明面上，并传导到下游 AI 应用的毛利预期。</div>
+  <div class="row"><span class="lbl">内容方向</span>快讯 + 影响分析（把 AWS 增速与 capex 换算成"每美元资本开支对应多少增量营收"）　<span class="lbl">目标平台</span>微博、公众号、财经类号</div>
+  <div class="tags"><span>Amazon</span><span>AWS</span><span>万亿美元</span><span>capex 2200 亿</span><span>Jassy</span><span>Q3 财报</span><span>云算力</span></div>
+  <div class="src">来源：<a href="https://techcrunch.com/2026/10/29/aws-will-be-a-1t-business-jassy-says-but-first-it-will-spend-big/">TechCrunch（含财报电话会直接引述）</a></div>
+</div>
+
+<div class="card">
+  <h3>3. Reddit 宣布转向"以登录态为主"体验，搜索导流持续流失</h3>
+  <div class="row kv"><span class="lbl">类型</span>互联网 / 平台商业模式　<span class="lbl">热度</span>⭐ 高热　<span class="lbl">时效</span>📰 2026-10-29 Q3 电话会　<span class="lbl">可信度</span><span class="ok">🟢 已核验原文</span></div>
+  <div class="row"><span class="lbl">核心事实</span>在 Q3 财报电话会上，Reddit 宣布将把产品形态从"未登录可浏览"整体转向"以登录态为主"，先在第四季度于美国以外的部分市场测试，未给出全球铺开时间表。目的是保护内容数据、对抗 AI 抓取，同时换取与模型厂商的授权收入。</div>
+  <div class="row"><span class="lbl">关键数据</span>全球 DAU 1.303 亿（环比持平）；美国 DAU 由 Q2 的 5320 万降至 <b>5070 万</b>（同比 -2%）；10 月搜索导流平均每周减少超过 <b>100 万次</b>；公司预警若趋势持续，下季 DAU 可能出现"低两位数百分比"下滑；Q3 营收 8.95 亿美元（同比 +53%，高于华尔街约 8.75 亿预期）；净利润 2.83 亿（+74%）；广告营收 8.47 亿（+54%）；非广告营收（含 AI 数据授权）4800 万（+35%）；美国 ARPU 13.82 美元（+53%），全球 ARPU 6.87 美元（+36%）。</div>
+  <div class="row"><span class="lbl">各方反应</span>CEO Steve Huffman 在 Reddit 站内发帖称"以开放互联网为生的人都会感到这是个大变化"，但这是对平台与业务的正确决定；公司同时承认登出态首页仍然重要。</div>
+  <div class="row"><span class="lbl">影响</span>这是"AI 摘要替代点击"在头部平台上的第一次系统性应对——用封闭化换取 ARPU 与数据议价权。若更多内容平台跟进，开放网络的默认分发模式会继续退场，AI 语料供给将进一步向"数据授权"这条窄路集中。</div>
+  <div class="row"><span class="lbl">内容方向</span>深度分析（开放网络的内容分发与定价权正在转移）+ 对比解读　<span class="lbl">目标平台</span>知乎、公众号、B站</div>
+  <div class="tags"><span>Reddit</span><span>登录态</span><span>DAU</span><span>搜索导流</span><span>AI 抓取</span><span>数据授权</span><span>ARPU</span><span>开放网络</span></div>
+  <div class="src">来源：<a href="https://techcrunch.com/2026/10/29/as-search-traffic-dries-up-reddit-announces-its-shifting-to-a-logged-in-experience/">TechCrunch（含 Q3 数据与 CEO 表态）</a></div>
+</div>
+
+<div class="card">
+  <h3>4. Nvidia 发布开放权重语音转写模型 Nemotron 3.5 Transcribe</h3>
+  <div class="row kv"><span class="lbl">类型</span>科技 / 语音 AI　<span class="lbl">热度</span>⭐ 高热　<span class="lbl">时效</span>📰 2026-10-28　<span class="lbl">可信度</span><span class="ok">🟢 已核验原文</span></div>
+  <div class="row"><span class="lbl">核心事实</span>Nvidia 发布免费开放权重的 Nemotron 3.5 Transcribe 语音转写模型，并同步发布第 2 版开源语音数据集 Granary，可配合 NeMo Speech 定制行业术语识别。</div>
+  <div class="row"><span class="lbl">关键数据</span>30B 参数；最多 <b>40 种语言</b>转写、31 种语言与英语互译；最长 <b>1 小时</b>录音；最多区分 <b>8 位</b>说话人；官方称在 Hugging Face Open ASR Leaderboard 等基准上领先；单芯片可运行——覆盖 Jetson AGX Thor、DGX Spark 与 Blackwell 数据中心芯片；限制：只处理录音，不支持直播流；同系列更小模型为 Parakeet（1.1B 参数）。</div>
+  <div class="row"><span class="lbl">各方反应</span>官方把场景指向会议记录与医疗转写这两类已落地的企业级场景，并强调可用数据集与 NeMo 定制成垂直行业术语；同期赛道拥挤——Mistral 本月发布 Voxtral 3，ElevenLabs 推出 Realtime，Salesforce 发布 Launa-Omni。</div>
+  <div class="row"><span class="lbl">影响</span>语音模型正从"闭源 API 竞争"转向"可本地部署 + 可定制 + 单芯片跑"的硬件绑定路线，Nvidia 用开放权重把 Jetson / Blackwell 的价值主张往前推了一层；"不支持直播"也说明实时语音仍被闭源方案占着。</div>
+  <div class="row"><span class="lbl">内容方向</span>快讯 + 前瞻分析（实时语音阵地什么时候会被开放权重模型攻破）　<span class="lbl">目标平台</span>B站、知乎、公众号</div>
+  <div class="tags"><span>Nvidia</span><span>Nemotron 3.5 Transcribe</span><span>语音转写</span><span>开放权重</span><span>Granary</span><span>Jetson AGX Thor</span><span>DGX Spark</span></div>
+  <div class="src">来源：<a href="https://techcrunch.com/2026/10/28/voice-ai-in-vogue-nvidia-releases-new-open-transcription-model/">TechCrunch（发布日期与"周三发布"表述一致）</a></div>
+</div>
+
+<div class="card">
+  <h3>5. DoorDash 同意以 170 亿美元收购 Instacart</h3>
+  <div class="row kv"><span class="lbl">类型</span>科技 / 并购　<span class="lbl">热度</span>⭐ 高热　<span class="lbl">时效</span>📰 2026-10-29 宣布　<span class="lbl">可信度</span><span class="warn">🟡 单一媒体来源</span></div>
+  <div class="row"><span class="lbl">核心事实</span>DoorDash 宣布已同意收购竞争对手 Instacart，总价值 170 亿美元，每股 65 美元，双方董事会均已批准。这将把餐饮外卖的统治地位与生鲜杂货配送的覆盖范围并入同一主体。</div>
+  <div class="row"><span class="lbl">关键数据</span>交易总价 <b>170 亿美元</b>；每股 <b>65 美元</b>；双方董事会已批准。</div>
+  <div class="row"><span class="lbl">各方反应</span>Instacart CEO Chris Rogers 在新闻稿中称"过去 14 年 Instacart 改变了线上生鲜，帮助各种规模的零售商竞争与增长"，并表示合并后"双方能做得更多"。</div>
+  <div class="row"><span class="lbl">影响</span>单笔 170 亿美元是本季度互联网平台之间罕见的重量级合并。对生鲜履约网络、零售媒体的广告位，以及 Instacart 的数据授权业务都会产生整合压力；真正的看点是合并后的定价权会落在谁手上。</div>
+  <div class="row"><span class="lbl">内容方向</span>快讯 + 对比解读（生鲜履约的利润率结构 vs 餐饮外卖）　<span class="lbl">目标平台</span>微博、公众号、财经类号</div>
+  <div class="tags"><span>DoorDash</span><span>Instacart</span><span>170 亿美元</span><span>收购</span><span>即时配送</span><span>生鲜</span><span>外卖</span></div>
+  <div class="src">来源：<a href="https://techcrunch.com/2026/10/29/doordash-to-acquire-instacart-for-17b/">TechCrunch</a>　<span class="muted">（公司 IR 页面本次被 Cloudflare 校验拦截，未取得第二来源）</span></div>
+</div>
+
+<h2>批量速览</h2>
+<div class="card">
+  <div class="scroller">
+  <table>
+    <thead><tr><th>#</th><th>标题</th><th>日期</th><th>可信度</th><th>一句话</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Anthropic 推出企业侧 token 支出回报报告工具</td><td>10-28</td><td class="ok">🟢 原文已核验</td><td>管理者可按团队与时间区间查看产出、成本与流程断点，Anthropic 称默认不用于模型训练；同时引入团队池化预算。<br><a href="https://techcrunch.com/2026/10/28/anthropic-just-launched-tools-to-show-companies-what-their-ai-spending-is-buying/">来源</a></td></tr>
+      <tr><td>2</td><td>报道称 Anthropic Q2 实现经营利润、净收入留存 900%</td><td>10-28</td><td class="warn">🟡 媒体转述</td><td>同一批客户支出一年增长九倍；Jellyfish 报告覆盖 27.6 万客户，Claude Code 等占代码评审提案近三分之一，相关支出年内增 10 倍。官方财报原文未取得。</td></tr>
+      <tr><td>3</td><td>Wabi 完成 5500 万美元融资，估值 12.5 亿美元</td><td>10-29</td><td class="warn">🟡 单一媒体</td><td>又一个"生成迷你应用"的 AI agent 拿到十亿美元级估值，投资人继续分散押注个人助手赛道。<br><a href="https://techcrunch.com/2026/10/29/wabi-the-ai-agent-that-builds-mini-apps-now-valued-at-1-25b-after-latest-round/">来源</a></td></tr>
+      <tr><td>4</td><td>Meta 悄然上线 AI 时尚应用 Style Sketch</td><td>10-29</td><td class="warn">🟡 单一媒体</td><td>读取 Instagram 照片生成虚拟衣橱，用用户已有衣物搭配造型，不依赖外部品牌。<br><a href="https://techcrunch.com/2026/10/29/meta-quietly-launches-an-ai-fashion-app-called-style-sketch/">来源</a></td></tr>
+      <tr><td>5</td><td>Dream 获 a16z 1700 万美元，做建筑业 AI 世界模型</td><td>10-29</td><td class="warn">🟡 单一媒体</td><td>两位前 Palantir 高管创业，切入"美国建造量少于几十年前"的结构性下滑，用世界模型服务施工。<br><a href="https://techcrunch.com/2026/10/29/ex-palantir-execs-launch-dream-with-17m-from-a16z-to-build-ai-world-models-for-construction/">来源</a></td></tr>
+      <tr><td>6</td><td>华为明确"不做药"，要做 AI 制药的技术底座（国内）</td><td>10-29 报道 / 采访 10-24</td><td class="ok">🟢 原文已核验</td><td>樊杰称华为提供算力、存储、网络、工具链与数据治理能力；部分合作项目已部署百卡规模集群训练与优化制药模型。<br><a href="https://www.ithome.com/1/019/780.htm">来源</a></td></tr>
+      <tr><td>7</td><td>Google 扩大 AI Search 广告的全球投放</td><td>10-28</td><td class="warn">🟡 单一媒体</td><td>在核心广告增长放缓背景下，把 AI 搜索广告推向更多市场。<br><a href="https://techcrunch.com/2026/10/28/google-expands-ai-search-ads-globally-as-core-ad-growth-slows/">来源</a></td></tr>
+      <tr><td>8</td><td>Microsoft 披露 Azure 实际营收 332 亿美元，并称来自 OpenAI 的营收为 100 亿美元</td><td>10-28</td><td class="warn">🟡 单一媒体</td><td>连续十个季度创营收纪录，AI 算力需求继续在财务报表上显形。<br><a href="https://techcrunch.com/2026/10/28/microsoft-just-shared-azures-actual-revenue-in-dollars-33-2-billion/">来源</a></td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<h2>今日观察</h2>
+<div class="card">
+  <ol class="tight">
+    <li><b>今天所有值得写的科技新闻，卖的都不是模型能力，而是控制权与可解释性。</b> Mistral 卖"你能自己部署与定制"，Nvidia 卖"单芯片就能跑"，Anthropic 卖"你的钱换到了什么"——三家分别把部署权、硬件边界和 ROI 审计摆到台面上。这是同一天里最一致的一条线：模型分数本身越来越难当头条。</li>
+    <li><b>开源权重模型第一次在"安全能力"上公开拉开与闭源模型的差距。</b> ML4 强调恶意请求拒答率 96.6%，而 Mistral 在自家公告里点名部分闭源前沿模型在同一类基准上接近零分。安全过滤第一次被包装成产品竞争力而不是合规成本，这条对定价的影响会比对榜单的影响更大。</li>
+    <li><b>开放网络的税正在被明码标价。</b> Reddit 用美国 DAU 下滑换 ARPU +53% 和 AI 数据授权收入 +35%，同时承认搜索导流每周少掉百万级。这是内容平台在"被 AI 摘要替代"后第一次系统性转向封闭——分发权和定价权一起转移，而且转移方向是数据授权这条窄路。</li>
+    <li><b>资本开支才是这条赛道的硬约束。</b> 2200 亿美元量级的年度 capex 对上"万亿美元 AWS"的承诺，市场当场给了盘后 -6%。投资者信的显然不是需求，而是不确定这笔钱多久能转成利润——这会直接压低下游 AI 应用的毛利预期。</li>
+    <li><b>开发者侧的信号藏在 GitHub 日榜里：注意力已从"调用模型"转向"管理一群 agent"。</b> 当日可见的 11 个条目中，8 个是 agent 技能框架、agent 工作台、agent 上下文记忆或 agent 界面审查类项目，日增榜首的 impeccable 更是纯"评判 agent 产出"的工具。真正的空白不在"再造一个 agent"，而在"怎么审阅一批 agent"。</li>
+  </ol>
+</div>
+
+<h2>来源与局限</h2>
+<div class="card">
+  <ul class="plain">
+    <li><b>采集方法</b>：本次 web_search 实际调用 5 次（上限 5 次，每个 query 一次，无重试）。其中 3 次返回空结果集：AI news October 30 2026、OpenAI Anthropic Google DeepMind announcement October 2026、人工智能 科技 新闻 2026年10月；有效返回的 2 次为 techcrunch artificial intelligence startup news 与 Mistral releases weights trillion-parameter model cybersecurity。本次未调用网页正文抽取工具。</li>
+    <li><b>GitHub Trending 抓取</b>：原计划经 r.jina.ai 代理读取，该请求返回 HTTP 403 AbuseAlleviationError（域名匿名访问被临时封锁），按"失败不重试"处理，改为浏览器直接读取同一 URL 获取当日快照；未使用任何缓存或前一日数据，也未通过 GitHub API 反推日增。</li>
+    <li><b>已知局限</b>：搜索后端 ddgs 本次不可用（包未安装），有效结果均由 exa 免费层兜底，覆盖面受限于该层质量；36 氪 AI 频道页面正文为空、DoorDash IR 站点被 Cloudflare 校验拦截，故相关条目降级为单一媒体来源；Anthropic 财务数字为媒体转述，未取得官方财报原文；所有模型基准分数为厂商自述或第三方榜单口径，未做独立复现；国内信源仅覆盖 IT之家与机器之心，微博/百度/知乎热榜本次未纳入，国内外覆盖存在结构性缺口。</li>
+  </ul>
+</div>
+
+<div class="foot">
+  <p><b>免责声明</b>：本简报由自动化流程于 2026-10-30 采集生成，所有事实均可回溯至文中链接的原始页面；标注 🟡 或"单一媒体来源"的条目为证据不完整，引用前请自行复核。文中模型性能数字为厂商自述或第三方榜单口径，未做独立复现。本简报仅供信息参考，不构成投资建议。</p>
+</div>
+
+</div>
+</body>
+</html>
