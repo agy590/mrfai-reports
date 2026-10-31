@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0e14">
+<title>多 Agent 协作最贵的成本：没有共享事实源</title>
+<style>
+  :root{
+    --bg:#0b0e14;
+    --surface:#141821;
+    --fg:#e8eaed;
+    --muted:#b3b8c4;
+    --border:#232836;
+    --accent:#76a7ff;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  html{
+    -webkit-text-size-adjust:100%;
+    background:var(--bg);
+  }
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--fg);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-size:17px;
+    line-height:1.8;
+    overflow-wrap:break-word;
+    word-break:normal;
+    overflow-x:hidden;
+  }
+  .wrap{
+    width:min(100%,720px);
+    margin:0 auto;
+    padding:18px 18px calc(28px + env(safe-area-inset-bottom,0px));
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:13px;
+    letter-spacing:.06em;
+    color:var(--muted);
+    padding:6px 2px 14px;
+  }
+  .brand .dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--accent);
+    flex:0 0 auto;
+  }
+  .card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:22px 18px 24px;
+  }
+  h1{
+    margin:0 0 10px;
+    font-size:clamp(25px,7vw,34px);
+    line-height:1.22;
+    font-weight:700;
+    letter-spacing:.01em;
+    color:var(--fg);
+    overflow-wrap:break-word;
+  }
+  .meta{
+    margin:0 0 20px;
+    padding-bottom:16px;
+    border-bottom:1px solid var(--border);
+    font-size:13px;
+    line-height:1.7;
+    color:var(--muted);
+  }
+  .meta span{
+    color:var(--muted);
+  }
+  article p{
+    margin:0 0 16px;
+    color:var(--fg);
+  }
+  article h2{
+    margin:24px 0 10px;
+    font-size:18px;
+    line-height:1.4;
+    color:var(--accent);
+    font-weight:650;
+  }
+  article strong{
+    color:var(--fg);
+    font-weight:650;
+  }
+  ol.steps{
+    margin:8px 0 18px;
+    padding-left:1.4em;
+  }
+  ol.steps li{
+    margin:0 0 10px;
+    color:var(--fg);
+  }
+  ol.steps li::marker{
+    color:var(--accent);
+    font-weight:700;
+  }
+  .disclaimer{
+    margin:22px 0 0;
+    padding-top:16px;
+    border-top:1px solid var(--border);
+    font-size:13px;
+    line-height:1.7;
+    color:var(--muted);
+  }
+  a{
+    color:var(--accent);
+    text-decoration:none;
+    overflow-wrap:anywhere;
+    word-break:break-word;
+  }
+  code{
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:.92em;
+    background:#1b2030;
+    border:1px solid var(--border);
+    border-radius:5px;
+    padding:1px 5px;
+    overflow-wrap:anywhere;
+  }
+  @media (min-width:640px){
+    body{font-size:17px;line-height:1.85;}
+    .wrap{padding:34px 28px calc(40px + env(safe-area-inset-bottom,0px));}
+    .card{padding:36px 36px 40px;}
+    .brand{padding-bottom:16px;}
+  }
+  @media print{
+    :root{--bg:#fff;--surface:#fff;--fg:#111;--muted:#555;--border:#ddd;--accent:#2456a6;}
+    body{background:#fff;color:#111;font-size:12pt;line-height:1.6;}
+    .wrap{width:100%;padding:0;}
+    .card{border:1px solid #ddd;border-radius:0;padding:0;}
+    .brand{display:none;}
+    a{color:#2456a6;}
+    h1{font-size:20pt;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand"><span class="dot"></span><span>MrFai 的 Agent 笔记</span></div>
+  <div class="card">
+    <h1>多 Agent 协作最贵的成本：没有共享事实源</h1>
+    <p class="meta"><span>2026-10-31</span> · <span>多 Agent 协作</span></p>
+
+    <article>
+      <p>我的立场很直接：<strong>把活拆给多个 Agent，不等于把活干好了。</strong>真正拖慢交付的，往往不是模型笨，而是每个 Agent 都在用自己的方式重新理解一遍任务，答案互相对不上。</p>
+
+      <p>我吃过一次具体的亏。三个 Agent 分工：一个做调研，一个写方案，一个改代码。前两个的产出是纯文本，直接贴进了第三个的提示词。结果第三个 Agent 改了三十多行代码，其中一半是在"顺手修正"调研里根本没提的旧逻辑，因为它无法区分哪些是任务约束、哪些只是别人的随口建议。评审时炸了，回滚重来。</p>
+
+      <p>根因不是分工不细，是<strong>交接的东西形态错了</strong>。自然语言在 Agent 之间传一手就会掉信息、掉语气、掉确定性。真正稳的做法，是让所有 Agent 读写同一份落盘的事实源：目标与非目标、验收标准、允许修改的路径、依赖关系、已知风险、回滚方式、验证命令。文件即真理，记忆和上下文只是加载时的快照，会过期。</p>
+
+      <p>还有一条：<strong>审查者不能兼任执行者。</strong>审查者只输出通过、驳回、需修改三种结论，不动手修。否则它既当运动员又当裁判，"我觉得没问题"就变成了自己给自己盖章。</p>
+
+      <h2>你可以直接照做的四步</h2>
+      <ol class="steps">
+        <li><strong>先写验收标准，再动手。</strong>写不出可判定的通过条件，说明目标还没想清楚，这时候拆 Agent 只会放大混乱。</li>
+        <li><strong>建一份共享事实源文件。</strong>每次交接只传递这份文件的位置，不复制内容；Agent 开工前先读它。</li>
+        <li><strong>限定每个 Agent 的可写范围。</strong>只读、只改指定路径、只做计划——权限写在文件里，不靠提示词里的"请不要"。</li>
+        <li><strong>把验证命令写成可执行的一行。</strong>谁改谁跑，跑不过就回滚到检查点，不要在坏状态上继续叠改动。</li>
+      </ol>
+
+      <p>判断多 Agent 协作有没有做对，可以用一个粗糙但有效的标准：任意两个 Agent 对"现在项目是什么状态"的回答，能不能互相不矛盾。如果不能，问题几乎总在共享事实源，而不是在提示词措辞上。</p>
+
+      <p class="disclaimer">本文为个人原创笔记，仅代表个人实践与观点，不构成任何投资建议或专业推荐。文中提到的失败经历来自个人项目实践，细节已做处理。</p>
+    </article>
+  </div>
+</div>
+</body>
+</html>
