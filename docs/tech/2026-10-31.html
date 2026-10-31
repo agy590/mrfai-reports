@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>每日科技新闻简报 | 2026-10-31</title>
+<style>
+  :root{
+    --bg:#0b0e14; --panel:#141922; --panel2:#10151d; --line:#232a36;
+    --fg:#e6edf3; --muted:#98a4b3; --dim:#6f7c8d;
+    --blue:#7aa2f7; --green:#9ece6a; --amber:#e0af68; --red:#f7768e; --purple:#bb9af7;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--fg)}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    font-size:16px;line-height:1.75;-webkit-text-size-adjust:100%;
+  }
+  .wrap{max-width:860px;margin:0 auto;padding:22px 16px 56px}
+  header.top{border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:22px}
+  h1{font-size:1.5rem;line-height:1.35;margin:0 0 10px;letter-spacing:.2px}
+  h1 .accent{color:var(--blue)}
+  .meta{color:var(--dim);font-size:.82rem;line-height:1.9}
+  .meta b{color:var(--muted);font-weight:600}
+  .tldr{background:linear-gradient(180deg,#141c28,#111721);border:1px solid var(--line);
+        border-left:3px solid var(--blue);border-radius:10px;padding:16px 18px;margin:0 0 26px}
+  .tldr h2{margin:0 0 10px;font-size:1.02rem;color:var(--blue);letter-spacing:.5px}
+  .tldr ul{margin:0;padding-left:20px}
+  .tldr li{margin:0 0 9px}
+  .tldr li:last-child{margin-bottom:0}
+  .tldr b{color:#fff}
+  h2.sec{font-size:1.12rem;margin:32px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line);
+         letter-spacing:.4px;color:#fff}
+  h2.sec .cnt{color:var(--dim);font-size:.8rem;font-weight:400;margin-left:8px}
+  article.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+               padding:18px 18px 16px;margin:0 0 16px}
+  article.card .ttl{font-size:1.06rem;line-height:1.5;margin:0 0 10px;color:#fff}
+  article.card .ttl .num{color:var(--dim);font-weight:600;margin-right:6px}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
+  .tag{font-size:.72rem;padding:2px 9px;border-radius:20px;border:1px solid var(--line);
+       color:var(--muted);background:var(--panel2);white-space:nowrap}
+  .t-type{color:var(--purple);border-color:#33284a}
+  .t-time{color:var(--amber);border-color:#3a2f1c}
+  .t-g{color:var(--green);border-color:#26402a}
+  .t-y{color:var(--amber);border-color:#3a2f1c}
+  dl.facts{margin:0}
+  dl.facts dt{font-size:.75rem;letter-spacing:.6px;color:var(--dim);text-transform:uppercase;
+              margin:12px 0 4px;font-weight:700}
+  dl.facts dd{margin:0;color:var(--fg)}
+  .why{border-left:3px solid var(--green);background:#0f1710;padding:10px 14px;border-radius:0 8px 8px 0;margin-top:12px}
+  .why strong{color:var(--green)}
+  .src{margin-top:12px;font-size:.85rem}
+  .src .lbl{color:var(--dim);font-size:.72rem;letter-spacing:.6px;text-transform:uppercase;font-weight:700}
+  .src ul{margin:5px 0 0;padding-left:18px}
+  .src a{color:var(--blue);text-decoration:none;word-break:break-word}
+  .src a:hover{text-decoration:underline}
+  .gh{background:linear-gradient(180deg,#141922,#101520);border:1px solid #2b3444;border-radius:12px;padding:18px;margin:0 0 16px}
+  .gh .hd{font-size:1.02rem;color:var(--amber);margin:0 0 12px;letter-spacing:.3px}
+  .gh .repo{font-size:1.04rem;margin:0 0 4px}
+  .gh .repo a{color:var(--green);text-decoration:none;font-weight:600}
+  .gh .repo a:hover{text-decoration:underline}
+  .gh .star{display:inline-block;background:#1c1424;border:1px solid #3a2440;color:var(--purple);
+            font-weight:700;font-size:.95rem;padding:3px 12px;border-radius:6px;margin:6px 0 12px}
+  .gh .desc{color:var(--muted);font-style:italic;margin:0 0 12px;padding-left:12px;border-left:2px solid var(--line)}
+  .gh .facts{font-size:.9rem;color:var(--muted)}
+  .gh .facts div{padding:2px 0}
+  .gh .facts b{color:var(--fg)}
+  .gh .judge{border-left:3px solid var(--blue);background:#0e131c;padding:10px 14px;border-radius:0 8px 8px 0;margin:12px 0 0}
+  .quick{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:6px 18px}
+  .quick ul{list-style:none;margin:0;padding:0}
+  .quick li{padding:11px 0;border-bottom:1px solid var(--line)}
+  .quick li:last-child{border-bottom:none}
+  .quick .h{font-weight:600;color:#fff}
+  .quick .d{color:var(--muted);font-size:.88rem;margin-top:2px}
+  .quick a{color:var(--blue);text-decoration:none;word-break:break-word}
+  .quick a:hover{text-decoration:underline}
+  .quick .dt{color:var(--dim);font-size:.76rem;margin-right:8px;font-variant-numeric:tabular-nums}
+  .obs{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px;margin:0 0 16px}
+  .obs h3{font-size:.99rem;margin:0 0 8px;color:var(--blue);line-height:1.6}
+  .obs p{margin:0;color:var(--fg)}
+  .obs .n{color:var(--dim);margin-right:6px;font-weight:700}
+  .note{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:0 0 16px}
+  .note h3{font-size:.92rem;margin:0 0 10px;color:var(--muted);letter-spacing:.4px}
+  .note ul{margin:0;padding-left:20px;color:var(--muted);font-size:.89rem}
+  .note li{margin:0 0 7px}
+  .note b{color:var(--fg)}
+  .disc{color:var(--dim);font-size:.83rem;border-top:1px solid var(--line);padding-top:16px;margin-top:8px;line-height:1.8}
+  footer{color:var(--dim);font-size:.78rem;text-align:center;margin-top:28px}
+  @media (max-width:600px){
+    body{font-size:15px}
+    .wrap{padding:18px 13px 40px}
+    h1{font-size:1.24rem}
+    article.card,.gh,.obs,.note{padding:15px 14px}
+    .quick{padding:4px 14px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <h1><span class="accent">📰</span> 每日科技新闻简报 <span class="accent">|</span> 2026-10-31</h1>
+  <div class="meta">
+    <b>采集时间</b>：2026-10-31 12:01（+08）　·　<b>覆盖窗口</b>：2026-10-28 12:01 ~ 2026-10-31 12:01（72 小时时效门）<br>
+    <b>采集方式</b>：web_search × 5　+　curl × 3　+　浏览器直读一手/二手页面<br>
+    <b>信源覆盖</b>：境外 PRNewswire / CBC / TechCrunch / Mistral / Google / Apple / Dealroom / europreneursmedia / aireport　·　国内 IT之家
+  </div>
+</header>
+
+<div class="tldr">
+  <h2>当日摘要（TL;DR）</h2>
+  <ul>
+    <li><b>Cohere 初始交割 Series E，目标规模最高 70 亿加元</b>，对应估值 357 亿加元，加拿大政府入股；Schwarz Group 领投，NVIDIA 等老股东跟投。公司称其为加拿大科技公司史上最大单笔私募融资。</li>
+    <li><b>Apple 智能首批功能确认入华</b>：11 月 4 日起随 iOS 开发者 Beta 开放测试，12 月随 iOS 27.3 正式发布；Siri、写作工具、视觉智能接入阿里巴巴千问。</li>
+    <li><b>AI 基建的账正从股权表挪到信贷表</b>：Nvidia 洽谈为 Nscale 的 Anthropic 西弗吉尼亚数据中心债务提供担保；《金融时报》报道 Anthropic IPO 后料获高级别"垃圾债"评级。</li>
+    <li><b>Mistral 开放 Mistral Large 4（Le Chonk）权重</b>，1 万亿参数原生多模态，官方称在编码与防御性安全基准上领先开放权重阵营。</li>
+    <li><b>应用侧"AI 代理消费"尚未兑现</b>：DoorDash 三季度来自第三方 AI 代理的订单仅"数百单"，而其 2025 年日均配送 300 万单。</li>
+  </ul>
+</div>
+
+<h2 class="sec">新闻卡片 <span class="cnt">5 条 · 均在 72 小时窗口内</span></h2>
+
+<article class="card">
+  <p class="ttl"><span class="num">01</span>Cohere 初始交割 Series E：目标最高 70 亿加元，加拿大政府入股</p>
+  <div class="tags"><span class="tag t-type">科技 / 融资</span><span class="tag t-time">📰 2026-10-29</span><span class="tag t-g">🟢 多方确认</span></div>
+  <dl class="facts">
+    <dt>核心事实</dt>
+    <dd>Cohere 官方新闻稿（PRNewswire，Published Time 2026-10-29T15:45:00Z）宣布 Series E 初始交割（initial close），目标规模最高 70 亿加元，对应 357 亿加元估值。领投方为 Schwarz Group（Lidl、Kaufland、STACKIT 云母公司）；新投资者包括 Bell Ventures、Bullhound Capital 与加拿大政府；Inovia Capital、NVIDIA、Prosperity7 Ventures 为回归投资者。公司称这是加拿大科技公司有史以来最大的单笔私募融资。</dd>
+    <dt>关键数据</dt>
+    <dd>ARR 截至 2026 年 Q3 同比增长 165%；一年内客户数增长 20 倍至 300 家，名单含 Aston Martin Aramco、Bell Canada、Fujitsu、RBC、PwC、TD Bank。加拿大政府承诺最高 16 亿加元股权投资（分阶段支付）；Cohere 承诺到 2030 年在加拿大新增至少 1,000 个技术岗位、投入至少 17 亿加元计算基础设施，并保留加拿大注册与总部。新闻稿明确：这是"初始交割"，未披露实际已承诺金额与最终交割时间。</dd>
+    <dt>口径差异</dt>
+    <dd>Dealroom 记为 US$5.13B / 估值 US$26.2B，aireport 记 CAD 357 亿 ≈ US$205 亿，与官方加元口径的美元折算不一致；本文以官方加元数字为准。</dd>
+  </dl>
+  <div class="why"><strong>为什么重要</strong>：这轮钱的边际买家已经不是 VC，而是主权资本——加拿大政府直接入股并绑定就业与算力承诺；同时 Schwarz 计划把 Cohere 模型托管在其主权云 STACKIT 上。加拿大与德国在"主权 AI"上形成同一笔交易的两个支柱，是本期最值得关注的资本结构信号。</div>
+  <div class="src"><span class="lbl">信息来源</span>
+    <ul>
+      <li><a href="https://www.prnewswire.com/news-releases/cohere-announces-series-e-fundraise-targeting-cad-7-billion-to-meet-surging-global-demand-for-secure-sovereign-ai-302923951.html" target="_blank" rel="noopener">PRNewswire 官方新闻稿（原文已读）</a></li>
+      <li><a href="https://www.cbc.ca/news/business/canada-cohere-ai-investment-9.7401367" target="_blank" rel="noopener">CBC News</a></li>
+      <li><a href="https://dealroom.co/news/168110-canada-takes-a-stake-in-coheres-record-c-7b-round-led-by-lidl-owner-schw/" target="_blank" rel="noopener">Dealroom News</a></li>
+      <li><a href="https://europreneursmedia.com/news/cohere-series-e-schwarz-group-leads-sovereign-ai-round/" target="_blank" rel="noopener">Europreneurs Media</a></li>
+    </ul>
+  </div>
+</article>
+
+<article class="card">
+  <p class="ttl"><span class="num">02</span>Apple 智能首批功能入华：11 月 4 日测试，12 月随 iOS 27.3 推送，千问接入</p>
+  <div class="tags"><span class="tag t-type">科技 / 消费电子 / 本地化</span><span class="tag t-time">📰 2026-10-31</span><span class="tag t-g">🟢 多方确认</span></div>
+  <dl class="facts">
+    <dt>核心事实</dt>
+    <dd>Apple 中国官网新闻稿《Apple 智能即将登陆中国》宣布，首批 Apple 智能功能将于 11 月 4 日起随最新 iOS 开发者 Beta 开放测试，并于 12 月 iOS 27.3 正式发布时面向中国用户推出，其他平台支持待获得必要审批后进行。首批功能包括实时翻译、照片中的消除工具、写作工具等。</dd>
+    <dt>关键数据</dt>
+    <dd>Apple 与阿里巴巴达成合作，在部分 Apple 智能体验中加入对千问的支持——Siri、写作工具、视觉智能均可用千问，覆盖文本与图像理解。本批更新<b>不包含</b> Siri AI 及 WWDC 2026 上宣布的其他下一代 Apple 智能功能。</dd>
+  </dl>
+  <div class="why"><strong>为什么重要</strong>：这次落地的不是"完整版 Siri AI"，而是被裁剪过的一批功能包，同时把模型层交给阿里。这是一次典型的"能力打包 + 模型本地化 + 审批留口"的产品落地路径，而不是一次完整的智能体首发。</div>
+  <div class="src"><span class="lbl">信息来源</span>
+    <ul>
+      <li><a href="https://www.apple.com/cn/newsroom/2026/10/apple-intelligence-features-are-coming-to-users-in-china/" target="_blank" rel="noopener">Apple 中国官网新闻稿（原文已读）</a></li>
+      <li><a href="https://www.ithome.com/1/020/392.htm" target="_blank" rel="noopener">IT之家</a></li>
+    </ul>
+  </div>
+</article>
+
+<article class="card">
+  <p class="ttl"><span class="num">03</span>Nvidia 洽谈为 Nscale 的 Anthropic 西弗吉尼亚数据中心债务提供担保</p>
+  <div class="tags"><span class="tag t-type">科技 / 算力基建 / 资本市场</span><span class="tag t-time">📰 2026-10-31（+08 09:20 发布）</span><span class="tag t-y">🟡 单源但可靠</span></div>
+  <dl class="facts">
+    <dt>核心事实</dt>
+    <dd>TechCrunch 报道，Nvidia 正洽谈为 AI 云服务商 Nscale 计划中的 Anthropic 西弗吉尼亚数据中心提供数十亿美元债务融资担保（co-sign）。报道指该交易经由 The Information 披露、Bloomberg 随后证实。按 Nscale 的 IPO 文件，Anthropic 仅就该项目第一栋建筑就签署了 446 亿美元合同。</dd>
+    <dt>关键数据</dt>
+    <dd>担保规模为"数十亿美元"级别债务；首栋建筑对应合同额 446 亿美元。</dd>
+    <dt>核验说明</dt>
+    <dd>TechCrunch 原文与发布时间已核验；文中所称 The Information 首发报道与 Bloomberg 证实，本次未直接读取该两家原始报道，故不标"多方确认"。</dd>
+  </dl>
+  <div class="why"><strong>为什么重要</strong>：芯片厂为客户的贷款签字，是把客户（模型公司）的信用风险接到自己账上的动作。此前 AI 基建的资金链条是股权＋项目融资，如今出现"上游硬件商兜底下游债务"的结构。当投资者开始对巨额 AI 资本开支的规模感到不安时，硬件龙头开始用自己的资产负债表维持管线。</div>
+  <div class="src"><span class="lbl">信息来源</span>
+    <ul>
+      <li><a href="https://techcrunch.com/2026/10/30/nvidia-weighs-playing-the-cosigner-for-nscales-ai-data-center-in-west-virginia/" target="_blank" rel="noopener">TechCrunch（原文已读）</a></li>
+    </ul>
+  </div>
+</article>
+
+<article class="card">
+  <p class="ttl"><span class="num">04</span>《金融时报》：Anthropic IPO 后料获高级别"垃圾债"评级</p>
+  <div class="tags"><span class="tag t-type">科技 / 资本市场</span><span class="tag t-time">📰 2026-10-31（+08 05:52 发布）</span><span class="tag t-y">🟡 单源但可靠</span></div>
+  <dl class="facts">
+    <dt>核心事实</dt>
+    <dd>TechCrunch 引述《金融时报》报道，Anthropic 在完成首次公开募股后，预计将获评级机构给予高级别"垃圾债"评级。FT 称，在一笔为 Anthropic 芯片提供融资的 630 亿美元交易中，锚定投资人 Blackstone 曾向该交易的投资人表示，预计这家 AI 实验室在 IPO 后会拿到"高级别"垃圾评级。此前 Blackstone 的说法相反，认为该公司将获得投资级评级——原文该句在页面提取时截断于 "before 2027 rol…"。</dd>
+    <dt>关键数据</dt>
+    <dd>芯片融资交易规模 630 亿美元；Blackstone 为锚定投资人；评级预期为"高级别"垃圾级。</dd>
+    <dt>核验说明</dt>
+    <dd>TechCrunch 原文与发布时间已核验；FT 原文本次未直接读取，故不标"多方确认"。</dd>
+  </dl>
+  <div class="why"><strong>为什么重要</strong>：这与第 3 条是同一天出现的同一件事的两面——AI 基建的杠杆正在累积，而市场对其信用质量的判断在 IPO 前就已经转弱。同一家投资人在同一年里先说"投资级"、后说"高级别垃圾"，本身说明这笔生意的融资成本被重新定价。</div>
+  <div class="src"><span class="lbl">信息来源</span>
+    <ul>
+      <li><a href="https://techcrunch.com/2026/10/30/anthropic-expected-to-receive-high-junk-rating-from-credit-agencies-following-ipo-report-says/" target="_blank" rel="noopener">TechCrunch（原文已读）</a></li>
+    </ul>
+  </div>
+</article>
+
+<article class="card">
+  <p class="ttl"><span class="num">05</span>Mistral 开放 Mistral Large 4（Le Chonk）权重：1 万亿参数原生多模态</p>
+  <div class="tags"><span class="tag t-type">科技 / 模型</span><span class="tag t-time">📰 2026-10-29</span><span class="tag t-y">🟡 单源但可靠</span></div>
+  <dl class="facts">
+    <dt>核心事实</dt>
+    <dd>Mistral 官方博客发布《Le Chonk: Built for Coders, Trusted by Defenders》，宣布释出 Mistral Large 4（Le Chonk）权重。官方描述该模型为 1 万亿参数、原生多模态，称其在编码与防御性安全效率上有所提升，并提供三种推理模式以平衡成本与性能；强调完全开放权重、欧洲训练，支持可定制自托管部署。</dd>
+    <dt>关键数据</dt>
+    <dd>1 万亿参数；原生多模态；三种推理模式；10 月 6 日已先行发布公开预览版，本条为权重开放。</dd>
+    <dt>核验说明</dt>
+    <dd>Mistral 官方博客原文已核验，官方 news 列表页条目日期同为 2026-10-29；"基准领先"为厂商自述，未独立复现。</dd>
+  </dl>
+  <div class="why"><strong>为什么重要</strong>：Mistral 把"欧洲训练 + 完全开放权重 + 自托管"打包成主权 AI 的产品卖点，与 Cohere 同期的"主权 AI"叙事在同一天形成呼应：模型能力正按国界与部署控制权重新定价，而不再只是按榜单定价。</div>
+  <div class="src"><span class="lbl">信息来源</span>
+    <ul>
+      <li><a href="https://mistral.ai/news/mistral-large-4-oss/" target="_blank" rel="noopener">Mistral 官方博客（原文已读）</a></li>
+    </ul>
+  </div>
+</article>
+
+<h2 class="sec">GitHub Trending 日增观察</h2>
+
+<div class="gh">
+  <p class="hd">GitHub Trending 日榜可见仓库中，今日新增 Star 最高</p>
+  <p class="repo"><a href="https://github.com/pbakaus/impeccable" target="_blank" rel="noopener">pbakaus / impeccable</a></p>
+  <div class="star">+2,300 stars today</div>
+  <div class="desc">"The design vocabulary for your coding agent. Steer with polish and bolder, review with critique and audit, catch AI slop before it ships."</div>
+  <div class="facts">
+    <div><b>今日新增 Star</b>：+2,300（本次页面可见数值最高）</div>
+    <div><b>当前总 Star</b>：97,182　·　<b>Fork</b>：5,722</div>
+    <div><b>主要语言</b>：Rust</div>
+    <div><b>原始来源</b>：<a href="https://github.com/trending?since=daily" target="_blank" rel="noopener" style="color:#7aa2f7">github.com/trending?since=daily</a></div>
+    <div><b>本次抓取时间</b>：2026-10-31 12:01（+08）</div>
+  </div>
+  <div class="judge"><b>判断</b>：本期榜首不是又一个模型或框架，而是给编码 agent 用的"设计审查词汇表"——把"什么是 AI 味的界面"变成 agent 可执行的评审准则。同日榜单上 DeepTutor（+2,282）、obra/superpowers（+1,259）、JetBrains/thinkrail（+722）、anthropics/skills（+295）等也全部围绕 coding agent 与 agent skills，说明开发者注意力已从"训练模型"整体转向"给模型配工作方法与质量闸门"。</div>
+</div>
+
+<h2 class="sec">批量速览 <span class="cnt">其余 6 条 · 均已核验日期</span></h2>
+<div class="quick">
+  <ul>
+    <li><span class="dt">10-30</span><span class="h">Ollie（隐私优先 AI 助手）宣布关停</span>
+      <div class="d">联合创始人兼 CEO Bill Lennon 在 X 宣布 App 将于 11 月 6 日正式停止服务。<a href="https://techcrunch.com/2026/10/30/ollie-a-privacy-focused-ai-assistant-is-shutting-down/" target="_blank" rel="noopener">来源</a></div></li>
+    <li><span class="dt">10-30</span><span class="h">DoorDash：AI 代理带来的订单只有"数百单"</span>
+      <div class="d">三季度电话会披露来自 Muse、Instinct、Fo 等第三方代理的订单仅数百单，对比其 2025 年日均 300 万单配送量。<a href="https://techcrunch.com/2026/10/30/doorDash-said-its-only-received-several-hundred-orders-from-ai-agents/" target="_blank" rel="noopener">来源</a></div></li>
+    <li><span class="dt">10-29</span><span class="h">Reddit 转向以登录为主的体验</span>
+      <div class="d">三季度电话会宣布因搜索流量被 AI 搜索分流，将转向以登录态为主，以保护数据并与模型厂商谈授权合作。<a href="https://techcrunch.com/2026/10/29/as-search-traffic-dries-up-reddit-announces-its-shifting-to-a-logged-in-experience/" target="_blank" rel="noopener">来源</a></div></li>
+    <li><span class="dt">10-28</span><span class="h">Google：AI Mode 广告扩展至 10 个新国家</span>
+      <div class="d">澳大利亚、加拿大、印度、肯尼亚、马来西亚、新西兰、尼日利亚、巴基斯坦、菲律宾、新加坡；官方称 AI Mode 查询平均长度是传统搜索的 3 倍。<a href="https://blog.google/products/ads-commerce/ads-in-ai-mode-global/" target="_blank" rel="noopener">来源</a></div></li>
+    <li><span class="dt">10-31</span><span class="h">工信部：前三季度软件业务收入 118,031 亿元，同比增 8.4%</span>
+      <div class="d">利润总额 13,300 亿元同比增 1.6%；软件业务出口 519.4 亿美元同比增 12.2%；基础软件产品收入增 7.8%、工业软件增 7.3%。<a href="https://www.ithome.com/1/020/450.htm" target="_blank" rel="noopener">来源</a></div></li>
+    <li><span class="dt">10-30</span><span class="h">DeepSeek 第二轮融资规模与投资方名单曝光</span>
+      <div class="d">IT之家援引 The Information 称募资约 1,055 亿元、估值约 6,155 亿元，近 30 家投资方参与，腾讯、宁德时代、长鑫存储、中芯国际、美团、vivo、小红书等在列；报道称本轮最早于 10 月 22 日曝光完成，本条为投资方名单更新。🟡 待独立确认。<a href="https://www.ithome.com/1/020/121.htm" target="_blank" rel="noopener">来源</a></div></li>
+  </ul>
+</div>
+
+<h2 class="sec">今日观察</h2>
+
+<div class="obs">
+  <h3><span class="n">一</span>AI 基建的账正从股权表挪到信贷表，风险定价第一次出现在信用端。</h3>
+  <p>三天内三件事指向同一方向：Cohere 的 70 亿加元由主权资本与政府直接承接，Nvidia 洽谈为客户的数百亿美元数据中心债务签字兜底，而 Blackstone 在 630 亿美元芯片融资中已预期 Anthropic 会拿到"高级别垃圾评级"。一级市场仍在给高估值，但边际买家已从 VC 换成国家与产业资本；与此同时，杠杆开始堆到上游硬件商和锚定投资人的资产负债表上。<b>判断</b>：这轮周期的风险不再是"钱够不够"，而是"谁来背信用"。</p>
+</div>
+
+<div class="obs">
+  <h3><span class="n">二</span>应用侧的"AI 代理消费"叙事没有兑现，但平台已经开始向模型厂商收费。</h3>
+  <p>DoorDash 全季度只接到"数百单"代理订单，而它自己日均配送 300 万单；Reddit 因为搜索流量被 AI 分流，反手把站点改为以登录态为主——一个在防爬，一个在收费。现实是：AI 代理没有成为新流量入口，模型厂商才是。Mistral 开放权重、Apple 在中国把模型层交给千问，两者都指向同一件事：分发权与收费权正在向模型/平台一侧集中，中间层应用商既没拿到流量也没拿到定价权。</p>
+</div>
+
+<div class="obs">
+  <h3><span class="n">三</span>"主权 AI"在同一天以三种形态同时出现，已不是营销词。</h3>
+  <p>Cohere 用加拿大政府的股权 + 德国的算力云把"主权"写进交易结构；Mistral 用"欧洲训练 + 完全开放权重 + 自托管"把它写进产品参数；Apple 用"千问接入 + 审批留口"把它写进在华发布路径。三者都不是宣言，而是可结算的条款。<b>判断</b>：接下来值得盯的不是谁喊"主权 AI"，而是谁能把主权诉求转成具体的部署形态、数据归属和审批安排。</p>
+</div>
+
+<h2 class="sec">来源与局限</h2>
+<div class="note">
+  <ul>
+    <li><b>搜索层受限</b>：<code>web_search</code> 5 次中 4 次返回空结果（<code>ddgs</code> 后端未安装、由 exa 免费层兜底），有效检索仅 1 次返回融资类结果；本篇主要事实依靠浏览器直读一手与二手页面获得，而非搜索聚合摘要。</li>
+    <li><b>curl 预算用满（3/3）</b>：GitHub Trending 抓取成功；<code>dealroom.co/news/</code> 被 Cloudflare 拦截（403）放弃；Cohere 官方新闻稿抓取成功。<code>ir.aboutamazon.com</code> 返回 "Just a moment..." 反爬验证页，未能读取原文。</li>
+    <li><b>单链信源</b>：TechCrunch 的两条报道（卡片 03、04）均转述 The Information / Bloomberg / FT 原始报道，本次未直接读取，故只标 🟡；卡片 05 的基准领先为厂商自述，未独立复现。</li>
+    <li><b>未采纳但已核验日期的条目</b>：Warhound $200M（10-22）、adsilico £10M（10-26）、Medikea $1.2M（10-26）、Marc $5M（10-22）、Rulen €1.8M（10-21）、Mistral × NVIDIA 工程工作流（10-21）——均超出 72 小时窗口；Ideable Works（10-28）虽在窗口内但与 AI/科技主线关联弱。</li>
+    <li><b>主动过滤</b>：京东/淘宝红包等促销广告条目；以及涉及政治、犯罪、暴力与争议性社会事件的条目，按本流程的敏感内容过滤规则剔除。</li>
+    <li><b>无法确认的事实</b>：Cohere 实际已承诺到账金额（官方明确未披露）；Anthropic 的具体信用评级（属预期而非已定级）；Nvidia 与 Nscale 的谈判是否达成；Apple 智能其余平台在华落地时间（待审批）；Mistral 基准领先幅度。</li>
+  </ul>
+</div>
+
+<div class="disc">
+  <b>免责声明</b>：本简报由自动化流程在限定采集预算内生成，仅供信息参考，不构成投资建议或任何行动依据。所有事实与链接均标注来源与核验方式，读者应回访一手来源复核后再作判断。
+</div>
+
+<footer>每日科技新闻简报 · 2026-10-31 · 由新闻情报官自动采集与交叉验证</footer>
+
+</div>
+</body>
+</html>
