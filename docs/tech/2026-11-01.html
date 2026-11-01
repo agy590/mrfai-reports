@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>每日科技新闻简报 | 2026-11-01</title>
+<style>
+:root{
+  --bg:#0b0e14;
+  --panel:#111621;
+  --panel2:#161c29;
+  --border:#232b3b;
+  --fg:#e6edf3;
+  --muted:#93a1b5;
+  --accent:#4c8dff;
+  --warn:#f0a830;
+  --ok:#3fb950;
+  --red:#f85149;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--fg)}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  line-height:1.75;
+  font-size:16px;
+  padding:20px 14px 56px;
+  -webkit-text-size-adjust:100%;
+}
+.wrap{max-width:860px;margin:0 auto}
+header{
+  border:1px solid var(--border);
+  border-radius:14px;
+  background:linear-gradient(180deg,var(--panel2),var(--panel));
+  padding:22px 20px;
+  margin-bottom:18px;
+}
+h1{font-size:24px;line-height:1.35;margin:0 0 8px}
+.sub{color:var(--muted);font-size:13.5px;margin:0}
+.badge{
+  display:inline-block;border:1px solid var(--border);border-radius:999px;
+  padding:3px 10px;font-size:12px;color:var(--muted);margin:6px 8px 0 0;background:#0d1220;
+}
+h2{font-size:19px;margin:30px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+h3{font-size:17px;margin:0 0 10px}
+section.card{
+  border:1px solid var(--border);border-radius:14px;background:var(--panel);
+  padding:18px 18px 14px;margin:0 0 16px;
+}
+.tldr{list-style:none;padding:0;margin:0}
+.tldr li{padding:8px 0;border-bottom:1px dashed var(--border)}
+.tldr li:last-child{border-bottom:none}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 12px}
+.tag{font-size:12px;border-radius:6px;padding:2px 8px;border:1px solid var(--border);color:var(--muted);background:#0d1220}
+.tag.hot{color:#ffb86b;border-color:#4a3a1f}
+.tag.news{color:#79c0ff;border-color:#1f3a52}
+.tag.warn{color:var(--warn);border-color:#4a3d1f}
+.tag.ok{color:var(--ok);border-color:#1f3a2a}
+p{margin:10px 0}
+.kv{margin:10px 0}
+.kv b{color:#c9d5e3}
+ul.tight{margin:8px 0;padding-left:20px}
+ul.tight li{margin:4px 0}
+a{color:var(--accent);text-decoration:none;word-break:break-all}
+a:hover{text-decoration:underline}
+.note{
+  border-left:3px solid var(--warn);
+  background:#171207;
+  border-radius:0 8px 8px 0;
+  padding:12px 14px;margin:12px 0;font-size:14.5px;
+}
+.obs{counter-reset:o;list-style:none;padding:0;margin:0}
+.obs li{counter-increment:o;padding:10px 0 10px 38px;position:relative;border-bottom:1px dashed var(--border)}
+.obs li:last-child{border-bottom:none}
+.obs li::before{
+  content:counter(o);position:absolute;left:0;top:10px;
+  width:24px;height:24px;border-radius:7px;background:#1c2436;color:#9fb4d0;
+  text-align:center;font-size:13px;line-height:24px;font-weight:700;
+}
+footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
+th,td{border:1px solid var(--border);padding:7px 8px;text-align:left;vertical-align:top}
+th{background:#151b28;color:#b9c6d6}
+@media (max-width:600px){
+  body{font-size:15px;padding:14px 11px 44px}
+  h1{font-size:20px}
+  h2{font-size:17px}
+  section.card{padding:15px 14px 12px}
+  table{font-size:12px}
+  th,td{padding:6px 5px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>📰 每日科技新闻简报 | 2026-11-01</h1>
+  <p class="sub">采集与核验时间：2026-11-01 12:00 (+08) ｜ 范围：AI / 科技 / 互联网 / 创业 ｜ 本次全部条目证据等级为「仅检索摘要」</p>
+  <span class="badge">web_search × 5</span>
+  <span class="badge">原文抓取 × 3（全部被阻断）</span>
+  <span class="badge">国内信源覆盖 0</span>
+  <span class="badge">可验证条目 4 条</span>
+</header>
+
+<section class="card">
+  <h3>当日摘要（TL;DR）</h3>
+  <ul class="tldr">
+    <li><b>Alphabet 财报不及预期，AI 资本开支恐慌当日引爆市场：</b>其股价单日市值蒸发约 5000 亿美元，纳指期货走弱、韩国 KOSPI 跌超 3%，美债录得约三年来最强月度涨幅之一。（Reuters）</li>
+    <li><b>Apple 正式官宣折叠屏 iPhone Duo：</b>5.4 英寸外屏 + 7.6 英寸内屏、内屏纳米纹理、折痕几乎不可见、电源键改用 Touch ID、后置双摄；首发供应被描述为「limited」。（The Verge）</li>
+    <li><b>Anthropic 递交 S-1 招股书：</b>文件顶部信中同时出现「可能带来灾难性乃至存在性风险」与「可能开启奇迹时代」两套话术。（The Verge）</li>
+    <li><b>AI 攻克数学难题引发学界反弹：</b>OpenAI、Anthropic 等实验室过去一年在多个长期未解数学问题上宣布突破，数学家群体公开表达被「抢走问题」的荒诞感；Sam Altman 回应称 OpenAI 的数学攻势不会停止。（The Verge）</li>
+    <li><b>GitHub Trending 日增数据本次不可验证：</b>唯一一次抓取被 r.jina.ai 以滥用风控（403 AbuseAlleviationError）阻断，页面正文未取回，按规则不给出任何日增数字与排名。</li>
+  </ul>
+</section>
+
+<section class="card">
+  <h3>🔥 新闻 1｜Alphabet 营收 miss，AI 资本开支恐慌重挫美股</h3>
+  <div class="meta">
+    <span class="tag">财经 / AI 基建</span>
+    <span class="tag hot">⭐ 高热</span>
+    <span class="tag news">📰 2026-10-30 02:45 UTC</span>
+    <span class="tag warn">🟡 单源可靠（仅检索摘要）</span>
+  </div>
+  <p><b>核心事实：</b>Reuters 报道称，美国股市在 Alphabet 营收不及预期后下挫，AI 巨头的巨额支出重新点燃投资者对资本开支过度的担忧；Alphabet 当日市值蒸发约 5000 亿美元，纳斯达克期货走弱，韩国 KOSPI 跌幅超过 3%，美债上涨并录得约三年来最强劲的单月涨幅之一。</p>
+  <div class="kv"><b>关键数据：</b>Alphabet 单日市值损失 ≈ 5000 亿美元；KOSPI 跌幅 &gt; 3%；美债单月涨幅为 2023 年 12 月以来最强量级之一。</div>
+  <p><b>为什么重要：</b>这是本轮 AI 行情中第一次由<b>真实财报数字</b>（而非「泡沫论」或模型对比）直接触发资本开支重定价，把「AI 基建投入什么时候能被收入覆盖」从叙事问题变成了季度报表问题。</p>
+  <p><b>来源：</b><br><a href="https://www.reuters.com/legal/transactional/global-markets-global-markets-2026-10-30/?taid=6ae4407ef24b6b00016d0c95&amp;utm_campaign=trueAnthem%3A+Trending+Content&amp;utm_medium=trueAnthem&amp;utm_source=twitter">reuters.com — Stocks sink, bonds leap as AI giants' spending spooks investors</a></p>
+</section>
+
+<section class="card">
+  <h3>⭐ 新闻 2｜Apple 官宣折叠屏 iPhone Duo</h3>
+  <div class="meta">
+    <span class="tag">科技 / 消费电子</span>
+    <span class="tag hot">⭐ 高热</span>
+    <span class="tag news">📰 页面更新 2026-10-30 22:56 UTC</span>
+    <span class="tag warn">🟡 单源可靠（仅检索摘要）</span>
+  </div>
+  <p><b>核心事实：</b>Apple 终于发布传闻已久的折叠屏产品 iPhone Duo。整机为 5.4 英寸外屏 + 7.6 英寸内屏的双屏形态，内屏采用「nano-texture」表面处理，折痕几乎不可见；生物识别改为电源键上的 Touch ID 而非 Face ID；后置为主摄 + 广角双摄。Apple 表示首发供应「limited」。</p>
+  <div class="kv"><b>关键数据：</b>外屏 5.4 英寸、内屏 7.6 英寸；后置 2 摄像头；首发供应受限。</div>
+  <p><b>为什么重要：</b>第一代折叠 iPhone 的形态选择（外屏偏小、放弃 Face ID、首发备货受限）暴露的是内部结构与产能约束，而不是营销选择——这是判断后续迭代节奏最直接的信号。</p>
+  <p><b>来源：</b><br><a href="https://www.theverge.com/tech/1010131/apple-iphone-duo-news-announcements">theverge.com — All the news about the iPhone Duo</a></p>
+</section>
+
+<section class="card">
+  <h3>⭐ 新闻 3｜Anthropic 递交 S-1：招股书里同时写「存在性风险」和「奇迹时代」</h3>
+  <div class="meta">
+    <span class="tag">财经 / AI 商业</span>
+    <span class="tag hot">⭐ 高热</span>
+    <span class="tag news">📰 2026-10-30 13:11 UTC</span>
+    <span class="tag warn">🟡 单源可靠（仅检索摘要）</span>
+  </div>
+  <p><b>核心事实：</b>The Verge 报道 Anthropic 已提交 S-1 招股文件，并指出招股书正文的信中同时写有两种极端表述：最坏情况下 AI「可能对人类构成灾难性甚至存在性风险」，最好情况下「可能带来一个奇迹时代」。文章将其归入 2026 年秋季财报季的「Fall 2026 earnings watch」系列。</p>
+  <div class="kv"><b>关键数据：</b>无新增数字；关键文本为 S-1 顶部信件中的风险与愿景表述。</div>
+  <p><b>为什么重要：</b>AI 公司第一次需要在同一份法律文件里同时安抚两类读者——监管要看到风险已被披露，二级市场要看到奇迹已被定价。这套「双面话术」很可能成为此后 AI 招股书的模板。</p>
+  <p><b>来源：</b><br><a href="https://www.theverge.com/ai-artificial-intelligence/1023070/anthropic-ipo-risk%2Dfactors-filing-miracles">theverge.com — Silicon Valley wants you to invest in miracles</a></p>
+</section>
+
+<section class="card">
+  <h3>💡 新闻 4｜AI 拿下数学难题，数学家的反弹与 Altman 的回应</h3>
+  <div class="meta">
+    <span class="tag">科技 / 学术</span>
+    <span class="tag hot">⭐ 高热（研究圈争议）</span>
+    <span class="tag news">📰 页面更新 2026-10-30 13:01 UTC</span>
+    <span class="tag warn">🟡 单源可靠（仅检索摘要）</span>
+  </div>
+  <p><b>核心事实：</b>The Verge 的梳理文章指出，过去一年 OpenAI、Anthropic 等实验室在多个长期未解的数学问题上宣布突破，其中部分推进幅度超出研究界原本预期；文章同时记录了数学家群体对此的强烈反应（认为问题被「抢走」），以及 Sam Altman 的最新表态——他表示理解数学家的处境，但 OpenAI 的数学攻势不会停止。</p>
+  <div class="kv"><b>关键数据：</b>无量化数据；涉及 OpenAI、Anthropic 等多家实验室。</div>
+  <p><b>为什么重要：</b>争议焦点不在「AI 能不能做数学」，而在<b>证明的可验证性</b>。如果突破只到猜想层面、无法被形式化核验，学界的信任会以「AI 在找猜想而非做证明」的形式收回。</p>
+  <p><b>来源：</b><br><a href="https://www.theverge.com/ai-artificial-intelligence/1004933/ai-math-openai-breakthrough-solution">theverge.com — All the drama around AI's takeover of mathematics</a></p>
+</section>
+
+<section class="card">
+  <h3>📈 GitHub Trending 日增最高仓库</h3>
+  <div class="note">
+    <b>本次 GitHub Trending 日增数据不可验证。</b><br>
+    本次按规则仅发起一次抓取（<code>curl -L --max-time 20 'https://r.jina.ai/https://github.com/trending?since=daily'</code>），返回 HTTP 403，响应体为 <code>{"code":40305,"name":"AbuseAlleviationError","message":"Anonymous access to domain github.com blocked until Sun Nov 01 2026 05:00:33 GMT+0000 ... DDoS attack suspected: Too many requests"}</code>，页面正文未取回。
+  </div>
+  <ul class="tight">
+    <li><b>原始来源链接：</b><a href="https://github.com/trending?since=daily">github.com/trending?since=daily</a></li>
+    <li><b>本次抓取时间：</b>2026-11-01 12:00 (+08)</li>
+    <li><b>缺失字段：</b>仓库名、<code>+N stars today</code>、总 Star、主要语言、原始描述、当日排名——全部缺失，不做任何推断或补写。</li>
+  </ul>
+  <p class="sub" style="margin-top:8px">说明：GitHub Trending 是当日可见趋势榜，不是全站历史增量数据库。在缺少本次快照的情况下，任何「日增最高」结论都不可核验。</p>
+</section>
+
+<section class="card">
+  <h3>🔍 今日观察</h3>
+  <ol class="obs">
+    <li><b>AI 资本开支第一次被财报而不是被观点击穿。</b>市场从「AI 故事」转向「AI 账单」，触发点是单季营收 miss，而非任何一篇看空研报。下一个可验证的观察点是哪家 hyperscaler 先在指引里下调 capex。</li>
+    <li><b>折叠屏 iPhone 的第一代形态是妥协的产物。</b>5.4 英寸外屏、放弃 Face ID、首发备货「limited」——这三条同时出现，说明第一代折叠 iPhone 的成本与良率压力还没解决。关注首批实际供货量与售价带，而不是发布会形容词。</li>
+    <li><b>AI 公司的招股书会变成「风险免责声明 + 奇迹叙事」的缝合体。</b>Anthropic 这次的写法值得作为模板记录：监管读到的是风险，市场读到的是想象力，而两者写在同一封信里。</li>
+    <li><b>AI 做数学的信任危机取决于形式化验证，不取决于模型名。</b>只要突破停留在猜想层、无法被完整核验，学界反弹就会持续；出现可形式化核验的完整证明，才是这个议题的转折点。</li>
+    <li><b>本次简报的最大短板是「只到摘要层」。</b>所有结论都建立在检索摘要的可见字段上，细节与措辞未经原文复核，读者应把链接当作一手事实入口。</li>
+  </ol>
+</section>
+
+<section class="card">
+  <h3>📎 来源与局限</h3>
+  <p><b>本次实际使用的来源域名：</b>reuters.com、theverge.com、github.com（抓取被阻断，未取回）。另有 freedom.tech、llm-d.ai、newaitools.ai、gigazine.net 仅出现在候选结果中，因日期或时效问题未采纳为新闻卡片。</p>
+  <p><b>明确的局限：</b></p>
+  <ul class="tight">
+    <li><b>原文未取回：</b>本次 3 次正文抓取全部失败（r.jina.ai 对 theverge.com 与 github.com 返回 403 AbuseAlleviationError，称域名因疑似 DDoS 的滥用被临时封锁）。因此没有任何一条新闻完成「读取原文」级别的核验。</li>
+    <li><b>检索覆盖不全：</b>5 次 <code>web_search</code> 中有 3 次返回空结果数组（后端 ddgs 未安装、由 exa 兜底）；本次未取得任何国内源（微博/百度/知乎/36 氪/财新/澎湃等）的有效结果，<b>国内信源覆盖为 0</b>。</li>
+    <li><b>交叉验证不足：</b>每条新闻均为单一来源，未取得第二独立来源，故一律标为 🟡，未使用「多方确认」。</li>
+    <li><b>GitHub Trending 日增缺失：</b>见上方独立卡片。</li>
+    <li><b>分类与剔除：</b>无法从检索摘要核验发布日期、或日期落在 2026-10-29 12:00 (+08) 之前的材料一律未作为新闻卡片。</li>
+  </ul>
+</section>
+
+<section class="card">
+  <h3>🧾 证据审计摘要（NEWS_EVIDENCE_AUDIT）</h3>
+  <p><b>本次 web_search 调用总数：5</b>（上限 5，未超限）。</p>
+  <table>
+    <tr><th>#</th><th>实际 query</th><th>状态</th><th>返回情况</th></tr>
+    <tr><td>1</td><td>AI model release announcement October 31 2026</td><td>success</td><td>web: [] 空结果（ddgs 未安装，exa 兜底）</td></tr>
+    <tr><td>2</td><td>科技新闻 今日 AI 大模型 发布 2026年10月31日</td><td>success</td><td>web: [] 空结果（ddgs 未安装，exa 兜底）</td></tr>
+    <tr><td>3</td><td>TechCrunch AI startup funding round announced</td><td>success</td><td>web: [] 空结果（ddgs 未安装，exa 兜底）</td></tr>
+    <tr><td>4</td><td>site:theverge.com OR site:reuters.com technology October 30 2026</td><td>success</td><td>8 条结果 → 新闻 1/2/3/4</td></tr>
+    <tr><td>5</td><td>GitHub release v1.0 open source AI tool announcement this week</td><td>success</td><td>8 条结果 → 全部因超窗/日期不可核验被 REJECTED</td></tr>
+  </table>
+  <p><b>正文抓取（curl via r.jina.ai）3 次，全部失败：</b>github.com/trending?since=daily、theverge.com iPhone Duo、theverge.com Anthropic S-1，均返回 403 AbuseAlleviationError，未取回正文，按规则未重试。</p>
+  <p><b>原文核验方式：</b>新闻 1 = 仅搜索摘要；新闻 2 = 仅搜索摘要（原文尝试失败）；新闻 3 = 仅搜索摘要（原文尝试失败）；新闻 4 = 仅搜索摘要；GitHub Trending = 抓取失败。</p>
+  <p><b>分类：</b>4 条正式新闻均为 <code>PARTIAL</code>（有来源与日期证据，但不完整），本次<b>没有任何条目达到 VERIFIED</b>；GitHub Trending 日增为 <code>REJECTED</code>（数据不可验证）。</p>
+  <p><b>已剔除条目及原因：</b>Reuters 10-28 加州监管函（超 72 小时窗口）、Reuters AI 与美国战争（军事题材排除）、freedom.tech Claude Code Action 1.0 系列（10-26 及更早）、llm-d.ai v1.0 博客（摘要无日期）、newaitools.ai 周报（10-17 至 10-23）、gigazine Pi 1.0（10-02）、theverge 栏目/作者索引页（无独立文章 URL）。</p>
+  <p class="sub">完整审计（含逐次 URL 明细与无法确认事实清单）已随本次运行归档为本地 Markdown 审计副本（cron 输出目录，2026-11-01.md）。</p>
+</section>
+
+<footer>
+  <p>本简报由自动化流程生成，仅汇总公开报道，不代表投资建议或对任何产品、公司、机构的背书。所有事实以原始来源页面为准，请点击链接核对原文。</p>
+  <p>生成时间：2026-11-01 12:00 (+08) ｜ 类别：tech</p>
+</footer>
+
+</div>
+</body>
+</html>
