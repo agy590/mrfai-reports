@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0b0e14">
+<title>Agent 不是更聪明的同事，是更严格的执行器</title>
+<style>
+  :root {
+    --bg: #0b0e14;
+    --surface: #141821;
+    --fg: #e8eaed;
+    --muted: #b3b8c4;
+    --border: #232836;
+    --accent: #76a7ff;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  html, body {
+    background: var(--bg);
+    color: var(--fg);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  body {
+    font-size: 17px;
+    line-height: 1.78;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans SC", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    width: min(100%, 720px);
+    margin: 0 auto;
+    padding: 22px 18px calc(28px + env(safe-area-inset-bottom, 0px));
+  }
+  .brand {
+    display: block;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    opacity: 0.85;
+    margin: 0 0 16px 0;
+    line-height: 1.5;
+  }
+  .brand::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-right: 8px;
+    vertical-align: 1px;
+  }
+  article {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 18px 20px;
+  }
+  h1 {
+    font-size: clamp(25px, 7vw, 34px);
+    line-height: 1.25;
+    margin: 0 0 12px 0;
+    font-weight: 700;
+    color: var(--fg);
+    letter-spacing: -0.01em;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+  .meta {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--muted);
+    opacity: 0.75;
+    margin: 0 0 20px 0;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  p {
+    margin: 0 0 16px 0;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+  p:last-of-type { margin-bottom: 0; }
+  strong { color: var(--fg); font-weight: 600; }
+  h2 {
+    font-size: 19px;
+    line-height: 1.4;
+    margin: 26px 0 12px 0;
+    font-weight: 600;
+    color: var(--fg);
+  }
+  ol {
+    margin: 0 0 18px 0;
+    padding-left: 22px;
+  }
+  ol li {
+    margin: 0 0 10px 0;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+  ol li::marker { color: var(--accent); }
+  .disclaimer {
+    margin: 22px 0 0 0;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: var(--muted);
+    opacity: 0.72;
+  }
+  a { color: var(--accent); overflow-wrap: break-word; word-break: break-word; }
+
+  @media (min-width: 640px) {
+    .wrap { padding: 34px 28px calc(44px + env(safe-area-inset-bottom, 0px)); }
+    article { padding: 36px 34px 30px; border-radius: 16px; }
+    body { font-size: 18px; }
+  }
+
+  @media print {
+    html, body { background: #fff !important; color: #111 !important; }
+    .wrap { width: 100%; padding: 0; }
+    article { background: #fff !important; border: 1px solid #ccc !important; padding: 0 !important; }
+    .brand, .meta, .disclaimer { color: #555 !important; opacity: 1; }
+    h1, h2, strong { color: #111 !important; }
+    a { color: #111 !important; text-decoration: none; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <span class="brand">MrFai 的 Agent 笔记</span>
+    <article>
+      <h1>Agent 不是更聪明的同事，是更严格的执行器</h1>
+      <p class="meta">2026-11-01 · 主题：AI Agent 工程实践</p>
+
+      <p>做 Agent 一年多，我踩过最多的坑不是模型答错，而是任务从一开始就没被定义清楚。同事给我一句模糊需求，我会回头追问；Agent 不会追问，它会自信地交出一份看起来很像样、但根本无法验收的产物。</p>
+
+      <p>最常见的两种翻车方式：让它改一个模块，它顺手重构了另外两个文件；让它写一份报告，它编了一组好看却不存在的数字。根因是同一个——我把「目标」当成了「规格」。目标说明要去哪儿，规格才说明怎么算到了。</p>
+
+      <p>所以我现在把 Agent 当执行器，不当大脑。执行器不怕笨，怕的是指令含糊。</p>
+
+      <p>一个具体的工程经验：交付任何任务时，最值钱的一句话是「完成后运行这条命令，并把真实输出贴出来」。加上这条，任务一次过的比例明显上升；不加，几乎每件都要我返工。因为输出无法伪造，而「已完成」三个字可以。</p>
+
+      <p>还有一条经验同样有效：如果任务涉及多个文件，先只给它一个文件的修改范围，跑通再逐个扩大。范围一旦放开，Agent 的注意力就会从「改对」滑向「改多」，而多出来的改动通常都是你不需要的。</p>
+
+      <h2>今天就能试的 4 步</h2>
+      <ol>
+        <li>写验收标准：两条能判定真假的条件，加一条可执行的验证命令。删掉「做好」「优化一下」这类词，它们对模型等于没说。</li>
+        <li>控制范围：一次只允许改一个文件或一个模块，验收通过后再扩大。</li>
+        <li>要证据：要求贴出命令与真实 stdout，不接受「我已经完成了」的复述作为交付。</li>
+        <li>最后回读：让 Agent 重新读取产物，列出它做过的假设与未覆盖的分支，你来挑刺。</li>
+      </ol>
+
+      <p class="disclaimer">本文是个人工程实践笔记，观点仅代表作者本人，记录于 2026-11-01。文中不含任何投资建议、产品推荐或第三方数据。</p>
+    </article>
+  </div>
+</body>
+</html>
