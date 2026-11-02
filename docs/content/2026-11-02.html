@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>多 Agent 协作真正的瓶颈在交接，不在模型</title>
+<style>
+  :root {
+    --bg: #0b0e14;
+    --surface: #141821;
+    --fg: #e8eaed;
+    --muted: #b3b8c4;
+    --border: #232836;
+    --accent: #76a7ff;
+  }
+  * { box-sizing: border-box; }
+  html {
+    -webkit-text-size-adjust: 100%;
+    background: var(--bg);
+  }
+  body {
+    margin: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+    font-size: 17px;
+    line-height: 1.78;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    padding: 22px 18px calc(30px + env(safe-area-inset-bottom));
+  }
+  .wrap {
+    width: min(100%, 720px);
+    margin: 0 auto;
+  }
+  .brand {
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin: 0 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .brand::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex: 0 0 auto;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 22px 18px;
+  }
+  h1 {
+    margin: 0 0 12px;
+    font-size: clamp(25px, 7vw, 34px);
+    line-height: 1.25;
+    font-weight: 700;
+    color: var(--fg);
+    overflow-wrap: break-word;
+  }
+  .meta {
+    margin: 0 0 20px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+  .meta span + span::before {
+    content: " · ";
+    opacity: 0.6;
+  }
+  p {
+    margin: 0 0 1.05em;
+  }
+  ol {
+    margin: 0 0 1.05em;
+    padding-left: 1.25em;
+  }
+  li {
+    margin-bottom: 0.7em;
+  }
+  li::marker {
+    color: var(--accent);
+  }
+  strong {
+    color: #ffffff;
+    font-weight: 600;
+  }
+  .disclaimer {
+    margin: 22px 0 0;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+  a {
+    color: var(--accent);
+    overflow-wrap: anywhere;
+    word-break: break-all;
+  }
+  @media (min-width: 640px) {
+    body {
+      padding: 34px 28px calc(40px + env(safe-area-inset-bottom));
+      font-size: 18px;
+    }
+    .card {
+      border-radius: 20px;
+      padding: 36px 36px;
+    }
+    .brand {
+      margin-bottom: 18px;
+    }
+  }
+  @media print {
+    body {
+      background: #ffffff;
+      color: #111111;
+      padding: 0;
+      font-size: 12pt;
+    }
+    .card {
+      background: #ffffff;
+      border: 1px solid #cccccc;
+      border-radius: 0;
+      padding: 0;
+    }
+    .brand, .meta, .disclaimer {
+      color: #444444;
+    }
+    a {
+      color: #111111;
+      text-decoration: underline;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="brand">MrFai 的 Agent 笔记</p>
+    <article class="card">
+      <h1>多 Agent 协作真正的瓶颈在交接，不在模型</h1>
+      <p class="meta"><span>2026-11-02</span><span>多 Agent 协作</span></p>
+
+      <p>很多人一上手多 Agent，第一反应是"多接几个更强的模型"。我自己折腾过几轮才明白：大部分翻车跟模型聪不聪明没多大关系，问题几乎全出在<strong>交接</strong>上。</p>
+
+      <p>最常见的一种失败：两个 Agent 同时写同一个目录。我派 A 去改配置，派 B 去跑验证，B 读到的却是几分钟前的版本——它没意识到 A 已经动过手，于是用旧快照把新改动盖了回去。文件被悄悄回滚，而两边都以为自己干完了。修法很土：动手之前重新读盘，别信上下文里存的那一份。</p>
+
+      <p>第二种失败更隐蔽：计划阶段和执行阶段挤在同一个会话里。执行时读到"计划：已完成 X"，就跳过了真正的检查，把假设当成事实往下推，错误一路滚到最后才暴露。后来我把计划写进文件，新会话从文件恢复，只认写在盘上的东西。</p>
+
+      <p>第三种是我自己踩的：让写代码的 Agent 审自己的代码。每个设计决策都被解释得很合理，理由越充分，漏洞越藏得深。审查必须换一个上下文、换一双眼睛——同一套上下文里的自我审查，几乎不会 FAIL。</p>
+
+      <p>如果只记四步，我会记这些：</p>
+
+      <ol>
+        <li><strong>划清所有权</strong>：共享产物按路径分工，同一文件同一时间只允许一个 Agent 写；要交接就显式交接，不要靠"共享目录反正大家都能改"。</li>
+        <li><strong>用文件传状态，不用对话传状态</strong>：把目标、已做的事、证据、卡点、下一步写进文件；接手的人从文件开始，而不是从上一位的总结开始。</li>
+        <li><strong>执行前先复述计划与验收标准</strong>：谁发现偏差，当场改。计划错了就当场改计划，别硬着头皮做完再算总账。</li>
+        <li><strong>审查换一个上下文</strong>，最好换一种视角，而不是同一套上下文里的第二次自查。</li>
+      </ol>
+
+      <p>多 Agent 的收益确实存在，但它放大的是执行速度，不是判断质量。判断质量还是得你自己扛。</p>
+
+      <p class="disclaimer">本文是个人实践记录，不构成任何投资或商业建议；文中不含具体产品数据与真实用户信息。</p>
+    </article>
+  </div>
+</body>
+</html>
