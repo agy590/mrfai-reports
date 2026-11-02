@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<title>每日市场简报 — 2026-11-02</title>
+<style>
+  /* ==========================================================
+     MOBILE-FIRST REPORT TEMPLATE  (rev 2026-10-20)
+     规则：手机竖屏 390px 下必须零横向滚动。
+     宽表在 <=680px 自动转为逐行卡片（依赖文件末尾 data-label JS）。
+     ========================================================== */
+  :root{
+    --bg:#0f1419;
+    --card:#1a1f29;
+    --border:#2a313c;
+    --text:#e6edf3;
+    --muted:#8b949e;
+    --up:#3fb950;
+    --down:#f85149;
+    --neutral:#d29922;
+    --accent:#58a6ff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Noto Sans CJK SC","Microsoft YaHei",sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    font-size:15px;
+    line-height:1.65;
+    padding:20px 18px 44px;
+    max-width:1100px;
+    margin:0 auto;
+    overflow-wrap:break-word;
+    word-break:break-word;
+  }
+  img,svg,video,canvas{max-width:100%;height:auto}
+
+  .header{border-bottom:2px solid var(--accent);padding-bottom:14px;margin-bottom:20px}
+  .header h1{font-size:26px;line-height:1.3;color:var(--accent);margin-bottom:6px}
+  .header .meta{color:var(--muted);font-size:13px}
+
+  .section{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:16px}
+  .section h2{color:var(--accent);font-size:19px;line-height:1.35;margin-bottom:14px;border-left:4px solid var(--accent);padding-left:10px}
+  .section h3{color:var(--text);font-size:15px;margin:18px 0 8px}
+
+  /* ---- KPI ---- */
+  .kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:12px 0}
+  .kpi-card{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px 14px}
+  .kpi-label{color:var(--muted);font-size:12px;letter-spacing:.4px;margin-bottom:4px}
+  .kpi-value{font-size:21px;font-weight:650;line-height:1.3}
+
+  /* ---- 表格（桌面）---- */
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px;table-layout:auto}
+  th{background:var(--border);color:var(--muted);text-align:left;padding:8px 10px;font-weight:600;font-size:12px;letter-spacing:.4px;white-space:nowrap}
+  td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top;overflow-wrap:anywhere}
+  tr:last-child td{border-bottom:none}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+
+  code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.92em;overflow-wrap:anywhere;word-break:break-all}
+  pre{background:#0b0f14;border:1px solid var(--border);border-radius:8px;padding:12px;overflow-x:auto;-webkit-overflow-scrolling:touch;font-size:12.5px;margin:10px 0}
+  pre code{white-space:pre;word-break:normal}
+
+  .up{color:var(--up)}
+  .down{color:var(--down)}
+  .neutral{color:var(--neutral)}
+  .muted{color:var(--muted)}
+
+  .tag{display:inline-block;padding:2px 8px;border-radius:99px;font-size:11.5px;font-weight:600;border:1px solid transparent;white-space:nowrap}
+  .tag-ok{color:var(--up);border-color:rgba(63,185,80,.35);background:rgba(63,185,80,.10)}
+  .tag-info{color:var(--accent);border-color:rgba(88,166,255,.35);background:rgba(88,166,255,.10)}
+  .tag-warn{color:var(--neutral);border-color:rgba(210,153,34,.4);background:rgba(210,153,34,.10)}
+
+  ul,ol{padding-left:20px;margin:8px 0}
+  li{margin-bottom:5px}
+  a{color:var(--accent);text-decoration:none;overflow-wrap:anywhere}
+
+  .source{font-size:12px;color:var(--muted);margin-top:8px}
+  .footer{color:var(--muted);font-size:12px;text-align:center;margin-top:28px;padding-top:14px;border-top:1px solid var(--border)}
+  .disclaimer{background:rgba(210,153,34,.08);border:1px solid rgba(210,153,34,.3);border-radius:8px;padding:10px 12px;font-size:12.5px;color:#e3b341;margin-top:12px}
+
+  /* ==========================================================
+     手机：<=680px 全部单列 + 表格转卡片
+     ========================================================== */
+  @media (max-width:680px){
+    body{padding:14px 12px 36px;font-size:15px}
+    .header{border-bottom-width:1px;padding-bottom:12px;margin-bottom:14px}
+    .header h1{font-size:20px}
+    .header .meta{font-size:12px;line-height:1.55}
+    .section{padding:14px 12px;border-radius:10px;margin-bottom:12px}
+    .section h2{font-size:16.5px;margin-bottom:12px;padding-left:8px;border-left-width:3px}
+    .section h3{font-size:14.5px;margin-top:16px}
+
+    .kpi{grid-template-columns:1fr 1fr;gap:8px}
+    .kpi-card{padding:10px 11px}
+    .kpi-value{font-size:17px;line-height:1.25}
+    .kpi-label{font-size:11px}
+
+    /* 表格 -> 卡片 */
+    table{display:block;margin:10px 0 2px;font-size:14px}
+    thead{display:none}
+    tbody{display:block}
+    tbody tr{
+      display:block;background:var(--bg);border:1px solid var(--border);
+      border-radius:8px;padding:6px 10px;margin-bottom:8px;
+    }
+    td{
+      display:block;padding:7px 0;font-size:14px;text-align:left;
+      border-bottom:1px dashed rgba(255,255,255,.07);
+    }
+    td:last-child{border-bottom:none}
+    td::before{
+      content:attr(data-label);display:block;
+      color:var(--muted);font-size:11px;font-weight:600;
+      line-height:1.4;letter-spacing:.3px;margin-bottom:2px;
+    }
+    td:not([data-label])::before{display:none}
+    td > *{min-width:0;max-width:100%}
+    td.num,th.num{text-align:right}
+    tr:hover td{background:transparent}
+
+    pre{font-size:11.5px;padding:10px;white-space:pre-wrap;overflow-x:visible}
+    pre code{white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere}
+    ul,ol{padding-left:18px}
+    li{margin-bottom:6px}
+    .tag{font-size:11px;padding:2px 7px}
+  }
+  @media (max-width:400px){
+    .kpi{grid-template-columns:1fr}
+    body{padding:12px 10px 32px}
+  }
+</style>
+</head>
+<body>
+  <div class="header">
+    <h1>📊 每日市场简报 — 2026-11-02</h1>
+    <div class="meta">马来西亚 + 美国双主线 · 采集时刻 2026-11-02 09:15:37 MYT · 数据源: Yahoo Finance（chart/v8 只读快照）、bnm.gov.my、federalreserve.gov、bls.gov、ismworld.org、Reuters、AP、CNBC、Bloomberg、The Star/Bernama、The Edge、Newsquawk</div>
+  </div>
+
+  <div class="section">
+    <h2>⚠️ 观察层声明</h2>
+    <p>本报告仅作宏观、事件与跨市场状态观察，不提供操作建议、买卖或入场指令、止损或目标价、R/R、仓位与杠杆。数据仅为各自来源与时间的观察资料，不代表任何合约的实时执行数据，也不替代既有 MGC 流程。各市场交易时段不一致，行情时刻逐项标注，不可跨时点归因。</p>
+    <div class="kpi">
+      <div class="kpi-card"><div class="kpi-label">KLCI（09:00:15 MYT）</div><div class="kpi-value">1,613.21 <span class="down">-0.15%</span></div></div>
+      <div class="kpi-card"><div class="kpi-label">USD/MYR（09:15:06 MYT）</div><div class="kpi-value">4.062 <span class="down">+0.13%</span></div></div>
+      <div class="kpi-card"><div class="kpi-label">ES=F（09:05:33 MYT）</div><div class="kpi-value">7,640.00 <span class="up">+0.34%</span></div></div>
+      <div class="kpi-card"><div class="kpi-label">VIX（10-30 收盘）</div><div class="kpi-value">19.42 <span class="down">+12.91%</span></div></div>
+      <div class="kpi-card"><div class="kpi-label">10Y ^TNX（10-30）</div><div class="kpi-value">4.929% <span class="up">-6.0bp</span></div></div>
+      <div class="kpi-card"><div class="kpi-label">Brent BZ=F（09:05:12 MYT）</div><div class="kpi-value">111.42 <span class="down">-5.29%</span></div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>🇲🇾 马来西亚股市（重点 1）</h2>
+
+    <h3>KLCI 走势</h3>
+    <p><b>KLCI 最新：</b>1,613.21（<span class="down">-2.39，-0.15%</span>），行情时刻 2026-11-02 09:00:15 MYT（开盘时段报价，基准为 10-30 收盘 1,615.60，Yahoo <code>^KLSE</code>）</p>
+    <p><b>KLCI 5 日走势：</b>收盘序列 1,604.36(10-26) → 1,611.85 → 1,613.87 → 1,611.16 → 1,615.60(10-30)，区间 1,604.36–1,615.60，五日净升约 0.7%；Bernama 口径周五对周五 <span class="up">+4.04</span> 点至 1,615.60（The Star / Bernama，2026-11-01）</p>
+    <p><b>马币 USD/MYR：</b>4.062（<span class="down">+0.0052，+0.13%</span>），行情时刻 09:15:06 MYT；五日序列 4.0828 → 4.0836 → 4.0865 → 4.0739 → 4.0568（马币周内自 4.0865 走强至 4.0568），今早小幅回吐。</p>
+
+    <h3>主要成分股（Yahoo Finance；每行带本次行情时刻）</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>代码</th><th>公司</th><th class="num">价格（RM）</th><th class="num">Δ（RM）</th><th class="num">Δ%</th><th>行情时间（MYT）</th><th>备注</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><code>1155.KL</code></td><td>MAYBANK 马银行</td><td class="num">10.00</td><td class="num down">-0.02</td><td class="num down">-0.2%</td><td>2026-11-02 09:00:05</td><td>银行板块分化中的小幅回落；本周金融指数整体走弱</td></tr>
+        <tr><td><code>1023.KL</code></td><td>CIMB 联昌银行</td><td class="num">6.90</td><td class="num down">-0.01</td><td class="num down">-0.14%</td><td>2026-11-02 09:00:30</td><td>与马银行同步小幅走低</td></tr>
+        <tr><td><code>1295.KL</code></td><td>PBBANK 公众银行</td><td class="num">4.77</td><td class="num up">+0.02</td><td class="num up">+0.42%</td><td>2026-11-02 09:00:04</td><td>三只银行中唯一上涨</td></tr>
+        <tr><td><code>5347.KL</code></td><td>TENAGA 国家能源</td><td class="num">13.30</td><td class="num neutral">0.00</td><td class="num neutral">0.0%</td><td>2026-11-02 09:00:00</td><td>持平；油价在谈判与霍尔木兹扰动间双向波动</td></tr>
+        <tr><td><code>5225.KL</code></td><td>IHH 医疗集团</td><td class="num">7.75</td><td class="num down">-0.10</td><td class="num down">-1.27%</td><td>2026-11-02 09:00:01</td><td>跌幅居前；本次未核实到当日个股层面新闻</td></tr>
+        <tr><td><code>7113.KL</code></td><td>TOPGLOV 顶级手套</td><td class="num">0.965</td><td class="num down">-0.01</td><td class="num down">-1.03%</td><td>2026-11-02 09:00:30</td><td>FY2026 净利 RM3.08 亿、同比 +192%，但券商评级分歧明显（见下）</td></tr>
+      </tbody>
+    </table>
+    <p class="source">表注：来源 Yahoo Finance chart/v8 只读快照，采集于 2026-11-02 09:15:37 MYT。价格、变动、涨跌幅与行情时刻均逐行抄自本次快照同一行 JSON，Markdown 与 HTML 表格数值一致。显示采用常规两位小数，数值与快照一致（快照原值 10.0 / 6.9 / 13.3；TOPGLOV 保留 3 位小数 0.965）；TENAGA 快照变动为 -0.0 / -0.0%，显示为持平。六只个股本次均无 error 项。</p>
+
+    <h3>板块动态</h3>
+    <ul>
+      <li><b>银行 / 金融：</b>上周金融指数回落 106.33 点至 18,547.99（Bernama，2026-11-01）；今早三只银行涨跌互现，宽度弱于指数。</li>
+      <li><b>能源 / 种植：</b>上周能源指数 <span class="up">+17.49</span> 至 852.16，种植指数 <span class="up">+19.94</span> 至 8,697.42（Bernama，2026-11-01）。</li>
+      <li><b>成交：</b>上周成交 155.3 亿股 / RM99.7 亿，主力市场成交量降至 51.3 亿股 / RM88.3 亿（Bernama，2026-11-01）。</li>
+    </ul>
+
+    <h3>关键新闻</h3>
+    <ul>
+      <li><b>10 月制造业 PMI 回升至 51.0（前值 49.90）：</b>重返扩张区间（S&amp;P Global，2026-11-02 08:50 MYT 发布；Newsquawk）；EL7 记录的市场预期为 50.2。</li>
+      <li><b>BNM 年内最后一次议息在 11 月 5 日：</b>OPR 现为 2.75%；彭博调查中 9 位经济学家有 8 位预计维持，UOB 与 Nomura 预计加息 25bp 至 3.00%（bnm.gov.my 政策日程；The Star，2026-11-02）。</li>
+      <li><b>交易所有关监管：</b>Serba Dinamik 就交易所指令在吉隆坡高庭起诉 Bursa Malaysia（The Edge，2026-11-02）。</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🇺🇸 美国期货 + 美股（重点 2）</h2>
+
+    <h3>三大指数期货</h3>
+    <p class="source">行情时刻 2026-11-02 09:05 MYT ＝ 美东 11-01 20:05 EST，为周日电子盘重开后的报价；基准为 10-30 结算。</p>
+    <table>
+      <thead>
+        <tr><th>期货</th><th class="num">水平</th><th class="num">Δ</th><th class="num">Δ%</th><th>备注</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>ES=F (S&amp;P 500)</td><td class="num">7640.00</td><td class="num up">+26.00</td><td class="num up">+0.34%</td><td>周日重开后小幅修复</td></tr>
+        <tr><td>NQ=F (Nasdaq 100)</td><td class="num">28707.25</td><td class="num up">+173.25</td><td class="num up">+0.61%</td><td>上周五该合约结算 -3.5%，修复幅度最小但方向一致</td></tr>
+        <tr><td>YM=F (Dow)</td><td class="num">52058</td><td class="num up">+140</td><td class="num up">+0.27%</td><td>能源股财报提供支撑</td></tr>
+      </tbody>
+    </table>
+
+    <h3>关键宏观指标</h3>
+    <ul>
+      <li><b>美元指数 DXY：</b>101.937（<span class="down">+0.06%</span>，行情时刻 09:05:35 MYT）</li>
+      <li><b>美债 10Y 收益率 <code>^TNX</code>：</b>4.929%（较 10-29 收盘 4.989% <span class="up">低 6.0bp</span>；行情时刻 2026-10-31 02:59:54 MYT，为上周五盘中报价。AP 报道同日 10Y 回落至 4.93%、前值 4.98%）</li>
+      <li><b>VIX 恐慌指数 <code>^VIX</code>：</b>19.42（<span class="down">+2.22，+12.91%</span>；行情时刻 2026-10-31 04:15:01 MYT，上周五收盘。Cboe 确认当日收于 20 下方、涨幅 12.91%）</li>
+    </ul>
+
+    <h3>Magnificent 7</h3>
+    <p class="source">美东 10-30 收盘，时间戳 2026-10-31 04:00:01 MYT；非今日盘前。</p>
+    <table>
+      <thead>
+        <tr><th>代码</th><th>公司</th><th class="num">收盘价（USD）</th><th class="num">涨跌</th><th class="num">Δ%</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>NVDA</code></td><td>英伟达</td><td class="num">204.64</td><td class="num down">-9.02</td><td class="num down">-4.22%</td></tr>
+        <tr><td><code>AAPL</code></td><td>苹果</td><td class="num">344.63</td><td class="num down">-4.28</td><td class="num down">-1.23%</td></tr>
+        <tr><td><code>MSFT</code></td><td>微软</td><td class="num">521.91</td><td class="num down">-8.23</td><td class="num down">-1.55%</td></tr>
+        <tr><td><code>GOOGL</code></td><td>谷歌</td><td class="num">279.84</td><td class="num down">-3.98</td><td class="num down">-1.40%</td></tr>
+        <tr><td><code>META</code></td><td>Meta</td><td class="num">614.99</td><td class="num down">-9.53</td><td class="num down">-1.53%</td></tr>
+        <tr><td><code>TSLA</code></td><td>特斯拉</td><td class="num">399.81</td><td class="num down">-3.49</td><td class="num down">-0.87%</td></tr>
+        <tr><td><code>AMZN</code></td><td>亚马逊</td><td class="num">240.35</td><td class="num down">-3.44</td><td class="num down">-1.41%</td></tr>
+      </tbody>
+    </table>
+
+    <h3>今日关注事件（时间均为美东 ET）</h3>
+    <ul>
+      <li><b>ISM 制造业 PMI（10 月）：</b>11-02 10:00 ET（＝23:00 MYT），市场预期 54.7、前值 54.5（ISM 官方发布日历；Investing.com 日历）</li>
+      <li><b>美国中期选举：</b>11-03（AP）</li>
+      <li><b>JOLTS 职位空缺（9 月）：</b>11-03 10:00 ET（bls.gov 发布日程）</li>
+      <li><b>BNM 议息决议：</b>11-05（bnm.gov.my）</li>
+      <li><b>生产率与成本（Q3）：</b>11-05 08:30 ET（bls.gov）</li>
+      <li><b>非农就业（10 月）：</b>11-06 08:30 ET（bls.gov）</li>
+      <li><b>CPI（10 月）：</b>11-10 08:30 ET（bls.gov）</li>
+      <li><b>FOMC 纪要（10-27/28 会议）：</b>11-18 14:00 ET（federalreserve.gov 11 月发布日历）；下次 FOMC 为 12-08/09 并附经济预测（federalreserve.gov FOMC 日历）</li>
+    </ul>
+
+    <h3>核心驱动因素</h3>
+    <p>AI 资本开支回报成为定价核心：Alphabet 10-29 因搜索收入不及预期与自由现金流转负 -90.7 亿美元单日 <span class="down">-12.6%</span>（CNBC / Bloomberg）；Intel 因四季度指引与以色列工厂爆炸停产 <span class="down">-28.6%</span>（AP / CNBC）；Amazon 营收与 EPS 双双不及预期，过去 12 个月自由现金流 -424 亿美元、Q3 资本开支 773 亿美元（Schwab / AP）。上周五纳指 <span class="down">-2.86%</span>、标普 <span class="down">-1.82%</span>，为 6 月以来最差（AP / Cboe），10 月为 2025 年 3 月以来最差月份（Yahoo Finance / Reuters）。</p>
+  </div>
+
+  <div class="section">
+    <h2>🥇 贵金属</h2>
+    <p><b>COMEX 黄金主力 GC=F：</b>3,914.3 美元/盎司（<span class="up">+15.40，+0.39%</span>，行情时刻 09:05:35 MYT，基准 10-30 结算 3,898.90）</p>
+    <h3>驱动因素</h3>
+    <ul>
+      <li><b>美元指数：</b>101.937（+0.06%），小幅走强对金价构成边际压制</li>
+      <li><b>美债 10Y：</b>4.929%（-6.0bp），利率回落与避险需求方向相反</li>
+      <li><b>风险偏好 / 避险：</b>上周五科技股抛售推升避险需求，但金价当日仍跌逾 3%（Reuters / Schwab，10-30），本周自 10-27 的 4,074.60 回落至 3,898.90</li>
+      <li><b>关键事件：</b>11-02 ISM、11-03 美国中期选举、11-06 非农，是本周验证利率路径的三个节点</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🛢 原油</h2>
+    <p><b>WTI CL=F：</b>102.03 美元/桶（<span class="down">-2.09，-2.01%</span>，行情时刻 09:05:33 MYT，基准 10-30 柱 104.12）</p>
+    <p><b>Brent BZ=F：</b>111.42 美元/桶（<span class="down">-6.22，-5.29%</span>，行情时刻 09:05:12 MYT，基准 10-30 柱 117.64）</p>
+    <p class="source">口径提示：Yahoo <code>BZ=F</code> 为 "Brent Crude Oil Last Day Financial" 合约，其 10-30 基准 117.64 与 Reuters 近月布伦特 113.43 属不同合约口径，故 -5.29% 仅在 Yahoo 同一序列内成立；Reuters 2026-11-02 报道近月布伦特 111.84（-1.40%）、WTI 102.56（-1.50%，0011 GMT），与本次快照水平一致。</p>
+    <h3>驱动因素</h3>
+    <ul>
+      <li><b>OPEC+：</b>11-01 决定 12 月维持产量目标不变（沙特 10.478 mb/d、俄罗斯 9.949、伊拉克 4.431）</li>
+      <li><b>地缘 / 供应端：</b>伊朗与卡塔尔第三日谈判，选举前双方均留有升级空间；霍尔木兹油轮遇袭继续推高运费与保险成本</li>
+      <li><b>价格背景：</b>10 月布伦特收于六个月高位（Reuters，2026-11-02）</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>💡 总结与观察</h2>
+    <p><b>市场情绪：</b>上周五为 risk-off（AI 资本开支回报叙事受质疑，VIX +12.91%）；亚洲时段美股期货小幅修复、油价回吐地缘溢价，整体为震荡偏谨慎。</p>
+    <h3>今日三大关注点</h3>
+    <ol>
+      <li>ISM 制造业 PMI（11-02 10:00 ET）与美国中期选举（11-03）：检验上周五科技股回撤是估值重置还是更广泛的风险收缩。</li>
+      <li>11-05 BNM 议息：维持 2.75% 为主流预期，声明措辞与油价传导是马币与本地银行股的主要观察变量。</li>
+      <li>11-06 非农与 11-18 FOMC 纪要：非农将检验 10Y 回落至 4.93% 的路径是否延续，纪要补充 10-28 那次 10-2 分歧投票的细节。</li>
+    </ol>
+    <h3>马来西亚视角观察</h3>
+    <ul>
+      <li>指数在 1,600–1,630 区间震荡（Rakuten Trade 预估，The Star，2026-11-02）；10 月制造业 PMI 重返 50 上方提供基本面支撑，但金融板块上周净跌 106 点、成交金额下降，说明宽度弱于指数。</li>
+      <li>马币本周自 4.0865 强至 4.0568，Brent 仍在 111–117 区间：谈判进展与霍尔木兹扰动的双向波动，是本币与出口相关标的（含今日持平的 Tenaga 13.30）主要不确定性来源。</li>
+    </ul>
+    <h3>美股视角观察</h3>
+    <ul>
+      <li>期货在周日重开后小幅修复（ES +0.34%、NQ +0.61%、YM +0.27%），但上周五下跌集中在 AI 资本开支相关标的（Intel、Alphabet、Microsoft、Meta、Amazon），且当日放量与 VIX 同步抬升。</li>
+      <li>10Y 回落至 4.93% 与纳指下跌并存，指向本轮回撤更多由个股盈利与现金流预期驱动，而非无差别利率冲击；后续验证点在 11-06 非农与 11-10 CPI。</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>📚 数据来源与局限</h2>
+    <ul>
+      <li><b>价格、汇率与指数：</b>Yahoo Finance chart/v8 只读快照（2026-11-02 09:15:37 MYT 采集，24 个代码全部成功，missing_core 为空）；各品种行情时刻见正文标注。</li>
+      <li><b>事件与日历：</b>bnm.gov.my、federalreserve.gov（FOMC 日历与 11 月发布日历）、bls.gov（2026 年 11 月发布日程）、ismworld.org（发布日历）、Reuters、AP、CNBC、Bloomberg、The Star / Bernama、The Edge、Newsquawk、Investing.com（仅作参考，不复述原文）。</li>
+      <li><b>局限：</b>美股个股、VIX 与 10Y 为 10-30 收盘口径，非 11-02 盘前；Brent 合约口径差异见原油章节；第三方数据可能经供应商修订。</li>
+    </ul>
+    <div class="disclaimer">本报告为观察记录，不含操作建议，不构成投资建议。所有数据均为各来源在标注时点的观察资料，不代表任何合约的实时执行数据；MGC 的行情验证与执行判断由既有 MGC 流程独立负责。</div>
+  </div>
+
+  <div class="footer">
+    由 Hermes Agent 自动生成 · 数据来源: Yahoo Finance、bnm.gov.my、federalreserve.gov、bls.gov、ismworld.org、Reuters、AP、CNBC、Bloomberg、The Star/Bernama、The Edge、Newsquawk<br>
+    本报告仅供参考，不构成投资建议
+  </div>
+
+<!-- 表格转卡片所需的标签注入：必须在 </body> 前保留 -->
+<script>
+(function(){
+  function label(){
+    document.querySelectorAll('table').forEach(function(t){
+      var ths=[].map.call(t.querySelectorAll('thead tr:last-child th'),function(th){
+        return th.textContent.replace(/\s+/g,' ').trim();
+      });
+      if(!ths.length) return;
+      t.querySelectorAll('tbody tr').forEach(function(tr){
+        [].forEach.call(tr.children,function(td,i){
+          if(i<ths.length && ths[i] && !td.hasAttribute('data-label')){
+            td.setAttribute('data-label',ths[i]);
+          }
+        });
+      });
+    });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',label);
+  else label();
+})();
+</script>
+</body>
+</html>
