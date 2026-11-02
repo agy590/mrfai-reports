@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日科技新闻简报 | 2026-11-02</title>
+<style>
+:root{
+  --bg:#0b0e14;
+  --panel:#121722;
+  --panel-2:#161c29;
+  --border:#232c3d;
+  --text:#e6edf3;
+  --muted:#93a1b5;
+  --accent:#5cc8ff;
+  --accent-2:#7ee787;
+  --warn:#f0b429;
+  --hot:#ff7b72;
+  --link:#7fb3ff;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text)}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  line-height:1.75;
+  font-size:16px;
+  -webkit-text-size-adjust:100%;
+}
+.wrap{max-width:860px;margin:0 auto;padding:28px 18px 64px}
+header{border-bottom:1px solid var(--border);padding-bottom:18px;margin-bottom:24px}
+.kicker{font-size:13px;letter-spacing:.14em;color:var(--accent);text-transform:uppercase;margin:0 0 8px}
+h1{font-size:27px;line-height:1.3;margin:0 0 10px}
+.meta{color:var(--muted);font-size:13.5px;margin:0}
+h2{font-size:20px;margin:34px 0 14px;padding-left:11px;border-left:4px solid var(--accent)}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px 18px 16px;margin:16px 0}
+.card.gh{border-color:#2f6f4f;background:linear-gradient(180deg,#121a20,#121722)}
+.card h3{font-size:18.5px;margin:0 0 10px;line-height:1.45}
+.kv{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 12px;font-size:14.5px}
+.kv dt{color:var(--muted);white-space:nowrap}
+.kv dd{margin:0;word-break:break-word}
+ul,ol{margin:8px 0;padding-left:22px}
+li{margin:5px 0}
+p{margin:9px 0}
+a{color:var(--link);text-decoration:none;border-bottom:1px solid rgba(127,179,255,.32);word-break:break-word}
+a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+.tldr{list-style:none;padding:0;counter-reset:t}
+.tldr li{counter-increment:t;position:relative;padding-left:34px;margin:11px 0}
+.tldr li::before{content:counter(t);position:absolute;left:0;top:2px;width:22px;height:22px;border-radius:6px;background:var(--panel-2);border:1px solid var(--border);color:var(--accent);font-size:12.5px;text-align:center;line-height:20px;font-weight:700}
+.tag{display:inline-block;font-size:12px;padding:2px 9px;border-radius:999px;border:1px solid var(--border);background:var(--panel-2);color:var(--muted);margin:0 6px 6px 0;white-space:nowrap}
+.tag.hot{color:var(--hot);border-color:#4a2b2b}
+.tag.star{color:var(--warn);border-color:#4a3d1c}
+.tag.tip{color:var(--accent-2);border-color:#25452f}
+.tag.ok{color:var(--accent-2);border-color:#25452f}
+.tag.part{color:var(--warn);border-color:#4a3d1c}
+.tag.src{color:var(--accent);border-color:#1f3d52}
+.note{background:var(--panel-2);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:10px 13px;margin:12px 0;color:#c9d4e3;font-size:14.5px}
+.warnbox{background:#1a1610;border-left:3px solid var(--warn);border-radius:0 8px 8px 0;padding:10px 13px;margin:12px 0;color:#e6d8b8;font-size:14.5px}
+h4{font-size:15px;margin:16px 0 6px;color:var(--accent-2);font-weight:700}
+.stat{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.stat div{flex:1 1 160px;background:var(--panel-2);border:1px solid var(--border);border-radius:10px;padding:10px 12px}
+.stat b{display:block;font-size:21px;color:var(--accent);line-height:1.3}
+.stat span{font-size:12.5px;color:var(--muted)}
+.srclist{font-size:14px}
+.srclist li{margin:7px 0}
+footer{margin-top:38px;padding-top:16px;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
+.obs{counter-reset:o}
+.obs li{margin:10px 0}
+code{background:var(--panel-2);border:1px solid var(--border);border-radius:4px;padding:1px 5px;font-size:13.5px;color:#cfe3ff}
+@media (max-width:560px){
+  .wrap{padding:20px 13px 48px}
+  h1{font-size:22px}
+  h2{font-size:18px}
+  .card{padding:15px 14px}
+  body{font-size:15.5px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="kicker">每日科技新闻简报 · Daily Tech Briefing</p>
+  <h1>AI 巨额融资落地、Anthropic 取消 5 小时限制、OpenAI 推进 robots.txt 标准</h1>
+  <p class="meta">2026-11-02（+08）｜ 生成于 12:00 ｜ 采集：web_search × 5 + 原文抓取 × 3 ｜ 时效窗口：2026-10-30 至 2026-11-02</p>
+</header>
+
+<h2>当日摘要（TL;DR）</h2>
+<div class="card">
+<ol class="tldr">
+  <li><b>快手可灵 AI 完成约 198.02 亿元（约 29.05 亿美元）增资交割。</b>7 月披露的 204.47 亿元融资上限最终落在 198.02 亿元；两家原定认购方因未按期缴款终止认购，金蝶软件（中国）、沐曦上海等接盘对应份额。交割后快手通过 Lucky Labs 持股 66.68%、掌握 52.45% 表决权。</li>
+  <li><b>Anthropic 重做个人订阅档位。</b>原 "Max 20x" 更名为 <b>Ultra</b>（月费 200 美元不变），已验证账户取消 5 小时使用上限，周上限与 Fable 单独上限保留；官方于 10 月 30 日（美国当地时间）经官方 X 公布。</li>
+  <li><b>OpenAI 将支持 robots.txt 中的通用 AI 训练偏好信号。</b>站点运营方可在 robots.txt 里一次声明对多家模型厂商的训练偏好，官方称将在未来数月内实施，且不取代现有 crawler 控制。</li>
+  <li><b>Dulo Inc. 融资 1.3 亿美元押注"硬件设计 AI"。</b>由 Sebastian Thrun 与 Adrian Aoun 共同创办，方向是用于机器人等复杂物理产品设计与开发的硬件设计基础模型；证据强度偏弱，仅单一报道链。</li>
+  <li><b>GitHub Trending 日榜可见仓库中，今日新增 Star 最高为 <code>pingdotgg/t3code</code>（+3,094 stars today）。</b></li>
+</ol>
+</div>
+
+<h2>GitHub Trending 日增最高仓库</h2>
+<div class="card gh">
+<h3>GitHub Trending 日榜可见仓库中，今日新增 Star 最高</h3>
+<dl class="kv">
+  <dt>仓库</dt><dd><a href="https://github.com/pingdotgg/t3code">pingdotgg/t3code</a></dd>
+  <dt>今日新增</dt><dd><b style="color:var(--accent-2)">+3,094 stars today</b></dd>
+  <dt>总 Star</dt><dd>38,355（页面 stargazers 计数），Fork 8,933</dd>
+  <dt>主要语言</dt><dd>TypeScript</dd>
+  <dt>原始描述</dt><dd>本次抓取的 Trending 快照中该条目<b>未渲染描述行</b>（页面仅给出语言、Star/Fork 计数与贡献者列表），故此处不填写，避免杜撰。</dd>
+</dl>
+<div class="note"><b>判断：</b>一个 TypeScript 项目单日 +3,094 星，说明当日开发者注意力高度集中在编码代理类入口；但 GitHub Trending 的"日增"只是当日关注度脉冲，既不等于全站历史增长排名，也不能推断长期采用或商业化。</div>
+<p class="meta">原始来源：<a href="https://github.com/trending?since=daily">GitHub Trending (since=daily)</a>｜ 本次抓取时间：2026-11-02 12:00（+08）｜ 本次共解析 17 个仓库条目并按整数比较 <code>N stars today</code>，最高值 3,094。</p>
+</div>
+
+<h2>新闻卡片</h2>
+
+<div class="card">
+<h3>1. 快手可灵 AI 完成约 198.02 亿元增资交割，AI 视频赛道刷新单笔纪录</h3>
+<p>
+  <span class="tag hot">🔥 现象级</span><span class="tag">🚨 10-30 突发</span><span class="tag ok">🟢 多方确认</span><span class="tag">财经 / AI 商业化</span>
+</p>
+<dl class="kv">
+  <dt>核心事实</dt><dd>快手科技 10 月 30 日晚在港交所公告，旗下视频生成大模型可灵 AI（北京可灵）的增资协议项下所有条件均已达成，所有投资者已足额缴纳增资款并完成交割，实际到账增资款总额约人民币 198.02 亿元（约 29.05 亿美元）。</dd>
+  <dt>交割结构</dt><dd>实际 198.0184 亿元，低于 7 月公告的 204.47 亿元上限约 6.45 亿元；7 月该轮融资前估值约 150 亿美元。</dd>
+  <dt>股权</dt><dd>快手通过 Lucky Labs 持 66.68% 股权、52.45% 表决权；叠加北京快灵瑞 2.01% 与程一笑 1.01%，快手系保持控制权。</dd>
+  <dt>主要外部股东</dt><dd>上海国方数科 16.9 亿元（1.38%）、国家人工智能产业投资基金 14 亿元（1.15%）、阿里云飞天 13.63 亿元（1.12%）、天津源峰启丰 12.65 亿元（1.04%）。</dd>
+  <dt>份额转让</dt><dd>两家原定认购方因未在期限内缴款而终止认购（合计约 6.45 亿元）；份额由金蝶软件（中国）3 亿元、温州睿达 2.1 亿元、共青城君可 2 亿元、沐曦上海 0.55 亿元、宁波知春华燕 0.1455 亿元承接，金蝶与沐曦为首次入股并获授回购权。</dd>
+  <dt>退出兜底</dt><dd>若未能于 2031 年 10 月 30 日前完成 IPO，或无法在 9 个月内办结全部重组相关监管程序，投资方有权要求按年化 8% 单利回购。</dd>
+  <dt>背景</dt><dd>7 月 2 日快手曾公告对可灵 AI 相关业务重组并引入外部投资者，阿里、腾讯、百度等参投；此次是首轮融资的正式交割与最终股东名单披露。</dd>
+</dl>
+<div class="stat">
+  <div><b>198.02 亿</b><span>实际到账增资款（人民币）</span></div>
+  <div><b>≈29.05 亿美元</b><span>折算金额</span></div>
+  <div><b>66.68% / 52.45%</b><span>快手持股 / 表决权</span></div>
+  <div><b>8% 单利</b><span>回购兜底年化</span></div>
+</div>
+<h4>各方反应</h4>
+<ul>
+  <li><b>国内</b>（证券日报、IT 之家、科创板日报/新浪财经、老虎证券）：关注最终到账金额与让渡份额的新股东身份，尤其是国产 GPU 厂商与软件厂商首次直接入股。</li>
+  <li><b>海外</b>（CNA、TechNode）：强调可灵与 OpenAI、Google、字节跳动视频模型的正面竞争，以及可灵计划明年 IPO 的传闻（引 Bloomberg）。</li>
+  <li><b>市场解读</b>：普遍视之为"AI 视频赛道最大单笔融资"，同时注意到回购兜底条款与 2031 年 IPO 门槛意味着投资方对退出路径有明确时间表。</li>
+</ul>
+<h4>影响分析</h4>
+<p>短期看，这笔资金把可灵从快手内部业务推成有独立融资、独立股东结构的准上市主体，AI 视频赛道的竞争将更依赖资本厚度与迭代速度；中期风险在于可灵的收入体量尚未在公开信息中披露，估值主要由上一轮融资前估值支撑。回购兜底条款是本轮结构中最值得记住的细节——它把"IPO 失败"的风险定价进了条款。</p>
+<h4>来源</h4>
+<ul class="srclist">
+  <li><a href="http://www.zqrb.cn/tmt/tmthangye/2026-10-31/A1793385134187.html">证券日报：可灵AI完成增资交割 全部认购款项已支付完毕</a></li>
+  <li><a href="https://finance.sina.com.cn/roll/2026-10-30/doc-iniwzprp8083394.shtml">新浪财经 / 科创板日报：可灵AI198亿元融资落地</a></li>
+  <li><a href="https://www.ithome.com/1/020/406.htm">IT之家：快手旗下可灵AI 完成约198亿元增资</a></li>
+  <li><a href="https://www.itiger.com/hant/news/1198240896">老虎证券：快手-W 子公司北京可灵完成增资交割</a></li>
+  <li><a href="https://www.channelnewsasia.com/business/kuaishous-kling-ai-unit-completes-near-3-billion-funding-round-6507461">CNA：Kuaishou's Kling AI unit completes a near $3 billion funding round</a></li>
+  <li><a href="https://technode.global/2026/11/02/kuaishou-kling-ai-completes-2-9b-financing/">TechNode：Kuaishou's Kling AI completes $2.9B financing</a></li>
+</ul>
+</div>
+
+<div class="card">
+<h3>2. Anthropic 改名个人订阅档位：Max 20x → Ultra，认证账户取消 5 小时上限</h3>
+<p>
+  <span class="tag star">⭐ 高热</span><span class="tag">📰 10-30 公布</span><span class="tag ok">🟢 多方确认</span><span class="tag">科技 / AI 产品</span>
+</p>
+<dl class="kv">
+  <dt>核心事实</dt><dd>Anthropic 于 10 月 30 日（美国当地时间）通过官方 X 宣布个人付费方案调整：月费 200 美元的 "Max 20x" 更名为 <b>Ultra</b>，月费 100 美元的 "Max 5x" 更名为 <b>Max</b>，价格不变，存量订阅者自动迁移、无需操作。</dd>
+  <dt>Ultra</dt><dd>$200/月；每周用量为 Pro 方案的 10 倍；<b>已验证账户取消 5 小时滚动上限</b>；含每月 $200 的 Claude Platform API credits；Fable 可用至周上限的 50%。</dd>
+  <dt>Max</dt><dd>$100/月；5 小时与每周两个口径均为 Pro 的 5 倍；含每月 $100 的 API credits；同样可用 Fable 至周上限 50%。</dd>
+  <dt>验证机制</dt><dd>与购买时手机号验证是两套独立流程，按账号与支付历史自动判定；未验证的新账户保留临时上限，验证通过后自动解除并邮件通知（可在"设置 → 用量"查看是否显示"当前会话"条）。</dd>
+  <dt>其他</dt><dd>周使用上限维持不变；欧洲区价格分别为 €90 / €180 每月。</dd>
+  <dt>背景</dt><dd>Max 方案自 2025 年 4 月推出时即为 "Expanded Usage"（5 倍）与 "Maximum Flexibility"（20 倍）两档；此次同时改了名字与限额口径（5 小时制 → 周制 + 验证豁免）。</dd>
+</dl>
+<h4>各方反应</h4>
+<ul>
+  <li><b>官方</b>（support.claude.com 帮助中心）：已同步更新，明确 "Max 20x is now called the Ultra plan"，页面标注"本周更新"。</li>
+  <li><b>The Verge</b>：关注命名与 Apple "Max/Ultra" 命名体系撞车。</li>
+  <li><b>ITmedia</b>（2026-11-02 07:00 刊发）：指出新旧倍数口径不同——"20 倍"原指 5 小时用量、"10 倍"现指周用量，单看数字会误判为缩水。</li>
+  <li><b>The New Stack / TNW</b>：认为这是移除 Claude 使用限制的一次实质性动作。</li>
+</ul>
+<h4>影响分析</h4>
+<p>这是一次把"滥用风控"从时间维度转移到身份维度的产品决策——重度用户的工作单元（长报告、跨夜任务）根本不适配滚动时间窗，而滥用者恰恰集中在新账户上，用身份分层比用时间分层更精准。副作用是新旧倍数口径不可比，用户比价变难。</p>
+<h4>来源</h4>
+<ul class="srclist">
+  <li><a href="https://support.claude.com/en/articles/17728952-what-is-the-ultra-plan">Claude 帮助中心（官方）：What is the Ultra plan?</a></li>
+  <li><a href="https://www.theverge.com/ai-artificial-intelligence/1023576/max-ultra-claude">The Verge：Max, Ultra, Claude.</a></li>
+  <li><a href="https://www.itmedia.co.jp/news/article/2611/02/2000002777/">ITmedia：Anthropic、「Claude」の「Max 20x」を「Ultra」に名称変更</a></li>
+  <li><a href="https://thenextweb.com/news/claude-ultra-max-plan-rename-five-hour-limit">TNW：Anthropic renames Claude Max plans and drops Ultra's five-hour limit</a></li>
+  <li><a href="https://thenewstack.io/claude-ultra-session-limit/">The New Stack：Anthropic just removed one of Claude's biggest usage limits</a></li>
+</ul>
+</div>
+
+<div class="card">
+<h3>3. OpenAI 将支持 robots.txt 中的通用 AI 训练偏好信号</h3>
+<p>
+  <span class="tag star">⭐ 高热</span><span class="tag">📰 10-30 公告</span><span class="tag part">🟡 官方原文已核验</span><span class="tag">科技 / 数据合规标准</span>
+</p>
+<dl class="kv">
+  <dt>核心事实</dt><dd>OpenAI 宣布将支持 <code>robots.txt</code> 中的<b>通用 AI 训练偏好信号</b>：网站运营方可以通过同一个信号，一次性向多家参与该标准的模型厂商表达"内容是否用于基础生成式 AI 训练"的偏好，不必再逐个识别各家 crawler 并维护多套规则。</dd>
+  <dt>性质</dt><dd><b>自愿</b>机制；官方称"将在未来数月内"实施，之后再公布实施细节。</dd>
+  <dt>边界</dt><dd>明确<b>不取代</b>现有 crawler 控制——现有 bot 相关控制继续生效并被尊重。</dd>
+  <dt>标准关联</dt><dd>IETF "AI Preferences" 工作组，对应草案 <code>draft-kelley-aipref-training-preference-signal</code> 与 <code>draft-ietf-aipref-vocab</code>；OpenAI 表示加入该工作组并参与共同公告。</dd>
+  <dt>背景</dt><dd>此前网站需针对每个厂商的爬虫分别配置规则；通用信号的思路是把"训练数据偏好"从商业谈判与逐家配置，收敛到协议层的一次声明。</dd>
+</dl>
+<h4>各方反应</h4>
+<ul>
+  <li><b>官方</b>（OpenAI）：定位为"面向开放网络的一步"，理由是让发布者能更简单地表达内容使用选择，同时保留既有控制权。</li>
+  <li><b>标准侧</b>：与 IETF AI Preferences 工作组的推进节奏绑定，OpenAI 明确表示会持续跟进该工作组的讨论。</li>
+  <li><b>媒体侧</b>：本次检索未取到同期独立媒体的深度跟进报道，公开讨论主要发生在标准社区与内容发布方一侧。</li>
+</ul>
+<h4>影响分析</h4>
+<p>这是今天三条新闻里最"基础设施性"的一条：若多家主流模型厂商同步落地，站点维护 AI 抓取偏好的成本可从 O(厂商数) 降到 O(1)，对中小站点尤其友好。但落地节奏由官方自设为"未来数月"，且为自愿机制——实际效果取决于跟进厂商数量，以及站点是否把该信号当作有效指令执行。目前不宜视作"训练数据授权问题已解决"。</p>
+<h4>来源</h4>
+<ul class="srclist">
+  <li><a href="https://openai.com/index/helping-websites-express-ai-training-preferences">OpenAI 官方公告：Making it easier for websites to express AI training preferences</a></li>
+  <li><a href="https://openai.com/news/">OpenAI Newsroom 索引（同条目标注 Oct 30, 2026）</a></li>
+  <li><a href="https://datatracker.ietf.org/doc/draft-kelley-aipref-training-preference-signal/">IETF 草案：aipref training preference signal</a></li>
+</ul>
+</div>
+
+<div class="card">
+<h3>4. Dulo Inc. 融资 1.3 亿美元，押注"硬件设计 AI"基础模型</h3>
+<p>
+  <span class="tag tip">💡 值得关注</span><span class="tag">📰 10-30 事件 / 11-02 报道</span><span class="tag part">🟡 单源但可靠</span><span class="tag">科技 / 创业</span>
+</p>
+<dl class="kv">
+  <dt>核心事实</dt><dd>由 Sebastian Thrun 与 Adrian Aoun 共同创办的 AI 创业公司 Dulo Inc. 通过社交媒体宣布获得 <b>1.3 亿美元（约 1800 亿韩元）</b>融资，方向是开发专门用于硬件设计的 AI 基础模型，目标是支持机器人等复杂物理产品的设计与开发流程；企业估值未公开。</dd>
+  <dt>创始组合</dt><dd>Sebastian Thrun（Waymo 联合创始人）、Adrian Aoun（前谷歌自动驾驶研发负责人）。</dd>
+  <dt>未确认项</dt><dd>轮次名称、领投方、投资方名单、资金用途、公司官方公告与官网内容均未取得。</dd>
+  <dt>背景</dt><dd>Thrun 与 Aoun 的组合在机器人/自动驾驶圈内关注度较高；"硬件设计基础模型"是本轮融资里较少被单独强调的方向——不是通用语言模型，也不是纯视觉模型，而是面向物理产品设计的专用模型。</dd>
+</dl>
+<div class="warnbox"><b>证据强度提示：</b>本条仅由一条原始报道链（ZDNet 韩国转述 The Information）与一条融资数据库收录支撑，无第二独立来源确认。轮次、领投方、估值与资金用途全部未知，<b>不应据此做投资或合作判断</b>。</div>
+<h4>影响分析</h4>
+<p>若该融资按报道落地，"为物理世界设计而生的基础模型"将成为与"为语言/代码而生的基础模型"并列的一类新赌注，值得关注的理由是资本开始从"AI 写软件"外溢到"AI 设计硬件"。但目前证据链不足，只能作为方向性信号。</p>
+<h4>来源</h4>
+<ul class="srclist">
+  <li><a href="https://zdnet.co.kr/view/?no=20261102103404">ZDNet 韩国：전 구글 자율주행 개발 총괄, '하드웨어 설계 AI'로 1800억원 유치</a></li>
+  <li><a href="https://funding.fru.dev/">funding.fru.dev 融资条目（收录日期 Oct 30, 2026）</a></li>
+</ul>
+</div>
+
+<h2>今日观察</h2>
+<div class="card">
+<ol class="obs">
+  <li><b>资本密集度被重新定价。</b>可灵一笔近 30 亿美元的单笔融资，把 AI 视频赛道从"模型能力竞赛"推进到"资本结构设计"阶段。真正值得记住的不是总额，而是股东名单里出现了金蝶软件与沐曦——一家国产 ERP 厂商与一家国产 GPU 厂商直接进入 AI 视频公司的股东层，意味着产业方开始用股权而不是采购合同绑定算力与模型。</li>
+  <li><b>AI 产品的付费墙正在从"时间"改成"身份"。</b>Anthropic 取消 5 小时窗口，换来的是账户验证这一层信任分级。逻辑是：重度用户的工作单元（长报告、跨夜任务）根本不适配滚动时间窗，而滥用者恰恰集中在新账户上——用身份分层比用时间分层更精准。副作用是新旧倍数口径不可比，比价变难。</li>
+  <li><b>训练数据授权在往协议层走。</b>OpenAI 支持 robots.txt 通用信号，方向是对的：让站点一次声明、让厂商各自遵守。但"自愿 + 未来数月"两个限定语决定了短期影响有限，真正的分水岭是同时落地的厂商数量，以及主流爬虫框架是否默认解析该信号。</li>
+  <li><b>开源侧的注意力仍在编码代理。</b>今日 GitHub Trending 日增榜首为 <code>pingdotgg/t3code</code>，单日 +3,094 星、语言 TypeScript。榜单前列基本被 AI agent / Claude 生态项目占据，说明开发者当前兴趣不在新框架，而在"怎么把代理接进现有工作流"。不过必须重复一句：Trending 的日增是脉冲指标，不是历史排名。</li>
+  <li><b>本期结构性观察。</b>四条新闻里有三条指向"AI 如何被卖出去"（融资、订阅、协议），没有一条是新的基础模型发布——本次 72 小时窗口内未检索到可信、当日可核验的新旗舰模型发布。这与最近一个月的节奏一致：行业注意力正从模型能力竞赛切到商业化与标准化。</li>
+</ol>
+</div>
+
+<h2>来源与局限</h2>
+<div class="card">
+<ul>
+  <li><b>本轮实际调用：</b><code>web_search</code> 5 次（达上限），原文抓取 3 次（达上限：GitHub Trending、Claude 官方帮助页、OpenAI 官方公告）。未调用 <code>web_extract</code>。</li>
+  <li><b>时效处理：</b>仅保留日期落在 2026-10-30 至 2026-11-02 的条目。已剔除的窗口外材料包括 Broccoli AI 5200 万美元融资（Fortune 报道日 10-28）、Crunchbase 本周十大融资榜（无单一可核验事件日期）、Instinct 10 亿美元 C 轮等周度汇总条目、Anthropic 10 月 28 日及此前的 AI for Science 扩展与药物研发进展、OpenAI 10 月 26 日的 GPT-6.1 Terra 等。</li>
+  <li><b>未采信项：</b>Anthropic newsroom 列表中出现过 "November 2, 2026" 的日期标记，但检索返回的标题与日期排布相互错位、无法定位到具体公告，因此不作为当日新闻收录，也不据此推断当日有新品发布。</li>
+  <li><b>GitHub Trending 说明：</b>本次快照共解析 17 个仓库条目，逐条读取 <code>N stars today</code> 后取最大值；<code>pingdotgg/t3code</code> 在该快照中未渲染描述行，描述字段按"不可见即不填"处理。Trending 是当日可见趋势榜，不是全站历史增量数据库。</li>
+  <li><b>来源结构：</b>国内源（证券日报、新浪财经/科创板日报、IT 之家、老虎证券、ZDNet 韩国）与海外源（CNA、TechNode、The Verge、ITmedia、TNW、The New Stack、OpenAI 官方、Anthropic 官方）均有覆盖；第 4 条为单一原始报道，已在卡片中标注证据强度。</li>
+  <li><b>未做的事：</b>未读取 GitHub 仓库主页、FastCompany 榜单页、Techmeme 聚合页，未使用任何本地缓存或历史日报内容；全部结论来自本轮工具回执。完整证据审计（含每次检索 query、全部返回 URL、逐条分类与 REJECTED 清单）见 Markdown 审计副本。</li>
+</ul>
+</div>
+
+<h2>免责声明</h2>
+<div class="card">
+<p>本简报由自动化流程基于公开来源生成，仅供信息参考，不构成任何投资建议或商业决策依据。自动采集可能出现转述失真、日期偏差与口径差异，请以原始公告、交易所文件与官方文档为准。</p>
+</div>
+
+<footer>
+每日科技新闻简报 · 2026-11-02（+08）｜ 自动生成 · 证据门：72 小时时效窗口 + 多源交叉验证 + 官方原文核验
+</footer>
+
+</div>
+</body>
+</html>
