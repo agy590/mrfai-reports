@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>多 Agent 不是多请几个人，是先把交接写成合同 — MrFai 的 Agent 笔记</title>
+<style>
+  :root{
+    --bg:#0b0e14;
+    --surface:#141821;
+    --fg:#e8eaed;
+    --muted:#b3b8c4;
+    --border:#232836;
+    --accent:#76a7ff;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    padding:0;
+    background:var(--bg);
+    color:var(--fg);
+    font-size:17px;
+    line-height:1.8;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{
+    width:min(100%,720px);
+    margin:0 auto;
+    padding:0 18px calc(32px + env(safe-area-inset-bottom, 0px));
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:18px 0 10px;
+    color:var(--muted);
+    font-size:13px;
+    letter-spacing:.06em;
+    border-bottom:1px solid var(--border);
+  }
+  .brand .dot{
+    width:7px;height:7px;border-radius:50%;
+    background:var(--accent);
+    flex:0 0 auto;
+  }
+  .brand .name{color:var(--fg);font-weight:600;letter-spacing:.02em;}
+  .card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:22px 18px;
+    margin-top:18px;
+    overflow-wrap:anywhere;
+    word-break:break-word;
+  }
+  h1{
+    font-size:clamp(25px,7vw,34px);
+    line-height:1.24;
+    margin:0 0 12px;
+    letter-spacing:-.01em;
+    color:var(--fg);
+  }
+  .meta{
+    color:var(--muted);
+    opacity:.72;
+    font-size:13px;
+    line-height:1.7;
+    margin:0 0 18px;
+    padding-bottom:16px;
+    border-bottom:1px solid var(--border);
+  }
+  p{margin:0 0 16px;}
+  p:last-child{margin-bottom:0;}
+  ol{
+    margin:16px 0 0;
+    padding-left:1.35em;
+  }
+  li{margin:0 0 10px;}
+  li:last-child{margin-bottom:0;}
+  strong{color:var(--fg);}
+  .note{
+    margin-top:20px;
+    padding-top:16px;
+    border-top:1px solid var(--border);
+    color:var(--muted);
+    opacity:.75;
+    font-size:13.5px;
+    line-height:1.75;
+  }
+  a{color:var(--accent);}
+  @media (min-width:640px){
+    .wrap{padding:0 28px calc(44px + env(safe-area-inset-bottom, 0px));}
+    .card{padding:36px;}
+    .brand{padding:26px 0 12px;}
+  }
+  @media print{
+    body{background:#fff;color:#000;font-size:12pt;}
+    .wrap{width:100%;padding:0;}
+    .card{background:#fff;border:1px solid #ccc;padding:0;}
+    .brand{border-bottom:1px solid #ccc;}
+    .meta,.note{color:#444;opacity:1;}
+    h1{color:#000;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand"><span class="dot"></span><span class="name">MrFai 的 Agent 笔记</span></div>
+  <article class="card">
+    <h1>多 Agent 不是多请几个人，是先把交接写成合同</h1>
+    <p class="meta">2026-11-04 · 主题：多 Agent 协作</p>
+
+    <p>不少人把多 Agent 协作理解成「多找几个模型投票」。真跑一段时间就会发现，瓶颈从来不在模型不够聪明，而在交接边界没画清楚。Agent 之间传的是一段话，不是一份可验证的成果，链条越长，猜测被放大的速度越快。</p>
+
+    <p>我踩过的具体坑：三个 Agent 同时往同一个共享目录写分析产物，谁都没先占位，文件被反复覆盖。更糟的是下游读到的结论没有来源，等于在猜。后来我把规则改成「单一事实源 + 路径级租约」，同一时间只有一个 Agent 拥有某个路径的写权限，其余只读不写，覆盖就消失了。</p>
+
+    <p>另一类失败更隐蔽：Agent A 汇报「已完成」，但没留下任何可复现的证据；Agent B 基于这句话继续推进，把一个假设当成了事实。这类问题不需要更强的模型解决，只需要交接格式固定。</p>
+
+    <p>如果你也想跑多 Agent 协作，可以照这四步做：</p>
+
+    <ol>
+      <li><strong>先定唯一事实源。</strong>选定一个明确的产物路径或文档作为结论来源，其余输出只能追加、不能覆盖；没有 SSOT 的协作，本质上是并行猜测。</li>
+      <li><strong>写前先领取租约。</strong>动手前声明自己负责的路径或条目，其他 Agent 不碰；租约释放前不算完成。</li>
+      <li><strong>交接用四件套。</strong>证据（跑过的命令或可查链接）、已做的决定、当前阻塞、下一步动作。缺任何一项，交接即视为未完成。</li>
+      <li><strong>验收靠复现，不靠「看起来对」。</strong>让接收方重跑一次验证命令再标记完成；跑不通就是没完成。</li>
+    </ol>
+
+    <p>说到底，多 Agent 的产出上限不由 Agent 数量决定，由交接契约的严格程度决定。人带团队是这样，Agent 之间更是这样。</p>
+
+    <p class="note">免责声明：本文为个人工程笔记，仅代表个人实践与个人判断，不代表任何平台、机构或产品的官方立场，也不构成投资建议。产品能力与价格以官方页面为准。</p>
+  </article>
+</div>
+</body>
+</html>
