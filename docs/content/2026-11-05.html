@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>多 Agent 的瓶颈不是模型，是验收</title>
+<style>
+  :root{
+    --bg:#0b0e14;
+    --surface:#141821;
+    --fg:#e8eaed;
+    --muted:#b3b8c4;
+    --border:#232836;
+    --accent:#76a7ff;
+  }
+  *{box-sizing:border-box;}
+  html,body{
+    margin:0;
+    padding:0;
+    max-width:100%;
+    overflow-x:hidden;
+    background:var(--bg);
+    color:var(--fg);
+  }
+  body{
+    font-size:17px;
+    line-height:1.78;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+    -webkit-text-size-adjust:100%;
+    word-break:break-word;
+    overflow-wrap:anywhere;
+  }
+  .wrap{
+    width:min(100%,720px);
+    margin:0 auto;
+    padding:18px 18px calc(28px + env(safe-area-inset-bottom));
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:13px;
+    letter-spacing:.04em;
+    color:var(--muted);
+    padding:6px 2px 16px;
+    border-bottom:1px solid var(--border);
+    margin-bottom:18px;
+  }
+  .brand .dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--accent);
+    flex:0 0 auto;
+  }
+  .card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:22px 18px 20px;
+  }
+  .meta{
+    font-size:13px;
+    color:var(--muted);
+    opacity:.75;
+    letter-spacing:.03em;
+    margin:0 0 12px;
+  }
+  h1{
+    font-size:clamp(25px,7vw,34px);
+    line-height:1.22;
+    margin:0 0 16px;
+    color:var(--fg);
+    font-weight:700;
+    overflow-wrap:anywhere;
+  }
+  h1 .accent{color:var(--accent);}
+  p{
+    margin:0 0 16px;
+    color:var(--fg);
+  }
+  .steps-title{
+    font-size:15px;
+    color:var(--muted);
+    margin:22px 0 10px;
+    letter-spacing:.02em;
+  }
+  ol{
+    margin:0 0 18px;
+    padding-left:1.35em;
+  }
+  ol li{
+    margin:0 0 10px;
+  }
+  ol li:last-child{margin-bottom:0;}
+  strong{color:var(--fg);}
+  .note{
+    font-size:13px;
+    line-height:1.7;
+    color:var(--muted);
+    border-top:1px solid var(--border);
+    padding-top:14px;
+    margin:0;
+    opacity:.85;
+  }
+  a{
+    color:var(--accent);
+    overflow-wrap:anywhere;
+  }
+  @media (min-width:640px){
+    .wrap{padding:28px 28px calc(40px + env(safe-area-inset-bottom));}
+    .card{padding:36px 38px 32px;}
+    .brand{padding-bottom:18px;}
+  }
+  @media print{
+    html,body{background:#fff;color:#111;}
+    .wrap{width:100%;padding:0;}
+    .card{background:#fff;border:1px solid #ccc;padding:0;}
+    .brand,.meta,.note{color:#444;}
+    h1,p,strong{color:#111;}
+    .accent,.brand .dot{color:#2b5fd9;}
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span><span>MrFai 的 Agent 笔记</span></div>
+
+    <article class="card">
+      <p class="meta">2026-11-05 · AI Agent · 多 Agent 协作</p>
+
+      <h1>多 Agent 的瓶颈<span class="accent">不是模型</span>，是验收</h1>
+
+      <p>很多人以为多 Agent 协作做不成，是因为模型不够强。真实做下来，卡住的地方几乎总是同一处：没有人定义清楚“什么叫做完了”。</p>
+
+      <p>我踩过的坑很具体。让一个子 Agent 去改代码，它会回一句“已修复，测试通过”。但它跑的是它自己临时写的那个测试，跑完就删掉了；仓库里真正的测试命令是什么、失败时会怎样，它并不知道。等我把改动合进主分支，构建直接变红。责任在谁？子 Agent 认为自己完成了，因为在它自己的世界观里，完成就是完成。</p>
+
+      <p>于是我改了协作方式。现在给子 Agent 的任务说明里，强制写四样东西：目标与非目标、验收标准、允许修改的路径范围、回滚方式。其中验收标准必须是一条可执行的命令，而不是“代码应该更健壮”这种描述。我还要求它把执行过的命令和真实输出贴回来作为证据——没有输出的完成声明，一律按未完成处理。</p>
+
+      <p>这套做法跑了一段时间，返工明显少了。但我更想说的是另一件事：写这份任务说明的人，必须自己先知道正确答案长什么样。如果我不知道仓库里正确的测试命令是什么，我就没资格要求子 Agent 验证它。协作的上限，永远是提问者的上限。</p>
+
+      <p class="steps-title">照着做的四步</p>
+      <ol>
+        <li><strong>先自己跑一遍正确答案</strong>：找到或亲手写下那条能证明成功的命令，把它的输出留成基线。</li>
+        <li><strong>任务说明固定四段</strong>：目标与非目标 / 验收标准（命令 + 期望输出）/ 允许修改的路径 / 回滚方式。</li>
+        <li><strong>要求回报证据</strong>：改了什么、跑了哪条命令、原始输出片段。缺输出就当没做完。</li>
+        <li><strong>合并前独立复跑</strong>：由你或第三个 Agent 按验收标准重新跑一遍，不采信“已完成”的声明。</li>
+      </ol>
+
+      <p class="note">免责声明：本文是个人工程实践记录，不代表任何产品或平台的官方观点；内容为原创，不含外部数据、广告或商业推广。</p>
+    </article>
+  </div>
+</body>
+</html>
