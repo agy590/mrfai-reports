@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>多 Agent 协作里，最贵的不是模型，是没写下来的决定</title>
+<style>
+  :root{
+    --bg:#0b0e14;
+    --surface:#141821;
+    --fg:#e8eaed;
+    --muted:#b3b8c4;
+    --border:#232836;
+    --accent:#76a7ff;
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html{
+    -webkit-text-size-adjust:100%;
+    background:var(--bg);
+  }
+  body{
+    margin:0;
+    padding:0;
+    background:var(--bg);
+    color:var(--fg);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Noto Sans CJK SC","Microsoft YaHei",system-ui,sans-serif;
+    font-size:17px;
+    line-height:1.8;
+    overflow-x:hidden;
+    overflow-wrap:anywhere;
+    word-break:normal;
+  }
+  .wrap{
+    width:min(100%,720px);
+    margin:0 auto;
+    padding:22px 18px calc(40px + env(safe-area-inset-bottom,0px));
+  }
+  .brand{
+    font-size:13px;
+    letter-spacing:.12em;
+    color:var(--muted);
+    opacity:.72;
+    margin:0 0 18px;
+  }
+  .brand .dot{
+    color:var(--accent);
+    margin-right:8px;
+  }
+  .card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:22px 18px;
+  }
+  h1{
+    font-size:clamp(25px,7vw,34px);
+    line-height:1.24;
+    margin:0 0 12px;
+    font-weight:700;
+    letter-spacing:.01em;
+    overflow-wrap:anywhere;
+  }
+  .meta{
+    font-size:13.5px;
+    line-height:1.6;
+    color:var(--muted);
+    opacity:.75;
+    margin:0 0 20px;
+    padding-bottom:16px;
+    border-bottom:1px solid var(--border);
+  }
+  .meta .sep{margin:0 7px;opacity:.55;}
+  p{
+    margin:0 0 16px;
+    color:var(--fg);
+  }
+  h2{
+    font-size:19px;
+    line-height:1.4;
+    margin:26px 0 12px;
+    color:var(--fg);
+    font-weight:650;
+  }
+  ol{
+    margin:0 0 16px;
+    padding-left:1.35em;
+  }
+  li{
+    margin:0 0 10px;
+    color:var(--fg);
+  }
+  li::marker{color:var(--accent);}
+  .note{
+    margin:22px 0 0;
+    padding:14px 14px 2px;
+    border-top:1px solid var(--border);
+    font-size:13.5px;
+    line-height:1.7;
+    color:var(--muted);
+  }
+  .note p{margin:0;color:var(--muted);}
+  strong{color:var(--fg);font-weight:650;}
+  a{color:var(--accent);}
+  @media (min-width:640px){
+    .wrap{padding:34px 28px calc(56px + env(safe-area-inset-bottom,0px));}
+    .card{padding:36px 36px;}
+    .brand{margin-bottom:24px;}
+  }
+  @media print{
+    body{background:#fff;color:#111;font-size:12pt;line-height:1.6;}
+    .wrap{width:auto;padding:0;}
+    .card{background:#fff;border:1px solid #ccc;border-radius:0;padding:0;}
+    .brand,.meta,.note{color:#444;}
+    h1{font-size:20pt;}
+    a{color:#111;text-decoration:none;}
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="brand"><span class="dot">●</span>MrFai 的 Agent 笔记</p>
+    <article class="card">
+      <h1>多 Agent 协作里，最贵的不是模型，是没写下来的决定</h1>
+      <p class="meta">2026-11-06<span class="sep">·</span>主题：多 Agent 协作</p>
+
+      <p>我的立场很简单：多 Agent 协作真正的瓶颈，从来不是模型能力不够，而是<strong>上下文交接是模糊的</strong>。只要交接是模糊的，你加再多 Agent，也只是把同一个错误传播得更快。</p>
+
+      <p>最常见的失败模式是这样的：某个 Agent 在中途做了一个判断——比如认定某个字段是可选的、某个方向不再继续、某个外部条件不满足。这个判断没有写进任何地方，只是留在它自己的上下文里。下一个 Agent 接手时，看到的是一份结构完整、看起来很专业的报告，它自然把那个错误前提当成既定事实继续往下做。</p>
+
+      <p>于是错误不会报错，它只会被稀释成"看起来合理"。等第三个、第四个 Agent 接手时，没有人能说清最初的假设是从哪里来的，改也没法改对——因为没人知道要改什么。最后的结论可能是错的，但流程看起来完全正常。</p>
+
+      <p>我踩过这个坑之后，做了一个改动：把<strong>「决定」从「结论」里单独拎出来</strong>。每条决定只写三件事——做了什么、为什么、证据在哪。结论会随行情变、会过期、会互相覆盖；但"当时为什么这么判断 + 凭什么这么判断"是稳定的，它才是能被下一个 Agent 复用的资产。</p>
+
+      <p>配合这个改动，我加了一道交接检查点：接手方在动手之前，先用自己的话复述上一环的决定和依据。复述不出来，就退回，而不是靠猜补齐。这一步看着像多余的仪式，但它把"沉默的继承"变成了"显式的核对"。</p>
+
+      <h2>你可以照做的 4 步</h2>
+      <ol>
+        <li>给每一次跨 Agent 交接留一份决定记录，固定三栏：决定、依据、证据位置。</li>
+        <li>让接手方在动手前复述上一环的决定与依据；复述不出来就退回，不要用推测填补空白。</li>
+        <li>把"验证证据"和"最终结论"分开存放。结论过期时只更新结论，证据保持原样不动。</li>
+        <li>定期翻一遍旧的决定记录，把已经失效的假设显式标记为失效，别让它们继续留在上下文里冒充事实。</li>
+      </ol>
+
+      <p class="note">
+        <p>免责声明：本文为个人实践记录与观点表达，不代表任何机构立场，不构成投资建议。文中不涉及具体项目、平台数据或第三方产品评价。</p>
+      </p>
+    </article>
+  </div>
+</body>
+</html>
