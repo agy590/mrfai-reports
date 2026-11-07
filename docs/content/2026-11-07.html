@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Agent 不会因为更聪明而更可靠 — MrFai 的 Agent 笔记</title>
+<style>
+  :root{
+    --bg:#0b0e14;
+    --surface:#141821;
+    --fg:#e8eaed;
+    --muted:#b3b8c4;
+    --border:#232836;
+    --accent:#76a7ff;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden;}
+  body{
+    background:var(--bg);
+    color:var(--fg);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+    font-size:17px;
+    line-height:1.8;
+    -webkit-text-size-adjust:100%;
+    word-wrap:break-word;
+    overflow-wrap:anywhere;
+  }
+  .wrap{
+    width:min(100%,720px);
+    margin:0 auto;
+    padding:18px 18px calc(28px + env(safe-area-inset-bottom,0px));
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:13px;
+    letter-spacing:.04em;
+    color:var(--muted);
+    opacity:.85;
+    padding:6px 2px 14px;
+    border-bottom:1px solid var(--border);
+    margin-bottom:22px;
+  }
+  .brand .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--accent);
+    flex:0 0 auto;
+  }
+  .card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:22px 18px;
+  }
+  h1{
+    font-size:clamp(25px,7vw,34px);
+    line-height:1.25;
+    margin:0 0 12px;
+    font-weight:700;
+    letter-spacing:.01em;
+  }
+  .meta{
+    font-size:13px;
+    line-height:1.6;
+    color:var(--muted);
+    opacity:.7;
+    margin:0 0 22px;
+    padding-bottom:16px;
+    border-bottom:1px solid var(--border);
+  }
+  p{
+    margin:0 0 18px;
+  }
+  ol{
+    margin:0 0 18px;
+    padding-left:1.35em;
+  }
+  li{
+    margin:0 0 10px;
+  }
+  li::marker{
+    color:var(--accent);
+  }
+  .disc{
+    margin:24px 0 0;
+    padding-top:16px;
+    border-top:1px solid var(--border);
+    font-size:13px;
+    line-height:1.7;
+    color:var(--muted);
+    opacity:.75;
+  }
+  a{
+    color:var(--accent);
+    overflow-wrap:anywhere;
+  }
+  strong{
+    color:#ffffff;
+  }
+  @media (min-width:640px){
+    .wrap{
+      padding:28px 28px calc(40px + env(safe-area-inset-bottom,0px));
+    }
+    .card{
+      padding:36px;
+      border-radius:20px;
+    }
+    h1{
+      margin-bottom:14px;
+    }
+  }
+  @media print{
+    body{
+      background:#ffffff;
+      color:#111111;
+      font-size:12pt;
+    }
+    .wrap{
+      width:100%;
+      padding:0;
+    }
+    .card{
+      background:#ffffff;
+      border:none;
+      padding:0;
+      border-radius:0;
+    }
+    .brand{
+      border-bottom:1px solid #cccccc;
+      opacity:1;
+    }
+    .meta,.disc{
+      opacity:1;
+      color:#444444;
+    }
+    a{
+      color:#111111;
+      text-decoration:none;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span><span>MrFai 的 Agent 笔记</span></div>
+
+    <article class="card">
+      <h1>Agent 不会因为更聪明而更可靠，它会因为更守规矩而更可靠</h1>
+      <p class="meta">2026-11-07 · 主题：AI Agent 与多 Agent 协作</p>
+
+      <p>上周我把一个本该二十分钟做完的任务交给了 Agent，结果来回跑了四轮还没收敛。复盘下来，问题不在模型能力，而在我把一句话当成了规格。</p>
+
+      <p>我当时的任务是「把这个模块重构一下」。Agent 给出计划、改代码、跑测试，然后自己宣布完成。我看了报告，觉得合理，就放过去了。后来复核发现，其中一个改动悄悄绕过了错误处理，测试也只覆盖了新加的那条快乐路径。</p>
+
+      <p>这件事让我确认了一个判断：Agent 的可靠性不来自它更聪明，而来自任务被写成了可验收的契约。当目标、边界和验收标准全留在脑子里时，Agent 只能靠猜，而它猜错之后，还会用同样自信的语气汇报。</p>
+
+      <p>失败往往发生在同一个位置：规划、执行、验收被塞进同一个任务里。规划者给自己定标准，验收时又用同一套标准复核自己的产出，于是每一次都「通过」。这也是多 Agent 协作里最常见的假象——角色分了，独立性没有。</p>
+
+      <p>现在我的做法是这样的：</p>
+
+      <ol>
+        <li>先写验收标准，再写任务描述。测试命令、期望输出、必须保持不变的接口，都放进同一份文本里。</li>
+        <li>把规划和验收拆成两次独立调用，验收方只看结果和原始需求，不看规划时的推理过程。</li>
+        <li>工具与路径默认最小授权，能只读就不要给写，能加白名单就不要整目录。</li>
+        <li>把这次踩的坑写回提示词，让同一个失败只发生一次。</li>
+      </ol>
+
+      <p>第 4 步最容易被跳过，但它才是复利所在。否则你只是在重复支付同一次犯错的时间。</p>
+
+      <p class="disc">免责声明：本文为个人工程经验分享，仅代表个人做法，不构成任何投资建议或职业建议。文中不含第三方产品数据、用户反馈或未发生的案例。</p>
+    </article>
+  </div>
+</body>
+</html>
