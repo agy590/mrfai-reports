@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>多 Agent 协作，先分清谁负责哪一段</title>
+<style>
+  :root{
+    --bg:#0b0e14;
+    --surface:#141821;
+    --fg:#e8eaed;
+    --muted:#b3b8c4;
+    --border:#232836;
+    --accent:#76a7ff;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--fg);
+    font-size:17px;
+    line-height:1.78;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{
+    width:min(100%,720px);
+    margin:0 auto;
+    padding:22px 18px calc(40px + env(safe-area-inset-bottom,0px));
+  }
+  .brand{
+    font-size:13px;
+    letter-spacing:.06em;
+    color:var(--muted);
+    opacity:.78;
+    margin:0 0 18px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-wrap:wrap;
+    word-break:break-word;
+  }
+  .brand .dot{
+    width:7px;height:7px;border-radius:50%;
+    background:var(--accent);
+    display:inline-block;flex:none;
+  }
+  .card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:22px 18px 26px;
+  }
+  h1{
+    margin:0 0 10px;
+    font-size:clamp(25px,7vw,34px);
+    line-height:1.24;
+    letter-spacing:-.01em;
+    color:var(--fg);
+    overflow-wrap:break-word;
+    word-break:break-word;
+  }
+  .meta{
+    margin:0 0 20px;
+    font-size:13px;
+    line-height:1.6;
+    color:var(--muted);
+    opacity:.72;
+    overflow-wrap:break-word;
+    word-break:break-word;
+  }
+  .body p{
+    margin:0 0 15px;
+    overflow-wrap:break-word;
+    word-break:break-word;
+  }
+  .body h2{
+    margin:24px 0 10px;
+    font-size:18px;
+    line-height:1.4;
+    color:var(--fg);
+  }
+  ol{
+    margin:0;
+    padding-left:22px;
+  }
+  ol li{
+    margin:0 0 10px;
+    overflow-wrap:break-word;
+    word-break:break-word;
+  }
+  ol li::marker{color:var(--accent);}
+  .disclaimer{
+    margin:22px 0 0;
+    padding-top:14px;
+    border-top:1px solid var(--border);
+    font-size:13px;
+    line-height:1.7;
+    color:var(--muted);
+    opacity:.7;
+    overflow-wrap:break-word;
+    word-break:break-word;
+  }
+  @media (min-width:640px){
+    .wrap{padding:34px 28px calc(56px + env(safe-area-inset-bottom,0px));}
+    .card{padding:36px 36px 38px;}
+    .brand{margin-bottom:22px;}
+  }
+  @media print{
+    body{background:#fff;color:#000;font-size:12pt;}
+    .wrap{width:100%;padding:0;}
+    .card{background:#fff;border:1px solid #999;border-radius:0;padding:0;}
+    .brand,.meta,.disclaimer{color:#444;opacity:1;}
+    ol li::marker{color:#000;}
+    .body p{orphans:3;widows:3;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="brand"><span class="dot"></span><span>MrFai 的 Agent 笔记</span></p>
+  <article class="card">
+    <h1>多 Agent 协作，先分清谁负责哪一段</h1>
+    <p class="meta">2026-11-08 · 主题：多 Agent 协作与工程纪律</p>
+
+    <div class="body">
+      <p>多 Agent 协作失败，八成不是模型不够聪明，而是没人先说清楚：这一段谁负责、什么时候算交付、拿什么验收。模型可以并行，边界必须由人先划好。</p>
+
+      <p>我踩过的坑很具体。两个 Agent 各自推进同一个共享文件，一个按旧状态写，另一个按新状态写，两份结果互相覆盖。等复核的时候，谁都坚持自己那份才是最终版——产物还在，结论没了。这种失败不报错，日志也干净，只有到最后一刻才暴露。</p>
+
+      <p>后来的做法是把顺序固定下来：共享内容先定一个事实源，写入前先读现状，动手的人各自认领一段互不重叠的路径，交接时固定留下证据、决定、卡点和下一步。谁该动哪一块，不再靠临时商量。</p>
+
+      <p>还有一个反直觉的收获：让「只验收、不实现」的角色独立复核，比让写代码的 Agent 自己检查更有效。复核者发现问题的能力和实现者不是一回事，同一个上下文里，人也会顺着自己的思路看顺眼。</p>
+
+      <h2>可以照着做的四步</h2>
+      <ol>
+        <li>开工前先写十行以内的小计划：目标、明确不做的事、验收标准、允许改动的路径。</li>
+        <li>划清不可交叉的路径归属，谁负责哪段就只动那段，越界前先停下来确认。</li>
+        <li>交接固定留三行：做了什么、卡在哪里、下一步做什么，别让上下文只活在聊天记录里。</li>
+        <li>收尾交给独立复核者，只读不改；不通过的部分退回给执行者，不代劳。</li>
+      </ol>
+
+      <p class="disclaimer">免责声明：本文是个人工程经验记录，不代表任何产品或平台的官方立场；其中的方法请结合自己的场景与团队规模验证后再采用。</p>
+    </div>
+  </article>
+</div>
+</body>
+</html>
