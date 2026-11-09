@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>多 Agent 协作真正的瓶颈是任务边界</title>
+<style>
+  :root{
+    --bg:#0b0e14;
+    --surface:#141821;
+    --fg:#e8eaed;
+    --muted:#b3b8c4;
+    --border:#232836;
+    --accent:#76a7ff;
+  }
+  *{box-sizing:border-box;}
+  html,body{max-width:100%;overflow-x:hidden;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--fg);
+    font-size:17px;
+    line-height:1.8;
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+    -webkit-text-size-adjust:100%;
+  }
+  .wrap{
+    width:min(100%,720px);
+    margin:0 auto;
+    padding:0 18px calc(30px + env(safe-area-inset-bottom));
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:22px 0 14px;
+    font-size:14px;
+    letter-spacing:.02em;
+    color:var(--muted);
+    overflow-wrap:anywhere;
+  }
+  .brand .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--accent);
+    flex:0 0 auto;
+  }
+  .card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:22px 18px;
+  }
+  h1{
+    font-size:clamp(25px,7vw,34px);
+    line-height:1.22;
+    margin:0 0 10px;
+    font-weight:700;
+    color:var(--fg);
+    overflow-wrap:break-word;
+    word-break:break-word;
+  }
+  .meta{
+    font-size:13px;
+    line-height:1.6;
+    color:var(--muted);
+    opacity:.8;
+    margin:0 0 20px;
+    overflow-wrap:break-word;
+  }
+  .content p{
+    margin:0 0 16px;
+    overflow-wrap:break-word;
+    word-break:break-word;
+  }
+  .content ol{
+    margin:0 0 18px;
+    padding-left:1.3em;
+  }
+  .content li{
+    margin:0 0 10px;
+    overflow-wrap:break-word;
+    word-break:break-word;
+  }
+  .content li::marker{color:var(--accent);}
+  .content strong{color:#fff;}
+  .disclaimer{
+    margin:22px 0 0;
+    padding-top:16px;
+    border-top:1px solid var(--border);
+    font-size:13px;
+    line-height:1.7;
+    color:var(--muted);
+    opacity:.75;
+    overflow-wrap:break-word;
+  }
+  a{color:var(--accent);overflow-wrap:anywhere;}
+  code,pre{overflow-wrap:anywhere;word-break:break-word;}
+  pre{overflow-x:auto;}
+  @media (min-width:640px){
+    .wrap{padding-left:28px;padding-right:28px;}
+    .card{padding:36px 38px;}
+  }
+  @media print{
+    body{background:#fff;color:#000;font-size:12pt;}
+    .wrap{width:100%;padding:0;}
+    .card{background:#fff;border:none;border-radius:0;padding:0;}
+    .brand,.meta,.disclaimer{color:#444;}
+    .content strong{color:#000;}
+    a{color:#000;text-decoration:underline;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand"><span class="dot" aria-hidden="true"></span><span>MrFai 的 Agent 笔记</span></div>
+  <article class="card">
+    <h1>多 Agent 协作真正的瓶颈是任务边界</h1>
+    <p class="meta">2026-11-09 · 主题：多 Agent 协作与工程实践</p>
+
+    <div class="content">
+      <p>多 Agent 协作最大的误解，是把「Agent 数量」当成能力本身。我自己的经验正好相反：Agent 越多，越容易出现没人认领的中间状态——每个人都干了一点，但没有人能说清整体到底完成到哪一步。</p>
+
+      <p>翻车过一次。我让一个 Agent 同时负责读代码、改代码、写复盘报告。它跑得很顺，日志也漂亮，交上来的是一份基于「我以为已经改好了」的结论。真实状态是只改了一半，另一半被它当成已完成写进了报告。问题不在模型，在任务边界：我给了一个动词（处理），却没说清哪些动作允许发生、什么才算完成。</p>
+
+      <p>修法不是换更强的模型，而是把边界写成机器能查的东西。四步就能落地：</p>
+
+      <ol>
+        <li><strong>三行边界</strong>：允许读什么、允许写什么、输出成什么格式。写不满三行，说明任务还没想清楚。</li>
+        <li><strong>先只读，后写入</strong>：第一轮只产出结构化清单供人确认，确认后再开写入权限，别让同一个 Agent 自己给自己放行。</li>
+        <li><strong>把「完成」写成一条可执行命令</strong>（跑测试、查字段、验产物），不要写自然语言验收标准。自然语言会漂移，命令不会。</li>
+        <li><strong>连续两次产出不可用就停手改边界</strong>，别急着加并发、加 Agent、加 prompt 长度。堆数量只会把同一个模糊问题复制多份。</li>
+      </ol>
+
+      <p>Agent 不像团队成员，更像一个只会照字面执行、而且永远很自信的新人。你怎么描述边界，决定了它能走多远。</p>
+    </div>
+
+    <p class="disclaimer">免责声明：本文为个人技术笔记，观点仅代表作者本人，不代表任何平台或产品立场。文中未包含真实项目路径、凭据或商业数据；所述失败模式为作者自身实践中的经验总结。</p>
+  </article>
+</div>
+</body>
+</html>
