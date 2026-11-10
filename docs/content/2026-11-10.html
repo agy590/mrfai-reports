@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>多 Agent 的瓶颈不是模型，是"谁说了算" · MrFai 的 Agent 笔记</title>
+<style>
+:root{
+  --bg:#0b0e14;
+  --surface:#141821;
+  --fg:#e8eaed;
+  --muted:#b3b8c4;
+  --border:#232836;
+  --accent:#76a7ff;
+}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  margin:0;
+  padding:0;
+  background:var(--bg);
+  color:var(--fg);
+  font-size:17px;
+  line-height:1.8;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  overflow-wrap:break-word;
+  word-break:break-word;
+  overflow-x:hidden;
+}
+.wrap{
+  width:min(100%,720px);
+  margin:0 auto;
+  padding:18px 18px calc(28px + env(safe-area-inset-bottom,0px));
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.6;
+  padding:6px 2px 14px;
+}
+.brand .dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--accent);
+  flex:0 0 auto;
+}
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:22px 18px;
+}
+h1{
+  margin:0 0 12px;
+  font-size:clamp(25px,7vw,34px);
+  line-height:1.25;
+  font-weight:700;
+  color:var(--fg);
+}
+.meta{
+  margin:0 0 20px;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.6;
+  opacity:.75;
+}
+.meta .sep{opacity:.5;margin:0 6px;}
+article p{margin:0 0 16px;}
+article strong{font-weight:600;color:var(--fg);}
+ol{margin:0 0 16px;padding-left:22px;}
+li{margin:0 0 10px;}
+li:last-child{margin-bottom:0;}
+li::marker{color:var(--accent);}
+ol li strong{color:var(--accent);}
+.note{
+  margin:22px 0 0;
+  padding-top:14px;
+  border-top:1px solid var(--border);
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.7;
+  opacity:.85;
+}
+@media (min-width:640px){
+  .wrap{padding:28px 28px calc(36px + env(safe-area-inset-bottom,0px));}
+  .card{padding:36px 38px;}
+}
+@media print{
+  body{background:#fff;color:#000;font-size:12pt;line-height:1.6;}
+  .wrap{width:100%;padding:0;}
+  .card{border:0;border-radius:0;padding:0;background:#fff;}
+  .brand,.meta,.note{color:#444;opacity:1;}
+  ol li strong{color:#000;}
+  a{color:#000;text-decoration:none;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand"><span class="dot"></span><span>MrFai 的 Agent 笔记</span></div>
+  <article class="card">
+    <h1>多 Agent 的瓶颈不是模型，是"谁说了算"</h1>
+    <p class="meta"><span>2026-11-10</span><span class="sep">·</span><span>多 Agent 协作</span></p>
+
+    <p>很多人以为多 Agent 协作的难点是模型不够聪明。我的经验恰恰相反：模型的判断力早就够用了，真正让协作崩掉的，是<strong>状态的归属权从来没有被定义清楚</strong>。</p>
+
+    <p>我踩过的坑很具体：两个 Agent 各自维护了一份"当前进度"的副本。A 把任务做完并更新了自己的记录，B 仍在按旧副本行动，把一条早已被推翻的结论又写了一遍。等我发现时，两份记录互相矛盾，却没人知道哪份是真的。表面上像模型幻觉，其实是写入冲突——大家都在"说"，没人被允许"拍板"。</p>
+
+    <p>修法不是加一个更聪明的协调者，而是把规则写死在文件系统里。四个步骤，从今天就能开始：</p>
+
+    <ol>
+      <li><strong>单一事实源。</strong>所有状态写进同一个文件或数据库，Agent 只允许读它；不要在对话里转述"我这边目前的进度"。</li>
+      <li><strong>写入前先领租约。</strong>谁要改哪条路径，先登记再写，避免两个 Agent 同时覆盖同一段内容。</li>
+      <li><strong>交接用固定结构。</strong>四行以内：已完成、结论、遗留问题、下一步。下一个 Agent 必须能直接照着执行，不需要猜。</li>
+      <li><strong>临时状态定期沉盘。</strong>会话记忆当缓存，文件才是归档；上下文会被压缩，文件不会。</li>
+    </ol>
+
+    <p>多 Agent 的可靠性来自文件系统里的纪律，而不是提示词里的客气。模型会变、上下文会丢，但"谁说了算"这件事，可以由你写在磁盘上。</p>
+
+    <p class="note">免责声明：本文为个人工程实践记录，不构成任何投资建议，也不保证适用于你的场景。文中做法未经第三方验证，请按自身情况取舍。</p>
+  </article>
+</div>
+</body>
+</html>
